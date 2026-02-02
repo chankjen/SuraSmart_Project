@@ -1,0 +1,45 @@
+{
+  "name": "sura-smart-frontend",
+  "version": "1.0.0",
+  "description": "SuraSmart - Missing Persons Search Platform Frontend",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "axios": "^1.6.0",
+    "jwt-decode": "^4.0.0",
+    "react-icons": "^4.12.0",
+    "date-fns": "^2.30.0"
+  },
+  "devDependencies": {
+    "react-scripts": "5.0.1",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/user-event": "^13.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "proxy": "http://localhost:8000"
+}
