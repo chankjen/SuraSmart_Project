@@ -36,6 +36,20 @@ const Login = () => {
     }
   };
 
+  // Demo users for quick login testing
+  const demoUsers = [
+    { username: 'alex', password: 'family123', role: 'Family Member' },
+    { username: 'amanda', password: 'family123', role: 'Family Member' },
+    { username: 'bernard', password: 'police456', role: 'Police Officer' },
+    { username: 'betty', password: 'police456', role: 'Police Officer' },
+    { username: 'cate', password: 'official789', role: 'Government Official' },
+    { username: 'dan', password: 'official789', role: 'Government Official' },
+  ];
+
+  const quickLogin = (username, password) => {
+    setFormData({ username, password });
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-box">
@@ -55,6 +69,7 @@ const Login = () => {
               onChange={handleChange}
               required
               disabled={loading}
+              placeholder="Enter username"
             />
           </div>
 
@@ -68,6 +83,7 @@ const Login = () => {
               onChange={handleChange}
               required
               disabled={loading}
+              placeholder="Enter password"
             />
           </div>
 
@@ -79,6 +95,29 @@ const Login = () => {
         <p className="auth-link">
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
+
+        {/* Demo Users Section */}
+        <div className="demo-section">
+          <h3>Demo Users (Testing)</h3>
+          <p style={{ fontSize: '0.85em', color: '#666', marginBottom: '10px' }}>
+            Click to populate credentials:
+          </p>
+          <div className="demo-users-grid">
+            {demoUsers.map((user, idx) => (
+              <div key={idx} className="demo-user-card">
+                <button
+                  type="button"
+                  className="demo-user-btn"
+                  onClick={() => quickLogin(user.username, user.password)}
+                  disabled={loading}
+                >
+                  <strong>{user.username}</strong>
+                  <small>{user.role}</small>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

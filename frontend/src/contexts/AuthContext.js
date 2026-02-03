@@ -44,9 +44,16 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
 
-      const currentUser = await api.getCurrentUser();
-      setUser(currentUser.data);
-      return currentUser.data;
+      // Use user info from token response if available
+      if (response.data.user) {
+        setUser(response.data.user);
+        return response.data.user;
+      } else {
+        // Fallback to fetching user if not in response
+        const currentUser = await api.getCurrentUser();
+        setUser(currentUser.data);
+        return currentUser.data;
+      }
     } catch (err) {
       const message = err.response?.data?.detail || 'Login failed';
       setError(message);

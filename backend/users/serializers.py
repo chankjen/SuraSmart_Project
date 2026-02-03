@@ -1,7 +1,27 @@
 """API Serializers for Users app."""
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from users.models import User, AuditLog, Permission
 
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """Custom token serializer that includes user info."""
+    
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        
+        # Add user information to response
+        data['user'] = {
+            'id': self.user.id,
+            'username': self.user.username,
+            'email': self.user.email,
+            'first_name': self.user.first_name,
+            'last_name': self.user.last_name,
+            'role': self.user.role,
+            'is_staff': self.user.is_staff,
+        }
+        
+        return data
 
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for User model."""

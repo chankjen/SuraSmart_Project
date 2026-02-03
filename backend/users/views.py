@@ -7,9 +7,14 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
 from users.models import User, AuditLog, Permission
 from users.serializers import (
-    UserSerializer, UserCreateSerializer, AuditLogSerializer, PermissionSerializer
+    UserSerializer, UserCreateSerializer, AuditLogSerializer, PermissionSerializer,
+    CustomTokenObtainPairSerializer
 )
 
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    """Custom token view that returns user info with the token."""
+    serializer_class = CustomTokenObtainPairSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     """ViewSet for user management."""

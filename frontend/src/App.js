@@ -6,7 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 // Pages
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/DashboardNew';
 import ReportMissingPerson from './pages/ReportMissingPerson';
 import UploadImage from './pages/UploadImage';
 import Results from './pages/Results';

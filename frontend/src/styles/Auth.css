@@ -68,6 +68,70 @@
   text-decoration: underline;
 }
 
+/* Demo Users Section */
+.demo-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.demo-section h3 {
+  font-size: 14px;
+  color: var(--dark);
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.demo-users-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.demo-user-card {
+  margin: 0;
+}
+
+.demo-user-btn {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8eef8 100%);
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.demo-user-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dfe9f5 0%, #d5e0f0 100%);
+  border-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.demo-user-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.demo-user-btn strong {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.demo-user-btn small {
+  color: var(--secondary);
+  font-size: 11px;
+  font-weight: 500;
+}
+
 @media (max-width: 500px) {
   .auth-box {
     padding: 24px;
@@ -79,5 +143,9 @@
 
   .auth-box h2 {
     font-size: 18px;
+  }
+
+  .demo-users-grid {
+    grid-template-columns: 1fr;
   }
 }
