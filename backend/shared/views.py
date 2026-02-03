@@ -4,8 +4,28 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from django.db import connection
 from django.core.cache import cache
-from celery.app import current_app as celery_app
+from celery import current_app as celery_app
 import json
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def welcome(request):
+    """Welcome endpoint for the SuraSmart API."""
+    return Response({
+        'message': 'Welcome to SuraSmart Backend API',
+        'version': '1.0.0',
+        'service': 'SuraSmart - Missing Persons Search Platform',
+        'documentation': 'Available endpoints:',
+        'endpoints': {
+            'health': '/api/health/',
+            'auth': '/api/auth/',
+            'facial-recognition': '/api/facial-recognition/',
+            'notifications': '/api/notifications/',
+            'database-integration': '/api/database/',
+            'admin': '/admin/',
+        }
+    })
 
 
 @api_view(['GET'])

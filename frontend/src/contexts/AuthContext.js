@@ -1,7 +1,7 @@
 // Authentication context for managing user state
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import api from './api';
+import api from '../services/api';
 
 const AuthContext = createContext();
 

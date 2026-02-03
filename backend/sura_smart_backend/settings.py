@@ -71,30 +71,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sura_smart_backend.wsgi.application'
 
-# Database - PostgreSQL with TimescaleDB for time-series data
+# Database - PostgreSQL with TimescaleDB for time-series data (Production)
+# For local development, using SQLite
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'sura_smart'),
-        'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-        'CONN_MAX_AGE': 600,
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('DB_NAME', os.path.join(BASE_DIR, 'data', 'db.sqlite3')) if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
+        'USER': os.getenv('DB_USER', 'postgres') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
+        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
+        'HOST': os.getenv('DB_HOST', 'localhost') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
+        'PORT': os.getenv('DB_PORT', '5432') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
+        'CONN_MAX_AGE': 600 if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else 0,
         'OPTIONS': {
             'connect_timeout': 10,
-        }
+        } if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else {}
     }
 }
 
-# Cache Configuration - Redis
+# Cache Configuration - Redis (Production) or Local Memory (Development)
 CACHES = {
     'default': {
-        'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379/1'),
+        'BACKEND': os.getenv('CACHE_BACKEND', 'django.core.cache.backends.locmem.LocMemCache') if os.getenv('USE_REDIS') != 'true' else 'django_redis.cache.RedisCache',
+        'LOCATION': os.getenv('REDIS_URL', 'redis://127.0.0.1:6379/1') if os.getenv('USE_REDIS') == 'true' else 'unique-snowflake',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-        }
+        } if os.getenv('USE_REDIS') == 'true' else {}
     }
 }
 
@@ -163,8 +164,14 @@ CORS_ALLOWED_ORIGINS = os.getenv(
 AUTH_USER_MODEL = 'users.User'
 
 # Celery Configuration - for async tasks (notifications, ML processing)
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://127.0.0.1:6379/0')
-CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://127.0.0.1:6379/0')
+# Use Redis in production, local memory in development
+if os.getenv('USE_REDIS') == 'true':
+    CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL', 'redis://127.0.0.1:6379/0')
+    CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND', 'redis://127.0.0.1:6379/0')
+else:
+    CELERY_BROKER_URL = 'memory://'
+    CELERY_RESULT_BACKEND = 'cache+locmem://'
+    
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
