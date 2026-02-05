@@ -28,7 +28,7 @@ const Login = () => {
 
     try {
       await login(formData.username, formData.password);
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please try again.');
     } finally {
@@ -46,8 +46,18 @@ const Login = () => {
     { username: 'dan', password: 'official789', role: 'Government Official' },
   ];
 
-  const quickLogin = (username, password) => {
-    setFormData({ username, password });
+  const quickLogin = async (username, password) => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+      await login(username, password);
+      navigate('/');
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

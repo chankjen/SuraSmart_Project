@@ -21,8 +21,11 @@ const Home = () => {
       <nav className="home-nav">
         <div className="nav-container">
           <div className="nav-logo">
-            <h1>SuraSmart</h1>
-            <span className="tagline">Finding Hope, Connecting Lives</span>
+            <img className="logo-img" src="/images/SuraSmart_logo.png" alt="SuraSmart logo" />
+            <div className="logo-text">
+              <h1>SuraSmart</h1>
+              <span className="tagline">Finding Hope, Connecting Lives</span>
+            </div>
           </div>
           <div className="nav-links">
             {isAuthenticated ? (
