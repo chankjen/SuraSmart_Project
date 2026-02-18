@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedRole, setSelectedRole] = useState(localStorage.getItem('selected_role'));
 
   // Check if user is already logged in
   useEffect(() => {
@@ -64,15 +65,25 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    localStorage.removeItem('selected_role');
     setUser(null);
+    setSelectedRole(null);
+  };
+
+  const selectRole = async (role) => {
+    setSelectedRole(role);
+    localStorage.setItem('selected_role', role);
+    return Promise.resolve();
   };
 
   const value = {
     user,
     loading,
     error,
+    selectedRole,
     login,
     logout,
+    selectRole,
     isAuthenticated: !!user,
   };
 

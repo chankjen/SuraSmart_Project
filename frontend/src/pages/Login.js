@@ -28,7 +28,7 @@ const Login = () => {
 
     try {
       await login(formData.username, formData.password);
-      navigate('/');
+      navigate('/role-selector');
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please try again.');
     } finally {
@@ -52,7 +52,7 @@ const Login = () => {
     
     try {
       await login(username, password);
-      navigate('/');
+      navigate('/role-selector');
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please try again.');
     } finally {

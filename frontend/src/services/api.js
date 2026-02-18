@@ -110,6 +110,21 @@ class ApiClient {
     );
   }
 
+  searchFacialRecognition(imageFile) {
+    const formData = new FormData();
+    formData.append('image', imageFile);
+
+    return this.api.post(
+      '/facial-recognition/search/',
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+  }
+
   // Facial match endpoints
   getMatches(params = {}) {
     return this.api.get('/facial-recognition/matches/', { params });

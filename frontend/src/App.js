@@ -11,6 +11,9 @@ import Dashboard from './pages/DashboardNew';
 import ReportMissingPerson from './pages/ReportMissingPerson';
 import UploadImage from './pages/UploadImage';
 import Results from './pages/Results';
+import RoleSelector from './pages/RoleSelector';
+import FacialRecognitionSearch from './pages/FacialRecognitionSearch';
+import FacialRecognitionResults from './pages/FacialRecognitionResults';
 
 // Styles
 import './styles/global.css';
@@ -23,6 +26,33 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
+          <Route
+            path="/role-selector"
+            element={
+              <PrivateRoute>
+                <RoleSelector />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/facial-search"
+            element={
+              <PrivateRoute>
+                <FacialRecognitionSearch />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/facial-results"
+            element={
+              <PrivateRoute>
+                <FacialRecognitionResults />
+              </PrivateRoute>
+            }
+          />
 
           <Route
             path="/dashboard"

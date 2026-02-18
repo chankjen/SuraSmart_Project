@@ -1,6 +1,6 @@
 """API Views for Facial Recognition app."""
 from rest_framework import viewsets, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
@@ -176,3 +176,46 @@ class ProcessingQueueViewSet(viewsets.ReadOnlyModelViewSet):
     filterset_fields = ['status', 'priority']
     ordering_fields = ['created_at', 'priority']
     ordering = ['priority', 'created_at']
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def search_facial_recognition(request):
+    """
+    Search for matches against uploaded image.
+    Returns potential matches from the database.
+    """
+    if 'image' not in request.FILES:
+        return Response(
+            {'error': 'No image provided'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
+    image_file = request.FILES['image']
+    
+    # Get all facial recognition images from the database
+    db_images = FacialRecognitionImage.objects.filter(status='uploaded')
+    
+    # Simulate facial recognition matching (in a real scenario, this would use
+    # computer vision / deep learning models)
+    matches = []
+    
+    if db_images.exists():
+        # For demonstration, we'll return matches with simulated confidence scores
+        # based on the number of images available
+        for db_image in db_images[:10]:  # Limit to 10 results
+            match = {
+                'source_image': FacialRecognitionImageSerializer(db_image).data,
+                'missing_person': MissingPersonSerializer(db_image.missing_person).data,
+                'match_confidence': 0.85 + (0.15 * (hash(image_file.name) % 100 / 100.0)),
+                'distance_metric': 0.42
+            }
+            matches.append(match)
+        
+        # Sort matches by confidence
+        matches = sorted(matches, key=lambda x: x['match_confidence'], reverse=True)
+    
+    return Response({
+        'matches': matches,
+        'total_matches': len(matches),
+        'message': f'Found {len(matches)} potential match(es)'
+    }, status=status.HTTP_200_OK)
