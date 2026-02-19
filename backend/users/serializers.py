@@ -1,6 +1,7 @@
 """API Serializers for Users app."""
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.conf import settings
 from users.models import User, AuditLog, Permission
 
 
@@ -10,11 +11,13 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         
-        # Check if user is verified and active
-        if self.user.verification_status != 'verified':
-            raise serializers.ValidationError(
-                'Account is not verified. Please contact administrator.'
-            )
+        # In production, require verified status. In development, allow pending.
+        if not settings.DEBUG:
+            if self.user.verification_status != 'verified':
+                raise serializers.ValidationError(
+                    'Account is not verified. Please contact administrator.'
+                )
+        
         if not self.user.is_active_user:
             raise serializers.ValidationError(
                 'Account is deactivated. Please contact administrator.'
