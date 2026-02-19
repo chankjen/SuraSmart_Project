@@ -6,11 +6,11 @@ from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from facial_recognition.models import (
-    MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue
+    MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue, SearchSession
 )
 from facial_recognition.serializers import (
     MissingPersonSerializer, FacialRecognitionImageSerializer,
-    FacialMatchSerializer, ProcessingQueueSerializer
+    FacialMatchSerializer, ProcessingQueueSerializer, SearchSessionSerializer
 )
 from users.permissions import (
     IsPoliceOrGovernment, IsGovernmentOfficial, get_user_permissions
@@ -103,6 +103,35 @@ class FacialRecognitionImageViewSet(viewsets.ModelViewSet):
     ordering_fields = ['created_at']
 
 
+class FacialRecognitionImageViewSet(viewsets.ModelViewSet):
+    """ViewSet for facial recognition images."""
+    queryset = FacialRecognitionImage.objects.all()
+    serializer_class = FacialRecognitionImageSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['missing_person', 'status', 'is_primary']
+    ordering_fields = ['created_at', 'processed_at']
+    ordering = ['-created_at']
+    
+    def get_queryset(self):
+        """Filter images based on user permissions."""
+        user_perms = get_user_permissions(self.request.user)
+        
+        # Family members can only see images for their own reports
+        if not user_perms['can_access_all_cases']:
+            return FacialRecognitionImage.objects.filter(
+                missing_person__reported_by=self.request.user
+            )
+        
+        return FacialRecognitionImage.objects.all()
+    
+    def perform_create(self, serializer):
+        """Create image and trigger processing."""
+        image = serializer.save()
+        # TODO: Trigger async processing task
+        # process_facial_recognition.delay(image.id)
+
+
 class FacialMatchViewSet(viewsets.ReadOnlyModelViewSet):
     """ViewSet for facial match results with role-based verification."""
     queryset = FacialMatch.objects.all()
@@ -172,17 +201,69 @@ class ProcessingQueueViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ProcessingQueue.objects.all()
     serializer_class = ProcessingQueueSerializer
     permission_classes = [IsAuthenticated]
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status', 'priority']
-    ordering_fields = ['created_at', 'priority']
-    ordering = ['priority', 'created_at']
+
+class SearchSessionViewSet(viewsets.ModelViewSet):
+    """ViewSet for search sessions."""
+    queryset = SearchSession.objects.all()
+    serializer_class = SearchSessionSerializer
+    permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ['is_closed', 'closure_action']
+    ordering_fields = ['created_at', 'match_confidence']
+    ordering = ['-created_at']
+    
+    def get_queryset(self):
+        """Users can only see their own search sessions."""
+        return SearchSession.objects.filter(user=self.request.user)
+    
+    def perform_create(self, serializer):
+        """Set the user when creating a search session."""
+        serializer.save(user=self.request.user)
+    
+    @action(detail=True, methods=['post'])
+    def close(self, request, pk=None):
+        """Close a search session with the specified action."""
+        session = self.get_object()
+        
+        if session.is_closed:
+            return Response(
+                {'error': 'Search session is already closed'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        action = request.data.get('action')
+        notes = request.data.get('notes', '')
+        
+        if action not in ['save', 'finalize', 'search_again', 'no_match']:
+            return Response(
+                {'error': 'Invalid closure action'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Close the session
+        session.close_session(action, notes)
+        
+        # Prepare feedback message
+        feedback_messages = {
+            'save': 'Search result saved for later review. You can access it from your search history.',
+            'finalize': 'Match finalized successfully. The case has been marked as found and the match verified.',
+            'search_again': 'Search session closed. You can start a new search anytime.',
+            'no_match': 'Recorded that no match was found. The search has been archived for reference.'
+        }
+        
+        serializer = self.get_serializer(session)
+        response_data = serializer.data
+        response_data['feedback'] = feedback_messages.get(action, 'Session closed successfully.')
+        
+        return Response(response_data)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def search_facial_recognition(request):
     """
-    Search for matches against uploaded image.
-    Returns potential matches from the database.
+    Search for the best facial match against uploaded image.
+    Creates a search session and returns the top match with closure options.
     """
     if 'image' not in request.FILES:
         return Response(
@@ -191,31 +272,84 @@ def search_facial_recognition(request):
         )
     
     image_file = request.FILES['image']
+    search_query = request.data.get('query', '')
+    
+    # Create search session
+    search_session = SearchSession.objects.create(
+        user=request.user,
+        uploaded_image=image_file,
+        search_query=search_query
+    )
     
     # Get all facial recognition images from the database
-    db_images = FacialRecognitionImage.objects.filter(status='uploaded')
+    db_images = FacialRecognitionImage.objects.filter(status='completed')
+    search_session.total_candidates_searched = db_images.count()
     
-    # Simulate facial recognition matching (in a real scenario, this would use
-    # computer vision / deep learning models)
-    matches = []
+    best_match = None
+    best_confidence = 0.0
     
     if db_images.exists():
-        # For demonstration, we'll return matches with simulated confidence scores
-        # based on the number of images available
-        for db_image in db_images[:10]:  # Limit to 10 results
-            match = {
-                'source_image': FacialRecognitionImageSerializer(db_image).data,
-                'missing_person': MissingPersonSerializer(db_image.missing_person).data,
-                'match_confidence': 0.85 + (0.15 * (hash(image_file.name) % 100 / 100.0)),
-                'distance_metric': 0.42
-            }
-            matches.append(match)
-        
-        # Sort matches by confidence
-        matches = sorted(matches, key=lambda x: x['match_confidence'], reverse=True)
+        # Simulate facial recognition matching (in a real scenario, this would use
+        # computer vision / deep learning models)
+        for db_image in db_images:
+            # Simulate confidence score (in reality, this would be calculated)
+            confidence = 0.85 + (0.15 * (hash(f"{image_file.name}{db_image.id}") % 100 / 100.0))
+            
+            if confidence > best_confidence:
+                best_confidence = confidence
+                
+                # Create or get existing FacialMatch
+                match, created = FacialMatch.objects.get_or_create(
+                    missing_person=db_image.missing_person,
+                    source_image=db_image,
+                    defaults={
+                        'match_confidence': confidence,
+                        'distance_metric': 0.42,
+                        'source_database': 'user_upload',
+                        'source_reference': str(db_image.id),
+                        'algorithm_version': 'v1.0',
+                        'model_name': 'SimulatedMatcher'
+                    }
+                )
+                if not created:
+                    match.match_confidence = confidence
+                    match.save()
+                
+                best_match = match
     
-    return Response({
-        'matches': matches,
-        'total_matches': len(matches),
-        'message': f'Found {len(matches)} potential match(es)'
-    }, status=status.HTTP_200_OK)
+    # Update search session with results
+    if best_match:
+        search_session.best_match = best_match
+        search_session.match_confidence = best_confidence
+    
+    search_session.save()
+    
+    # Prepare response
+    response_data = {
+        'search_session_id': search_session.id,
+        'total_candidates_searched': search_session.total_candidates_searched,
+    }
+    
+    if best_match:
+        response_data.update({
+            'match_found': True,
+            'match': FacialMatchSerializer(best_match).data,
+            'match_confidence': best_confidence,
+            'message': f'Best match found with {best_confidence:.1%} confidence',
+            'closure_options': [
+                {'action': 'save', 'label': 'Save for Later', 'description': 'Save this search result for future review'},
+                {'action': 'finalize', 'label': 'Finalize Match', 'description': 'Confirm this is the correct match and close the case'},
+                {'action': 'search_again', 'label': 'Search Again', 'description': 'Perform another search with different parameters'}
+            ]
+        })
+    else:
+        response_data.update({
+            'match_found': False,
+            'message': 'No matches found in the database',
+            'closure_options': [
+                {'action': 'no_match', 'label': 'No Match Found', 'description': 'Record that no match was found'},
+                {'action': 'search_again', 'label': 'Search Again', 'description': 'Try searching again'}
+            ]
+        })
+    
+    return Response(response_data, status=status.HTTP_200_OK)

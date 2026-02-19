@@ -248,3 +248,86 @@ class ProcessingQueue(models.Model):
     
     def __str__(self):
         return f'{self.image.missing_person.full_name} - {self.get_status_display()}'
+
+
+class SearchSession(models.Model):
+    """Tracks facial recognition search sessions and their outcomes."""
+    
+    CLOSURE_CHOICES = (
+        ('save', _('Save for Later')),
+        ('finalize', _('Finalize Match')),
+        ('search_again', _('Search Again')),
+        ('no_match', _('No Match Found')),
+    )
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='search_sessions'
+    )
+    
+    # Search input
+    uploaded_image = models.ImageField(
+        upload_to='search_sessions/%Y/%m/%d/',
+        validators=[FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png'])]
+    )
+    search_query = models.TextField(blank=True, help_text=_('Optional search parameters'))
+    
+    # Search results
+    best_match = models.ForeignKey(
+        FacialMatch,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='search_sessions'
+    )
+    match_confidence = models.FloatField(null=True, blank=True)
+    total_candidates_searched = models.IntegerField(default=0)
+    
+    # Session status
+    is_closed = models.BooleanField(default=False)
+    closure_action = models.CharField(
+        max_length=20,
+        choices=CLOSURE_CHOICES,
+        null=True,
+        blank=True
+    )
+    closure_notes = models.TextField(blank=True)
+    closed_at = models.DateTimeField(null=True, blank=True)
+    
+    # Audit
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = _('Search Session')
+        verbose_name_plural = _('Search Sessions')
+        indexes = [
+            models.Index(fields=['user', 'is_closed']),
+            models.Index(fields=['created_at', 'is_closed']),
+        ]
+    
+    def __str__(self):
+        return f'Search by {self.user.username} - {self.created_at.date()}'
+    
+    def close_session(self, action, notes=''):
+        """Close the search session with the specified action."""
+        self.closure_action = action
+        self.closure_notes = notes
+        self.is_closed = True
+        self.closed_at = models.functions.Now()
+        self.save()
+        
+        # If finalizing a match, update the match status
+        if action == 'finalize' and self.best_match:
+            self.best_match.status = 'verified'
+            self.best_match.verified_by = self.user
+            self.best_match.verification_notes = f'Finalized from search session: {notes}'
+            self.best_match.save()
+            
+            # Update missing person status
+            missing_person = self.best_match.missing_person
+            missing_person.status = 'found'
+            missing_person.save()

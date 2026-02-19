@@ -1,7 +1,7 @@
 """API Serializers for Facial Recognition app."""
 from rest_framework import serializers
 from facial_recognition.models import (
-    MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue
+    MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue, SearchSession
 )
 
 
@@ -65,3 +65,18 @@ class ProcessingQueueSerializer(serializers.ModelSerializer):
             'started_at', 'completed_at', 'error_message', 'created_at'
         ]
         read_only_fields = ['id', 'started_at', 'completed_at', 'created_at']
+
+
+class SearchSessionSerializer(serializers.ModelSerializer):
+    """Serializer for search sessions."""
+    best_match_details = FacialMatchSerializer(source='best_match', read_only=True)
+    
+    class Meta:
+        model = SearchSession
+        fields = [
+            'id', 'user', 'uploaded_image', 'search_query', 'best_match',
+            'best_match_details', 'match_confidence', 'total_candidates_searched',
+            'is_closed', 'closure_action', 'closure_notes', 'closed_at',
+            'created_at', 'updated_at'
+        ]
+        read_only_fields = ['id', 'user', 'created_at', 'updated_at', 'closed_at']

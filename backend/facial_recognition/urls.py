@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from facial_recognition.views import (
     MissingPersonViewSet, FacialRecognitionImageViewSet,
-    FacialMatchViewSet, ProcessingQueueViewSet, search_facial_recognition
+    FacialMatchViewSet, ProcessingQueueViewSet, SearchSessionViewSet, search_facial_recognition
 )
 
 router = DefaultRouter()
@@ -11,6 +11,7 @@ router.register(r'missing-persons', MissingPersonViewSet, basename='missing-pers
 router.register(r'images', FacialRecognitionImageViewSet, basename='facial-image')
 router.register(r'matches', FacialMatchViewSet, basename='facial-match')
 router.register(r'processing-queue', ProcessingQueueViewSet, basename='processing-queue')
+router.register(r'search-sessions', SearchSessionViewSet, basename='search-session')
 
 urlpatterns = [
     path('', include(router.urls)),
