@@ -5,42 +5,58 @@
   box-sizing: border-box;
 }
 
-/* Color Palette - Futuristic Dark Theme */
+/* Color Palette - Dark Purple Theme for Readability */
 :root {
-  /* Dark base colors */
-  --color-bg-dark: #0D0D1A;
-  --color-bg-secondary: #1A1A2E;
-  --color-bg-tertiary: #262641;
+  /* Dark purple base colors */
+  --color-bg-dark: #1a0b2e;
+  --color-bg-secondary: #2d1b4e;
+  --color-bg-tertiary: #3d2563;
+  --color-bg-card: #2d1b4e;
+  --color-bg-hover: #3d2563;
   
-  /* Accent colors - Purple, Pink, Blue */
-  --color-accent-pink: #FF4DA6;
-  --color-accent-magenta: #E91E8C;
-  --color-accent-purple: #9D4EDD;
-  --color-accent-blue: #00C2FF;
-  --color-accent-neon-blue: #00D9FF;
+  /* Purple accent colors */
+  --color-accent-primary: #8b5cf6;
+  --color-accent-secondary: #a855f7;
+  --color-accent-light: #c084fc;
+  --color-accent-dark: #7c3aed;
   
-  /* Text colors */
-  --color-text-light: #F5F5F5;
-  --color-text-muted: #B3B3B3;
-  --color-text-dim: #8B8BA3;
+  /* Text colors for high readability */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #e2e8f0;
+  --color-text-muted: #cbd5e1;
+  --color-text-dim: #94a3b8;
+  --color-text-inverse: #1a0b2e;
+  
+  /* Status colors with good contrast */
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.1);
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-info: #3b82f6;
+  --color-info-bg: rgba(59, 130, 246, 0.1);
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #9D4EDD 0%, #FF4DA6 50%, #00C2FF 100%);
-  --gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #262641 100%);
-  --gradient-hover: linear-gradient(135deg, #A855F7 0%, #FF6BA6 50%, #00D9FF 100%);
+  --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #a855f7 50%, #c084fc 100%);
+  --gradient-dark: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 100%);
+  --gradient-hover: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a855f7 100%);
+  --gradient-card: linear-gradient(135deg, #2d1b4e 0%, #3d2563 100%);
+  
+  /* Borders and shadows */
+  --color-border: rgba(139, 92, 246, 0.2);
+  --color-border-light: rgba(139, 92, 246, 0.1);
+  --shadow-primary: 0 4px 20px rgba(139, 92, 246, 0.15);
+  --shadow-hover: 0 8px 30px rgba(139, 92, 246, 0.25);
   
   /* Legacy variable support */
-  --primary: #FF4DA6;
-  --primary-dark: #E91E8C;
-  --primary-light: #FF6BA6;
-  --secondary: #B3B3B3;
-  --success: #10b981;
-  --danger: #FF4DA6;
-  --warning: #9D4EDD;
-  --info: #00C2FF;
-  --light: #262641;
-  --dark: #0D0D1A;
-  --border: rgba(157, 78, 221, 0.2);
+  --primary: #8b5cf6;
+  --primary-dark: #7c3aed;
+  --primary-light: #a855f7;
+  --secondary: #cbd5e1;
+  --light: #3d2563;
+  --dark: #1a0b2e;
+  --border: rgba(139, 92, 246, 0.2);
 }
 
 body {

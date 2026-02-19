@@ -10,7 +10,17 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
         data = super().validate(attrs)
         
-        # Add user information to response
+        # Check if user is verified and active
+        if self.user.verification_status != 'verified':
+            raise serializers.ValidationError(
+                'Account is not verified. Please contact administrator.'
+            )
+        if not self.user.is_active_user:
+            raise serializers.ValidationError(
+                'Account is deactivated. Please contact administrator.'
+            )
+        
+        # Add user information to response (exclude sensitive info)
         data['user'] = {
             'id': self.user.id,
             'username': self.user.username,

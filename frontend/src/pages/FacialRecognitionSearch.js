@@ -11,7 +11,6 @@ const FacialRecognitionSearch = () => {
   const [error, setError] = useState(null);
   const [preview, setPreview] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-  const [searching, setSearching] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -48,7 +47,6 @@ const FacialRecognitionSearch = () => {
       return;
     }
 
-    setSearching(true);
     setError(null);
     setLoading(true);
 
@@ -78,7 +76,6 @@ const FacialRecognitionSearch = () => {
       });
     } finally {
       setLoading(false);
-      setSearching(false);
     }
   };
 

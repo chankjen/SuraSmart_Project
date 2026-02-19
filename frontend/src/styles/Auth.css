@@ -1,37 +1,19 @@
-/* Color Palette - Harmonized with Abstract Gradient Background */
-:root {
-  --color-bg-dark: #0D0D1A;
-  --color-bg-secondary: #1A1A2E;
-  --color-bg-tertiary: #262641;
-  --color-accent-pink: #FF4DA6;
-  --color-accent-magenta: #E91E8C;
-  --color-accent-purple: #9D4EDD;
-  --color-accent-blue: #00C2FF;
-  --color-accent-neon-blue: #00D9FF;
-  --color-text-light: #F5F5F5;
-  --color-text-muted: #B3B3B3;
-  --color-text-dim: #8B8BA3;
-  --gradient-primary: linear-gradient(135deg, #9D4EDD 0%, #FF4DA6 50%, #00C2FF 100%);
-  --gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #262641 100%);
-  --gradient-hover: linear-gradient(135deg, #A855F7 0%, #FF6BA6 50%, #00D9FF 100%);
-}
-
-/* Authentication Pages */
+/* Authentication Pages using global dark purple theme */
 .auth-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--color-bg-dark);
-  background-image: linear-gradient(135deg, rgba(157, 78, 221, 0.1) 0%, rgba(255, 77, 166, 0.05) 50%, rgba(0, 194, 255, 0.1) 100%);
+  background-image: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(196, 132, 252, 0.1) 100%);
   padding: 20px;
 }
 
 .auth-box {
   background: var(--color-bg-secondary);
   border-radius: 12px;
-  border: 1px solid rgba(157, 78, 221, 0.3);
-  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.2), 0 0 30px rgba(255, 77, 166, 0.1);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-primary);
   padding: 40px;
   width: 100%;
   max-width: 400px;
@@ -50,7 +32,7 @@
 
 .auth-box h2 {
   font-size: 20px;
-  color: var(--color-accent-blue);
+  color: var(--color-accent-primary);
   text-align: center;
   margin-bottom: 30px;
 }
@@ -64,7 +46,7 @@
 }
 
 .auth-box label {
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
   font-size: 14px;
   display: block;
   margin-bottom: 6px;
@@ -75,9 +57,9 @@
 .auth-box select {
   width: 100%;
   padding: 12px;
-  border: 1px solid rgba(157, 78, 221, 0.3);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
   border-radius: 6px;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -86,22 +68,22 @@
 .auth-box input:focus,
 .auth-box select:focus {
   outline: none;
-  border-color: var(--color-accent-blue);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
+  border-color: var(--color-accent-primary);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
 }
 
 .auth-box input::placeholder {
-  color: var(--color-text-dim);
+  color: var(--color-text-muted);
 }
 
 .error-message {
-  background: rgba(255, 77, 166, 0.1);
-  color: #FF4DA6;
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
   padding: 12px;
   border-radius: 6px;
   margin-bottom: 20px;
-  border: 1px solid rgba(255, 77, 166, 0.3);
+  border: 1px solid rgba(239, 68, 68, 0.3);
   font-size: 14px;
 }
 
@@ -110,18 +92,18 @@
   padding: 12px;
   background: var(--gradient-primary);
   border: none;
-  color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 77, 166, 0.3);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
 .btn-primary:hover:not(:disabled) {
   background: var(--gradient-hover);
-  box-shadow: 0 0 30px rgba(255, 77, 166, 0.6);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
   transform: translateY(-2px);
 }
 
@@ -137,14 +119,14 @@
 }
 
 .auth-link a {
-  color: var(--color-accent-blue);
+  color: var(--color-accent-primary);
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .auth-link a:hover {
-  color: var(--color-accent-neon-blue);
+  color: var(--color-accent-secondary);
   text-decoration: underline;
 }
 

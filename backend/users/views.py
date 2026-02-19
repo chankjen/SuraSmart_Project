@@ -24,12 +24,22 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action == 'create':
             return [AllowAny()]
+        elif self.action in ['list', 'retrieve']:
+            # Only admins can list or view other users
+            return [permissions.IsAdminUser()]
         return [IsAuthenticated()]
     
     def get_serializer_class(self):
         if self.action == 'create':
             return UserCreateSerializer
         return UserSerializer
+    
+    def get_queryset(self):
+        """Filter queryset based on user permissions."""
+        if self.request.user.is_staff:
+            return User.objects.all()
+        # Non-admins can only see themselves
+        return User.objects.filter(id=self.request.user.id)
     
     @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated])
     def me(self, request):
@@ -72,4 +82,4 @@ class PermissionViewSet(viewsets.ReadOnlyModelViewSet):
     """ViewSet for viewing permissions."""
     queryset = Permission.objects.all()
     serializer_class = PermissionSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]

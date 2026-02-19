@@ -1,32 +1,7 @@
-/* Color Palette - Harmonized with Abstract Gradient Background */
-:root {
-  /* Dark base colors for readability */
-  --color-bg-dark: #0D0D1A;
-  --color-bg-secondary: #1A1A2E;
-  --color-bg-tertiary: #262641;
-  
-  /* Accent colors extracted from background */
-  --color-accent-pink: #FF4DA6;
-  --color-accent-magenta: #E91E8C;
-  --color-accent-purple: #9D4EDD;
-  --color-accent-blue: #00C2FF;
-  --color-accent-neon-blue: #00D9FF;
-  
-  /* Text colors for accessibility */
-  --color-text-light: #F5F5F5;
-  --color-text-muted: #B3B3B3;
-  --color-text-dim: #8B8BA3;
-  
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #9D4EDD 0%, #FF4DA6 50%, #00C2FF 100%);
-  --gradient-dark: linear-gradient(135deg, #1A1A2E 0%, #262641 100%);
-  --gradient-hover: linear-gradient(135deg, #A855F7 0%, #FF6BA6 50%, #00D9FF 100%);
-}
-
-/* Landing page styles and theme using SuraSmart_logo.png */
+/* Home page styles using global dark purple theme */
 .home-container {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-  color: var(--color-text-light);
+  color: var(--color-text-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -40,11 +15,11 @@
   align-items: center;
   justify-content: center;
   padding: 6rem 1.5rem;
-  background-image: linear-gradient(rgba(13, 13, 26, 0.5), rgba(26, 26, 46, 0.6)), url('../../public/images/SuraSmart_logo.png');
+  background-image: linear-gradient(rgba(26, 11, 46, 0.5), rgba(45, 27, 78, 0.6)), url('../../public/images/SuraSmart_logo.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  color: var(--color-text-light);
+  color: var(--color-text-primary);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -80,37 +55,37 @@
   font-size: 1.1rem;
   margin-bottom: 1.25rem;
   opacity: 0.95;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .hero-btn {
   background: var(--gradient-primary);
   border: none;
-  color: var(--color-bg-dark);
+  color: var(--color-text-inverse);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
-  box-shadow: 0 0 20px rgba(255, 77, 166, 0.3);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
 .hero-btn:hover {
   background: var(--gradient-hover);
-  box-shadow: 0 0 30px rgba(255, 77, 166, 0.6);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
   transform: translateY(-2px);
 }
 
 /* Navigation */
 .home-nav {
-  background: rgba(26, 26, 46, 0.8);
+  background: rgba(45, 27, 78, 0.8);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 40;
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(157, 78, 221, 0.2);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .nav-container {
@@ -132,10 +107,10 @@
   height: 56px;
   object-fit: contain;
   border-radius: 8px;
-  background: rgba(157, 78, 221, 0.15);
+  background: rgba(139, 92, 246, 0.15);
   padding: 6px;
-  border: 1px solid rgba(157, 78, 221, 0.3);
-  box-shadow: 0 0 15px rgba(157, 78, 221, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
 }
 
 .logo-text h1 {
