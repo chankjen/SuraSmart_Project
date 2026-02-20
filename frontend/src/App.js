@@ -8,6 +8,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/DashboardNew';
+import FamilyDashboard from './pages/FamilyDashboard';
+import PoliceDashboard from './pages/PoliceDashboard';
+import GovernmentDashboard from './pages/GovernmentDashboard';
 import ReportMissingPerson from './pages/ReportMissingPerson';
 import UploadImage from './pages/UploadImage';
 import Results from './pages/Results';
@@ -59,6 +62,33 @@ function App() {
             element={
               <PrivateRoute>
                 <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/family-dashboard"
+            element={
+              <PrivateRoute>
+                <FamilyDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/police-dashboard"
+            element={
+              <PrivateRoute>
+                <PoliceDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/government-dashboard"
+            element={
+              <PrivateRoute>
+                <GovernmentDashboard />
               </PrivateRoute>
             }
           />

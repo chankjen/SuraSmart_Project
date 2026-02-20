@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import '../styles/Results.css';
@@ -13,16 +13,7 @@ const Results = () => {
   const [processingQueue, setProcessingQueue] = useState([]);
   const [autoRefresh, setAutoRefresh] = useState(true);
 
-  useEffect(() => {
-    fetchData();
-
-    if (autoRefresh) {
-      const interval = setInterval(fetchData, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [autoRefresh]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const [personRes, matchesRes, queueRes] = await Promise.all([
         api.getMissingPerson(missingPersonId),
@@ -40,7 +31,16 @@ const Results = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [missingPersonId]);
+
+  useEffect(() => {
+    fetchData();
+
+    if (autoRefresh) {
+      const interval = setInterval(fetchData, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [autoRefresh, fetchData]);
 
   const handleVerifyMatch = async (matchId) => {
     try {

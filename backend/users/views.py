@@ -10,6 +10,7 @@ from users.serializers import (
     UserSerializer, UserCreateSerializer, AuditLogSerializer, PermissionSerializer,
     CustomTokenObtainPairSerializer
 )
+from users.permissions import IsGovernmentOrAdmin
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -25,7 +26,10 @@ class UserViewSet(viewsets.ModelViewSet):
         if self.action == 'create':
             return [AllowAny()]
         elif self.action in ['list', 'retrieve']:
-            # Only admins can list or view other users
+            # Government officials and admins can list/view users
+            return [permissions.IsAuthenticated(), IsGovernmentOrAdmin()]
+        elif self.action == 'verify':
+            # Only admins can verify users
             return [permissions.IsAdminUser()]
         return [IsAuthenticated()]
     
@@ -60,9 +64,13 @@ class UserViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
-        user.set_password(new_password)
+    @action(detail=True, methods=['post'], permission_classes=[permissions.IsAdminUser])
+    def verify(self, request, pk=None):
+        """Verify a user account (admin only)."""
+        user = self.get_object()
+        user.is_verified = True
         user.save()
-        return Response({'detail': 'Password updated successfully'})
+        return Response({'detail': 'User verified successfully'})
 
 
 class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):

@@ -164,9 +164,18 @@ class ApiClient {
     return this.api.put('/notifications/preferences/my_preferences/', preferences);
   }
 
-  // Health check
-  healthCheck() {
-    return this.api.get('/health/check/');
+  // User management endpoints (for government officials)
+  getUsers(params = {}) {
+    return this.api.get('/auth/users/', { params });
+  }
+
+  verifyUser(userId) {
+    return this.api.post(`/auth/users/${userId}/verify/`);
+  }
+
+  // Case management endpoints
+  updateCaseStatus(caseId, status) {
+    return this.api.patch(`/facial-recognition/missing-persons/${caseId}/`, { status });
   }
 }
 

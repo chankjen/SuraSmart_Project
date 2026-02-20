@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const PrivateRoute = ({ children }) => {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, user } = useAuth();
 
   if (loading) {
     return (
@@ -13,7 +13,11 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  // Check if user is authenticated or if there's a token (for immediate navigation)
+  const hasToken = !!localStorage.getItem('access_token');
+  const isAuth = isAuthenticated || (hasToken && user);
+
+  return isAuth ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;

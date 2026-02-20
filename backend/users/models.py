@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
+
+
+def validate_eight_digits(value):
+    """Validator for 8-digit IDs."""
+    if not str(value).isdigit() or len(str(value)) != 8:
+        raise ValidationError('This field must be exactly 8 digits.')
 
 
 class User(AbstractUser):
@@ -22,12 +29,70 @@ class User(AbstractUser):
     )
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     organization = models.CharField(max_length=255, blank=True, null=True)
+    
+    # Role-specific identification fields
+    national_id = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        help_text=_('8-digit National ID for Family Members'),
+        validators=[validate_eight_digits]
+    )
+    service_id = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        help_text=_('8-digit Service ID for Police Officers'),
+        validators=[validate_eight_digits]
+    )
+    police_rank = models.CharField(
+        max_length=20,
+        choices=(
+            ('corporal', _('Corporal')),
+            ('lieutenant', _('Lieutenant')),
+            ('general', _('General')),
+            ('base_commander', _('Base Commander')),
+            ('ocs', _('OCS')),
+            ('ocpd', _('OCPD')),
+            ('ig', _('IG')),
+        ),
+        blank=True,
+        null=True,
+        help_text=_('Police rank for Police Officers')
+    )
+    government_security_id = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        help_text=_('8-digit Government Security ID for Government Officials'),
+        validators=[validate_eight_digits]
+    )
+    government_position = models.CharField(
+        max_length=20,
+        choices=(
+            ('cs', _('CS')),
+            ('ps', _('PS')),
+            ('security_officer', _('Security Officer')),
+            ('other', _('Other - specify')),
+        ),
+        blank=True,
+        null=True,
+        help_text=_('Government position for Government Officials')
+    )
+    position_specify = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text=_('Specify position if "Other" is selected')
+    )
+    
     verification_status = models.CharField(
         max_length=20,
         choices=(
             ('pending', _('Pending')),
             ('verified', _('Verified')),
             ('rejected', _('Rejected')),
+
         ),
         default='pending'
     )

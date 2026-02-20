@@ -44,6 +44,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'username', 'email', 'first_name', 'last_name',
             'role', 'phone_number', 'organization', 'verification_status',
+            'national_id', 'service_id', 'police_rank', 'government_security_id',
+            'government_position', 'position_specify',
             'is_active_user', 'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'created_at', 'updated_at']
@@ -55,7 +57,35 @@ class UserCreateSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'first_name', 'last_name', 'role']
+        fields = [
+            'username', 'email', 'password', 'first_name', 'last_name', 'role',
+            'national_id', 'service_id', 'police_rank', 'government_security_id',
+            'government_position', 'position_specify'
+        ]
+    
+    def validate(self, attrs):
+        """Validate role-specific fields."""
+        role = attrs.get('role')
+        
+        if role == 'family_member':
+            if not attrs.get('national_id'):
+                raise serializers.ValidationError({'national_id': 'National ID is required for Family Members.'})
+        
+        elif role == 'police_officer':
+            if not attrs.get('service_id'):
+                raise serializers.ValidationError({'service_id': 'Service ID is required for Police Officers.'})
+            if not attrs.get('police_rank'):
+                raise serializers.ValidationError({'police_rank': 'Police rank is required for Police Officers.'})
+        
+        elif role == 'government_official':
+            if not attrs.get('government_security_id'):
+                raise serializers.ValidationError({'government_security_id': 'Government Security ID is required for Government Officials.'})
+            if not attrs.get('government_position'):
+                raise serializers.ValidationError({'government_position': 'Government position is required for Government Officials.'})
+            if attrs.get('government_position') == 'other' and not attrs.get('position_specify'):
+                raise serializers.ValidationError({'position_specify': 'Please specify the position when selecting "Other".'})
+        
+        return attrs
     
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
