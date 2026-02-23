@@ -64,7 +64,7 @@ const FamilyDashboard = () => {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <div className="header-content">
-          <h1>SuraSmart - Family Member Portal</h1>
+          <h1><span className="logo-glitter-text">SuraSmart</span> - Family Member Portal</h1>
           <div className="user-info">
             <span>Welcome, {user?.first_name} {user?.last_name}</span>
             <span className="user-role">Family Member</span>

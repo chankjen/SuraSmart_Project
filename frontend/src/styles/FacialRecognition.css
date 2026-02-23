@@ -5,6 +5,17 @@
   display: flex;
   flex-direction: column;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Override text colors to use purple shades */
+  --color-text-primary: #c084fc;
+  /* Light purple */
+  --color-text-secondary: #a855f7;
+  /* Medium purple */
+  --color-text-muted: #8b5cf6;
+  /* Primary purple */
+  --color-text-dim: #7c3aed;
+  /* Dark purple */
+  color: var(--color-text-primary);
 }
 
 /* Header */
@@ -336,6 +347,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -806,4 +818,97 @@
   .results-actions .btn-secondary {
     width: 100%;
   }
+}
+
+/* Search Results Section */
+.search-results-section {
+  color: var(--color-text-primary);
+  margin-top: 40px;
+  animation: slideIn 0.5s ease;
+}
+
+.search-results-section h2 {
+  color: var(--color-text-primary);
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.results-summary {
+  background: var(--color-bg-card);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.results-summary h3 {
+  color: var(--color-text-primary);
+  margin: 0 0 10px 0;
+}
+
+.results-summary p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.matches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.matches-list .match-card {
+  padding: 20px;
+}
+
+.matches-list .match-card h4 {
+  color: var(--color-text-primary);
+  font-size: 1.3rem;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 10px;
+}
+
+.matches-list .match-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.matches-list .match-details span {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.matches-list .match-card p {
+  color: var(--color-text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.case-actions {
+  background: var(--color-bg-card);
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 30px;
+  border-top: 2px solid var(--color-border);
+}
+
+.case-actions h3 {
+  color: var(--color-text-primary);
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.action-description {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  margin-top: 8px;
+  text-align: center;
+  display: block;
 }

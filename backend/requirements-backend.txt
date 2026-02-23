@@ -16,8 +16,8 @@ django-celery-beat==2.5.0
 django-celery-results==2.5.1
 
 # Authentication & Authorization
-djangorestframework-simplejwt==5.3.2
-PyJWT==2.8.1
+djangorestframework-simplejwt==5.3.1
+PyJWT==2.8.0
 
 # API & Serialization
 django-extensions==3.2.3
@@ -30,7 +30,7 @@ tensorflow==2.14.0  # For future ML models
 torch==2.1.1  # Alternative ML framework
 
 # Image Processing
-Pillow==10.1.0
+Pillow>=10.1.0
 
 # Server & Deployment
 gunicorn==21.2.0

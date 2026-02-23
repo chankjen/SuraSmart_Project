@@ -96,9 +96,9 @@ const UploadImage = () => {
                 required
                 disabled={loading}
               />
-              <span className="file-input-label">
+              <label htmlFor="image" className="file-input-label">
                 {preview ? 'Image selected ✓' : 'Choose an image'}
-              </span>
+              </label>
             </div>
             <p className="input-hint">Accepted formats: JPEG, PNG. Max size: 5MB</p>
           </div>
@@ -127,6 +127,15 @@ const UploadImage = () => {
 
           <button type="submit" disabled={loading} className="btn-primary btn-large">
             {loading ? 'Uploading...' : 'Upload Image'}
+          </button>
+          <button
+            type="button"
+            disabled={loading}
+            className="btn-secondary btn-large"
+            onClick={() => navigate(`/facial-search/${missingPersonId}`)}
+            style={{ marginLeft: '12px' }}
+          >
+            🔍 Search Matches
           </button>
         </form>
       </div>

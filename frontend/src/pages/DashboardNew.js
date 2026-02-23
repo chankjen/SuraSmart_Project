@@ -104,7 +104,7 @@ const Dashboard = () => {
       <header className="dashboard-header">
         <div className="header-content">
           <div className="logo-section">
-            <h1>SuraSmart</h1>
+            <h1 className="logo-glitter-text">SuraSmart</h1>
             <span className="logo-tagline">Facial Recognition System</span>
           </div>
 

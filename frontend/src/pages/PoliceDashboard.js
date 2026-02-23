@@ -74,7 +74,7 @@ const PoliceDashboard = () => {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <div className="header-content">
-          <h1>SuraSmart - Police Officer Portal</h1>
+          <h1><span className="logo-glitter-text">SuraSmart</span> - Police Officer Portal</h1>
           <div className="user-info">
             <span>Welcome, Officer {user?.first_name} {user?.last_name}</span>
             <span className="user-role">Police Officer - {user?.police_rank}</span>
@@ -104,7 +104,7 @@ const PoliceDashboard = () => {
         </div>
 
         <div className="dashboard-actions">
-          <Link to="/facial-search" className="action-card">
+          <Link to="/facial-search" className="action-card facial-recognition-highlight-card">
             <h3>Facial Recognition Search</h3>
             <p>Search the database using facial recognition</p>
           </Link>

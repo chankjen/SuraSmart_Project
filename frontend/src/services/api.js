@@ -94,6 +94,14 @@ class ApiClient {
     return this.api.get(`/facial-recognition/missing-persons/${id}/`);
   }
 
+  updateMissingPerson(id, data) {
+    return this.api.patch(`/facial-recognition/missing-persons/${id}/`, data);
+  }
+
+  searchMissingPersons(searchData) {
+    return this.api.post('/facial-recognition/missing-persons/search/', searchData);
+  }
+
   uploadImage(missingPersonId, imageFile, priority = 'normal') {
     const formData = new FormData();
     formData.append('image', imageFile);

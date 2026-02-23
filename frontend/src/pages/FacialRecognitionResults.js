@@ -35,7 +35,7 @@ const FacialRecognitionResults = () => {
       <header className="facial-header">
         <div className="facial-header-content">
           <div className="facial-logo">
-            <h1>🔍 SuraSmart</h1>
+            <h1 className="logo-glitter-text">🔍 SuraSmart</h1>
             <span>Search Results</span>
           </div>
           <div className="facial-user-menu">
@@ -91,8 +91,8 @@ const FacialRecognitionResults = () => {
                                 match.match_confidence > 0.8
                                   ? '#27ae60'
                                   : match.match_confidence > 0.6
-                                  ? '#f39c12'
-                                  : '#e74c3c',
+                                    ? '#f39c12'
+                                    : '#e74c3c',
                             }}
                           ></div>
                         </div>
@@ -126,7 +126,7 @@ const FacialRecognitionResults = () => {
                           <span className="detail-value">
                             {match.missing_person?.gender
                               ? match.missing_person.gender.charAt(0).toUpperCase() +
-                                match.missing_person.gender.slice(1)
+                              match.missing_person.gender.slice(1)
                               : 'N/A'}
                           </span>
                         </div>

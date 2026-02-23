@@ -67,42 +67,42 @@ const Login = () => {
 
   // Demo users for quick login testing
   const demoUsers = [
-    { 
-      username: 'alex', 
-      password: 'family123', 
+    {
+      username: 'alex',
+      password: 'family123',
       role: 'Family Member',
       national_id: '12345678'
     },
-    { 
-      username: 'amanda', 
-      password: 'family123', 
+    {
+      username: 'amanda',
+      password: 'family123',
       role: 'Family Member',
       national_id: '87654321'
     },
-    { 
-      username: 'bernard', 
-      password: 'police456', 
+    {
+      username: 'bernard',
+      password: 'police456',
       role: 'Police Officer',
       service_id: '11111111',
       police_rank: 'lieutenant'
     },
-    { 
-      username: 'betty', 
-      password: 'police456', 
+    {
+      username: 'betty',
+      password: 'police456',
       role: 'Police Officer',
       service_id: '22222222',
       police_rank: 'general'
     },
-    { 
-      username: 'cate', 
-      password: 'official789', 
+    {
+      username: 'cate',
+      password: 'official789',
       role: 'Government Official',
       government_security_id: '33333333',
       government_position: 'cs'
     },
-    { 
-      username: 'dan', 
-      password: 'official789', 
+    {
+      username: 'dan',
+      password: 'official789',
       role: 'Government Official',
       government_security_id: '44444444',
       government_position: 'ps'
@@ -159,7 +159,7 @@ const Login = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h1>SuraSmart</h1>
+        <h1 className="logo-glitter-text">SuraSmart</h1>
         <h2>Login</h2>
 
         {error && <div className="error-message">{error}</div>}

@@ -23,7 +23,7 @@ const Home = () => {
           <div className="nav-logo">
             <img className="logo-img" src="/images/SuraSmart_logo.png" alt="SuraSmart logo" />
             <div className="logo-text">
-              <h1>SuraSmart</h1>
+              <h1 className="logo-glitter-text">SuraSmart</h1>
               <span className="tagline">Finding Hope, Connecting Lives</span>
             </div>
           </div>
@@ -52,7 +52,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content">
-          <h2>Welcome to SuraSmart</h2>
+          <h2>Welcome to <span className="logo-glitter-text">SuraSmart</span></h2>
           <p>An AI-powered platform for finding and reconnecting missing persons</p>
           <button className="hero-btn" onClick={handleGetStarted}>
             {isAuthenticated ? 'Go to Dashboard' : 'Get Started'}
@@ -62,7 +62,7 @@ const Home = () => {
 
       {/* Features Section */}
       <section className="features">
-        <h3>How SuraSmart Works</h3>
+        <h3>How <span className="logo-glitter-text">SuraSmart</span> Works</h3>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">📋</div>

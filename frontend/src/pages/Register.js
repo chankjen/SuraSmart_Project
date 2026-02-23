@@ -58,7 +58,7 @@ const Register = () => {
   return (
     <div className="auth-container">
       <div className="auth-box">
-        <h1>SuraSmart</h1>
+        <h1 className="logo-glitter-text">SuraSmart</h1>
         <h2>Register</h2>
 
         {error && <div className="error-message">{error}</div>}

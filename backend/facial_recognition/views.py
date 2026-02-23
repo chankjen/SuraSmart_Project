@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
+from django.db.models import Q
 from facial_recognition.models import (
     MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue, SearchSession
 )
@@ -91,6 +92,46 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
         
         serializer = FacialRecognitionImageSerializer(facial_image)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    @action(detail=False, methods=['post'])
+    def search(self, request):
+        """Search missing persons database based on provided criteria."""
+        search_data = request.data
+        
+        # Build query based on search criteria
+        query = Q()
+        search_terms = []
+        
+        if search_data.get('name'):
+            # Search for partial name matches
+            name_terms = search_data['name'].split()
+            for term in name_terms:
+                query &= Q(full_name__icontains=term)
+        
+        if search_data.get('age'):
+            # Allow age range of ±5 years
+            try:
+                age = int(search_data['age'])
+                query &= Q(age__range=(age-5, age+5))
+            except ValueError:
+                pass
+        
+        if search_data.get('gender'):
+            query &= Q(gender__iexact=search_data['gender'])
+        
+        if search_data.get('location'):
+            # Search in last_seen_location
+            location_terms = search_data['location'].split()
+            location_query = Q()
+            for term in location_terms:
+                location_query |= Q(last_seen_location__icontains=term)
+            query &= location_query
+        
+        # Get matching records
+        matches = MissingPerson.objects.filter(query).exclude(status='found')[:20]  # Limit to 20 results
+        
+        serializer = self.get_serializer(matches, many=True)
+        return Response(serializer.data)
 
 
 class FacialRecognitionImageViewSet(viewsets.ModelViewSet):

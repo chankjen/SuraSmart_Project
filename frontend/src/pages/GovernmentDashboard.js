@@ -96,7 +96,7 @@ const GovernmentDashboard = () => {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <div className="header-content">
-          <h1>SuraSmart - Government Official Portal</h1>
+          <h1><span className="logo-glitter-text">SuraSmart</span> - Government Official Portal</h1>
           <div className="user-info">
             <span>Welcome, {user?.first_name} {user?.last_name}</span>
             <span className="user-role">Government Official - {user?.government_position}</span>
@@ -134,7 +134,7 @@ const GovernmentDashboard = () => {
         </div>
 
         <div className="dashboard-actions">
-          <Link to="/facial-search" className="action-card">
+          <Link to="/facial-search" className="action-card facial-recognition-highlight-card">
             <h3>Advanced Facial Search</h3>
             <p>Access full facial recognition database</p>
           </Link>

@@ -13,6 +13,8 @@ class MissingPerson(models.Model):
         ('searching', _('Searching')),
         ('found', _('Found')),
         ('closed', _('Case Closed')),
+        ('escalated', _('Escalated')),
+        ('zoom_required', _('Zoom Required')),
     )
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
