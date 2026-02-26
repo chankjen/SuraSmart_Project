@@ -41,11 +41,14 @@ class FacialMatchSerializer(serializers.ModelSerializer):
     missing_person_name = serializers.CharField(
         source='missing_person.full_name', read_only=True
     )
+    missing_person_details = MissingPersonSerializer(
+        source='missing_person', read_only=True
+    )
     
     class Meta:
         model = FacialMatch
         fields = [
-            'id', 'missing_person', 'missing_person_name', 'source_image',
+            'id', 'missing_person', 'missing_person_name', 'missing_person_details', 'source_image',
             'match_confidence', 'distance_metric', 'source_database',
             'status', 'verified_by', 'verified_at', 'verification_notes',
             'algorithm_version', 'model_name', 'created_at'
