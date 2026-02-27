@@ -72,40 +72,77 @@ class IsGovernmentOrAdmin(permissions.BasePermission):
 
 
 # Role definitions
+# Role definitions with enhanced security/privacy flags (TRD §4.2)
 ROLE_PERMISSIONS = {
     'family_member': {
         'can_report_missing_person': True,
         'can_upload_image': True,
         'can_view_own_cases': True,
-        'can_verify_matches': False,
+        'can_follow_up_case': True,
+        'can_confirm_closure': True,  # Requires dual-signature with Police
+        'can_view_match_details': False, # Only see status 'Match Found', not raw data until verified
         'can_access_all_cases': False,
         'can_modify_other_cases': False,
+        'requires_mfa': True,
+        'data_visibility': 'own_pii_only'
     },
     'police_officer': {
         'can_report_missing_person': True,
         'can_upload_image': True,
-        'can_view_own_cases': True,
+        'can_view_assigned_cases': True,
+        'can_execute_ai_search': True,
         'can_verify_matches': True,
-        'can_access_all_cases': True,
-        'can_modify_other_cases': True,
+        'can_update_case_status': True,
+        'can_view_family_contact': True, # For coordination
+        'can_access_all_cases': False, # Only jurisdiction-specific
+        'can_modify_other_cases': False,
+        'requires_mfa': True,
+        'data_visibility': 'operational_need'
     },
     'government_official': {
-        'can_report_missing_person': True,
-        'can_upload_image': True,
-        'can_view_own_cases': True,
-        'can_verify_matches': True,
+        'can_report_missing_person': False,
+        'can_upload_image': False,
+        'can_view_own_cases': False,
+        'can_view_all_cases': True, # Read-only oversight
+        'can_view_reports': True,
+        'can_verify_matches': False,
         'can_access_all_cases': True,
-        'can_modify_other_cases': True,
+        'can_modify_other_cases': False,
+        'requires_mfa': True,
+        'data_visibility': 'aggregated_anonymized' # PII masked unless escalated
     },
     'admin': {
-        'can_report_missing_person': True,
-        'can_upload_image': True,
-        'can_view_own_cases': True,
-        'can_verify_matches': True,
-        'can_access_all_cases': True,
-        'can_modify_other_cases': True,
-    },
+        'can_manage_users': True,
+        'can_system_config': True,
+        'can_view_audit_logs': True,
+        'can_access_all_cases': False, # Separation of duties: Admin should not interfere with cases
+        'can_modify_other_cases': False,
+        'requires_mfa': True,
+        'data_visibility': 'system_metadata_only'
+    }
 }
+
+
+def anonymize_pii(data, user):
+    """
+    Anonymize PII based on user role and data visibility rules (TRD §5.2).
+    """
+    permissions = get_user_permissions(user)
+    visibility = permissions.get('data_visibility', 'system_metadata_only')
+    
+    if visibility == 'aggregated_anonymized':
+        # Mask names and exact locations
+        if isinstance(data, dict):
+            if 'full_name' in data:
+                data['full_name'] = data['full_name'][0] + '***'
+            if 'last_seen_location' in data:
+                data['last_seen_location'] = 'REDACTED'
+    elif visibility == 'system_metadata_only':
+        # Return only IDs and status
+        if isinstance(data, dict):
+            return {k: v for k, v in data.items() if k in ['id', 'status', 'jurisdiction']}
+            
+    return data
 
 
 def get_user_permissions(user):

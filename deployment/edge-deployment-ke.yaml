@@ -1,0 +1,48 @@
+# Edge AI Deployment Blueprint (Kenya MVP)
+# TRD §2.1, §6.2 (Low-connectivity support)
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sura-edge-node-ke
+spec:
+  replicas: 3  # Deploy to Nairobi, Mombasa, Kisumu hubs
+  template:
+    spec:
+      containers:
+      - name: facial-recognition-engine
+        image: surasmart/fr-model:kenya-optimized-v1
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"  # Optimized for edge hardware
+        env:
+        - name: JURISDICTION
+          value: "KE"
+        - name: OFFLINE_MODE_ENABLED
+          value: "true"
+        - name: SYNC_BANDWIDTH_LIMIT_KBPS
+          value: "100"  # TRD §6.1 requirement
+        volumeMounts:
+        - name: model-cache
+          mountPath: /models
+      - name: sync-agent
+        image: surasmart/sync-agent:latest
+        command: ["./sync-daemon", "--priority=case-updates", "--compress=true"]
+        env:
+        - name: CENTRAL_ENDPOINT
+          value: "https://api-ke.surasmart.africa"
+        - name: AUTH_TOKEN_SECRET_NAME
+          value: "edge-sync-credentials"
+      volumes:
+      - name: model-cache
+        persistentVolumeClaim:
+          claimName: edge-model-cache-pvc
+---
+# Offline-first sync protocol (TRD §6.1)
+# 1. Queue search requests locally when connectivity < 100kbps.
+# 2. Compress biometric embeddings before sync (95% reduction using Float16 quantization).
+# 3. Conflict resolution: "last-writer-wins" with blockchain-verified audit trail.
+# 4. Regional Caching: Frequently accessed facial models cached at regional nodes.

@@ -27,6 +27,12 @@ class User(AbstractUser):
         default='family_member',
         help_text=_('User role determines database access and permissions')
     )
+    jurisdiction = models.CharField(
+        max_length=50,
+        choices=(('KE', _('Kenya')), ('EU', _('European Union')), ('US', _('United States'))),
+        default='KE',
+        help_text=_('User jurisdiction for data residency compliance')
+    )
     phone_number = models.CharField(max_length=20, blank=True, null=True)
     organization = models.CharField(max_length=255, blank=True, null=True)
     
@@ -136,8 +142,10 @@ class AuditLog(models.Model):
     metadata = models.JSONField(default=dict, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, db_index=True)
     
-    # Blockchain hash placeholder for future integration
-    blockchain_hash = models.CharField(max_length=255, blank=True, null=True)
+    # Immutable audit log fields (TRD §5.1)
+    blockchain_hash = models.CharField(max_length=64, blank=True, null=True, unique=True)
+    actor_hash = models.CharField(max_length=64, blank=True, null=True, help_text=_('Privacy-preserving hash of the user ID'))
+    jurisdiction = models.CharField(max_length=50, blank=True, null=True)
     
     class Meta:
         ordering = ['-timestamp']

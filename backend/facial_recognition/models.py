@@ -9,12 +9,12 @@ class MissingPerson(models.Model):
     """Record of a reported missing person."""
     
     STATUS_CHOICES = (
-        ('reported', _('Reported')),
-        ('searching', _('Searching')),
-        ('found', _('Found')),
-        ('closed', _('Case Closed')),
-        ('escalated', _('Escalated')),
-        ('zoom_required', _('Zoom Required')),
+        ('REPORTED', _('Reported')),
+        ('UNDER_INVESTIGATION', _('Under Investigation')),
+        ('MATCH_FOUND', _('Match Found')),
+        ('PENDING_CLOSURE', _('Pending Closure')),
+        ('CLOSED', _('Closed')),
+        ('NO_MATCH', _('No Match')),
     )
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -34,6 +34,17 @@ class MissingPerson(models.Model):
     date_reported = models.DateTimeField(auto_now_add=True)
     last_seen_date = models.DateTimeField(null=True, blank=True)
     last_seen_location = models.CharField(max_length=255, blank=True)
+    
+    jurisdiction = models.CharField(
+        max_length=50,
+        choices=(('KE', _('Kenya')), ('EU', _('European Union')), ('US', _('United States'))),
+        default='KE'
+    )
+    emergency_flag = models.BooleanField(default=False)
+    dual_signature_family = models.BooleanField(default=False)
+    dual_signature_police = models.BooleanField(default=False)
+    resolved_at = models.DateTimeField(null=True, blank=True)
+    retention_expiry_date = models.DateTimeField(null=True, blank=True)
     
     # Metadata for search optimization
     age = models.IntegerField(null=True, blank=True)
@@ -57,6 +68,26 @@ class MissingPerson(models.Model):
     
     def __str__(self):
         return f'{self.full_name} - {self.get_status_display()}'
+
+    def save(self, *args, **kwargs):
+        """Override save to handle retention logic."""
+        import django.utils.timezone as tz
+        from datetime import timedelta
+        
+        if not self.created_at:
+            # For new objects, created_at isn't set yet
+            now = tz.now()
+        else:
+            now = self.created_at
+
+        if self.status == 'CLOSED' and not self.resolved_at:
+            self.resolved_at = tz.now()
+            self.retention_expiry_date = self.resolved_at # Purge immediately on close per TRD 5.2
+        elif not self.retention_expiry_date:
+            # Default 5 years for open cases
+            self.retention_expiry_date = now + timedelta(days=5*365)
+            
+        super().save(*args, **kwargs)
 
 
 class FacialRecognitionImage(models.Model):
@@ -190,7 +221,15 @@ class FacialMatch(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     # Blockchain hash placeholder
-    blockchain_hash = models.CharField(max_length=255, blank=True, null=True)
+    # Blockchain hash (TRD §5.1)
+    blockchain_hash = models.CharField(max_length=64, blank=True, null=True, unique=True)
+
+    # Human-in-the-Loop flag (TRD Section 4.2.3)
+    # Automatically set True when 90% <= confidence < 98%
+    requires_human_review = models.BooleanField(
+        default=False,
+        help_text=_('Flagged for human review when confidence is borderline (90-98%)')
+    )
     
     class Meta:
         ordering = ['-created_at']
@@ -203,6 +242,31 @@ class FacialMatch(models.Model):
     
     def __str__(self):
         return f'{self.missing_person.full_name} - Match {self.match_confidence:.2%}'
+
+
+class BiometricEmbedding(models.Model):
+    """Vector storage for facial embeddings (Optimized for TimescaleDB/pgvector)."""
+    
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    case = models.ForeignKey(
+        MissingPerson,
+        on_delete=models.CASCADE,
+        related_name='biometric_embeddings'
+    )
+    # Using JSONField as fallback for pgvector if not configured
+    embedding_vector = models.JSONField(help_text=_('512-dimensional facial embedding vector'))
+    voice_print = models.BinaryField(null=True, blank=True)
+    image_quality_score = models.FloatField(default=0.0)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    purge_after = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-uploaded_at']
+        verbose_name = _('Biometric Embedding')
+        verbose_name_plural = _('Biometric Embeddings')
+
+    def __str__(self):
+        return f'Embedding for {self.case.full_name} ({self.uploaded_at})'
 
 
 class ProcessingQueue(models.Model):
@@ -297,7 +361,13 @@ class SearchSession(models.Model):
     )
     closure_notes = models.TextField(blank=True)
     closed_at = models.DateTimeField(null=True, blank=True)
-    
+
+    # BIPA Compliance (TRD Section 5.1.2): explicit consent before biometric search
+    consent_given = models.BooleanField(
+        default=False,
+        help_text=_('User explicitly confirmed consent before biometric search')
+    )
+
     # Audit
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -316,10 +386,11 @@ class SearchSession(models.Model):
     
     def close_session(self, action, notes=''):
         """Close the search session with the specified action."""
+        import django.utils.timezone as tz
         self.closure_action = action
         self.closure_notes = notes
         self.is_closed = True
-        self.closed_at = models.functions.Now()
+        self.closed_at = tz.now()
         self.save()
         
         # If finalizing a match, update the match status
@@ -331,5 +402,5 @@ class SearchSession(models.Model):
             
             # Update missing person status
             missing_person = self.best_match.missing_person
-            missing_person.status = 'found'
+            missing_person.status = 'CLOSED'
             missing_person.save()

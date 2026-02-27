@@ -80,6 +80,6 @@ class SearchSessionSerializer(serializers.ModelSerializer):
             'id', 'user', 'uploaded_image', 'search_query', 'best_match',
             'best_match_details', 'match_confidence', 'total_candidates_searched',
             'is_closed', 'closure_action', 'closure_notes', 'closed_at',
-            'created_at', 'updated_at'
+            'consent_given', 'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'user', 'created_at', 'updated_at', 'closed_at']
