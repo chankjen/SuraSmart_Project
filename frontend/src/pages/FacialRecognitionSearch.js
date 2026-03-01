@@ -307,11 +307,11 @@ const FacialRecognitionSearch = () => {
                 {loading ? (
                   <>
                     <span className="spinner"></span>
-                    Searching Database...
+                    Raising Case...
                   </>
                 ) : (
                   <>
-                    🔍 {missingPerson ? 'Search for Matches' : 'Search Database'}
+                    Raise Case
                   </>
                 )}
               </button>

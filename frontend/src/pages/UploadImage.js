@@ -135,7 +135,7 @@ const UploadImage = () => {
             onClick={() => navigate(`/facial-search/${missingPersonId}`)}
             style={{ marginLeft: '12px' }}
           >
-            🔍 Search Matches
+            Raise Case
           </button>
         </form>
       </div>

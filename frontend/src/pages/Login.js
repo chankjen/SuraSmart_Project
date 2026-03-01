@@ -260,13 +260,19 @@ const Login = () => {
                   disabled={loading}
                 >
                   <option value="">Select Rank</option>
-                  <option value="corporal">Corporal</option>
-                  <option value="lieutenant">Lieutenant</option>
-                  <option value="general">General</option>
-                  <option value="base_commander">Base Commander</option>
-                  <option value="ocs">OCS</option>
-                  <option value="ocpd">OCPD</option>
-                  <option value="ig">IG</option>
+                  <option value="ig">Inspector-General (IG)</option>
+                  <option value="dig">Deputy Inspector-General (DIG)</option>
+                  <option value="saig">Senior Assistant Inspector-General (SAIG)</option>
+                  <option value="aig">Assistant Inspector-General (AIG)</option>
+                  <option value="ssp">Senior Superintendent of Police (SSP)</option>
+                  <option value="sp">Superintendent of Police (SP)</option>
+                  <option value="asp">Assistant Superintendent of Police (ASP)</option>
+                  <option value="ci">Chief Inspector (CI)</option>
+                  <option value="ip">Inspector of Police (IP)</option>
+                  <option value="ssgt">Senior Sergeant (SSgt)</option>
+                  <option value="sgt">Sergeant (Sgt)</option>
+                  <option value="cpl">Corporal (Cpl)</option>
+                  <option value="constable">Constable</option>
                 </select>
               </div>
             </>

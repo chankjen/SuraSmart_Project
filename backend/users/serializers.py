@@ -39,13 +39,15 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 class UserSerializer(serializers.ModelSerializer):
     """Serializer for User model."""
     
+    police_rank_display = serializers.CharField(source='get_police_rank_display', read_only=True)
+    
     class Meta:
         model = User
         fields = [
             'id', 'username', 'email', 'first_name', 'last_name',
             'role', 'phone_number', 'organization', 'verification_status',
-            'national_id', 'service_id', 'police_rank', 'government_security_id',
-            'government_position', 'position_specify',
+            'national_id', 'service_id', 'police_rank', 'police_rank_display',
+            'government_security_id', 'government_position', 'position_specify',
             'is_active_user', 'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'created_at', 'updated_at']
@@ -59,9 +61,10 @@ class UserCreateSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'username', 'email', 'password', 'first_name', 'last_name', 'role',
-            'national_id', 'service_id', 'police_rank', 'government_security_id',
-            'government_position', 'position_specify'
+            'national_id', 'service_id', 'police_rank', 'police_rank_display',
+            'government_security_id', 'government_position', 'position_specify'
         ]
+        read_only_fields = ['police_rank_display']
     
     def validate(self, attrs):
         """Validate role-specific fields."""

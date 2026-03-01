@@ -30,7 +30,7 @@ class MissingPersonSerializer(serializers.ModelSerializer):
             'age', 'gender', 'identifying_marks', 'facial_recognition_images',
             'match_count', 'created_at', 'updated_at'
         ]
-        read_only_fields = ['id', 'created_at', 'updated_at', 'facial_recognition_images']
+        read_only_fields = ['id', 'status', 'created_at', 'updated_at', 'facial_recognition_images']
     
     def get_match_count(self, obj):
         return obj.facial_matches.filter(status='verified').count()

@@ -40,7 +40,7 @@ class Command(BaseCommand):
                 'first_name': 'Bernard',
                 'last_name': 'Wilson',
                 'service_id': '11111111',
-                'police_rank': 'lieutenant'
+                'police_rank': 'ip'
             },
             {
                 'username': 'betty', 
@@ -50,7 +50,7 @@ class Command(BaseCommand):
                 'first_name': 'Betty',
                 'last_name': 'Brown',
                 'service_id': '22222222',
-                'police_rank': 'general'
+                'police_rank': 'ig'
             },
             
             # Government Officials

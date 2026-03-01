@@ -19,13 +19,14 @@ const PoliceDashboard = () => {
   const fetchCases = useCallback(async () => {
     try {
       const response = await api.getMissingPersons();
-      setCases(response.data);
+      const results = response.data.results || [];
+      setCases(results);
 
       setStats({
-        totalCases: response.data.length,
-        activeCases: response.data.filter(c => c.status === 'searching').length,
-        resolvedCases: response.data.filter(c => c.status === 'found').length,
-        pendingVerification: response.data.filter(c => c.status === 'pending_verification').length
+        totalCases: results.length,
+        activeCases: results.filter(c => ['REPORTED', 'UNDER_INVESTIGATION'].includes(c.status)).length,
+        resolvedCases: results.filter(c => c.status === 'CLOSED').length,
+        pendingVerification: results.filter(c => c.status === 'MATCH_FOUND').length
       });
     } catch (error) {
       console.error('Error fetching cases:', error);
@@ -77,7 +78,7 @@ const PoliceDashboard = () => {
           <h1><span className="logo-glitter-text">SuraSmart</span> - Police Officer Portal</h1>
           <div className="user-info">
             <span>Welcome, Officer {user?.first_name} {user?.last_name}</span>
-            <span className="user-role">Police Officer - {user?.police_rank}</span>
+            <span className="user-role">Police Officer - {user?.police_rank_display || user?.police_rank}</span>
             <button onClick={handleLogout} className="btn-secondary">Logout</button>
           </div>
         </div>
@@ -128,7 +129,7 @@ const PoliceDashboard = () => {
             </div>
           ) : (
             <div className="cases-grid">
-              {(Array.isArray(cases) ? cases : []).map(caseItem => (
+              {cases.map(caseItem => (
                 <div key={caseItem.id} className="case-card">
                   <h3>{caseItem.full_name}</h3>
                   <p><strong>Status:</strong>
@@ -137,10 +138,11 @@ const PoliceDashboard = () => {
                       onChange={(e) => updateCaseStatus(caseItem.id, e.target.value)}
                       className="status-select"
                     >
-                      <option value="searching">Searching</option>
-                      <option value="pending_verification">Pending Verification</option>
-                      <option value="found">Found</option>
-                      <option value="closed">Closed</option>
+                      <option value="REPORTED">Reported</option>
+                      <option value="UNDER_INVESTIGATION">Investigating</option>
+                      <option value="MATCH_FOUND">Match Found</option>
+                      <option value="PENDING_CLOSURE">Pending Closure</option>
+                      <option value="CLOSED">Closed</option>
                     </select>
                   </p>
                   <p><strong>Reported:</strong> {new Date(caseItem.date_reported).toLocaleDateString()}</p>

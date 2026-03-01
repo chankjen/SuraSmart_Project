@@ -33,8 +33,7 @@ const ReportMissingPerson = () => {
 
     try {
       const response = await api.createMissingPerson({
-        ...formData,
-        status: 'reported',
+        ...formData
       });
 
       setSuccess(true);
