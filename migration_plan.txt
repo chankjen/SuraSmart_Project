@@ -1,0 +1,256 @@
+MOVE: backend/.env.example -> sura_smart/.env.example
+MOVE: backend/.gitignore -> sura_smart/.gitignore
+MOVE: backend/Dockerfile -> sura_smart/Dockerfile
+MOVE: backend/RBAC_DOCUMENTATION.md -> sura_smart/RBAC_DOCUMENTATION.md
+MOVE: backend/README.md -> sura_smart/README.md
+MOVE: backend/assign_image_metadata.py -> sura_smart/assign_image_metadata.py
+MOVE: backend/database_integration/__init__.py -> sura_smart/database_integration/__init__.py
+MOVE: backend/database_integration/apps.py -> sura_smart/database_integration/apps.py
+MOVE: backend/database_integration/migrations/0001_initial.py -> sura_smart/database_integration/migrations/0001_initial.py
+MOVE: backend/database_integration/migrations/__init__.py -> sura_smart/database_integration/migrations/__init__.py
+MOVE: backend/database_integration/models.py -> sura_smart/database_integration/models.py
+MOVE: backend/database_integration/serializers.py -> sura_smart/database_integration/serializers.py
+MOVE: backend/database_integration/urls.py -> sura_smart/database_integration/urls.py
+MOVE: backend/database_integration/views.py -> sura_smart/database_integration/views.py
+MOVE: backend/docker-compose.yml -> sura_smart/docker-compose.yml
+MOVE: backend/facial_recognition/__init__.py -> sura_smart/ai_models/facial_recognition/__init__.py
+MOVE: backend/facial_recognition/apps.py -> sura_smart/ai_models/facial_recognition/apps.py
+MOVE: backend/facial_recognition/management/__init__.py -> sura_smart/ai_models/facial_recognition/management/__init__.py
+MOVE: backend/facial_recognition/management/commands/__init__.py -> sura_smart/ai_models/facial_recognition/management/commands/__init__.py
+MOVE: backend/facial_recognition/management/commands/purge_closed_cases.py -> sura_smart/ai_models/facial_recognition/management/commands/purge_closed_cases.py
+MOVE: backend/facial_recognition/management/commands/run_bias_audit.py -> sura_smart/ai_models/facial_recognition/management/commands/run_bias_audit.py
+MOVE: backend/facial_recognition/migrations/0001_initial.py -> sura_smart/ai_models/facial_recognition/migrations/0001_initial.py
+MOVE: backend/facial_recognition/migrations/0002_initial.py -> sura_smart/ai_models/facial_recognition/migrations/0002_initial.py
+MOVE: backend/facial_recognition/migrations/0003_searchsession.py -> sura_smart/ai_models/facial_recognition/migrations/0003_searchsession.py
+MOVE: backend/facial_recognition/migrations/0004_alter_missingperson_status.py -> sura_smart/ai_models/facial_recognition/migrations/0004_alter_missingperson_status.py
+MOVE: backend/facial_recognition/migrations/0005_add_hitl_consent_fields.py -> sura_smart/ai_models/facial_recognition/migrations/0005_add_hitl_consent_fields.py
+MOVE: backend/facial_recognition/migrations/0006_missingperson_dual_signature_family_and_more.py -> sura_smart/ai_models/facial_recognition/migrations/0006_missingperson_dual_signature_family_and_more.py
+MOVE: backend/facial_recognition/migrations/__init__.py -> sura_smart/ai_models/facial_recognition/migrations/__init__.py
+MOVE: backend/facial_recognition/models.py -> sura_smart/ai_models/facial_recognition/models.py
+MOVE: backend/facial_recognition/serializers.py -> sura_smart/ai_models/facial_recognition/serializers.py
+MOVE: backend/facial_recognition/state_machine.py -> sura_smart/ai_models/facial_recognition/state_machine.py
+MOVE: backend/facial_recognition/tasks.py -> sura_smart/ai_models/facial_recognition/tasks.py
+MOVE: backend/facial_recognition/urls.py -> sura_smart/ai_models/facial_recognition/urls.py
+MOVE: backend/facial_recognition/views.py -> sura_smart/ai_models/facial_recognition/views.py
+MOVE: backend/install_log.txt -> sura_smart/install_log.txt
+MOVE: backend/manage.py -> sura_smart/manage.py
+MOVE: backend/notifications/__init__.py -> sura_smart/notifications/__init__.py
+MOVE: backend/notifications/apps.py -> sura_smart/notifications/apps.py
+MOVE: backend/notifications/migrations/0001_initial.py -> sura_smart/notifications/migrations/0001_initial.py
+MOVE: backend/notifications/migrations/0002_initial.py -> sura_smart/notifications/migrations/0002_initial.py
+MOVE: backend/notifications/migrations/__init__.py -> sura_smart/notifications/migrations/__init__.py
+MOVE: backend/notifications/models.py -> sura_smart/notifications/models.py
+MOVE: backend/notifications/serializers.py -> sura_smart/notifications/serializers.py
+MOVE: backend/notifications/urls.py -> sura_smart/notifications/urls.py
+MOVE: backend/notifications/views.py -> sura_smart/notifications/views.py
+MOVE: backend/pytest.ini -> sura_smart/pytest.ini
+MOVE: backend/requirements-backend.txt -> sura_smart/requirements-backend.txt
+MOVE: backend/requirements-sqlite.txt -> sura_smart/requirements-sqlite.txt
+MOVE: backend/shared/__init__.py -> sura_smart/shared/__init__.py
+MOVE: backend/shared/apps.py -> sura_smart/shared/apps.py
+MOVE: backend/shared/blockchain.py -> sura_smart/shared/blockchain.py
+MOVE: backend/shared/urls.py -> sura_smart/shared/urls.py
+MOVE: backend/shared/views.py -> sura_smart/shared/views.py
+MOVE: backend/sura_smart/bias_audit/__init__.py -> sura_smart/bias_audit/__init__.py
+MOVE: backend/sura_smart/bias_audit/auditor.py -> sura_smart/bias_audit/auditor.py
+MOVE: backend/sura_smart/validation/__init__.py -> sura_smart/validation/__init__.py
+MOVE: backend/sura_smart/validation/core.py -> sura_smart/validation/core.py
+MOVE: backend/sura_smart_backend/__init__.py -> sura_smart/sura_smart_sura_smart/__init__.py
+MOVE: backend/sura_smart_backend/admin.py -> sura_smart/sura_smart_sura_smart/admin.py
+MOVE: backend/sura_smart_backend/celery.py -> sura_smart/sura_smart_sura_smart/celery.py
+MOVE: backend/sura_smart_backend/settings.py -> sura_smart/sura_smart_sura_smart/settings.py
+MOVE: backend/sura_smart_backend/urls.py -> sura_smart/sura_smart_sura_smart/urls.py
+MOVE: backend/sura_smart_backend/wsgi.py -> sura_smart/sura_smart_sura_smart/wsgi.py
+MOVE: backend/tests/__init__.py -> sura_smart/tests/__init__.py
+MOVE: backend/tests/conftest.py -> sura_smart/tests/conftest.py
+MOVE: backend/tests/test_api_endpoints.py -> sura_smart/tests/test_api_endpoints.py
+MOVE: backend/tests/test_bias_audit.py -> sura_smart/tests/test_bias_audit.py
+MOVE: backend/tests/test_facial_recognition.py -> sura_smart/tests/test_facial_recognition.py
+MOVE: backend/upload_images.py -> sura_smart/upload_images.py
+MOVE: backend/users/__init__.py -> sura_smart/users/__init__.py
+MOVE: backend/users/apps.py -> sura_smart/users/apps.py
+MOVE: backend/users/management/__init__.py -> sura_smart/users/management/__init__.py
+MOVE: backend/users/management/commands/__init__.py -> sura_smart/users/management/commands/__init__.py
+MOVE: backend/users/management/commands/create_demo_users.py -> sura_smart/users/management/commands/create_demo_users.py
+MOVE: backend/users/migrations/0001_initial.py -> sura_smart/users/migrations/0001_initial.py
+MOVE: backend/users/migrations/0002_user_government_position_user_government_security_id_and_more.py -> sura_smart/users/migrations/0002_user_government_position_user_government_security_id_and_more.py
+MOVE: backend/users/migrations/0003_auditlog_actor_hash_auditlog_jurisdiction_and_more.py -> sura_smart/users/migrations/0003_auditlog_actor_hash_auditlog_jurisdiction_and_more.py
+MOVE: backend/users/migrations/0004_alter_user_police_rank.py -> sura_smart/users/migrations/0004_alter_user_police_rank.py
+MOVE: backend/users/migrations/__init__.py -> sura_smart/users/migrations/__init__.py
+MOVE: backend/users/models.py -> sura_smart/users/models.py
+MOVE: backend/users/permissions.py -> sura_smart/users/permissions.py
+MOVE: backend/users/serializers.py -> sura_smart/users/serializers.py
+MOVE: backend/users/urls.py -> sura_smart/users/urls.py
+MOVE: backend/users/verification.py -> sura_smart/users/verification.py
+MOVE: backend/users/views.py -> sura_smart/users/views.py
+MOVE: frontend/.env.example -> frontend/web/.env.example
+MOVE: frontend/.gitignore -> frontend/web/.gitignore
+MOVE: frontend/Dockerfile -> frontend/web/Dockerfile
+MOVE: frontend/LOGIN_TESTING_GUIDE.md -> frontend/web/LOGIN_TESTING_GUIDE.md
+MOVE: frontend/README.md -> frontend/web/README.md
+MOVE: frontend/SETUP.md -> frontend/web/SETUP.md
+MOVE: frontend/package-lock.json -> frontend/web/package-lock.json
+MOVE: frontend/package.json -> frontend/web/package.json
+MOVE: frontend/public/images/SuraSmart_logo.png -> frontend/web/public/images/SuraSmart_logo.png
+MOVE: frontend/public/index.html -> frontend/web/public/index.html
+MOVE: frontend/quickstart.bat -> frontend/web/quickstart.bat
+MOVE: frontend/quickstart.sh -> frontend/web/quickstart.sh
+MOVE: frontend/src/App.js -> frontend/web/src/App.js
+MOVE: frontend/src/components/PrivateRoute.js -> frontend/web/src/components/PrivateRoute.js
+MOVE: frontend/src/constants/index.js -> frontend/web/src/constants/index.js
+MOVE: frontend/src/contexts/AuthContext.js -> frontend/web/src/contexts/AuthContext.js
+MOVE: frontend/src/hooks/useDataFetching.js -> frontend/web/src/hooks/useDataFetching.js
+MOVE: frontend/src/index.js -> frontend/web/src/index.js
+MOVE: frontend/src/pages/Dashboard.js -> frontend/web/src/pages/Dashboard.js
+MOVE: frontend/src/pages/DashboardNew.js -> frontend/web/src/pages/DashboardNew.js
+MOVE: frontend/src/pages/FacialRecognitionResults.js -> frontend/web/src/pages/FacialRecognitionResults.js
+MOVE: frontend/src/pages/FacialRecognitionSearch.js -> frontend/web/src/pages/FacialRecognitionSearch.js
+MOVE: frontend/src/pages/FamilyDashboard.js -> frontend/web/src/pages/FamilyDashboard.js
+MOVE: frontend/src/pages/GovernmentDashboard.js -> frontend/web/src/pages/GovernmentDashboard.js
+MOVE: frontend/src/pages/Home.js -> frontend/web/src/pages/Home.js
+MOVE: frontend/src/pages/Login.js -> frontend/web/src/pages/Login.js
+MOVE: frontend/src/pages/PoliceDashboard.js -> frontend/web/src/pages/PoliceDashboard.js
+MOVE: frontend/src/pages/Register.js -> frontend/web/src/pages/Register.js
+MOVE: frontend/src/pages/ReportMissingPerson.js -> frontend/web/src/pages/ReportMissingPerson.js
+MOVE: frontend/src/pages/Results.js -> frontend/web/src/pages/Results.js
+MOVE: frontend/src/pages/RoleSelector.js -> frontend/web/src/pages/RoleSelector.js
+MOVE: frontend/src/pages/UploadImage.js -> frontend/web/src/pages/UploadImage.js
+MOVE: frontend/src/services/api.js -> frontend/web/src/services/api.js
+MOVE: frontend/src/styles/Auth.css -> frontend/web/src/styles/Auth.css
+MOVE: frontend/src/styles/Dashboard.css -> frontend/web/src/styles/Dashboard.css
+MOVE: frontend/src/styles/DashboardNew.css -> frontend/web/src/styles/DashboardNew.css
+MOVE: frontend/src/styles/FacialRecognition.css -> frontend/web/src/styles/FacialRecognition.css
+MOVE: frontend/src/styles/Forms.css -> frontend/web/src/styles/Forms.css
+MOVE: frontend/src/styles/Home.css -> frontend/web/src/styles/Home.css
+MOVE: frontend/src/styles/Results.css -> frontend/web/src/styles/Results.css
+MOVE: frontend/src/styles/RoleSelector.css -> frontend/web/src/styles/RoleSelector.css
+MOVE: frontend/src/styles/global.css -> frontend/web/src/styles/global.css
+MOVE: frontend/src/utils/helpers.js -> frontend/web/src/utils/helpers.js
+UNMATCHED: ﻿.github/workflows/ci_cd.yml
+UNMATCHED: .github/workflows/python-publish.yml
+UNMATCHED: ARCHITECTURE_REFERENCE.md
+UNMATCHED: COMPLETE_IMPLEMENTATION_GUIDE.md
+UNMATCHED: COMPLIANCE.md
+UNMATCHED: FACIAL_RECOGNITION_IMPLEMENTATION.md
+UNMATCHED: FACIAL_RECOGNITION_QUICKSTART.md
+UNMATCHED: FACIAL_RECOGNITION_TESTING.md
+UNMATCHED: FRONTEND_CHECKLIST.md
+UNMATCHED: FRONTEND_FILE_LISTING.md
+UNMATCHED: FRONTEND_IMPLEMENTATION_SUMMARY.md
+UNMATCHED: FRONTEND_VERIFICATION.md
+UNMATCHED: IMPLEMENTATION_SUMMARY.md
+UNMATCHED: LOGIN_CREDENTIALS.md
+UNMATCHED: LOGIN_FIX_COMPLETE.md
+UNMATCHED: LOGIN_FIX_SUMMARY.md
+UNMATCHED: LOGIN_TEST_REPORT.md
+UNMATCHED: MIGRATION_GUIDE.md
+UNMATCHED: PHASE1_CHECKLIST.md
+UNMATCHED: PROJECT_OVERVIEW.md
+UNMATCHED: QUICK_START.md
+UNMATCHED: README.md
+UNMATCHED: data/vgg_face2/README.md
+UNMATCHED: data/vgg_face2/attributes/01-Male.txt
+UNMATCHED: data/vgg_face2/attributes/02-Black_Hair.txt
+UNMATCHED: data/vgg_face2/attributes/03-Brown_Hair.txt
+UNMATCHED: data/vgg_face2/attributes/04-Gray_Hair.txt
+UNMATCHED: data/vgg_face2/attributes/05-Blond_Hair.txt
+UNMATCHED: data/vgg_face2/attributes/06-Long_Hair.txt
+UNMATCHED: data/vgg_face2/attributes/07-Mustache_or_Beard.txt
+UNMATCHED: data/vgg_face2/attributes/08-Wearing_Hat.txt
+UNMATCHED: data/vgg_face2/attributes/09-Eyeglasses.txt
+UNMATCHED: data/vgg_face2/attributes/10-Sunglasses.txt
+UNMATCHED: data/vgg_face2/attributes/11-Mouth_Open.txt
+UNMATCHED: data/vgg_face2/ijbb_roc.png
+UNMATCHED: data/vgg_face2/samples/.DS_Store
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n000106/0001_03.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n000106/0002_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n000106/0003_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n000106/0004_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n000106/0005_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n000106/0006_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0002_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0004_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0005_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0007_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0009_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0010_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0011_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0115_02.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0125_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0210_03.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0268_02.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0271_03.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0272_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0273_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0274_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0277_04.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0278_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0280_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n007241/0281_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0001_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0002_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0003_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0004_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0005_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0006_01.jpg
+UNMATCHED: data/vgg_face2/samples/loose_crop (release version)/n008937/0006_02.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/.DS_Store
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n000106/0001_03.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n000106/0002_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n000106/0003_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n000106/0004_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n000106/0005_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n000106/0006_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0002_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0004_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0005_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0007_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0009_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0010_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0011_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0115_02.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0125_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0210_03.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0268_02.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0271_03.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0272_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0273_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0274_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0277_04.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0278_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0280_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n007241/0281_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0001_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0002_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0003_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0004_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0005_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0006_01.jpg
+UNMATCHED: data/vgg_face2/samples/tight_crop (used for training)/n008937/0006_02.jpg
+UNMATCHED: data/vgg_face2/standard_evaluation/README.txt
+UNMATCHED: data/vgg_face2/standard_evaluation/demo_ijbb.m
+UNMATCHED: data/vgg_face2/standard_evaluation/demo_proj.m
+UNMATCHED: data/vgg_face2/standard_evaluation/ijb_evaluation.py
+UNMATCHED: data/vgg_face2/standard_evaluation/meta/ijbb_face_tid_mid.txt
+UNMATCHED: data/vgg_face2/standard_evaluation/meta/ijbb_template_pair_label.txt
+UNMATCHED: data/vgg_face2/standard_evaluation/pytorch_feature_extractor.py
+UNMATCHED: data/vgg_face2/web_page_img.png
+UNMATCHED: db_helper.py
+UNMATCHED: deployment/edge-deployment-ke.yaml
+UNMATCHED: docker-compose.yml
+UNMATCHED: package-lock.json
+UNMATCHED: quickstart.bat
+UNMATCHED: quickstart.sh
+UNMATCHED: scripts/__pycache__/bias_audit.cpython-312.pyc
+UNMATCHED: scripts/__pycache__/bias_audit.cpython-314.pyc
+UNMATCHED: scripts/__pycache__/data_loader.cpython-312.pyc
+UNMATCHED: scripts/__pycache__/data_loader.cpython-314.pyc
+UNMATCHED: scripts/__pycache__/license_checker.cpython-314.pyc
+UNMATCHED: scripts/__pycache__/model_trainer.cpython-312.pyc
+UNMATCHED: scripts/__pycache__/model_trainer.cpython-314.pyc
+UNMATCHED: scripts/bias_audit.py
+UNMATCHED: scripts/check_users.py
+UNMATCHED: scripts/data_loader.py
+UNMATCHED: scripts/license_checker.py
+UNMATCHED: scripts/model_trainer.py
+UNMATCHED: sura_smart

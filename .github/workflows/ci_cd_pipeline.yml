@@ -1,0 +1,505 @@
+# .github/workflows/ci_cd_pipeline.yml
+"""
+Sura Smart CI/CD Pipeline
+TRD Section 7: Deployment Strategy
+TRD Section 10: Maintenance & Support
+TRD Section 6: Performance Requirements
+"""
+
+name: Sura Smart CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    # TRD 10.4: Quarterly algorithm retraining
+    - cron: '0 0 1 */3 *'  # Every 3 months
+  workflow_dispatch:
+    inputs:
+      deployment_type:
+        description: 'Deployment type'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+          - hotfix
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  KUBERNETES_NAMESPACE: sura-smart
+  MODEL_ACCURACY_THRESHOLD: 0.98  # TRD 6.2.1: > 98% accuracy
+  BIAS_VARIANCE_THRESHOLD: 0.02   # TRD 3.1.4: < 2% variance
+  SEARCH_TIME_SLA: 30             # TRD 6.1.1: < 30 seconds
+  FALSE_POSITIVE_THRESHOLD: 0.005 # TRD 6.2.2: < 0.5%
+  FALSE_NEGATIVE_THRESHOLD: 0.02  # TRD 6.2.3: < 2%
+
+jobs:
+  # ============================================
+  # PHASE 1: CODE QUALITY & SECURITY (TRD 5.1.4)
+  # ============================================
+  
+  code_quality:
+    name: Code Quality & Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r sura_smart/requirements.txt
+          pip install bandit safety flake8 black mypy
+      
+      - name: Run Linting (TRD 7.2 - Code Quality)
+        run: |
+          flake8 sura_smart/ --max-line-length=120
+          black sura_smart/ --check
+      
+      - name: Run Type Checking
+        run: |
+          mypy sura_smart/ --ignore-missing-imports
+      
+      - name: Security Scan - SAST (TRD 5.1.4)
+        run: |
+          bandit -r sura_smart/ -f json -o bandit-report.json
+          safety check --json --output safety-report.json
+      
+      - name: Upload Security Reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: security-reports
+          path: |
+            bandit-report.json
+            safety-report.json
+      
+      - name: Fail on Critical Security Issues
+        run: |
+          if grep -q '"SEVERITY": "HIGH"' bandit-report.json; then
+            echo "Critical security issues found!"
+            exit 1
+          fi
+
+  # ============================================
+  # PHASE 2: UNIT & INTEGRATION TESTING
+  # ============================================
+  
+  testing:
+    name: Unit & Integration Tests
+    runs-on: ubuntu-latest
+    needs: code_quality
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: sura_smart_test
+          POSTGRES_USER: test_user
+          POSTGRES_PASSWORD: test_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r sura_smart/requirements.txt
+          pip install pytest pytest-cov pytest-mock
+      
+      - name: Run Unit Tests
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/sura_smart_test
+          REDIS_URL: redis://localhost:6379/0
+        run: |
+          pytest sura_smart/tests/unit/ -v --cov=sura_smart --cov-report=xml
+      
+      - name: Run Integration Tests
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/sura_smart_test
+          REDIS_URL: redis://localhost:6379/0
+        run: |
+          pytest sura_smart/tests/integration/ -v --cov-append --cov-report=xml
+      
+      - name: Upload Coverage Report
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage.xml
+          fail_ci_if_error: false
+      
+      - name: Enforce Coverage Threshold (TRD 7.2)
+        run: |
+          if [ $(cat coverage.xml | grep -o 'line-rate="[^"]*"' | cut -d'"' -f2) < "0.80" ]; then
+            echo "Code coverage below 80%!"
+            exit 1
+          fi
+
+  # ============================================
+  # PHASE 3: MODEL VALIDATION (TRD 6.2 - AI Performance)
+  # ============================================
+  
+  model_validation:
+    name: AI Model Validation
+    runs-on: ubuntu-latest-gpu  # GPU for model testing
+    needs: testing
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install ML dependencies
+        run: |
+          pip install tensorflow torch scikit-learn pandas numpy
+          pip install -r sura_smart/requirements.txt
+      
+      - name: Download Test Datasets
+        run: |
+          # TRD 3.1.4: Diverse datasets for bias testing
+          python scripts/download_test_datasets.py
+      
+      - name: Run Model Accuracy Tests (TRD 6.2.1)
+        run: |
+          python scripts/validate_model_accuracy.py \
+            --threshold ${{ env.MODEL_ACCURACY_THRESHOLD }} \
+            --output accuracy-report.json
+      
+      - name: Run Bias Audit (TRD 3.1.4, PRD 8)
+        run: |
+          python scripts/bias_audit.py \
+            --variance-threshold ${{ env.BIAS_VARIANCE_THRESHOLD }} \
+            --output bias-report.json
+      
+      - name: Run Performance Tests (TRD 6.2.4)
+        run: |
+          python scripts/validate_model_performance.py \
+            --time-sla ${{ env.SEARCH_TIME_SLA }} \
+            --output performance-report.json
+      
+      - name: Validate False Positive/Negative Rates (TRD 6.2.2, 6.2.3)
+        run: |
+          python scripts/validate_error_rates.py \
+            --fp-threshold ${{ env.FALSE_POSITIVE_THRESHOLD }} \
+            --fn-threshold ${{ env.FALSE_NEGATIVE_THRESHOLD }} \
+            --output error-rates-report.json
+      
+      - name: Upload Model Validation Reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: model-validation-reports
+          path: |
+            accuracy-report.json
+            bias-report.json
+            performance-report.json
+            error-rates-report.json
+      
+      - name: Fail on Model Performance Issues
+        run: |
+          python scripts/check_validation_results.py \
+            --accuracy-threshold ${{ env.MODEL_ACCURACY_THRESHOLD }} \
+            --bias-threshold ${{ env.BIAS_VARIANCE_THRESHOLD }}
+
+  # ============================================
+  # PHASE 4: BUILD & CONTAINERIZE
+  # ============================================
+  
+  build:
+    name: Build & Push Docker Images
+    runs-on: ubuntu-latest
+    needs: model_validation
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Login to Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Extract Metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=semver,pattern={{version}}
+            latest
+      
+      - name: Build & Push App Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./sura_smart
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            BUILD_DATE=${{ github.event.head_commit.timestamp }}
+            VERSION=${{ github.sha }}
+      
+      - name: Build & Push Edge AI Image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./sura_smart/edge_ai
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-edge:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ============================================
+  # PHASE 5: DEPLOY TO STAGING (Blue-Green)
+  # ============================================
+  
+  deploy_staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/develop' || github.event.inputs.deployment_type == 'staging'
+    environment: staging
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.26.0'
+      
+      - name: Configure Kubernetes Context
+        run: |
+          echo "${{ secrets.KUBE_CONFIG_STAGING }}" | base64 -d > kubeconfig
+          export KUBECONFIG=kubeconfig
+      
+      - name: Deploy to Staging (Blue-Green - TRD 7.3)
+        run: |
+          kubectl apply -f k8s/staging/
+          kubectl rollout status deployment/sura-smart-staging -n ${{ env.KUBERNETES_NAMESPACE }}
+      
+      - name: Run Smoke Tests
+        run: |
+          python scripts/smoke_tests.py \
+            --endpoint ${{ secrets.STAGING_ENDPOINT }} \
+            --timeout ${{ env.SEARCH_TIME_SLA }}
+      
+      - name: Validate Staging Deployment
+        run: |
+          kubectl get pods -n ${{ env.KUBERNETES_NAMESPACE }} -l app=sura-smart
+          kubectl get services -n ${{ env.KUBERNETES_NAMESPACE }}
+
+  # ============================================
+  # PHASE 6: DEPLOY TO PRODUCTION (Blue-Green)
+  # ============================================
+  
+  deploy_production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: deploy_staging
+    if: github.ref == 'refs/heads/main' || github.event.inputs.deployment_type == 'production'
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.26.0'
+      
+      - name: Configure Kubernetes Context
+        run: |
+          echo "${{ secrets.KUBE_CONFIG_PRODUCTION }}" | base64 -d > kubeconfig
+          export KUBECONFIG=kubeconfig
+      
+      - name: Pre-Deployment Health Check (TRD 6.1.2)
+        run: |
+          python scripts/health_check.py \
+            --endpoint ${{ secrets.PRODUCTION_ENDPOINT }} \
+            --uptime-threshold 99.95
+      
+      - name: Deploy to Production (Blue-Green - TRD 7.3)
+        run: |
+          # Deploy to Green environment
+          kubectl apply -f k8s/production/green/
+          kubectl rollout status deployment/sura-smart-green -n ${{ env.KUBERNETES_NAMESPACE }}
+          
+          # Run validation on Green
+          python scripts/validate_deployment.py \
+            --endpoint ${{ secrets.PRODUCTION_GREEN_ENDPOINT }}
+          
+          # Switch traffic to Green
+          kubectl apply -f k8s/production/ingress-green.yaml
+          
+          # Monitor for 5 minutes
+          sleep 300
+          
+          # If stable, update Blue as new Green for next deployment
+          kubectl apply -f k8s/production/blue/
+      
+      - name: Automated Rollback (TRD 7.5)
+        if: failure()
+        run: |
+          echo "Deployment failed! Initiating rollback..."
+          kubectl apply -f k8s/production/ingress-blue.yaml
+          kubectl rollout undo deployment/sura-smart-green -n ${{ env.KUBERNETES_NAMESPACE }}
+      
+      - name: Post-Deployment Monitoring (TRD 7.4)
+        run: |
+          python scripts/setup_monitoring.py \
+            --newrelic-key ${{ secrets.NEW_RELIC_LICENSE_KEY }} \
+            --datadog-key ${{ secrets.DATADOG_API_KEY }}
+      
+      - name: Notify Deployment Status
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: '#deployments'
+          slack-message: |
+            Sura Smart Production Deployment Complete!
+            Version: ${{ github.sha }}
+            Status: ${{ job.status }}
+            Environment: Production
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+
+  # ============================================
+  # PHASE 7: QUARTERLY MODEL RETRAINING (TRD 10.4)
+  # ============================================
+  
+  quarterly_retraining:
+    name: Quarterly Model Retraining
+    runs-on: ubuntu-latest-gpu
+    if: github.event_name == 'schedule'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install ML dependencies
+        run: |
+          pip install tensorflow torch mlflow dvc
+          pip install -r sura_smart/requirements.txt
+      
+      - name: Download Training Data (TRD 3.1.4)
+        run: |
+          python scripts/download_training_data.py
+      
+      - name: Run Model Retraining (TRD 10.4)
+        run: |
+          python scripts/retrain_model.py \
+            --epochs 50 \
+            --batch-size 32 \
+            --validation-split 0.2 \
+            --output models/retrained_model.h5
+      
+      - name: Validate Retrained Model
+        run: |
+          python scripts/validate_model_accuracy.py \
+            --model-path models/retrained_model.h5 \
+            --threshold ${{ env.MODEL_ACCURACY_THRESHOLD }}
+      
+      - name: Register Model in MLFlow (TRD 7.2)
+        run: |
+          python scripts/register_model.py \
+            --model-path models/retrained_model.h5 \
+            --model-name sura-smart-facial-recognition \
+            --stage staging
+      
+      - name: Trigger Deployment Pipeline
+        if: success()
+        run: |
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/ci_cd_pipeline.yml/dispatches \
+            -d '{"ref":"develop","inputs":{"deployment_type":"staging"}}'
+
+  # ============================================
+  # PHASE 8: ANNUAL AUDIT REPORTING (TRD 10.5)
+  # ============================================
+  
+  annual_audit:
+    name: Annual Compliance Audit
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' && github.event.schedule == '0 0 1 1 *'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Generate Security Audit Report (TRD 5.1.4)
+        run: |
+          python scripts/generate_security_audit.py \
+            --output reports/security_audit_$(date +%Y).pdf
+      
+      - name: Generate Bias Audit Report (TRD 10.5, PRD 8)
+        run: |
+          python scripts/generate_bias_audit.py \
+            --output reports/bias_audit_$(date +%Y).pdf
+      
+      - name: Generate Performance Audit Report (TRD 6.2)
+        run: |
+          python scripts/generate_performance_audit.py \
+            --output reports/performance_audit_$(date +%Y).pdf
+      
+      - name: Upload Audit Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: annual-audit-reports
+          path: reports/
+      
+      - name: Notify Compliance Team
+        uses: slackapi/slack-github-action@v1
+        with:
+          channel-id: '#compliance'
+          slack-message: |
+            Annual Audit Reports Generated!
+            Year: ${{ github.event.schedule }}
+            Reports: Security, Bias, Performance
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}

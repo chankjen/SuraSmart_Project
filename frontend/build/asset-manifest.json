@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ad803d96.css",
+    "main.js": "/static/js/main.84225b9e.js",
+    "static/media/SuraSmart_logo.png": "/static/media/SuraSmart_logo.dcbf6f53f6f608e16259.png",
+    "index.html": "/index.html",
+    "main.ad803d96.css.map": "/static/css/main.ad803d96.css.map",
+    "main.84225b9e.js.map": "/static/js/main.84225b9e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ad803d96.css",
+    "static/js/main.84225b9e.js"
+  ]
+}

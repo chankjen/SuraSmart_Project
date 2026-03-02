@@ -1,0 +1,214 @@
+/* Authentication Pages using global dark purple theme */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg-dark);
+  background-image: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(168, 85, 247, 0.05) 50%, rgba(196, 132, 252, 0.1) 100%);
+  padding: 20px;
+}
+
+.auth-box {
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-primary);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+}
+
+.auth-box h1 {
+  font-size: 28px;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.auth-box h2 {
+  font-size: 20px;
+  color: var(--color-accent-primary);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-box form {
+  margin-bottom: 20px;
+}
+
+.auth-box .form-group {
+  margin-bottom: 16px;
+}
+
+.auth-box label {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.auth-box input,
+.auth-box select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.auth-box input:focus,
+.auth-box select:focus {
+  outline: none;
+  border-color: var(--color-accent-primary);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.auth-box input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.error-message {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-size: 14px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--gradient-primary);
+  border: none;
+  color: var(--color-text-inverse);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--gradient-hover);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.auth-link {
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.auth-link a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: var(--color-accent-secondary);
+  text-decoration: underline;
+}
+
+/* Demo Users Section */
+.demo-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.demo-section h3 {
+  font-size: 14px;
+  color: var(--color-accent-purple);
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.demo-users-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.demo-user-card {
+  margin: 0;
+}
+
+.demo-user-btn {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid rgba(157, 78, 221, 0.4);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.demo-user-btn:hover:not(:disabled) {
+  background: rgba(255, 77, 166, 0.1);
+  border-color: var(--color-accent-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 77, 166, 0.2);
+}
+
+.demo-user-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.demo-user-btn strong {
+  color: var(--color-accent-blue);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.demo-user-btn small {
+  color: var(--color-text-dim);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+@media (max-width: 500px) {
+  .auth-box {
+    padding: 24px;
+  }
+
+  .auth-box h1 {
+    font-size: 24px;
+  }
+
+  .auth-box h2 {
+    font-size: 18px;
+  }
+
+  .demo-users-grid {
+    grid-template-columns: 1fr;
+  }
+}

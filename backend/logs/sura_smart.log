@@ -1,0 +1,870 @@
+INFO 2026-02-04 00:28:47,721 autoreload 25144 9744 Watching for file changes with StatReloader
+INFO 2026-02-04 00:29:15,579 autoreload 10740 20740 Watching for file changes with StatReloader
+INFO 2026-02-04 00:29:30,564 autoreload 25144 9744 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-02-04 00:29:30,583 autoreload 10740 20740 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-02-04 00:29:35,177 autoreload 18120 21056 Watching for file changes with StatReloader
+INFO 2026-02-04 00:29:35,177 autoreload 2012 3584 Watching for file changes with StatReloader
+INFO 2026-02-04 00:29:43,166 autoreload 18120 21056 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-02-04 00:29:43,172 autoreload 2012 3584 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-02-04 00:29:45,910 autoreload 19980 18320 Watching for file changes with StatReloader
+INFO 2026-02-04 00:29:45,911 autoreload 9208 8200 Watching for file changes with StatReloader
+INFO 2026-02-04 00:29:52,419 autoreload 19980 18320 D:\SuraSmart_Project\backend\shared\views.py changed, reloading.
+INFO 2026-02-04 00:29:54,232 autoreload 25216 20552 Watching for file changes with StatReloader
+INFO 2026-02-04 00:31:04,129 autoreload 10364 14836 Watching for file changes with StatReloader
+WARNING 2026-02-04 00:35:13,650 log 10364 22644 Not Found: /favicon.ico
+INFO 2026-02-04 00:37:49,121 autoreload 10364 14836 D:\SuraSmart_Project\backend\shared\views.py changed, reloading.
+INFO 2026-02-04 00:37:49,123 autoreload 25216 20552 D:\SuraSmart_Project\backend\shared\views.py changed, reloading.
+INFO 2026-02-04 00:37:51,172 autoreload 3820 328 Watching for file changes with StatReloader
+INFO 2026-02-04 00:37:51,199 autoreload 16624 24828 Watching for file changes with StatReloader
+INFO 2026-02-04 00:41:52,137 autoreload 16624 24828 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-02-04 00:41:53,882 autoreload 25284 9628 Watching for file changes with StatReloader
+INFO 2026-02-04 00:42:09,314 autoreload 25284 9628 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-02-04 00:42:11,030 autoreload 8200 11576 Watching for file changes with StatReloader
+INFO 2026-02-04 00:42:28,295 autoreload 23740 13056 Watching for file changes with StatReloader
+WARNING 2026-02-04 00:43:41,523 log 8200 19824 Not Found: /favicon.ico
+WARNING 2026-02-04 00:44:32,367 log 8200 19824 Not Found: /
+WARNING 2026-02-04 00:45:04,862 log 8200 19824 Not Found: /api/health/
+INFO 2026-02-04 00:57:13,990 autoreload 8200 11576 D:\SuraSmart_Project\backend\shared\views.py changed, reloading.
+INFO 2026-02-04 00:57:15,863 autoreload 10140 12984 Watching for file changes with StatReloader
+INFO 2026-02-04 00:57:18,186 autoreload 10140 12984 D:\SuraSmart_Project\backend\shared\urls.py changed, reloading.
+INFO 2026-02-04 00:57:20,327 autoreload 14892 24876 Watching for file changes with StatReloader
+INFO 2026-02-04 00:57:22,747 autoreload 14892 24876 D:\SuraSmart_Project\backend\sura_smart_backend\urls.py changed, reloading.
+INFO 2026-02-04 00:57:24,868 autoreload 14384 18864 Watching for file changes with StatReloader
+INFO 2026-02-04 00:57:35,518 autoreload 14384 18864 D:\SuraSmart_Project\backend\sura_smart_backend\urls.py changed, reloading.
+INFO 2026-02-04 00:57:37,069 autoreload 16148 17548 Watching for file changes with StatReloader
+WARNING 2026-02-04 00:58:29,364 connection 16148 17420 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-02-04 00:58:35,452 log 16148 17420 Service Unavailable: /api/health/check/
+INFO 2026-02-04 01:16:24,692 autoreload 16148 17548 D:\SuraSmart_Project\backend\facial_recognition\views.py changed, reloading.
+INFO 2026-02-04 01:16:26,780 autoreload 4292 23772 Watching for file changes with StatReloader
+INFO 2026-02-04 01:16:33,998 autoreload 4292 23772 D:\SuraSmart_Project\backend\users\permissions.py changed, reloading.
+INFO 2026-02-04 01:16:35,627 autoreload 8456 24564 Watching for file changes with StatReloader
+INFO 2026-02-04 01:40:11,145 autoreload 8456 24564 D:\SuraSmart_Project\backend\users\serializers.py changed, reloading.
+INFO 2026-02-04 01:40:13,218 autoreload 5416 25100 Watching for file changes with StatReloader
+INFO 2026-02-04 01:40:15,099 autoreload 5416 25100 D:\SuraSmart_Project\backend\users\urls.py changed, reloading.
+INFO 2026-02-04 01:40:16,669 autoreload 4292 22464 Watching for file changes with StatReloader
+INFO 2026-02-04 01:40:56,006 autoreload 4292 22464 D:\SuraSmart_Project\backend\users\serializers.py changed, reloading.
+INFO 2026-02-04 01:40:57,793 autoreload 10204 19904 Watching for file changes with StatReloader
+INFO 2026-02-04 01:43:34,290 autoreload 10204 19904 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-02-04 01:43:36,646 autoreload 23012 16688 Watching for file changes with StatReloader
+INFO 2026-02-04 01:48:01,221 autoreload 23012 16688 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-02-04 01:48:03,275 autoreload 18324 3980 Watching for file changes with StatReloader
+INFO 2026-02-04 01:48:25,838 autoreload 18324 3980 D:\SuraSmart_Project\backend\users\permissions.py changed, reloading.
+INFO 2026-02-04 01:48:28,008 autoreload 14504 19244 Watching for file changes with StatReloader
+INFO 2026-02-04 01:48:41,982 autoreload 14504 19244 D:\SuraSmart_Project\backend\users\permissions.py changed, reloading.
+INFO 2026-02-04 01:48:44,044 autoreload 23304 336 Watching for file changes with StatReloader
+INFO 2026-02-04 01:49:13,081 autoreload 19164 20948 Watching for file changes with StatReloader
+WARNING 2026-02-04 01:57:00,453 log 23304 21720 Not Found: /favicon.ico
+WARNING 2026-02-04 02:05:33,500 log 23304 25832 Not Found: /favicon.ico
+WARNING 2026-02-04 02:06:42,393 log 23304 25324 Not Found: /favicon.ico
+WARNING 2026-02-04 02:11:11,001 log 23304 23656 Not Found: /api/
+ERROR 2026-02-04 02:33:12,128 log 23304 4804 Internal Server Error: /admin/auth/group/add/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\library.py", line 271, in render
+    new_context = context.new(_dict)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 265, in new
+    new_context = super().new(values)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 110, in new
+    new_context = copy(self)
+  File "C:\Program Files\Python314\Lib\copy.py", line 82, in copy
+    return copier(x)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 158, in __copy__
+    duplicate = super().__copy__()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 39, in __copy__
+    duplicate.dicts = self.dicts[:]
+    ^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+INFO 2026-02-19 01:28:09,803 autoreload 13956 24956 Watching for file changes with StatReloader
+INFO 2026-02-19 01:30:06,639 autoreload 10116 19320 Watching for file changes with StatReloader
+WARNING 2026-02-19 01:31:03,747 log 10116 16572 Not Found: /favicon.ico
+WARNING 2026-02-19 01:45:09,875 log 10116 8092 Not Found: /favicon.ico
+INFO 2026-02-19 01:48:48,187 autoreload 23896 13280 Watching for file changes with StatReloader
+WARNING 2026-02-19 01:49:34,553 log 10116 18456 Not Found: /favicon.ico
+INFO 2026-02-19 09:18:31,739 autoreload 11656 24344 Watching for file changes with StatReloader
+WARNING 2026-02-19 09:19:08,043 log 11656 8288 Not Found: /favicon.ico
+WARNING 2026-02-19 09:19:16,693 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:19:28,507 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:20:05,553 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:20:08,705 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:20:22,041 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:20:27,747 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:20:31,612 log 11656 2640 Bad Request: /api/auth/token/
+WARNING 2026-02-19 09:20:34,399 log 11656 2640 Bad Request: /api/auth/token/
+INFO 2026-02-19 16:36:23,841 autoreload 11656 24344 D:\SuraSmart_Project\backend\users\serializers.py changed, reloading.
+INFO 2026-02-19 16:36:25,539 autoreload 16192 27620 Watching for file changes with StatReloader
+WARNING 2026-02-19 16:36:42,350 log 16192 2664 Unauthorized: /api/auth/token/
+WARNING 2026-02-19 16:38:47,111 log 16192 2664 Not Found: /api/
+WARNING 2026-02-19 16:38:51,577 log 16192 2664 Unauthorized: /api/auth/
+INFO 2026-02-20 13:04:47,278 autoreload 16192 27620 D:\SuraSmart_Project\backend\users\models.py changed, reloading.
+INFO 2026-02-20 13:04:56,570 autoreload 13644 5992 Watching for file changes with StatReloader
+INFO 2026-02-20 13:05:09,371 autoreload 13644 5992 D:\SuraSmart_Project\backend\users\models.py changed, reloading.
+INFO 2026-02-20 13:05:12,471 autoreload 27964 7304 Watching for file changes with StatReloader
+INFO 2026-02-20 13:05:14,501 autoreload 27964 7304 D:\SuraSmart_Project\backend\users\models.py changed, reloading.
+INFO 2026-02-20 13:05:16,342 autoreload 16324 8344 Watching for file changes with StatReloader
+INFO 2026-02-20 13:05:18,253 autoreload 16324 8344 D:\SuraSmart_Project\backend\users\models.py changed, reloading.
+INFO 2026-02-20 13:05:20,801 autoreload 28472 14660 Watching for file changes with StatReloader
+INFO 2026-02-20 13:05:36,906 autoreload 28472 14660 D:\SuraSmart_Project\backend\users\serializers.py changed, reloading.
+INFO 2026-02-20 13:05:40,482 autoreload 7832 20908 Watching for file changes with StatReloader
+INFO 2026-02-20 13:07:16,651 autoreload 7832 20908 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-02-20 13:07:19,724 autoreload 23228 28400 Watching for file changes with StatReloader
+INFO 2026-02-20 13:07:25,962 autoreload 23228 28400 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-02-20 13:07:28,597 autoreload 16588 2848 Watching for file changes with StatReloader
+INFO 2026-02-20 13:07:30,969 autoreload 16588 2848 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-02-20 13:07:33,177 autoreload 3000 22188 Watching for file changes with StatReloader
+WARNING 2026-02-20 13:08:40,614 log 3000 28072 Not Found: /favicon.ico
+WARNING 2026-02-20 13:21:44,660 log 3000 23708 Not Found: /favicon.ico
+WARNING 2026-02-20 13:22:37,681 connection 3000 25684 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-02-20 13:22:43,742 log 3000 25684 Service Unavailable: /api/health/check/
+INFO 2026-02-20 13:22:54,837 autoreload 20732 18924 Watching for file changes with StatReloader
+WARNING 2026-02-20 13:23:42,443 log 3000 8188 Unauthorized: /api/auth/users/me/
+INFO 2026-02-20 13:31:30,889 autoreload 8108 3752 Watching for file changes with StatReloader
+INFO 2026-02-20 13:31:47,345 autoreload 19572 26804 Watching for file changes with StatReloader
+INFO 2026-02-20 13:32:41,612 autoreload 19076 7484 Watching for file changes with StatReloader
+INFO 2026-02-20 13:37:37,623 autoreload 28140 8872 Watching for file changes with StatReloader
+INFO 2026-02-20 13:41:00,756 autoreload 24884 10324 Watching for file changes with StatReloader
+INFO 2026-02-21 07:46:16,671 autoreload 14856 18932 Watching for file changes with StatReloader
+WARNING 2026-02-21 07:46:50,704 log 14856 13044 Not Found: /favicon.ico
+INFO 2026-02-21 08:32:14,136 autoreload 14856 18932 D:\SuraSmart_Project\backend\facial_recognition\views.py changed, reloading.
+INFO 2026-02-21 08:32:19,341 autoreload 760 18112 Watching for file changes with StatReloader
+INFO 2026-02-21 08:32:22,326 autoreload 760 18112 D:\SuraSmart_Project\backend\facial_recognition\views.py changed, reloading.
+INFO 2026-02-21 08:32:26,012 autoreload 29128 22888 Watching for file changes with StatReloader
+INFO 2026-02-21 08:32:33,982 autoreload 29128 22888 D:\SuraSmart_Project\backend\facial_recognition\models.py changed, reloading.
+INFO 2026-02-21 08:32:37,656 autoreload 20332 5160 Watching for file changes with StatReloader
+INFO 2026-02-21 08:33:43,478 autoreload 15268 4092 Watching for file changes with StatReloader
+WARNING 2026-02-21 08:34:14,924 log 20332 2640 Not Found: /favicon.ico
+WARNING 2026-02-21 08:35:04,486 log 20332 10472 Not Found: /main.e3668105e15e8c244832.hot-update.json
+WARNING 2026-02-21 08:35:04,493 log 20332 22928 Not Found: /main.e3668105e15e8c244832.hot-update.json
+INFO 2026-02-21 08:39:45,884 autoreload 14752 18628 Watching for file changes with StatReloader
+WARNING 2026-02-21 08:40:13,169 log 20332 17840 Not Found: /favicon.ico
+WARNING 2026-02-21 08:41:55,759 log 20332 27668 Unauthorized: /api/facial-recognition/missing-persons/
+INFO 2026-02-21 08:43:58,946 autoreload 25772 10964 Watching for file changes with StatReloader
+WARNING 2026-02-21 08:44:27,506 log 20332 18148 Not Found: /favicon.ico
+WARNING 2026-02-21 08:52:34,249 log 20332 22260 Unauthorized: /api/facial-recognition/missing-persons/63e6a8c6-7510-432b-9d6f-8fbce91c52c4/upload_image/
+INFO 2026-02-21 09:00:23,966 autoreload 18984 17340 Watching for file changes with StatReloader
+WARNING 2026-02-21 09:01:06,348 log 20332 24416 Not Found: /favicon.ico
+WARNING 2026-02-21 09:02:52,297 log 20332 22692 Not Found: /favicon.ico
+WARNING 2026-02-21 09:07:28,826 log 20332 9456 Bad Request: /api/auth/token/
+WARNING 2026-02-21 11:45:34,311 log 20332 28820 Not Found: /favicon.ico
+INFO 2026-02-22 21:35:28,904 autoreload 15808 23028 Watching for file changes with StatReloader
+WARNING 2026-02-22 21:36:57,258 log 15808 11872 Not Found: /favicon.ico
+INFO 2026-02-23 13:48:08,913 autoreload 4820 14376 Watching for file changes with StatReloader
+WARNING 2026-02-23 14:31:23,825 log 4820 16532 Not Found: /favicon.ico
+INFO 2026-02-23 14:40:57,904 autoreload 14092 22000 Watching for file changes with StatReloader
+WARNING 2026-02-23 14:46:32,716 log 14092 15296 Not Found: /favicon.ico
+INFO 2026-02-25 14:13:12,335 autoreload 20308 9288 Watching for file changes with StatReloader
+WARNING 2026-02-25 14:17:52,992 log 20308 18196 Not Found: /favicon.ico
+WARNING 2026-02-27 16:45:01,251 log 31740 8376 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:45:02,273 views 31740 8376 Facial search completed in 6ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 16:45:03,359 views 31740 8376 Facial search completed in 4ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:45:04,467 views 31740 8376 Facial search completed in 6ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:45:04,486 log 31740 8376 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:45:05,548 log 31740 8376 Bad Request: /api/facial-recognition/search/
+WARNING 2026-02-27 16:45:13,227 log 31740 8376 Bad Request: /api/facial-recognition/search-sessions/60c6fdeb-4384-4d83-b63a-986b7fc97372/close/
+WARNING 2026-02-27 16:45:14,200 log 31740 8376 Bad Request: /api/facial-recognition/search-sessions/eee0042d-da01-413f-b0e4-c96b3fa4d12a/close/
+INFO 2026-02-27 16:45:14,206 core 31740 8376 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:45:14,211 core 31740 8376 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+INFO 2026-02-27 16:45:14,215 core 31740 8376 Demographic audit PASSED. Overall: 0.987. Variance: 0.024.
+WARNING 2026-02-27 16:45:14,238 core 31740 8376 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:45:14,239 core 31740 8376 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:45:14,255 core 31740 8376 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:45:14,255 core 31740 8376 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:45:14,262 core 31740 8376 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:45:14,262 core 31740 8376 FNR 0.1667 exceeds 2% target
+WARNING 2026-02-27 16:47:33,513 log 23432 26856 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:47:34,171 views 23432 26856 Facial search completed in 6ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 16:47:34,812 views 23432 26856 Facial search completed in 3ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:47:35,543 views 23432 26856 Facial search completed in 8ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:47:35,567 log 23432 26856 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:47:36,261 log 23432 26856 Bad Request: /api/facial-recognition/search/
+WARNING 2026-02-27 16:47:41,087 log 23432 26856 Bad Request: /api/facial-recognition/search-sessions/8daf134f-952c-4538-9f5e-949ec4249efa/close/
+WARNING 2026-02-27 16:47:41,712 log 23432 26856 Bad Request: /api/facial-recognition/search-sessions/2b6723bc-73ee-4f0a-ac3e-602caed05155/close/
+INFO 2026-02-27 16:47:41,716 core 23432 26856 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:47:41,720 core 23432 26856 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 16:47:41,723 core 23432 26856 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 16:47:41,728 core 23432 26856 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:47:41,729 core 23432 26856 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:47:41,737 core 23432 26856 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:47:41,738 core 23432 26856 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:47:41,744 core 23432 26856 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:47:41,744 core 23432 26856 FNR 0.1667 exceeds 2% target
+WARNING 2026-02-27 16:52:59,910 log 27644 30832 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:53:01,008 views 27644 30832 Facial search completed in 8ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 16:53:02,077 views 27644 30832 Facial search completed in 5ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:53:03,219 views 27644 30832 Facial search completed in 4ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:53:03,242 log 27644 30832 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:53:04,272 log 27644 30832 Bad Request: /api/facial-recognition/search/
+WARNING 2026-02-27 16:53:11,660 log 27644 30832 Bad Request: /api/facial-recognition/search-sessions/ac5a6621-196a-4e8d-afb8-0c5741e71e8c/close/
+WARNING 2026-02-27 16:53:12,755 log 27644 30832 Bad Request: /api/facial-recognition/search-sessions/7a0dff01-1105-475e-8f99-1f3ee4f57fe5/close/
+INFO 2026-02-27 16:53:12,760 core 27644 30832 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:53:12,765 core 27644 30832 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 16:53:12,770 core 27644 30832 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 16:53:12,778 core 27644 30832 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:53:12,778 core 27644 30832 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:53:12,789 core 27644 30832 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:53:12,789 core 27644 30832 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:53:12,793 core 27644 30832 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:53:12,794 core 27644 30832 FNR 0.1667 exceeds 2% target
+ERROR 2026-02-27 16:53:12,825 auditor 27644 30832 Variance on 'by_gender': 29.00% exceeds 2% limit
+WARNING 2026-02-27 16:54:23,739 log 7592 28616 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:54:24,820 views 7592 28616 Facial search completed in 5ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 16:54:25,907 views 7592 28616 Facial search completed in 5ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:54:26,965 views 7592 28616 Facial search completed in 5ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:54:26,984 log 7592 28616 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:54:27,961 log 7592 28616 Bad Request: /api/facial-recognition/search/
+WARNING 2026-02-27 16:54:35,472 log 7592 28616 Bad Request: /api/facial-recognition/search-sessions/329d0118-2ef3-41cb-b885-2f16d8888555/close/
+WARNING 2026-02-27 16:54:36,589 log 7592 28616 Bad Request: /api/facial-recognition/search-sessions/f97936b9-0418-4a18-94d1-f475cadd3a86/close/
+INFO 2026-02-27 16:54:36,597 core 7592 28616 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:54:36,604 core 7592 28616 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 16:54:36,609 core 7592 28616 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 16:54:36,619 core 7592 28616 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:54:36,620 core 7592 28616 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:54:36,633 core 7592 28616 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:54:36,633 core 7592 28616 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:54:36,639 core 7592 28616 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:54:36,640 core 7592 28616 FNR 0.1667 exceeds 2% target
+ERROR 2026-02-27 16:54:36,686 auditor 7592 28616 Variance on 'by_gender': 29.00% exceeds 2% limit
+WARNING 2026-02-27 16:55:35,929 log 15752 23152 Not Found: /api/missing-persons/
+WARNING 2026-02-27 16:55:37,627 log 15752 23152 Not Found: /api/missing-persons/
+WARNING 2026-02-27 16:55:37,640 log 15752 23152 Not Found: /api/missing-persons/
+WARNING 2026-02-27 16:55:38,348 log 15752 23152 Not Found: /api/missing-persons/
+WARNING 2026-02-27 16:55:39,051 log 15752 23152 Not Found: /api/missing-persons/
+WARNING 2026-02-27 16:55:40,448 log 15752 23152 Not Found: /api/facial-recognition/facial-matches/bac0b591-0edb-4411-b0d4-1741dc194f17/verify/
+WARNING 2026-02-27 16:55:41,811 log 15752 23152 Not Found: /api/facial-recognition/facial-matches/0888e709-8a50-45e8-af2d-ab3c3e60e141/reject/
+WARNING 2026-02-27 16:55:43,260 log 15752 23152 Not Found: /api/facial-recognition/facial-matches/b599722a-e9b3-4dd0-ad63-460c761be90a/verify/
+WARNING 2026-02-27 16:55:44,643 log 15752 23152 Not Found: /api/facial-recognition/facial-matches/0ae508d5-5b7e-4b4c-99eb-d5cf6af5a25f/reject/
+WARNING 2026-02-27 16:55:45,336 log 15752 23152 Not Found: /api/missing-persons/search/
+WARNING 2026-02-27 16:55:46,034 log 15752 23152 Not Found: /api/missing-persons/search/
+WARNING 2026-02-27 16:55:46,724 log 15752 23152 Not Found: /api/missing-persons/search/
+WARNING 2026-02-27 16:55:47,447 log 15752 23152 Not Found: /api/missing-persons/search/
+WARNING 2026-02-27 16:55:57,487 log 15752 23152 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:55:58,782 views 15752 23152 Facial search completed in 6ms. Candidates: 0. Best confidence: 0.0000
+WARNING 2026-02-27 16:55:59,631 log 19952 1220 Not Found: /api/missing-persons/
+INFO 2026-02-27 16:55:59,931 views 15752 23152 Facial search completed in 4ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:56:01,122 views 15752 23152 Facial search completed in 6ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:56:01,149 log 15752 23152 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:56:02,416 log 15752 23152 Bad Request: /api/facial-recognition/search/
+ERROR 2026-02-27 16:56:03,520 log 15752 23152 Internal Server Error: /api/facial-recognition/search-sessions/c0d99c7e-8a13-4914-a809-dbe5950aac5a/close/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 364, in close
+    response_data = self.get_serializer(session).data
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\fields.py", line 1187, in to_representation
+    value = self.enforce_timezone(value)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\fields.py", line 1135, in enforce_timezone
+    if timezone.is_aware(value):
+       ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\utils\timezone.py", line 256, in is_aware
+    return value.utcoffset() is not None
+           ^^^^^^^^^^^^^^^
+AttributeError: 'Now' object has no attribute 'utcoffset'
+WARNING 2026-02-27 16:56:05,161 log 15752 23152 Bad Request: /api/facial-recognition/search-sessions/598e86c1-01f7-4481-9dcd-efd4f5c85526/close/
+WARNING 2026-02-27 16:56:06,196 log 15752 23152 Bad Request: /api/facial-recognition/search-sessions/c42e307b-76fc-4d93-b3a5-442bb09b6853/close/
+INFO 2026-02-27 16:56:06,201 core 15752 23152 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:56:06,207 core 15752 23152 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 16:56:06,212 core 15752 23152 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 16:56:06,221 core 15752 23152 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:56:06,222 core 15752 23152 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:56:06,232 core 15752 23152 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:56:06,233 core 15752 23152 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:56:06,238 core 15752 23152 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:56:06,239 core 15752 23152 FNR 0.1667 exceeds 2% target
+ERROR 2026-02-27 16:56:06,279 auditor 15752 23152 Variance on 'by_gender': 29.00% exceeds 2% limit
+WARNING 2026-02-27 16:56:56,545 log 31916 26180 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-27 16:57:00,909 log 31916 26180 Not Found: /api/facial-recognition/facial-matches/87c17221-2831-4eff-8eb6-c6979759939d/verify/
+WARNING 2026-02-27 16:57:02,918 log 31916 26180 Not Found: /api/facial-recognition/facial-matches/ce04f7a4-e881-4411-b7a7-f9202b6a95bb/reject/
+WARNING 2026-02-27 16:57:04,852 log 31916 26180 Not Found: /api/facial-recognition/facial-matches/02116cfd-502e-428d-a5c6-46126d61fbe8/verify/
+WARNING 2026-02-27 16:57:06,761 log 31916 26180 Not Found: /api/facial-recognition/facial-matches/9c7506a5-6375-4554-8684-d0ca0b7cc6fb/reject/
+WARNING 2026-02-27 16:57:20,871 log 31916 26180 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:57:21,897 views 31916 26180 Facial search completed in 3ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 16:57:22,860 views 31916 26180 Facial search completed in 3ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:57:23,924 views 31916 26180 Facial search completed in 4ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:57:23,942 log 31916 26180 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:57:24,923 log 31916 26180 Bad Request: /api/facial-recognition/search/
+ERROR 2026-02-27 16:57:26,044 log 31916 26180 Internal Server Error: /api/facial-recognition/search-sessions/0f699649-4576-4e92-af70-c6a3f9e12559/close/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 364, in close
+    response_data = self.get_serializer(session).data
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\fields.py", line 1187, in to_representation
+    value = self.enforce_timezone(value)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\fields.py", line 1135, in enforce_timezone
+    if timezone.is_aware(value):
+       ~~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\utils\timezone.py", line 256, in is_aware
+    return value.utcoffset() is not None
+           ^^^^^^^^^^^^^^^
+AttributeError: 'Now' object has no attribute 'utcoffset'
+WARNING 2026-02-27 16:57:27,633 log 31916 26180 Bad Request: /api/facial-recognition/search-sessions/c9a38525-f171-43a0-bfee-32128247cb31/close/
+WARNING 2026-02-27 16:57:28,611 log 31916 26180 Bad Request: /api/facial-recognition/search-sessions/53495007-26ee-425d-964c-ebd7789a2190/close/
+INFO 2026-02-27 16:57:28,617 core 31916 26180 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:57:28,622 core 31916 26180 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 16:57:28,627 core 31916 26180 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 16:57:28,636 core 31916 26180 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:57:28,637 core 31916 26180 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:57:28,649 core 31916 26180 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:57:28,650 core 31916 26180 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:57:28,656 core 31916 26180 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:57:28,656 core 31916 26180 FNR 0.1667 exceeds 2% target
+ERROR 2026-02-27 16:57:28,693 auditor 31916 26180 Variance on 'by_gender': 29.00% exceeds 2% limit
+WARNING 2026-02-27 16:59:32,488 log 19136 6192 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-27 16:59:35,277 log 19136 6192 Forbidden: /api/facial-recognition/matches/ca9f6950-6952-4b7b-a780-5330018237b4/verify/
+WARNING 2026-02-27 16:59:36,889 log 19136 6192 Forbidden: /api/facial-recognition/matches/03fc1c7c-648c-4537-b5d8-0e0e9f0000c2/reject/
+WARNING 2026-02-27 16:59:39,082 log 19136 6192 Forbidden: /api/facial-recognition/matches/60b33048-1010-4263-aae8-e76a4a526291/verify/
+WARNING 2026-02-27 16:59:41,161 log 19136 6192 Forbidden: /api/facial-recognition/matches/dbf0bf50-bdb2-4b0d-be92-02fdad465d0a/reject/
+WARNING 2026-02-27 16:59:50,888 log 19136 6192 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 16:59:51,608 views 19136 6192 Facial search completed in 3ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 16:59:52,244 views 19136 6192 Facial search completed in 3ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 16:59:52,921 views 19136 6192 Facial search completed in 3ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 16:59:52,933 log 19136 6192 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 16:59:53,675 log 19136 6192 Bad Request: /api/facial-recognition/search/
+WARNING 2026-02-27 16:59:54,931 log 19136 6192 Bad Request: /api/facial-recognition/search-sessions/29fd179e-d145-400f-9351-ea59b1ee6d9f/close/
+WARNING 2026-02-27 16:59:55,570 log 19136 6192 Bad Request: /api/facial-recognition/search-sessions/6cf867a6-18df-4cf4-901e-bbcc8edde6e4/close/
+INFO 2026-02-27 16:59:55,574 core 19136 6192 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 16:59:55,578 core 19136 6192 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 16:59:55,583 core 19136 6192 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 16:59:55,589 core 19136 6192 Group 'female' has no samples — skipping.
+INFO 2026-02-27 16:59:55,589 core 19136 6192 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 16:59:55,595 core 19136 6192 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 16:59:55,595 core 19136 6192 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 16:59:55,597 core 19136 6192 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 16:59:55,598 core 19136 6192 FNR 0.1667 exceeds 2% target
+ERROR 2026-02-27 16:59:55,618 auditor 19136 6192 Variance on 'by_gender': 29.00% exceeds 2% limit
+WARNING 2026-02-27 17:00:51,831 log 26640 4284 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-27 17:00:56,868 log 26640 4284 Forbidden: /api/facial-recognition/matches/ab542c85-a417-4958-812e-a107da004744/verify/
+WARNING 2026-02-27 17:00:58,357 log 26640 4284 Forbidden: /api/facial-recognition/matches/bcfbe98a-4063-410e-a217-9f54a3fe2ec4/reject/
+WARNING 2026-02-27 17:01:07,366 log 26640 4284 Unprocessable Content: /api/facial-recognition/search/
+INFO 2026-02-27 17:01:07,994 views 26640 4284 Facial search completed in 3ms. Candidates: 0. Best confidence: 0.0000
+INFO 2026-02-27 17:01:08,688 views 26640 4284 Facial search completed in 3ms. Candidates: 1. Best confidence: 1.0000
+INFO 2026-02-27 17:01:09,327 views 26640 4284 Facial search completed in 4ms. Candidates: 1. Best confidence: 0.9397
+WARNING 2026-02-27 17:01:09,340 log 26640 4284 Unauthorized: /api/facial-recognition/search/
+WARNING 2026-02-27 17:01:09,971 log 26640 4284 Bad Request: /api/facial-recognition/search/
+WARNING 2026-02-27 17:01:11,214 log 26640 4284 Bad Request: /api/facial-recognition/search-sessions/e8dbf145-4c1e-448d-80b4-709792ba96ad/close/
+WARNING 2026-02-27 17:01:11,969 log 26640 4284 Bad Request: /api/facial-recognition/search-sessions/6873edae-838c-4daa-8784-daae44af3c6e/close/
+INFO 2026-02-27 17:01:11,973 core 26640 4284 Demographic audit PASSED. Overall: 0.985. Variance: 0.010.
+ERROR 2026-02-27 17:01:11,977 core 26640 4284 BIAS ALERT — Group 'female': accuracy=0.940 (4.00% drop below threshold 0.98)
+ERROR 2026-02-27 17:01:11,981 core 26640 4284 BIAS ALERT — Group 'dark_skin': accuracy=0.940 (4.00% drop below threshold 0.98)
+WARNING 2026-02-27 17:01:11,988 core 26640 4284 Group 'female' has no samples — skipping.
+INFO 2026-02-27 17:01:11,988 core 26640 4284 Demographic audit PASSED. Overall: 0.980. Variance: 0.000.
+WARNING 2026-02-27 17:01:11,996 core 26640 4284 Accuracy 0.8000 below target 0.9800
+WARNING 2026-02-27 17:01:11,996 core 26640 4284 FPR 0.3333 exceeds 0.5% target
+WARNING 2026-02-27 17:01:11,999 core 26640 4284 Accuracy 0.9091 below target 0.9800
+WARNING 2026-02-27 17:01:12,000 core 26640 4284 FNR 0.1667 exceeds 2% target
+ERROR 2026-02-27 17:01:12,026 auditor 26640 4284 Variance on 'by_gender': 29.00% exceeds 2% limit
+INFO 2026-02-27 17:03:33,992 autoreload 16572 24180 Watching for file changes with StatReloader
+WARNING 2026-02-27 17:03:52,789 log 16572 10500 Not Found: /favicon.ico
+ERROR 2026-02-27 17:07:51,828 log 16572 5872 Internal Server Error: /api/facial-recognition/missing-persons/d834122c-13db-4036-a70f-900a1f3a4ec4/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 42, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 189, in upload_image
+    embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 65, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 45, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+WARNING 2026-02-28 02:06:10,584 log 7192 14300 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:06:11,589 log 7192 14300 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:06:12,670 log 7192 14300 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:06:14,845 log 7192 14300 Not Found: /api/facial-recognition/matches/9f108cd4-46c6-457f-8357-9637af848b95/verify/
+WARNING 2026-02-28 02:06:17,301 log 7192 14300 Not Found: /api/facial-recognition/matches/5267cddd-b28b-45de-bdd1-af98fd88a124/reject/
+ERROR 2026-02-28 02:06:19,609 log 7192 14300 Internal Server Error: /api/facial-recognition/matches/71de2354-9c05-4487-9408-3497e723ba60/verify/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 308, in verify
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+ERROR 2026-02-28 02:06:22,045 log 7192 14300 Internal Server Error: /api/facial-recognition/matches/6d97de30-6c28-4606-a477-0756021ce6b6/reject/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 325, in reject
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+WARNING 2026-02-28 02:07:34,805 log 8668 1524 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:07:41,063 log 8668 1524 Not Found: /api/facial-recognition/matches/724adb7e-7d99-43c4-a821-492e8781b3af/verify/
+WARNING 2026-02-28 02:07:44,194 log 8668 1524 Not Found: /api/facial-recognition/matches/ff2942f7-d5a1-42d7-ba53-1ac7e1cd9566/reject/
+ERROR 2026-02-28 02:07:47,568 log 8668 1524 Internal Server Error: /api/facial-recognition/matches/22815648-2316-41c3-92c3-ca5bf5d73b9f/verify/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 308, in verify
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+ERROR 2026-02-28 02:07:50,894 log 8668 1524 Internal Server Error: /api/facial-recognition/matches/307f5c92-6b77-4d7e-b1eb-8f817cb1926e/reject/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 325, in reject
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+WARNING 2026-02-28 02:10:16,848 log 3556 13316 Unauthorized: /api/facial-recognition/missing-persons/
+ERROR 2026-02-28 02:10:24,612 log 3556 13316 Internal Server Error: /api/facial-recognition/matches/6d6bcd93-635d-47d1-a8c7-e4165a0896b9/verify/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 327, in verify
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+ERROR 2026-02-28 02:10:27,567 log 3556 13316 Internal Server Error: /api/facial-recognition/matches/1d690ed4-1e29-4af2-9888-dd1ffded07c9/reject/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 344, in reject
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+WARNING 2026-02-28 02:10:59,941 log 25200 13408 Unauthorized: /api/facial-recognition/missing-persons/
+ERROR 2026-02-28 02:11:07,385 log 25200 13408 Internal Server Error: /api/facial-recognition/matches/c55758b1-46f9-4cab-af69-65107fa0ac5f/verify/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 327, in verify
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+ERROR 2026-02-28 02:11:09,727 log 25200 13408 Internal Server Error: /api/facial-recognition/matches/0c134fd3-b9d1-437d-9d8d-6fe690e721b8/reject/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 344, in reject
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+WARNING 2026-02-28 02:11:41,736 log 2948 2892 Unauthorized: /api/facial-recognition/missing-persons/
+ERROR 2026-02-28 02:11:48,939 log 2948 2892 Internal Server Error: /api/facial-recognition/matches/559ff52c-626a-4151-b4e6-5ae00f29e208/verify/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 327, in verify
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+ERROR 2026-02-28 02:11:51,852 log 2948 2892 Internal Server Error: /api/facial-recognition/matches/1a7bc8d3-2152-4499-a937-76291d9ddecb/reject/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 344, in reject
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+WARNING 2026-02-28 02:12:43,155 log 17044 10328 Unauthorized: /api/facial-recognition/missing-persons/
+ERROR 2026-02-28 02:12:51,360 log 17044 10328 Internal Server Error: /api/facial-recognition/matches/1cc70dff-a1ca-4320-8c31-ffebfcc8880f/verify/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 337, in verify
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+ERROR 2026-02-28 02:12:54,469 log 17044 10328 Internal Server Error: /api/facial-recognition/matches/1e45be5f-c999-46a9-8863-fcbb6fcefb74/reject/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\facial_recognition\views.py", line 354, in reject
+    if not user_perms['can_verify_matches']:
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'can_verify_matches'
+WARNING 2026-02-28 02:13:52,735 log 30088 31372 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:14:00,645 log 30088 31372 Forbidden: /api/facial-recognition/matches/f5b93cef-0c11-4cb2-a7cb-a5ec3a9ea90f/verify/
+WARNING 2026-02-28 02:14:02,371 log 30088 31372 Forbidden: /api/facial-recognition/matches/ee93a49f-de79-4748-ada2-ac954abd99d5/reject/
+INFO 2026-02-28 02:23:06,248 autoreload 27688 29872 Watching for file changes with StatReloader
+WARNING 2026-02-28 02:24:57,258 log 27688 22592 Method Not Allowed: /api/health/check/
+WARNING 2026-02-28 02:24:57,450 connection 27688 22592 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-02-28 02:25:03,534 log 27688 22592 Service Unavailable: /api/health/check/
+WARNING 2026-02-28 02:25:29,420 log 27688 22592 Not Found: /api/
+WARNING 2026-02-28 02:25:29,446 log 27688 22592 Not Found: /api/
+WARNING 2026-02-28 02:25:38,659 log 27688 22592 Method Not Allowed: /
+WARNING 2026-02-28 02:25:54,666 log 27688 20984 Not Found: /favicon.ico
+WARNING 2026-02-28 02:26:58,644 log 27688 6640 Not Found: /favicon.ico
+WARNING 2026-02-28 02:30:14,726 log 27688 14088 Not Found: /favicon.ico
+WARNING 2026-02-28 02:31:47,583 log 27688 20680 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:31:51,672 log 27688 20680 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:33:58,622 log 27688 28444 Not Found: /favicon.ico
+WARNING 2026-02-28 02:34:04,242 log 27688 20680 Bad Request: /api/facial-recognition/missing-persons/
+INFO 2026-02-28 02:35:50,625 autoreload 27688 29872 D:\SuraSmart_Project\backend\facial_recognition\serializers.py changed, reloading.
+INFO 2026-02-28 02:35:56,983 autoreload 18552 3140 Watching for file changes with StatReloader
+WARNING 2026-02-28 02:37:43,126 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:37:58,761 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:39:13,370 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:39:36,120 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:40:09,952 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:40:16,562 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:40:35,680 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:40:46,629 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:41:13,016 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:41:29,243 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:43:04,154 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:44:18,887 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:45:12,500 log 18552 11960 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:47:35,597 log 18552 11960 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 02:55:17,962 log 18552 23760 Bad Request: /api/facial-recognition/missing-persons/b9576732-f6dd-4f94-82cb-534c3f5e6b25/upload_image/
+WARNING 2026-02-28 03:05:57,157 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:06:04,433 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:06:22,294 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:06:31,187 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:06:38,664 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:07:13,397 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:07:38,599 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:08:23,797 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:09:10,625 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:09:23,741 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:09:40,679 log 18552 23432 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:11:10,643 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:11:52,418 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:13:53,006 log 18552 25716 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:17:25,961 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:17:47,636 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:22:39,651 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:22:48,882 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:24:04,535 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:24:39,669 log 18552 15944 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:25:56,592 log 18552 22644 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:27:00,513 log 18552 22644 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:27:08,978 log 18552 22644 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:28:34,387 log 18552 22644 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-02-28 03:28:59,745 log 18552 22644 Unauthorized: /api/facial-recognition/missing-persons/

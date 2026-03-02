@@ -1,0 +1,188 @@
+/* Results Page */
+.results-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--color-text-primary);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.results-header h1 {
+  font-size: 28px;
+  color: var(--color-text-primary);
+  flex: 1;
+  margin: 0;
+}
+
+.auto-refresh-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Person Info */
+.person-info {
+  background: var(--gradient-primary);
+  color: var(--color-text-inverse);
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.person-info h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+}
+
+.person-info p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+/* Processing Section */
+.processing-list {
+  display: grid;
+  gap: 16px;
+}
+
+.processing-item {
+  background: var(--color-bg-tertiary);
+  border-left: 4px solid var(--color-accent-primary);
+  padding: 16px;
+  border-radius: 6px;
+}
+
+.processing-item p {
+  margin: 0 0 8px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  animation: progress 1.5s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+/* Matches Grid */
+.section {
+  background: var(--color-bg-card);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--shadow-primary);
+  margin-bottom: 24px;
+}
+
+.section h3 {
+  font-size: 18px;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.match-card {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--color-bg-secondary);
+  position: relative;
+}
+
+.match-card.pending {
+  border-left: 4px solid var(--color-warning);
+}
+
+.match-card.verified {
+  border-left: 4px solid var(--color-success);
+  background: var(--color-success-bg);
+}
+
+.match-card.rejected {
+  border-left: 4px solid var(--color-danger);
+  background: var(--color-danger-bg);
+}
+
+.match-confidence {
+  display: inline-block;
+  background-color: var(--color-warning);
+  color: var(--color-text-inverse);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.match-confidence.verified-badge {
+  background-color: var(--color-success);
+}
+
+.match-card p {
+  font-size: 13px;
+  margin: 8px 0;
+  color: var(--color-text-secondary);
+}
+
+.match-card strong {
+  color: var(--color-text-primary);
+}
+
+.match-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-small {
+  padding: 8px 12px;
+  font-size: 12px;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .results-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .results-header button {
+    align-self: flex-start;
+  }
+
+  .matches-grid {
+    grid-template-columns: 1fr;
+  }
+}
