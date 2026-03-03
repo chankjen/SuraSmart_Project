@@ -1,0 +1,92 @@
+# k8s/base/configmap.yaml
+# Sura Smart - TRD Section 2.3: Infrastructure Configuration
+# TRD Section 6: Performance Requirements
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sura-smart-config
+  namespace: sura-smart
+  labels:
+    app: sura-smart
+    trd-compliance: "2.3"
+data:
+  # TRD 6.1.1: Search Completion Time
+  SEARCH_TIME_SLA: "30"
+  
+  # TRD 6.2.1: Face Matching Accuracy
+  MODEL_ACCURACY_THRESHOLD: "0.98"
+  
+  # TRD 6.2.2: False Positive Rate
+  FALSE_POSITIVE_THRESHOLD: "0.005"
+  
+  # TRD 6.2.3: False Negative Rate
+  FALSE_NEGATIVE_THRESHOLD: "0.02"
+  
+  # TRD 6.1.2: System Uptime
+  UPTIME_SLA: "99.95"
+  
+  # TRD 6.1.3: Concurrent Users
+  MAX_CONCURRENT_USERS: "10000"
+  
+  # TRD 6.1.4: Edge Connectivity
+  MIN_CONNECTIVITY_KBPS: "100"
+  
+  # TRD 6.2.4: Image Processing Time
+  IMAGE_PROCESSING_SLA: "5"
+  
+  # TRD 3.1.4: Bias Variance Threshold
+  BIAS_VARIANCE_THRESHOLD: "0.02"
+  
+  # TRD 5.2.2: Data Retention (days)
+  DATA_RETENTION_DAYS: "90"
+  
+  # TRD 10.4: Retraining Schedule
+  RETRAINING_SCHEDULE: "quarterly"
+  
+  # Application Settings
+  FLASK_ENV: "production"
+  LOG_LEVEL: "INFO"
+  PORT: "8000"
+  
+  # Database Configuration
+  DATABASE_POOL_SIZE: "20"
+  DATABASE_MAX_OVERFLOW: "10"
+  DATABASE_POOL_TIMEOUT: "30"
+  
+  # Redis Configuration
+  REDIS_MAX_CONNECTIONS: "50"
+  REDIS_SOCKET_TIMEOUT: "5"
+  
+  # TRD 4.3: Multilingual Support
+  DEFAULT_LANGUAGE: "en"
+  SUPPORTED_LANGUAGES: "en,es,fr,ar,zh,hi,pt,ru"
+  
+  # TRD 5.1.2: Blockchain Configuration
+  BLOCKCHAIN_NETWORK: "permissioned"
+  BLOCKCHAIN_CONSENSUS: "RAFT"
+  
+  # TRD 7.4: Monitoring
+  MONITORING_ENABLED: "true"
+  METRICS_PORT: "8000"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sura-smart-edge-config
+  namespace: sura-smart
+  labels:
+    app: sura-smart
+    component: edge-ai
+    trd-compliance: "4.3.1"
+data:
+  # TRD 4.3.1: Edge AI Processing
+  EDGE_MODEL_PATH: "/app/models/edge/model.tflite"
+  EDGE_CACHE_SIZE_MB: "500"
+  EDGE_SYNC_INTERVAL_SECONDS: "300"
+  EDGE_OFFLINE_MODE: "true"
+  
+  # TRD 6.1.4: Low Connectivity Support
+  SYNC_ON_CONNECTIVITY: "true"
+  MIN_BANDWIDTH_KBPS: "100"
+  CACHE_EXPIRY_HOURS: "24"

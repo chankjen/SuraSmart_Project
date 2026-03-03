@@ -1,0 +1,111 @@
+# k8s/monitoring/alertmanager-config.yaml
+# Sura Smart - TRD Section 7.4: Alerting & Incident Response
+# TRD 10.1: 24/7 Monitoring with Incident Response
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-config
+  namespace: sura-smart-monitoring
+  labels:
+    app: alertmanager
+    trd-compliance: "7.4"
+data:
+  alertmanager.yml: |
+    global:
+      resolve_timeout: 5m
+      smtp_smarthost: 'smtp.surasmart.com:587'
+      smtp_from: 'alerts@surasmart.com'
+      smtp_auth_username: 'alerts@surasmart.com'
+      smtp_auth_password: 'CHANGE_ME'
+    
+    # TRD 10.1: Incident Response Routing
+    route:
+      group_by: ['alertname', 'severity', 'trd-section']
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 4h
+      receiver: 'default-receiver'
+      routes:
+        # TRD 6.1.2: Critical Uptime Alerts
+        - match:
+            severity: critical
+          receiver: 'critical-team'
+          continue: true
+          group_wait: 10s
+          repeat_interval: 1h
+        
+        # TRD 5.1.2: Security Alerts
+        - match:
+            trd-section: "5.1.2"
+          receiver: 'security-team'
+          continue: true
+        
+        # TRD 6.2: AI Performance Alerts
+        - match:
+            trd-section: "6.2"
+          receiver: 'ml-team'
+          continue: true
+        
+        # TRD 6.1.4: Edge AI Alerts
+        - match:
+            trd-section: "6.1.4"
+          receiver: 'edge-team'
+    
+    # TRD 10.1: Response Team Receivers
+    receivers:
+      - name: 'default-receiver'
+        email_configs:
+          - to: 'devops@surasmart.com'
+            send_resolved: true
+        
+      - name: 'critical-team'
+        email_configs:
+          - to: 'critical-alerts@surasmart.com'
+            send_resolved: true
+        pagerduty_configs:
+          - service_key: 'CHANGE_ME_PAGERDUTY_KEY'
+            severity: critical
+        slack_configs:
+          - api_url: 'CHANGE_ME_SLACK_WEBHOOK'
+            channel: '#critical-alerts'
+            send_resolved: true
+        
+      - name: 'security-team'
+        email_configs:
+          - to: 'security@surasmart.com'
+            send_resolved: true
+        slack_configs:
+          - api_url: 'CHANGE_ME_SLACK_WEBHOOK'
+            channel: '#security-alerts'
+            send_resolved: true
+        
+      - name: 'ml-team'
+        email_configs:
+          - to: 'ml-engineering@surasmart.com'
+            send_resolved: true
+        slack_configs:
+          - api_url: 'CHANGE_ME_SLACK_WEBHOOK'
+            channel: '#ml-alerts'
+            send_resolved: true
+        
+      - name: 'edge-team'
+        email_configs:
+          - to: 'edge-engineering@surasmart.com'
+            send_resolved: true
+        slack_configs:
+          - api_url: 'CHANGE_ME_SLACK_WEBHOOK'
+            channel: '#edge-alerts'
+            send_resolved: true
+    
+    # TRD 10.1: Inhibition Rules
+    inhibit_rules:
+      - source_match:
+          severity: 'critical'
+        target_match:
+          severity: 'warning'
+        equal: ['alertname', 'instance']
+    
+    # TRD 10.5: Audit Log for Alerts
+    templates:
+      - '/etc/alertmanager/templates/*.tmpl'

@@ -1,0 +1,200 @@
+# k8s/monitoring/prometheus-config.yaml
+# Sura Smart - TRD Section 7.4: Monitoring (New Relic/Datadog)
+# TRD 6.1.2: 99.95% Availability Monitoring
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: sura-smart-monitoring
+  labels:
+    app: prometheus
+    trd-compliance: "7.4"
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+      external_labels:
+        cluster: 'sura-smart-production'
+        environment: 'production'
+    
+    # TRD 7.4: Alerting Configuration
+    alerting:
+      alertmanagers:
+        - static_configs:
+            - targets:
+              - alertmanager:9093
+    
+    # TRD 6.1.2: Uptime Monitoring Rules
+    rule_files:
+      - /etc/prometheus/rules/*.yml
+    
+    scrape_configs:
+      # Sura Smart Application Metrics
+      - job_name: 'sura-smart-app'
+        static_configs:
+          - targets: ['sura-smart-green-service:8000']
+        metrics_path: '/metrics'
+        scrape_interval: 10s
+        scrape_timeout: 5s
+        
+      # TRD 6.2: AI/ML Model Performance
+      - job_name: 'sura-smart-ai'
+        static_configs:
+          - targets: ['sura-smart-ai-service:8001']
+        metrics_path: '/ai-metrics'
+        scrape_interval: 30s
+        
+      # TRD 5.1.2: Blockchain Metrics
+      - job_name: 'sura-smart-blockchain'
+        static_configs:
+          - targets: ['blockchain-service:8545']
+        metrics_path: '/metrics'
+        scrape_interval: 60s
+        
+      # TRD 2.3: Infrastructure Metrics
+      - job_name: 'kubernetes-pods'
+        kubernetes_sd_configs:
+          - role: pod
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+            action: keep
+            regex: true
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+            action: replace
+            target_label: __metrics_path__
+            regex: (.+)
+          - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+            action: replace
+            regex: ([^:]+)(?::\d+)?;(\d+)
+            replacement: $1:$2
+            target_label: __address__
+        
+      # TRD 2.3.3: Database Metrics
+      - job_name: 'postgres'
+        static_configs:
+          - targets: ['postgres-exporter:9187']
+        scrape_interval: 30s
+        
+      # TRD 2.3.3: Redis Metrics
+      - job_name: 'redis'
+        static_configs:
+          - targets: ['redis-exporter:9121']
+        scrape_interval: 30s
+        
+      # TRD 6.1.3: Load Balancer Metrics
+      - job_name: 'nginx-ingress'
+        static_configs:
+          - targets: ['nginx-ingress-controller-metrics:10254']
+        scrape_interval: 15s
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-rules
+  namespace: sura-smart-monitoring
+  labels:
+    app: prometheus
+    trd-compliance: "7.4"
+data:
+  sura-smart-alerts.yml: |
+    groups:
+      - name: sura-smart-critical
+        interval: 30s
+        rules:
+          # TRD 6.1.2: Uptime Alert (99.95% SLA)
+          - alert: HighErrorRate
+            expr: sum(rate(http_requests_total{status=~"5.."}[5m])) / sum(rate(http_requests_total[5m])) > 0.0005
+            for: 5m
+            labels:
+              severity: critical
+              trd-section: "6.1.2"
+            annotations:
+              summary: "High error rate detected"
+              description: "Error rate is {{ $value | humanizePercentage }} (threshold: 0.05%)"
+              runbook_url: "https://runbooks.surasmart.com/high-error-rate"
+          
+          # TRD 6.1.1: Search Time SLA (< 30 seconds)
+          - alert: SearchLatencyHigh
+            expr: histogram_quantile(0.95, rate(search_duration_seconds_bucket[5m])) > 30
+            for: 5m
+            labels:
+              severity: critical
+              trd-section: "6.1.1"
+            annotations:
+              summary: "Search latency exceeds SLA"
+              description: "95th percentile search time is {{ $value }}s (threshold: 30s)"
+              runbook_url: "https://runbooks.surasmart.com/search-latency"
+          
+          # TRD 6.2.1: Model Accuracy Alert
+          - alert: ModelAccuracyLow
+            expr: model_accuracy < 0.98
+            for: 10m
+            labels:
+              severity: critical
+              trd-section: "6.2.1"
+            annotations:
+              summary: "AI model accuracy below threshold"
+              description: "Model accuracy is {{ $value | humanizePercentage }} (threshold: 98%)"
+              runbook_url: "https://runbooks.surasmart.com/model-accuracy"
+          
+          # TRD 6.1.3: Concurrent Users Capacity
+          - alert: HighConcurrentUsers
+            expr: active_users > 10000
+            for: 5m
+            labels:
+              severity: warning
+              trd-section: "6.1.3"
+            annotations:
+              summary: "High concurrent user count"
+              description: "Active users: {{ $value }} (threshold: 10,000)"
+              runbook_url: "https://runbooks.surasmart.com/high-traffic"
+          
+          # TRD 5.1.2: Blockchain Audit Failures
+          - alert: BlockchainAuditFailures
+            expr: rate(blockchain_audit_failures_total[5m]) > 0.01
+            for: 5m
+            labels:
+              severity: critical
+              trd-section: "5.1.2"
+            annotations:
+              summary: "Blockchain audit logging failures"
+              description: "Audit failure rate: {{ $value }}/s"
+              runbook_url: "https://runbooks.surasmart.com/blockchain-audit"
+          
+          # TRD 6.1.4: Edge Sync Failures
+          - alert: EdgeSyncFailures
+            expr: rate(edge_sync_failures_total[5m]) > 0.1
+            for: 10m
+            labels:
+              severity: warning
+              trd-section: "6.1.4"
+            annotations:
+              summary: "Edge device sync failures"
+              description: "Edge sync failure rate: {{ $value }}/s"
+              runbook_url: "https://runbooks.surasmart.com/edge-sync"
+          
+          # TRD 2.3: Pod Restarts
+          - alert: PodCrashLooping
+            expr: rate(kube_pod_container_status_restarts_total[15m]) > 0
+            for: 5m
+            labels:
+              severity: warning
+              trd-section: "2.3"
+            annotations:
+              summary: "Pod is crash looping"
+              description: "Pod {{ $labels.pod }} is restarting frequently"
+              runbook_url: "https://runbooks.surasmart.com/pod-restart"
+          
+          # TRD 2.3.3: Database Connection Pool
+          - alert: DatabaseConnectionPoolExhausted
+            expr: database_connection_pool_available / database_connection_pool_total < 0.1
+            for: 5m
+            labels:
+              severity: critical
+              trd-section: "2.3.3"
+            annotations:
+              summary: "Database connection pool nearly exhausted"
+              description: "Only {{ $value | humanizePercentage }} connections available"
+              runbook_url: "https://runbooks.surasmart.com/db-pool"

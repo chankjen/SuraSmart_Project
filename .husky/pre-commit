@@ -1,0 +1,57 @@
+#!/usr/bin/env sh
+# .husky/pre-commit
+# Sura Smart - TRD Section 7.2: Code Quality Gates
+# TRD Section 5.1.4: Security Audits
+
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Running Sura Smart Pre-commit Checks..."
+
+# Stage 1: Linting
+echo "📝 Running linters..."
+npm run lint 2>/dev/null || python -m flake8 sura_smart/ --max-line-length=120 --exclude=venv,__pycache__
+if [ $? -ne 0 ]; then
+    echo "❌ Linting failed!"
+    exit 1
+fi
+
+# Stage 2: Type Checking
+echo "🔍 Running type checker..."
+python -m mypy sura_smart/ --ignore-missing-imports --exclude=venv
+if [ $? -ne 0 ]; then
+    echo "⚠️  Type checking warnings found (non-blocking)"
+fi
+
+# Stage 3: Security Scan
+echo "🔒 Running security scan..."
+python -m bandit -r sura_smart/ -ll --exclude=venv,tests
+if [ $? -ne 0 ]; then
+    echo "❌ Security issues found!"
+    exit 1
+fi
+
+# Stage 4: Test Critical Paths
+echo "🧪 Running critical tests..."
+python -m pytest sura_smart/tests/unit/test_security.py -v --tb=short
+if [ $? -ne 0 ]; then
+    echo "❌ Critical security tests failed!"
+    exit 1
+fi
+
+# Stage 5: Check for Secrets
+echo "🔐 Checking for exposed secrets..."
+if grep -r "password\|secret\|api_key\|token" --include="*.py" --include="*.js" --include="*.yaml" sura_smart/ | grep -v "example\|template\|#" | grep -v "os.environ\|os.getenv"; then
+    echo "❌ Potential secrets found in code!"
+    exit 1
+fi
+
+# Stage 6: Format Check
+echo "✨ Checking code format..."
+python -m black sura_smart/ --check --exclude=venv
+if [ $? -ne 0 ]; then
+    echo "⚠️  Code formatting issues found. Running black..."
+    python -m black sura_smart/ --exclude=venv
+fi
+
+echo "✅ All pre-commit checks passed!"
+exit 0

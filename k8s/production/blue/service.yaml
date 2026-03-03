@@ -1,0 +1,55 @@
+# k8s/production/blue/service.yaml
+# Sura Smart - TRD Section 7.3: Blue-Green Deployment
+# TRD Section 6.1.2: Zero Downtime Deployments
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sura-smart-blue-service
+  namespace: sura-smart
+  labels:
+    app: sura-smart
+    version: blue
+    deployment-strategy: blue-green
+    trd-compliance: "7.3"
+  annotations:
+    description: "Sura Smart Blue Environment Service"
+    trd-section: "7.3 - Blue-Green Deployment"
+spec:
+  type: ClusterIP
+  selector:
+    app: sura-smart
+    version: blue
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8000
+    - name: metrics
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sura-smart-blue-internal
+  namespace: sura-smart
+  labels:
+    app: sura-smart
+    version: blue
+    internal: "true"
+spec:
+  type: ClusterIP
+  selector:
+    app: sura-smart
+    version: blue
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000

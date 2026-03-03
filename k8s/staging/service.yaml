@@ -1,0 +1,46 @@
+# k8s/production/staging/service.yaml
+# Sura Smart - TRD Section 7.3: Staging Environment
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: sura-smart-staging-service
+  namespace: sura-smart-staging
+  labels:
+    app: sura-smart
+    environment: staging
+    trd-compliance: "7.3"
+spec:
+  type: ClusterIP
+  selector:
+    app: sura-smart
+    environment: staging
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8000
+    - name: metrics
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sura-smart-staging-internal
+  namespace: sura-smart-staging
+  labels:
+    app: sura-smart
+    environment: staging
+    internal: "true"
+spec:
+  type: ClusterIP
+  selector:
+    app: sura-smart
+    environment: staging
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000

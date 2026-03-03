@@ -1,0 +1,43 @@
+# k8s/base/namespace.yaml
+# Sura Smart - TRD Section 2.3: Infrastructure (Kubernetes)
+# TRD Section 6.1.2: 99.95% Availability
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sura-smart
+  labels:
+    app: sura-smart
+    version: "1.0"
+    environment: production
+    trd-compliance: "2.3"
+    security-level: high
+  annotations:
+    description: "Sura Smart Missing Persons Search Platform"
+    contact: "devops@surasmart.com"
+    trd-section: "2.3 - Infrastructure"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sura-smart-staging
+  labels:
+    app: sura-smart
+    version: "1.0"
+    environment: staging
+    trd-compliance: "7.3"
+  annotations:
+    description: "Sura Smart Staging Environment"
+    contact: "devops@surasmart.com"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sura-smart-monitoring
+  labels:
+    app: sura-smart
+    component: monitoring
+    trd-compliance: "7.4"
+  annotations:
+    description: "Sura Smart Monitoring Stack (TRD 7.4)"
+    contact: "devops@surasmart.com"

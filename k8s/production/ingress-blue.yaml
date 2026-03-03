@@ -1,0 +1,100 @@
+# k8s/production/green/ingress-blue.yaml
+# Sura Smart - TRD Section 7.3: Blue-Green Traffic Switching
+# TRD Section 6.1.2: Zero Downtime Deployments
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sura-smart-ingress-blue
+  namespace: sura-smart
+  labels:
+    app: sura-smart
+    version: blue
+    deployment-strategy: blue-green
+    trd-compliance: "7.3"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "0"  # 0% traffic to blue (standby)
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"  # TRD 6.1.1: <30s
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.ingress.kubernetes.io/rate-limit: "1000"
+    nginx.ingress.kubernetes.io/rate-limit-window: "1m"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    trd-section: "7.3 - Blue-Green Deployment"
+spec:
+  tls:
+    - hosts:
+        - api.surasmart.com
+        - app.surasmart.com
+      secretName: sura-smart-tls
+  rules:
+    - host: api.surasmart.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sura-smart-blue-service
+                port:
+                  number: 80
+    - host: app.surasmart.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sura-smart-blue-service
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sura-smart-ingress-green
+  namespace: sura-smart
+  labels:
+    app: sura-smart
+    version: green
+    deployment-strategy: blue-green
+    trd-compliance: "7.3"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/canary: "false"
+    nginx.ingress.kubernetes.io/canary-weight: "100"  # 100% traffic to green (active)
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+    - hosts:
+        - api.surasmart.com
+        - app.surasmart.com
+      secretName: sura-smart-tls
+  rules:
+    - host: api.surasmart.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sura-smart-green-service
+                port:
+                  number: 80
+    - host: app.surasmart.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sura-smart-green-service
+                port:
+                  number: 80

@@ -1,0 +1,45 @@
+# k8s/production/staging/ingress.yaml
+# Sura Smart - TRD Section 7.3: Staging Ingress
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sura-smart-staging-ingress
+  namespace: sura-smart-staging
+  labels:
+    app: sura-smart
+    environment: staging
+    trd-compliance: "7.3"
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+    - hosts:
+        - staging-api.surasmart.com
+        - staging-app.surasmart.com
+      secretName: sura-smart-staging-tls
+  rules:
+    - host: staging-api.surasmart.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sura-smart-staging-service
+                port:
+                  number: 80
+    - host: staging-app.surasmart.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sura-smart-staging-service
+                port:
+                  number: 80

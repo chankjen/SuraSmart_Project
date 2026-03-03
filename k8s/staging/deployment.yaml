@@ -1,0 +1,85 @@
+# k8s/production/staging/deployment.yaml
+# Sura Smart - TRD Section 7.3: Staging Environment
+# TRD Section 7.2: CI/CD Pipeline Validation
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sura-smart-staging
+  namespace: sura-smart-staging
+  labels:
+    app: sura-smart
+    environment: staging
+    trd-compliance: "7.3"
+  annotations:
+    description: "Sura Smart Staging Environment"
+    trd-section: "7.3 - Staging Deployment"
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: sura-smart
+      environment: staging
+  template:
+    metadata:
+      labels:
+        app: sura-smart
+        environment: staging
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+      containers:
+        - name: sura-smart-app
+          image: ghcr.io/sura-smart/sura-smart:staging
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: FLASK_ENV
+              value: "staging"
+            - name: SEARCH_TIME_SLA
+              valueFrom:
+                configMapKeyRef:
+                  name: sura-smart-config
+                  key: SEARCH_TIME_SLA
+          envFrom:
+            - secretRef:
+                name: sura-smart-staging-secrets
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+          volumeMounts:
+            - name: model-storage
+              mountPath: /app/models
+              readOnly: true
+      volumes:
+        - name: model-storage
+          persistentVolumeClaim:
+            claimName: sura-smart-staging-model-pvc
+      imagePullSecrets:
+        - name: ghcr-credentials

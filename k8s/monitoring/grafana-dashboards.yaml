@@ -1,0 +1,172 @@
+# k8s/monitoring/grafana-dashboards.yaml
+# Sura Smart - TRD Section 7.4: Monitoring & Visualization
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  namespace: sura-smart-monitoring
+  labels:
+    app: grafana
+    trd-compliance: "7.4"
+data:
+  sura-smart-overview.json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "Sura Smart - System Overview",
+        "tags": ["sura-smart", "production"],
+        "timezone": "browser",
+        "panels": [
+          {
+            "id": 1,
+            "title": "System Uptime (TRD 6.1.2: 99.95%)",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "avg(up{job='sura-smart-app'}) * 100",
+                "legendFormat": "Uptime %"
+              }
+            ],
+            "thresholds": [
+              {"value": 99.95, "color": "green"},
+              {"value": 99.9, "color": "yellow"},
+              {"value": 0, "color": "red"}
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Search Latency P95 (TRD 6.1.1: <30s)",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "histogram_quantile(0.95, rate(search_duration_seconds_bucket[5m]))",
+                "legendFormat": "P95 Latency"
+              }
+            ],
+            "thresholds": [
+              {"value": 30, "color": "red"}
+            ]
+          },
+          {
+            "id": 3,
+            "title": "AI Model Accuracy (TRD 6.2.1: >98%)",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "model_accuracy * 100",
+                "legendFormat": "Accuracy %"
+              }
+            ],
+            "thresholds": [
+              {"value": 98, "color": "green"},
+              {"value": 95, "color": "yellow"},
+              {"value": 0, "color": "red"}
+            ]
+          },
+          {
+            "id": 4,
+            "title": "Active Users (TRD 6.1.3: 10,000)",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "active_users",
+                "legendFormat": "Concurrent Users"
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "title": "False Positive Rate (TRD 6.2.2: <0.5%)",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "false_positive_rate * 100",
+                "legendFormat": "FP Rate %"
+              }
+            ],
+            "thresholds": [
+              {"value": 0.5, "color": "red"}
+            ]
+          },
+          {
+            "id": 6,
+            "title": "False Negative Rate (TRD 6.2.3: <2%)",
+            "type": "stat",
+            "targets": [
+              {
+                "expr": "false_negative_rate * 100",
+                "legendFormat": "FN Rate %"
+              }
+            ],
+            "thresholds": [
+              {"value": 2, "color": "red"}
+            ]
+          },
+          {
+            "id": 7,
+            "title": "Blockchain Audit Logs",
+            "type": "graph",
+            "targets": [
+              {
+                "expr": "rate(blockchain_audit_logs_total[5m])",
+                "legendFormat": "Audit Logs/sec"
+              }
+            ]
+          },
+          {
+            "id": 8,
+            "title": "Edge Device Sync Status (TRD 6.1.4)",
+            "type": "table",
+            "targets": [
+              {
+                "expr": "edge_sync_status",
+                "legendFormat": "Sync Status"
+              }
+            ]
+          }
+        ],
+        "time": {
+          "from": "now-1h",
+          "to": "now"
+        },
+        "refresh": "30s"
+      }
+    }
+  sura-smart-ai-performance.json: |
+    {
+      "dashboard": {
+        "id": null,
+        "title": "Sura Smart - AI/ML Performance (TRD 3 & 6.2)",
+        "tags": ["sura-smart", "ai-ml"],
+        "panels": [
+          {
+            "title": "Model Accuracy by Demographic (TRD 3.1.4)",
+            "type": "graph",
+            "targets": [
+              {"expr": "model_accuracy{demographic='male'}", "legendFormat": "Male"},
+              {"expr": "model_accuracy{demographic='female'}", "legendFormat": "Female"},
+              {"expr": "model_accuracy{demographic='dark_skin'}", "legendFormat": "Dark Skin"},
+              {"expr": "model_accuracy{demographic='light_skin'}", "legendFormat": "Light Skin"}
+            ]
+          },
+          {
+            "title": "Bias Variance (TRD 3.1.4: <2%)",
+            "type": "stat",
+            "targets": [
+              {"expr": "bias_variance * 100", "legendFormat": "Variance %"}
+            ],
+            "thresholds": [
+              {"value": 2, "color": "red"}
+            ]
+          },
+          {
+            "title": "Image Processing Time (TRD 6.2.4: <5s)",
+            "type": "graph",
+            "targets": [
+              {"expr": "histogram_quantile(0.95, rate(image_processing_seconds_bucket[5m]))", "legendFormat": "P95 Processing Time"}
+            ]
+          }
+        ]
+      }
+    }
