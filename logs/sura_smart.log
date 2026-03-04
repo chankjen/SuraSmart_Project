@@ -868,3 +868,9 @@ WARNING 2026-02-28 03:27:00,513 log 18552 22644 Bad Request: /api/facial-recogni
 WARNING 2026-02-28 03:27:08,978 log 18552 22644 Bad Request: /api/facial-recognition/missing-persons/
 WARNING 2026-02-28 03:28:34,387 log 18552 22644 Bad Request: /api/facial-recognition/missing-persons/
 WARNING 2026-02-28 03:28:59,745 log 18552 22644 Unauthorized: /api/facial-recognition/missing-persons/
+INFO 2026-03-03 16:40:31,480 autoreload 21192 18620 Watching for file changes with StatReloader
+WARNING 2026-03-03 16:42:27,083 log 14096 11400 Not Found: /favicon.ico
+WARNING 2026-03-03 16:45:00,660 log 14096 7984 Not Found: /favicon.ico
+WARNING 2026-03-03 19:17:44,646 log 14096 19344 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-03 19:17:44,666 log 14096 13160 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-03 20:07:43,997 log 14096 20492 Not Found: /favicon.ico

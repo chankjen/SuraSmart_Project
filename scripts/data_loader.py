@@ -13,7 +13,8 @@ import numpy as np
 class VGGFace2Loader:
     def __init__(self, data_path='data/vgg_face2'):
         self.data_path = Path(data_path)
-        self.samples_path = self.data_path / 'samples'
+        # Updated to point to the correct nested samples directory
+        self.samples_path = self.data_path / 'samples' / 'loose_crop (release version)'
         self.attributes_path = self.data_path / 'attributes'
         
     def load_metadata(self):
@@ -38,6 +39,28 @@ class VGGFace2Loader:
             return identities.merge(gender, on='filename')
         
         return identities
+
+    def get_all_samples(self):
+        """
+        Retrieves all valid image samples from the VGGFace2 dataset.
+        Returns a list of dictionaries with image path and identity ID.
+        """
+        samples = []
+        if not self.samples_path.exists():
+            print(f"Warning: Samples directory not found at {self.samples_path}")
+            return samples
+
+        # Iterate through identity directories
+        for identity_dir in self.samples_path.iterdir():
+            if identity_dir.is_dir():
+                identity_id = identity_dir.name
+                for img_file in identity_dir.glob('*.jpg'):
+                    samples.append({
+                        'abs_path': str(img_file.absolute()),
+                        'identity_id': identity_id,
+                        'filename': img_file.name
+                    })
+        return samples
     
     def load_image_batch(self, filenames, target_size=(224, 224)):
         """
@@ -46,7 +69,15 @@ class VGGFace2Loader:
         """
         images = []
         for filename in filenames:
+            # Check if filename is just the name or includes the identity dir
+            # If it's just the name, this might fail unless we search or assume structure
             img_path = self.samples_path / filename
+            if not img_path.exists():
+                # Try finding it in subdirs if not found directly
+                for p in self.samples_path.glob(f'**/{filename}'):
+                    img_path = p
+                    break
+
             if img_path.exists():
                 img = load_img(img_path, target_size=target_size)
                 img_array = img_to_array(img)
