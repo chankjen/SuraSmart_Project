@@ -7,14 +7,12 @@ import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/DashboardNew';
 import FamilyDashboard from './pages/FamilyDashboard';
 import PoliceDashboard from './pages/PoliceDashboard';
 import GovernmentDashboard from './pages/GovernmentDashboard';
 import ReportMissingPerson from './pages/ReportMissingPerson';
 import UploadImage from './pages/UploadImage';
 import Results from './pages/Results';
-import RoleSelector from './pages/RoleSelector';
 import FacialRecognitionSearch from './pages/FacialRecognitionSearch';
 import FacialRecognitionResults from './pages/FacialRecognitionResults';
 
@@ -46,14 +44,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          <Route
-            path="/role-selector"
-            element={
-              <PrivateRoute>
-                <RoleSelector />
-              </PrivateRoute>
-            }
-          />
+
 
           <Route
             path="/facial-search"
@@ -82,14 +73,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+
 
           <Route
             path="/family-dashboard"

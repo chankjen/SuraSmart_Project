@@ -181,6 +181,31 @@ class ApiClient {
     return this.api.post(`/auth/users/${userId}/verify/`);
   }
 
+  // Workflow actions
+  raiseCase(id) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/raise_case/`);
+  }
+
+  submitPoliceReport(id, report) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/submit_police_report/`, { report });
+  }
+
+  escalateCase(id) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/escalate_case/`);
+  }
+
+  approveEscalation(id) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/approve_escalation/`);
+  }
+
+  submitGovernmentReport(id, report) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/submit_government_report/`, { report });
+  }
+
+  forwardForClosure(id) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/forward_for_closure/`);
+  }
+
   // Case management endpoints
   updateCaseStatus(caseId, status) {
     return this.api.patch(`/facial-recognition/missing-persons/${caseId}/`, { status });

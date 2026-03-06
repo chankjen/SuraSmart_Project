@@ -103,16 +103,57 @@ const Results = () => {
       </div>
 
       <div className="person-info">
-        <h2>{missingPerson?.full_name}</h2>
-        <p>Status: <span className={`status-badge status-${missingPerson?.status}`}>
-          {missingPerson?.status?.toUpperCase()}
-        </span></p>
-        {missingPerson?.description && (
-          <p><strong>Description:</strong> {missingPerson.description}</p>
-        )}
-        {missingPerson?.last_seen_location && (
-          <p><strong>Last Seen:</strong> {missingPerson.last_seen_location}</p>
-        )}
+        <div className="person-details-main">
+          <h2>{missingPerson?.full_name}</h2>
+          <p>Status: <span className={`status-badge status-${missingPerson?.status}`}>
+            {missingPerson?.status?.toUpperCase()}
+          </span></p>
+          {missingPerson?.description && (
+            <p><strong>Description:</strong> {missingPerson.description}</p>
+          )}
+          {missingPerson?.last_seen_location && (
+            <p><strong>Last Seen:</strong> {missingPerson.last_seen_location}</p>
+          )}
+
+          {/* Analysis Reports */}
+          {missingPerson?.police_analysis_report && (
+            <div className="report-box police-report">
+              <h3>Police Match Analysis Report</h3>
+              <p>{missingPerson.police_analysis_report}</p>
+            </div>
+          )}
+          {missingPerson?.government_analysis_report && (
+            <div className="report-box government-report">
+              <h3>Government Analysis Report</h3>
+              <p>{missingPerson.government_analysis_report}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Uploaded Photos */}
+        <div className="person-photos">
+          <h3>Family Uploaded Photos</h3>
+          <div className="photos-grid">
+            {missingPerson?.facial_recognition_images?.map(img => (
+              <div key={img.id} className="photo-card">
+                <img src={img.image_file} alt="Missing Person" className="missing-img-preview" />
+                {img.is_primary && <span className="primary-badge">Primary</span>}
+              </div>
+            ))}
+            {(!missingPerson?.facial_recognition_images || missingPerson.facial_recognition_images.length === 0) && (
+              <p className="no-photos">No photos uploaded yet.</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="results-action-bar">
+        <button
+          onClick={() => navigate(`/facial-search/${missingPersonId}`)}
+          className="btn-primary"
+        >
+          🔍 Rerun Facial Search
+        </button>
       </div>
 
       {processingItems.length > 0 && (

@@ -57,8 +57,12 @@ const RoleSelector = () => {
     setLoading(true);
     try {
       await selectRole(selectedRole);
-      // After role selection, go to facial recognition search
-      navigate('/facial-search');
+      const dashboardRoutes = {
+        'family_member': '/family-dashboard',
+        'police_officer': '/police-dashboard',
+        'government_official': '/government-dashboard'
+      };
+      navigate(dashboardRoutes[selectedRole]);
     } catch (err) {
       console.error('Error selecting role:', err);
       alert('Failed to select role. Please try again.');

@@ -77,8 +77,8 @@ const FacialRecognitionSearch = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
 
-    if (!missingPerson) {
-      setError('Missing person data not loaded');
+    if (!selectedFile) {
+      setError('Please select an image file to search');
       return;
     }
 
@@ -86,63 +86,26 @@ const FacialRecognitionSearch = () => {
     setLoading(true);
 
     try {
-      // Perform database search based on missing person details
-      const response = await api.searchMissingPersons({
-        name: missingPerson.full_name,
-        age: missingPerson.age,
-        gender: missingPerson.gender,
-        location: missingPerson.last_seen_location,
-        description: missingPerson.description
+      // Perform actual AI facial recognition search
+      const response = await api.searchFacialRecognition(selectedFile);
+      const searchData = response.data;
+
+      // Navigate to results page with the AI match data
+      navigate('/facial-results', {
+        state: {
+          results: searchData.match ? [searchData.match] : [],
+          uploadedImage: preview,
+          hasMatch: searchData.match_found,
+          message: searchData.message,
+          searchSessionId: searchData.search_session_id,
+          missingPersonId: missingPersonId // Pass if we are in a specific case context
+        }
       });
-
-      const matches = response.data || [];
-
-      // Filter matches based on criteria (at least 2 matching components)
-      const filteredMatches = matches.filter(match => {
-        let matchScore = 0;
-
-        // Name match (partial or full)
-        if (match.full_name && missingPerson.full_name) {
-          const nameMatch = match.full_name.toLowerCase().includes(missingPerson.full_name.toLowerCase()) ||
-            missingPerson.full_name.toLowerCase().includes(match.full_name.toLowerCase());
-          if (nameMatch) matchScore += 1;
-        }
-
-        // Age match (within 5 years)
-        if (match.age && missingPerson.age) {
-          const ageDiff = Math.abs(parseInt(match.age) - parseInt(missingPerson.age));
-          if (ageDiff <= 5) matchScore += 1;
-        }
-
-        // Gender match
-        if (match.gender && missingPerson.gender &&
-          match.gender.toLowerCase() === missingPerson.gender.toLowerCase()) {
-          matchScore += 1;
-        }
-
-        // Location match
-        if (match.last_seen_location && missingPerson.last_seen_location) {
-          const locationMatch = match.last_seen_location.toLowerCase().includes(missingPerson.last_seen_location.toLowerCase()) ||
-            missingPerson.last_seen_location.toLowerCase().includes(match.last_seen_location.toLowerCase());
-          if (locationMatch) matchScore += 0.5;
-        }
-
-        return matchScore >= 2; // At least 2 matching components
-      });
-
-      setSearchResults(filteredMatches);
-      setSearchPerformed(true);
-
-      // If no matches found, show "zoom case" option
-      if (filteredMatches.length === 0) {
-        setError('No matches found. Consider zooming the case for more details.');
-      }
 
     } catch (err) {
       console.error('Search error:', err);
-      const errorMessage = err.response?.data?.detail || 'Failed to search database. Please try again.';
+      const errorMessage = err.response?.data?.error || err.response?.data?.detail || 'Failed to perform facial search. Please try again.';
       setError(errorMessage);
-      setSearchPerformed(true);
     } finally {
       setLoading(false);
     }

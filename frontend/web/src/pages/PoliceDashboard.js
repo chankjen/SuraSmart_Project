@@ -24,9 +24,9 @@ const PoliceDashboard = () => {
 
       setStats({
         totalCases: results.length,
-        activeCases: results.filter(c => ['REPORTED', 'UNDER_INVESTIGATION'].includes(c.status)).length,
+        activeCases: results.filter(c => ['REPORTED', 'RAISED', 'UNDER_INVESTIGATION', 'ANALYZED'].includes(c.status)).length,
         resolvedCases: results.filter(c => c.status === 'CLOSED').length,
-        pendingVerification: results.filter(c => c.status === 'MATCH_FOUND').length
+        pendingVerification: results.filter(c => ['MATCH_FOUND', 'PENDING_CLOSURE', 'ESCALATED'].includes(c.status)).length
       });
     } catch (error) {
       console.error('Error fetching cases:', error);
@@ -139,7 +139,11 @@ const PoliceDashboard = () => {
                       className="status-select"
                     >
                       <option value="REPORTED">Reported</option>
+                      <option value="RAISED">Raised to Police</option>
                       <option value="UNDER_INVESTIGATION">Investigating</option>
+                      <option value="ANALYZED">Analyzed</option>
+                      <option value="ESCALATED">Escalated</option>
+                      <option value="GOVERNMENT_REVIEW">Gov Review</option>
                       <option value="MATCH_FOUND">Match Found</option>
                       <option value="PENDING_CLOSURE">Pending Closure</option>
                       <option value="CLOSED">Closed</option>

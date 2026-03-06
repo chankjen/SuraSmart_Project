@@ -49,15 +49,14 @@ const Login = () => {
     setError(null);
 
     try {
-      await login(formData.username, formData.password);
-      // Navigate based on role
-      const roleRoutes = {
+      const user = await login(formData.username, formData.password);
+      const dashboardRoutes = {
         'family_member': '/family-dashboard',
         'police_officer': '/police-dashboard',
-        'government_official': '/government-dashboard',
-        'admin': '/admin-dashboard',
+        'government_official': '/government-dashboard'
       };
-      navigate(roleRoutes[formData.role] || '/dashboard');
+      const userRole = user?.role || formData.role;
+      navigate(dashboardRoutes[userRole] || '/');
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please try again.');
     } finally {
@@ -135,18 +134,15 @@ const Login = () => {
 
     try {
       const user = await login(demoUser.username, demoUser.password);
-      const userRole = user?.role || 'family_member';
-
-      const roleRoutes = {
+      const dashboardRoutes = {
         'family_member': '/family-dashboard',
         'police_officer': '/police-dashboard',
-        'government_official': '/government-dashboard',
-        'admin': '/admin-dashboard',
+        'government_official': '/government-dashboard'
       };
+      const userRole = user?.role || roleMapping[demoUser.role];
 
-      // Small delay to ensure state is updated
       setTimeout(() => {
-        navigate(roleRoutes[userRole] || '/dashboard');
+        navigate(dashboardRoutes[userRole] || '/');
       }, 100);
     } catch (err) {
       console.error('Login failed:', err);

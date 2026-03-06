@@ -34,8 +34,8 @@ const GovernmentDashboard = () => {
 
       setStats({
         totalCases: casesData.length,
-        activeCases: casesData.filter(c => c.status === 'searching').length,
-        resolvedCases: casesData.filter(c => c.status === 'found').length,
+        activeCases: casesData.filter(c => ['REPORTED', 'RAISED', 'UNDER_INVESTIGATION', 'ANALYZED', 'GOVERNMENT_REVIEW'].includes(c.status)).length,
+        resolvedCases: casesData.filter(c => c.status === 'CLOSED').length,
         totalUsers: usersData.length,
         verifiedUsers: usersData.filter(u => u.is_verified).length,
         unverifiedUsers: usersData.filter(u => !u.is_verified).length
@@ -168,10 +168,14 @@ const GovernmentDashboard = () => {
                       onChange={(e) => updateCaseStatus(caseItem.id, e.target.value)}
                       className="status-select"
                     >
-                      <option value="searching">Searching</option>
-                      <option value="pending_verification">Pending Verification</option>
-                      <option value="found">Found</option>
-                      <option value="closed">Closed</option>
+                      <option value="REPORTED">Reported</option>
+                      <option value="RAISED">Raised</option>
+                      <option value="UNDER_INVESTIGATION">Investigating</option>
+                      <option value="ANALYZED">Analyzed</option>
+                      <option value="ESCALATED">Escalated</option>
+                      <option value="GOVERNMENT_REVIEW">Gov Review</option>
+                      <option value="MATCH_FOUND">Match Found</option>
+                      <option value="CLOSED">Closed</option>
                     </select>
                   </p>
                   <p><strong>Reported:</strong> {new Date(caseItem.date_reported).toLocaleDateString()}</p>
@@ -179,6 +183,15 @@ const GovernmentDashboard = () => {
                     <Link to={`/results/${caseItem.id}`} className="btn-secondary">
                       View Details
                     </Link>
+                    {caseItem.status === 'ESCALATED' && (
+                      <button
+                        onClick={() => handleApproveEscalation(caseItem.id, navigate)}
+                        className="btn-primary"
+                        style={{ marginLeft: '10px' }}
+                      >
+                        Approve & Review
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}
@@ -210,6 +223,18 @@ const GovernmentDashboard = () => {
       </div>
     </div>
   );
+};
+
+const handleApproveEscalation = async (id, navigate) => {
+  if (!window.confirm('Are you sure you want to approve this case for government review?')) return;
+  try {
+    await api.approveEscalation(id);
+    alert('Case approved for review. Redirecting to facial recognition search...');
+    navigate(`/facial-search/${id}`);
+  } catch (error) {
+    console.error('Error approving escalation:', error);
+    alert('Failed to approve escalation.');
+  }
 };
 
 export default GovernmentDashboard;

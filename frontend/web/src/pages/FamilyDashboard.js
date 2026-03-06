@@ -120,6 +120,24 @@ const FamilyDashboard = () => {
                     <Link to={`/results/${caseItem.id}`} className="btn-secondary">
                       View Details
                     </Link>
+                    {caseItem.status === 'REPORTED' && (
+                      <button
+                        onClick={() => handleRaiseCase(caseItem.id)}
+                        className="btn-primary"
+                        style={{ marginLeft: '10px' }}
+                      >
+                        Raise to Police
+                      </button>
+                    )}
+                    {caseItem.status === 'PENDING_CLOSURE' && (
+                      <button
+                        onClick={() => handleApproveClosure(caseItem.id)}
+                        className="btn-success"
+                        style={{ marginLeft: '10px' }}
+                      >
+                        Approve Closure
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}
@@ -129,6 +147,32 @@ const FamilyDashboard = () => {
       </div>
     </div>
   );
+};
+
+// Helper functions for FamilyDashboard
+const handleRaiseCase = async (id, fetchCases) => {
+  if (!window.confirm('Are you sure you want to raise this case to the police?')) return;
+  try {
+    await api.raiseCase(id);
+    alert('Case successfully raised to the police.');
+    window.location.reload(); // Refresh to update status
+  } catch (error) {
+    console.error('Error raising case:', error);
+    alert('Failed to raise case.');
+  }
+};
+
+const handleApproveClosure = async (id) => {
+  if (!window.confirm('Are you sure you want to approve this match and close the case?')) return;
+  try {
+    // Reusing verify_match or similar dual-signature logic if implemented
+    await api.updateCaseStatus(id, 'CLOSED');
+    alert('Case closed successfully.');
+    window.location.reload();
+  } catch (error) {
+    console.error('Error closing case:', error);
+    alert('Failed to close case.');
+  }
 };
 
 export default FamilyDashboard;

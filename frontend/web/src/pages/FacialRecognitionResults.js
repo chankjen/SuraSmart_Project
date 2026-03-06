@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import api from '../services/api';
 import '../styles/FacialRecognition.css';
 
 const FacialRecognitionResults = () => {
@@ -9,8 +10,11 @@ const FacialRecognitionResults = () => {
   const { user, logout } = useAuth();
   const [showDetails, setShowDetails] = useState(null);
 
+  const [reportText, setReportText] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
   const state = location.state || {};
-  const { results = [], uploadedImage, hasMatch, error } = state;
+  const { results = [], uploadedImage, hasMatch, error, missingPersonId } = state;
 
   const handleRetry = () => {
     navigate('/facial-search');
@@ -29,6 +33,57 @@ const FacialRecognitionResults = () => {
     setShowDetails(showDetails === id ? null : id);
   };
 
+  const handleForwardForClosure = async () => {
+    if (!missingPersonId) return;
+    setSubmitting(true);
+    try {
+      if (reportText) {
+        await api.submitPoliceReport(missingPersonId, reportText);
+      }
+      await api.forwardForClosure(missingPersonId);
+      alert('Case forwarded to family for closure.');
+      navigate('/police-dashboard');
+    } catch (err) {
+      console.error('Error forwarding for closure:', err);
+      alert('Failed to forward case.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleEscalate = async () => {
+    if (!missingPersonId) return;
+    setSubmitting(true);
+    try {
+      if (reportText) {
+        await api.submitPoliceReport(missingPersonId, reportText);
+      }
+      await api.escalateCase(missingPersonId);
+      alert('Case escalated to government official.');
+      navigate('/police-dashboard');
+    } catch (err) {
+      console.error('Error escalating case:', err);
+      alert('Failed to escalate case.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleSubmitGovReport = async () => {
+    if (!missingPersonId) return;
+    setSubmitting(true);
+    try {
+      await api.submitGovernmentReport(missingPersonId, reportText);
+      alert('Government analysis report submitted.');
+      navigate('/government-dashboard');
+    } catch (err) {
+      console.error('Error submitting government report:', err);
+      alert('Failed to submit report.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="facial-recognition-container">
       {/* Header */}
@@ -40,7 +95,7 @@ const FacialRecognitionResults = () => {
           </div>
           <div className="facial-user-menu">
             <span className="facial-user-info">
-              {user?.first_name || user?.username}
+              {user?.first_name || user?.username} ({user?.role})
             </span>
             <button className="btn-secondary btn-sm" onClick={handleRoleChange}>
               Change Role
@@ -154,26 +209,65 @@ const FacialRecognitionResults = () => {
                           />
                         </div>
                       )}
-
-                      <div className="action-buttons">
-                        <button className="btn-success">
-                          ✓ Report This Match
-                        </button>
-                        <button className="btn-secondary">
-                          📞 Contact Authorities
-                        </button>
-                      </div>
                     </div>
                   )}
                 </div>
               ))}
             </div>
 
+            {/* Analysis Report Section for Authorities */}
+            {(user?.role === 'police_officer' || user?.role === 'government_official') && (
+              <div className="analysis-report-section">
+                <h3>{user.role === 'police_officer' ? 'Police Match Analysis Report' : 'Government Analysis Report'}</h3>
+                <textarea
+                  className="report-textarea"
+                  placeholder="Enter your analysis findings here..."
+                  value={reportText}
+                  onChange={(e) => setReportText(e.target.value)}
+                  disabled={submitting}
+                ></textarea>
+
+                <div className="workflow-actions">
+                  {user.role === 'police_officer' && (
+                    <>
+                      <button
+                        className="btn-success"
+                        onClick={handleForwardForClosure}
+                        disabled={submitting || !reportText}
+                      >
+                        Forward to Family for Closure
+                      </button>
+                      <button
+                        className="btn-warning"
+                        onClick={handleEscalate}
+                        disabled={submitting || !reportText}
+                      >
+                        Escalate to Government
+                      </button>
+                    </>
+                  )}
+                  {user.role === 'government_official' && (
+                    <button
+                      className="btn-primary"
+                      onClick={handleSubmitGovReport}
+                      disabled={submitting || !reportText}
+                    >
+                      Submit Government Report & Approve
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
             <div className="results-actions">
-              <button className="btn-primary" onClick={handleRetry}>
+              <button className="btn-primary" onClick={handleRetry} disabled={submitting}>
                 🔍 Search Again
               </button>
-              <button className="btn-secondary" onClick={() => navigate('/dashboard')}>
+              <button
+                className="btn-secondary"
+                onClick={() => navigate(user.role === 'police_officer' ? '/police-dashboard' : user.role === 'government_official' ? '/government-dashboard' : '/family-dashboard')}
+                disabled={submitting}
+              >
                 Back to Dashboard
               </button>
             </div>

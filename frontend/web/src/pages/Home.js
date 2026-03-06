@@ -8,8 +8,13 @@ const Home = () => {
   const { isAuthenticated, user } = useAuth();
 
   const handleGetStarted = () => {
-    if (isAuthenticated) {
-      navigate('/dashboard');
+    if (isAuthenticated && user) {
+      const dashboardRoutes = {
+        'family_member': '/family-dashboard',
+        'police_officer': '/police-dashboard',
+        'government_official': '/government-dashboard'
+      };
+      navigate(dashboardRoutes[user.role] || '/login');
     } else {
       navigate('/login');
     }
@@ -31,9 +36,6 @@ const Home = () => {
             {isAuthenticated ? (
               <>
                 <span className="nav-user">Welcome, {user?.first_name || user?.username}!</span>
-                <button className="nav-btn" onClick={() => navigate('/dashboard')}>
-                  Dashboard
-                </button>
               </>
             ) : (
               <>
@@ -55,7 +57,7 @@ const Home = () => {
           <h2>Welcome to <span className="logo-glitter-text">SuraSmart</span></h2>
           <p>An AI-powered platform for finding and reconnecting missing persons</p>
           <button className="hero-btn" onClick={handleGetStarted}>
-            {isAuthenticated ? 'Go to Dashboard' : 'Get Started'}
+            Get Started
           </button>
         </div>
       </section>
