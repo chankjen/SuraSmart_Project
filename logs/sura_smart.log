@@ -3062,3 +3062,522 @@ INFO 2026-03-06 09:27:55,385 autoreload 13848 21568 D:\SuraSmart_Project\sura_sm
 INFO 2026-03-06 09:28:02,238 autoreload 25468 15900 Watching for file changes with StatReloader
 INFO 2026-03-06 09:30:19,940 autoreload 25468 15900 D:\SuraSmart_Project\sura_smart\sura_smart_backend\urls.py changed, reloading.
 INFO 2026-03-06 09:30:31,384 autoreload 14092 23808 Watching for file changes with StatReloader
+ERROR 2026-03-06 10:14:24,635 log 14092 23304 Internal Server Error: /api/facial-recognition/search/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 44, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 647, in search_facial_recognition
+    query_embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 67, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 47, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+ERROR 2026-03-06 10:43:53,600 log 14092 20436 Internal Server Error: /api/facial-recognition/search/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 44, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 647, in search_facial_recognition
+    query_embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 67, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 47, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+ERROR 2026-03-06 11:20:15,459 log 14092 15764 Internal Server Error: /api/facial-recognition/missing-persons/0e41bd2e-a525-4914-b00c-fb4361002cc6/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 44, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 213, in upload_image
+    embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 67, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 47, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+INFO 2026-03-06 11:27:39,487 blockchain 14092 11504 [BLOCKCHAIN_EVENT] Hash: 49dd5bb4c29c79d0b8d3b2a97ab925e3b01dbf4a7f7960911107c0d16f4bfc98 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "15b255af-a311-49d4-84a0-e2745e8fcbec", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-06T08:27:39.486697+00:00"}
+ERROR 2026-03-06 11:27:39,595 log 14092 11504 Internal Server Error: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 299, in raise_case
+    sm.transition_to('RAISED', actor=request.user, notes='Case raised to police by family member')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\state_machine.py", line 48, in transition_to
+    BlockchainService.log_event(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        case_id=self.case.id,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata={'notes': notes}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\sura_smart\shared\blockchain.py", line 51, in log_event
+    AuditLog.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        user=actor,
+        ^^^^^^^^^^^
+    ...<7 lines>...
+        jurisdiction=getattr(actor, 'jurisdiction', 'KE')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: AuditLog() got unexpected keyword arguments: 'case_id'
+WARNING 2026-03-06 11:27:42,129 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:27:43,263 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/upload_image/
+WARNING 2026-03-06 11:27:44,610 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:27:45,794 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:27:47,209 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/upload_image/
+WARNING 2026-03-06 11:27:48,536 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:27:48,760 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:31:55,143 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/upload_image/
+WARNING 2026-03-06 11:31:57,558 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:31:58,635 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:31:58,870 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:32:27,312 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:32:28,102 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:32:28,322 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+ERROR 2026-03-06 11:32:39,070 log 14092 11504 Internal Server Error: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 44, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 213, in upload_image
+    embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 67, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 47, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+WARNING 2026-03-06 11:32:39,965 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:32:41,325 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:32:42,030 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+WARNING 2026-03-06 11:32:57,992 log 14092 11504 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/raise_case/
+INFO 2026-03-06 11:36:32,104 autoreload 14092 23808 D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-06 11:36:36,421 autoreload 27492 11548 Watching for file changes with StatReloader
+WARNING 2026-03-06 11:53:28,766 log 27492 25180 Bad Request: /api/facial-recognition/missing-persons/15b255af-a311-49d4-84a0-e2745e8fcbec/upload_image/
+WARNING 2026-03-06 11:54:57,537 log 27492 16768 Bad Request: /api/facial-recognition/missing-persons/46418ab2-d6b2-406c-8f37-09b4c78b09ef/upload_image/
+WARNING 2026-03-06 11:59:22,871 log 27492 25180 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-06 11:59:22,886 log 27492 25180 Unauthorized: /api/facial-recognition/missing-persons/
+ERROR 2026-03-06 12:01:57,877 log 27492 25180 Internal Server Error: /api/facial-recognition/missing-persons/ecc065c5-4cf9-43ac-a4a1-c55905df28ce/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 45, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 214, in upload_image
+    embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 68, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 48, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+WARNING 2026-03-06 12:01:59,843 log 27492 25180 Bad Request: /api/facial-recognition/missing-persons/ecc065c5-4cf9-43ac-a4a1-c55905df28ce/upload_image/
+WARNING 2026-03-06 12:02:05,691 log 27492 25180 Bad Request: /api/facial-recognition/missing-persons/ecc065c5-4cf9-43ac-a4a1-c55905df28ce/upload_image/
+WARNING 2026-03-06 12:02:06,827 log 27492 25180 Bad Request: /api/facial-recognition/missing-persons/ecc065c5-4cf9-43ac-a4a1-c55905df28ce/upload_image/
+WARNING 2026-03-06 12:02:07,470 log 27492 25180 Bad Request: /api/facial-recognition/missing-persons/ecc065c5-4cf9-43ac-a4a1-c55905df28ce/upload_image/
+WARNING 2026-03-06 12:02:07,695 log 27492 25180 Bad Request: /api/facial-recognition/missing-persons/ecc065c5-4cf9-43ac-a4a1-c55905df28ce/upload_image/
+WARNING 2026-03-06 12:04:44,043 log 27492 27692 Not Found: /favicon.ico
+WARNING 2026-03-06 12:04:44,176 log 27492 21920 Not Found: /favicon.ico
+WARNING 2026-03-06 12:06:53,637 log 27492 2908 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-03-06 12:08:42,982 log 27492 2908 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-03-06 12:08:56,924 log 27492 3952 Not Found: /api/facial-recognition/persons/
+WARNING 2026-03-06 12:10:20,856 log 27492 25856 Bad Request: /api/facial-recognition/missing-persons/
+ERROR 2026-03-06 12:11:25,894 log 27492 25856 Internal Server Error: /api/facial-recognition/missing-persons/929753e6-fd0c-418c-b00e-e0cf20cd16e0/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 45, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 214, in upload_image
+    embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 68, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 48, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+ERROR 2026-03-06 12:14:39,165 log 27492 25856 Internal Server Error: /api/facial-recognition/missing-persons/6ade0f96-38e5-478f-bdd1-41a8e736e98b/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 45, in _get_deepface
+    from deepface import DeepFace
+ModuleNotFoundError: No module named 'deepface'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 214, in upload_image
+    embedding = _extract_embedding(image_bytes)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 68, in _extract_embedding
+    DeepFace = _get_deepface()
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 48, in _get_deepface
+    raise ImportError(
+        "DeepFace is not installed. Run: pip install deepface==0.0.93"
+    )
+ImportError: DeepFace is not installed. Run: pip install deepface==0.0.93
+INFO 2026-03-06 12:17:35,657 autoreload 27492 11548 D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-06 12:17:38,644 autoreload 12620 14440 Watching for file changes with StatReloader
+INFO 2026-03-06 12:17:51,913 autoreload 12620 14440 D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-06 12:17:54,052 autoreload 10044 18088 Watching for file changes with StatReloader
+WARNING 2026-03-06 12:21:14,310 log 10044 4048 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-03-06 12:24:27,745 log 10044 4048 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-03-06 12:27:05,514 views 10044 18248 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-06 12:27:05,515 views 10044 18248 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-06 12:27:05,567 blockchain 10044 18248 [BLOCKCHAIN_EVENT] Hash: 4533e643e8d7f46eee1fdadbe9d603f8ac4346e089e524b3117165b8407523ff | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "4389d739-bb60-44ea-9d68-5b6fcc429bda", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-06T09:27:05.567790+00:00"}
+ERROR 2026-03-06 12:27:05,624 log 10044 18248 Internal Server Error: /api/facial-recognition/missing-persons/4389d739-bb60-44ea-9d68-5b6fcc429bda/raise_case/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 312, in raise_case
+    sm.transition_to('RAISED', actor=request.user, notes='Case raised to police by family member')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\state_machine.py", line 48, in transition_to
+    BlockchainService.log_event(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        case_id=self.case.id,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata={'notes': notes}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\sura_smart\shared\blockchain.py", line 51, in log_event
+    AuditLog.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        user=actor,
+        ^^^^^^^^^^^
+    ...<7 lines>...
+        jurisdiction=getattr(actor, 'jurisdiction', 'KE')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: AuditLog() got unexpected keyword arguments: 'case_id'
+INFO 2026-03-06 12:27:26,514 blockchain 10044 28388 [BLOCKCHAIN_EVENT] Hash: 042988406527f91a17ddf86beeecaf1fd69d5183ab6434e459a5a74c9b35d7ef | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "6ade0f96-38e5-478f-bdd1-41a8e736e98b", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-06T09:27:26.514257+00:00"}
+ERROR 2026-03-06 12:27:26,660 log 10044 28388 Internal Server Error: /api/facial-recognition/missing-persons/6ade0f96-38e5-478f-bdd1-41a8e736e98b/raise_case/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 312, in raise_case
+    sm.transition_to('RAISED', actor=request.user, notes='Case raised to police by family member')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\state_machine.py", line 48, in transition_to
+    BlockchainService.log_event(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        case_id=self.case.id,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata={'notes': notes}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\sura_smart\shared\blockchain.py", line 51, in log_event
+    AuditLog.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        user=actor,
+        ^^^^^^^^^^^
+    ...<7 lines>...
+        jurisdiction=getattr(actor, 'jurisdiction', 'KE')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: AuditLog() got unexpected keyword arguments: 'case_id'
+WARNING 2026-03-06 12:29:40,773 views 10044 28388 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-06 12:29:40,774 views 10044 28388 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-06 12:29:40,809 blockchain 10044 28388 [BLOCKCHAIN_EVENT] Hash: 8ec6f11ee7b65b294ff202389af7b44402235d92d068d17e039c8f34c69331f3 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "85a1d16d-f645-4469-9150-b4d65a27e85e", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-06T09:29:40.809152+00:00"}
+ERROR 2026-03-06 12:29:40,841 log 10044 28388 Internal Server Error: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/raise_case/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\views.py", line 312, in raise_case
+    sm.transition_to('RAISED', actor=request.user, notes='Case raised to police by family member')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\sura_smart\ai_models\facial_recognition\state_machine.py", line 48, in transition_to
+    BlockchainService.log_event(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        case_id=self.case.id,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        metadata={'notes': notes}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\sura_smart\shared\blockchain.py", line 51, in log_event
+    AuditLog.objects.create(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        user=actor,
+        ^^^^^^^^^^^
+    ...<7 lines>...
+        jurisdiction=getattr(actor, 'jurisdiction', 'KE')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+    ...<2 lines>...
+    )
+TypeError: AuditLog() got unexpected keyword arguments: 'case_id'
+WARNING 2026-03-06 12:43:57,800 log 10044 21408 Bad Request: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/upload_image/
+WARNING 2026-03-06 14:07:40,609 log 10044 11232 Bad Request: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/upload_image/

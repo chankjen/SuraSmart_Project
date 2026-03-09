@@ -62,6 +62,15 @@ const Results = () => {
     }
   };
 
+  const handleRaiseCase = async () => {
+    try {
+      await api.raiseCase(missingPersonId);
+      navigate('/family-dashboard');
+    } catch (err) {
+      alert('Failed to raise case');
+    }
+  };
+
   if (loading) {
     return (
       <div className="results-container">
@@ -147,13 +156,22 @@ const Results = () => {
         </div>
       </div>
 
-      <div className="results-action-bar">
+      <div className="results-action-bar" style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
         <button
           onClick={() => navigate(`/facial-search/${missingPersonId}`)}
           className="btn-primary"
         >
           🔍 Rerun Facial Search
         </button>
+        {missingPerson?.status === 'REPORTED' && (
+          <button
+            onClick={handleRaiseCase}
+            className="btn-success"
+            style={{ minWidth: '200px' }}
+          >
+            📢 Raise Case to Police
+          </button>
+        )}
       </div>
 
       {processingItems.length > 0 && (

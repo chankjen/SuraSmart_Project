@@ -90,7 +90,18 @@ const FacialRecognitionSearch = () => {
       const response = await api.searchFacialRecognition(selectedFile);
       const searchData = response.data;
 
-      // Navigate to results page with the AI match data
+      if (missingPersonId) {
+        // If searching within a case context, we also "Raise" it as per workflow
+        try {
+          await api.raiseCase(missingPersonId);
+          navigate('/family-dashboard');
+          return; // Stop here and return to portal
+        } catch (e) {
+          console.error("Auto-raise failed:", e);
+        }
+      }
+
+      // Navigate to results page with the AI match data (for general search without case context)
       navigate('/facial-results', {
         state: {
           results: searchData.match ? [searchData.match] : [],

@@ -15,6 +15,7 @@ import UploadImage from './pages/UploadImage';
 import Results from './pages/Results';
 import FacialRecognitionSearch from './pages/FacialRecognitionSearch';
 import FacialRecognitionResults from './pages/FacialRecognitionResults';
+import CaseSummaryPage from './pages/CaseSummaryPage';
 
 // Styles
 import './styles/global.css';
@@ -80,6 +81,33 @@ function App() {
             element={
               <PrivateRoute>
                 <FamilyDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/reported-cases"
+            element={
+              <PrivateRoute>
+                <CaseSummaryPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/active-searches"
+            element={
+              <PrivateRoute>
+                <CaseSummaryPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/resolved-cases"
+            element={
+              <PrivateRoute>
+                <CaseSummaryPage />
               </PrivateRoute>
             }
           />

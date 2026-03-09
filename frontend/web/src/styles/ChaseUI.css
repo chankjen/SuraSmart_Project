@@ -1,0 +1,225 @@
+/* Chase-inspired Premium UI Design System */
+
+:root {
+    /* Core brand colors */
+    --chase-blue: #004a99;
+    --chase-blue-dark: #002e5e;
+    --chase-blue-light: #0060c2;
+    --chase-white: #ffffff;
+    --chase-gray-50: #f4f7f9;
+    --chase-gray-100: #e6eef2;
+    --chase-gray-200: #cbd5e1;
+    --chase-gray-500: #64748b;
+    --chase-gray-900: #0f172a;
+
+    /* Accent colors */
+    --chase-gold: #c39b32;
+    --chase-green: #00a300;
+
+    /* UI variables */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    --radius: 8px;
+}
+
+.chase-body {
+    background-color: var(--chase-gray-50);
+    color: var(--chase-gray-900);
+    font-family: 'Open Sans', 'Roboto', 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* Premium Header */
+.chase-header {
+    background-color: var(--chase-blue);
+    color: white;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chase-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.chase-logo span {
+    font-weight: 300;
+}
+
+/* Dashboard Layout */
+.chase-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.chase-title {
+    font-size: 2rem;
+    color: var(--chase-blue-dark);
+    margin-bottom: var(--spacing-xl);
+    font-weight: 200;
+}
+
+/* Premium Cards */
+.chase-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--chase-gray-100);
+    padding: var(--spacing-lg);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.chase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+}
+
+.chase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--chase-blue);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.chase-card:hover::before {
+    opacity: 1;
+}
+
+/* Stat Grid */
+.chase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.chase-stat-label {
+    font-size: 0.875rem;
+    color: var(--chase-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.chase-stat-value {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--chase-blue);
+}
+
+.chase-stat-action {
+    margin-top: var(--spacing-md);
+    color: var(--chase-blue);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.chase-stat-action::after {
+    content: '→';
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+
+.chase-card:hover .chase-stat-action::after {
+    transform: translateX(4px);
+}
+
+/* Buttons */
+.chase-button {
+    background-color: var(--chase-blue);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.chase-button:hover {
+    background-color: var(--chase-blue-dark);
+}
+
+.chase-button-outline {
+    background: transparent;
+    border: 2px solid var(--chase-blue);
+    color: var(--chase-blue);
+}
+
+.chase-button-outline:hover {
+    background-color: var(--chase-gray-50);
+}
+
+/* List Table Style */
+.chase-list-item {
+    border-bottom: 1px solid var(--chase-gray-100);
+    padding: var(--spacing-md) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chase-list-item:last-child {
+    border-bottom: none;
+}
+
+.chase-status-pill {
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-active {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.status-resolved {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status-pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chase-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .chase-title {
+        font-size: 1.5rem;
+    }
+}

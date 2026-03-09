@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
-import '../styles/Forms.css';
+import '../styles/ChaseUI.css';
 
 const UploadImage = () => {
   const { missingPersonId } = useParams();
@@ -15,21 +15,15 @@ const UploadImage = () => {
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Validate file type
       if (!['image/jpeg', 'image/png', 'image/jpg'].includes(file.type)) {
         setError('Please select a valid image file (JPEG or PNG)');
         return;
       }
-
-      // Validate file size (5MB max)
       if (file.size > 5 * 1024 * 1024) {
         setError('File size must be less than 5MB');
         return;
       }
-
       setError(null);
-
-      // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
@@ -38,56 +32,57 @@ const UploadImage = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleRaiseCase = async (e) => {
+    if (e) e.preventDefault();
     setLoading(true);
     setError(null);
 
     const fileInput = document.getElementById('image');
     const file = fileInput.files?.[0];
 
-    if (!file) {
-      setError('Please select an image');
-      setLoading(false);
-      return;
-    }
-
     try {
-      await api.uploadImage(missingPersonId, file, priority);
-      setSuccess(true);
+      // 1. Upload image first
+      if (file) {
+        await api.uploadImage(missingPersonId, file, priority);
+      } else {
+        setError('Please select an image before raising the case.');
+        setLoading(false);
+        return;
+      }
 
-      setTimeout(() => {
-        navigate(`/results/${missingPersonId}`);
-      }, 1500);
+      // 2. Raise the case to police
+      await api.raiseCase(missingPersonId);
+
+      setSuccess(true);
+      navigate('/family-dashboard');
     } catch (err) {
       const errorData = err.response?.data;
-      if (typeof errorData === 'object') {
-        const message = Object.values(errorData).join('; ');
-        setError(message);
-      } else {
-        setError(errorData || 'Failed to upload image');
-      }
+      const errorMessage = typeof errorData === 'object'
+        ? Object.values(errorData).join('; ')
+        : (errorData || 'Failed to complete reporting. Please try again.');
+      setError(errorMessage);
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="form-container">
-      <div className="form-card">
-        <h1>Upload Facial Image</h1>
+    <div className="chase-body">
+      <div className="chase-container" style={{ maxWidth: '600px' }}>
+        <div className="chase-card">
+          <h1 className="chase-title" style={{ fontSize: '1.5rem', marginBottom: '1.5rem', color: 'var(--chase-blue-dark)' }}>Complete Your Report</h1>
 
-        {error && <div className="error-message">{error}</div>}
-        {success && (
-          <div className="success-message">
-            Image uploaded successfully. Processing...
-          </div>
-        )}
+          {error && <div className="error-message" style={{ marginBottom: '20px', padding: '12px', background: '#fee2e2', color: '#991b1b', borderRadius: '8px', border: '1px solid #fca5a5' }}>{error}</div>}
+          {success && (
+            <div className="success-message" style={{ marginBottom: '20px', padding: '12px', background: '#dcfce7', color: '#166534', borderRadius: '8px', border: '1px solid #86efac' }}>
+              Case processing... Redirecting to portal.
+            </div>
+          )}
 
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="image">Select Image *</label>
-            <div className="file-input-wrapper">
+          <form onSubmit={handleRaiseCase}>
+            <div className="form-group" style={{ marginBottom: '20px' }}>
+              <label htmlFor="image" style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>Identification Photo *</label>
               <input
                 type="file"
                 id="image"
@@ -95,49 +90,55 @@ const UploadImage = () => {
                 onChange={handleFileChange}
                 required
                 disabled={loading}
+                style={{ width: '100%', padding: '10px', border: '1px solid var(--chase-gray-200)', borderRadius: '8px' }}
               />
-              <label htmlFor="image" className="file-input-label">
-                {preview ? 'Image selected ✓' : 'Choose an image'}
-              </label>
+              <p style={{ fontSize: '0.8rem', color: 'var(--chase-gray-500)', marginTop: '8px' }}>
+                Clear facial photo required for recognition.
+              </p>
             </div>
-            <p className="input-hint">Accepted formats: JPEG, PNG. Max size: 5MB</p>
-          </div>
 
-          {preview && (
-            <div className="image-preview">
-              <img src={preview} alt="Preview" />
+            {preview && (
+              <div style={{ margin: '20px 0', textAlign: 'center' }}>
+                <img src={preview} alt="Preview" style={{ maxWidth: '100%', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
+              </div>
+            )}
+
+            <div className="form-group" style={{ marginBottom: '32px' }}>
+              <label htmlFor="priority" style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>Case Urgency</label>
+              <select
+                id="priority"
+                value={priority}
+                onChange={(e) => setPriority(e.target.value)}
+                disabled={loading}
+                style={{ width: '100%', padding: '12px', border: '1px solid var(--chase-gray-200)', borderRadius: '8px', background: 'white' }}
+              >
+                <option value="normal">Standard Priority</option>
+                <option value="high">Urgent Response</option>
+                <option value="urgent">Critical (Immediate Alert)</option>
+              </select>
             </div>
-          )}
 
-          <div className="form-group">
-            <label htmlFor="priority">Processing Priority</label>
-            <select
-              id="priority"
-              value={priority}
-              onChange={(e) => setPriority(e.target.value)}
-              disabled={loading}
-            >
-              <option value="low">Low</option>
-              <option value="normal">Normal</option>
-              <option value="high">High</option>
-              <option value="urgent">Urgent</option>
-            </select>
-            <p className="input-hint">Higher priority images are processed first</p>
-          </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <button
+                type="submit"
+                disabled={loading}
+                className="chase-button"
+                style={{ padding: '1rem', fontSize: '1.1rem', width: '100%' }}
+              >
+                {loading ? 'Processing...' : 'Raise Case to Police'}
+              </button>
 
-          <button type="submit" disabled={loading} className="btn-primary btn-large">
-            {loading ? 'Uploading...' : 'Upload Image'}
-          </button>
-          <button
-            type="button"
-            disabled={loading}
-            className="btn-secondary btn-large"
-            onClick={() => navigate(`/facial-search/${missingPersonId}`)}
-            style={{ marginLeft: '12px' }}
-          >
-            Raise Case
-          </button>
-        </form>
+              <button
+                type="button"
+                className="chase-button-outline"
+                onClick={() => navigate('/family-dashboard')}
+                style={{ padding: '0.75rem', width: '100%', border: '1px solid var(--chase-gray-200)', color: 'var(--chase-gray-500)' }}
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
