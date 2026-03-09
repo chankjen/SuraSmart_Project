@@ -18,14 +18,13 @@ const FamilyDashboard = () => {
   const fetchCases = useCallback(async () => {
     try {
       const response = await api.getMissingPersons();
-      // Handle paginated response: { count, results } or direct array
       const allCases = Array.isArray(response.data) ? response.data : response.data.results;
       const userCases = allCases.filter(caseItem => caseItem.reported_by === user.id);
       setCases(userCases);
 
       setStats({
         totalCases: userCases.length,
-        activeCases: userCases.filter(c => c.status !== 'CLOSED' && c.status !== 'REPORTED' && c.status !== 'NO_MATCH').length,
+        activeCases: userCases.filter(c => !['CLOSED'].includes(c.status)).length,
         resolvedCases: userCases.filter(c => c.status === 'CLOSED').length
       });
     } catch (error) {
@@ -61,10 +60,10 @@ const FamilyDashboard = () => {
   };
 
   const handleApproveClosure = async (id) => {
-    if (!window.confirm('Are you sure you want to approve this match and close the case?')) return;
+    if (!window.confirm('Are you sure you want to approve this match and close the case? (Dual Signature)')) return;
     try {
       await api.updateCaseStatus(id, 'CLOSED');
-      alert('Case closed successfully.');
+      alert('Case closed successfully. Data will be purged in 30 days.');
       fetchCases();
     } catch (error) {
       console.error('Error closing case:', error);
@@ -76,13 +75,13 @@ const FamilyDashboard = () => {
 
   return (
     <div className="chase-body">
-      <header className="chase-header">
-        <div className="chase-logo">Sura<span>Smart</span></div>
+      <div className="chase-header">
+        <div className="chase-logo">Sura <span>Smart</span></div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <span>{user?.first_name} {user?.last_name}</span>
+          <span style={{ color: 'white' }}>{user?.first_name} {user?.last_name}</span>
           <button onClick={handleLogout} className="chase-button-outline" style={{ color: 'white', borderColor: 'white', padding: '0.5rem 1rem' }}>Logout</button>
         </div>
-      </header>
+      </div>
 
       <div className="chase-container">
         <h1 className="chase-title">Family Member Portal</h1>
@@ -124,27 +123,40 @@ const FamilyDashboard = () => {
             <div className="chase-card" style={{ padding: 0 }}>
               <div style={{ padding: '0 24px' }}>
                 {cases.slice(0, 5).map(caseItem => (
-                  <div key={caseItem.id} className="chase-list-item">
-                    <div>
-                      <div style={{ fontWeight: '600', fontSize: '1.1rem', marginBottom: '4px' }}>{caseItem.full_name}</div>
-                      <div style={{ fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>
-                        Status: <span style={{ fontWeight: '600', color: 'var(--chase-blue)' }}>{caseItem.status}</span>
+                  <div key={caseItem.id} className="chase-list-item" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '10px' }}>
+                    <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <div style={{ fontWeight: '600', fontSize: '1.1rem', marginBottom: '4px' }}>{caseItem.full_name}</div>
+                        <div style={{ fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>
+                          Status: <span style={{ fontWeight: '600', color: 'var(--chase-blue)' }}>{caseItem.status}</span>
+                        </div>
+                        {/* Workflow Specific Messages */}
+                        {caseItem.status === 'ESCALATED' && (
+                          <div style={{ fontSize: '0.8rem', color: '#d97706', marginTop: '4px', fontWeight: '600' }}>
+                            ⚠️ Status Report: Your Case has been escalated for further investigations.
+                          </div>
+                        )}
+                        {caseItem.report_details && (
+                          <div style={{ fontSize: '0.8rem', color: 'var(--chase-blue-dark)', marginTop: '4px', background: '#f0f9ff', padding: '4px 8px', borderRadius: '4px' }}>
+                            📄 Case Findings: {caseItem.report_details}
+                          </div>
+                        )}
                       </div>
-                    </div>
-                    <div style={{ display: 'flex', gap: '12px' }}>
-                      {caseItem.status === 'REPORTED' && (
-                        <button onClick={() => handleRaiseCase(caseItem.id)} className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
-                          Raise to Police
-                        </button>
-                      )}
-                      {caseItem.status === 'PENDING_CLOSURE' && (
-                        <button onClick={() => handleApproveClosure(caseItem.id)} className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'var(--chase-green)' }}>
-                          Approve Closure
-                        </button>
-                      )}
-                      <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
-                        Details
-                      </Link>
+                      <div style={{ display: 'flex', gap: '12px' }}>
+                        {caseItem.status === 'REPORTED' && (
+                          <button onClick={() => handleRaiseCase(caseItem.id)} className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
+                            Raise to Police
+                          </button>
+                        )}
+                        {caseItem.status === 'PENDING_CLOSURE' && (
+                          <button onClick={() => handleApproveClosure(caseItem.id)} className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'var(--chase-green)' }}>
+                            Approve Closure
+                          </button>
+                        )}
+                        <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
+                          Details
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 ))}
