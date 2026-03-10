@@ -1,0 +1,6 @@
+{"sessionId":"fe9be9","runId":"login-run-1","hypothesisId":"H-all","location":"frontend/web/src/contexts/AuthContext.js:login:before","message":"Login attempt","data":{"username":"amanda"},"timestamp":1773090348001}
+{"sessionId":"fe9be9","runId":"login-run-1","hypothesisId":"H-all","location":"frontend/web/src/contexts/AuthContext.js:login:catch","message":"Login failed","data":{"status":null,"detail":null,"hasResponse":false},"timestamp":1773090350384}
+{"sessionId":"fe9be9","runId":"login-run-1","hypothesisId":"H-all","location":"frontend/web/src/contexts/AuthContext.js:login:before","message":"Login attempt","data":{"username":"testuser"},"timestamp":1773090594302}
+{"sessionId":"fe9be9","runId":"login-run-1","hypothesisId":"H-all","location":"frontend/web/src/contexts/AuthContext.js:login:catch","message":"Login failed","data":{"status":null,"detail":null,"hasResponse":false},"timestamp":1773090596672}
+{"sessionId":"fe9be9","runId":"login-run-1","hypothesisId":"H-all","location":"frontend/web/src/contexts/AuthContext.js:login:before","message":"Login attempt","data":{"username":"amanda"},"timestamp":1773097534207}
+{"sessionId":"fe9be9","runId":"login-run-1","hypothesisId":"H-all","location":"frontend/web/src/contexts/AuthContext.js:login:catch","message":"Login failed","data":{"status":null,"detail":null,"hasResponse":false},"timestamp":1773097536557}

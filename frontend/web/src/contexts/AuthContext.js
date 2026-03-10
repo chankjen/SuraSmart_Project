@@ -56,7 +56,23 @@ export const AuthProvider = ({ children }) => {
         return currentUser.data;
       }
     } catch (err) {
-      const message = err.response?.data?.detail || 'Login failed';
+      const data = err.response?.data;
+      let message;
+      if (!err.response) {
+        message = 'Cannot reach server. Check that the backend is running.';
+      } else if (typeof data?.detail === 'string') {
+        message = data.detail;
+      } else if (Array.isArray(data?.detail)) {
+        message = data.detail[0] ?? 'Login failed. Please try again.';
+      } else if (data?.non_field_errors?.length) {
+        message = data.non_field_errors[0];
+      } else if (data?.username?.length) {
+        message = data.username[0];
+      } else if (data?.password?.length) {
+        message = data.password[0];
+      } else {
+        message = 'Login failed. Please try again.';
+      }
       setError(message);
       throw err;
     }

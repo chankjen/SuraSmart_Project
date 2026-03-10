@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import './Home.css';
+import '../styles/Home.css';
 
 const Home = () => {
   const navigate = useNavigate();
