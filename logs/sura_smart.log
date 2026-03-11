@@ -3581,3 +3581,512 @@ Traceback (most recent call last):
 TypeError: AuditLog() got unexpected keyword arguments: 'case_id'
 WARNING 2026-03-06 12:43:57,800 log 10044 21408 Bad Request: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/upload_image/
 WARNING 2026-03-06 14:07:40,609 log 10044 11232 Bad Request: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/upload_image/
+INFO 2026-03-11 12:32:46,285 autoreload 10704 24232 Watching for file changes with StatReloader
+WARNING 2026-03-11 12:35:02,008 log 10704 15264 Not Found: /favicon.ico
+WARNING 2026-03-11 12:39:42,737 views 10704 11280 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-11 12:39:42,738 views 10704 11280 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-11 12:39:42,749 views 10704 11280 Facial search completed in 37ms. Candidates: 2. Best confidence: 0.7586
+WARNING 2026-03-11 12:39:42,916 log 10704 11280 Forbidden: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/raise_case/
+WARNING 2026-03-11 12:40:40,356 log 10704 11280 Bad Request: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/forward_for_closure/
+WARNING 2026-03-11 12:40:55,143 log 10704 11280 Bad Request: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/escalate_case/
+WARNING 2026-03-11 12:41:06,988 log 10704 11280 Bad Request: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/forward_for_closure/
+WARNING 2026-03-11 12:42:56,381 log 10704 11280 Bad Request: /api/facial-recognition/missing-persons/e6cdf53d-1373-4c4d-8e88-86d68f3e10dd/forward_for_closure/
+INFO 2026-03-11 12:46:34,618 autoreload 10704 24232 D:\SuraSmart_Project\backend\ai_models\facial_recognition\state_machine.py changed, reloading.
+INFO 2026-03-11 12:46:39,436 autoreload 24456 27872 Watching for file changes with StatReloader
+INFO 2026-03-11 12:49:56,124 blockchain 12084 15556 [BLOCKCHAIN_EVENT] Hash: f80d9847374195ad2af185f521295b9c305e7240533d810f191bc9fe37d1e665 | Data: {"action": "TRANSITION_REPORTED_TO_ANALYZED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "e6cdf53d-1373-4c4d-8e88-86d68f3e10dd", "jurisdiction": "KE", "metadata": {"notes": "Verification test"}, "timestamp": "2026-03-11T09:49:56.123983+00:00"}
+INFO 2026-03-11 12:50:26,495 autoreload 24456 27872 D:\SuraSmart_Project\backend\shared\blockchain.py changed, reloading.
+INFO 2026-03-11 12:50:39,036 autoreload 22544 28744 Watching for file changes with StatReloader
+INFO 2026-03-11 12:53:50,683 blockchain 22544 13500 [BLOCKCHAIN_EVENT] Hash: 928a3439486bc273f3dace2f54a5a88c8409f48b48d3db37195293237507ebd1 | Data: {"action": "TRANSITION_ANALYZED_TO_PENDING_CLOSURE", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "e6cdf53d-1373-4c4d-8e88-86d68f3e10dd", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-11T09:53:50.683276+00:00"}
+INFO 2026-03-11 12:53:50,713 state_machine 22544 13500 Case e6cdf53d-1373-4c4d-8e88-86d68f3e10dd transitioned from ANALYZED to PENDING_CLOSURE by betty
+ERROR 2026-03-11 13:03:12,789 log 22544 13500 Internal Server Error: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+ERROR 2026-03-11 13:03:17,977 log 22544 13500 Internal Server Error: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+ERROR 2026-03-11 13:03:19,544 log 22544 13500 Internal Server Error: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+ERROR 2026-03-11 13:26:27,904 log 22544 6124 Internal Server Error: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+WARNING 2026-03-11 13:28:17,190 log 22544 5160 Not Found: /favicon.ico
+ERROR 2026-03-11 13:28:44,982 log 22544 9696 Internal Server Error: /admin/auth/group/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\library.py", line 271, in render
+    new_context = context.new(_dict)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 265, in new
+    new_context = super().new(values)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 110, in new
+    new_context = copy(self)
+  File "C:\Program Files\Python314\Lib\copy.py", line 82, in copy
+    return copier(x)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 158, in __copy__
+    duplicate = super().__copy__()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 39, in __copy__
+    duplicate.dicts = self.dicts[:]
+    ^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+ERROR 2026-03-11 13:28:54,480 log 22544 9696 Internal Server Error: /admin/django_celery_results/groupresult/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\library.py", line 271, in render
+    new_context = context.new(_dict)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 265, in new
+    new_context = super().new(values)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 110, in new
+    new_context = copy(self)
+  File "C:\Program Files\Python314\Lib\copy.py", line 82, in copy
+    return copier(x)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 158, in __copy__
+    duplicate = super().__copy__()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 39, in __copy__
+    duplicate.dicts = self.dicts[:]
+    ^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+ERROR 2026-03-11 13:29:12,245 log 22544 9696 Internal Server Error: /admin/django_celery_results/taskresult/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 175, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\base.py", line 966, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\contrib\admin\templatetags\base.py", line 45, in render
+    return super().render(context)
+           ~~~~~~~~~~~~~~^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\library.py", line 271, in render
+    new_context = context.new(_dict)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 265, in new
+    new_context = super().new(values)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 110, in new
+    new_context = copy(self)
+  File "C:\Program Files\Python314\Lib\copy.py", line 82, in copy
+    return copier(x)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 158, in __copy__
+    duplicate = super().__copy__()
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\template\context.py", line 39, in __copy__
+    duplicate.dicts = self.dicts[:]
+    ^^^^^^^^^^^^^^^
+AttributeError: 'super' object has no attribute 'dicts' and no __dict__ for setting new attributes
+INFO 2026-03-11 13:38:28,847 autoreload 22544 28744 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-03-11 13:38:41,135 autoreload 9292 8920 Watching for file changes with StatReloader
+WARNING 2026-03-11 13:48:43,745 log 9292 28920 Unauthorized: /api/auth/token/
+WARNING 2026-03-11 13:48:46,426 log 9292 28920 Unauthorized: /api/auth/token/
+WARNING 2026-03-11 13:57:49,647 log 9292 14472 Unauthorized: /api/auth/audit-logs/log_event/
+WARNING 2026-03-11 14:03:47,768 log 9292 14472 Unauthorized: /api/auth/audit-logs/log_event/
+WARNING 2026-03-11 14:08:13,726 log 9292 28920 Unauthorized: /api/auth/audit-logs/log_event/
+WARNING 2026-03-11 14:16:44,509 views 9292 19424 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-11 14:16:44,510 views 9292 19424 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-11 14:16:44,609 blockchain 9292 19424 [BLOCKCHAIN_EVENT] Hash: df05d3ce79d25a609dc78deaa1e7bae8cf63b8ee4ecb26b26a312f45463c1a9e | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "feade013-f8ce-4ced-9a20-6c16899bf8d5", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-11T11:16:44.609058+00:00"}
+INFO 2026-03-11 14:16:44,622 state_machine 9292 19424 Case feade013-f8ce-4ced-9a20-6c16899bf8d5 transitioned from REPORTED to RAISED by amanda
+ERROR 2026-03-11 14:17:19,311 log 9292 19424 Internal Server Error: /api/facial-recognition/missing-persons/feade013-f8ce-4ced-9a20-6c16899bf8d5/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+WARNING 2026-03-11 14:19:42,505 views 9292 28920 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-11 14:19:42,506 views 9292 28920 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-11 14:19:42,534 views 9292 28920 Facial search completed in 57ms. Candidates: 3. Best confidence: 1.0000
+WARNING 2026-03-11 14:19:42,655 log 9292 28920 Forbidden: /api/facial-recognition/missing-persons/feade013-f8ce-4ced-9a20-6c16899bf8d5/raise_case/
+INFO 2026-03-11 14:21:29,288 blockchain 9292 28920 [BLOCKCHAIN_EVENT] Hash: 9addff4a66d73b229d2b3b4f90e92134337a093e370e151919232d4d7a40dcc4 | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "feade013-f8ce-4ced-9a20-6c16899bf8d5", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-11T11:21:29.288254+00:00"}
+INFO 2026-03-11 14:21:29,308 state_machine 9292 28920 Case feade013-f8ce-4ced-9a20-6c16899bf8d5 transitioned from RAISED to ANALYZED by bernard
+INFO 2026-03-11 14:21:29,532 blockchain 9292 28920 [BLOCKCHAIN_EVENT] Hash: c5730d4046f0f79441fd36bbb884a0fbc8fb5a89d72cae18795fb4d48d92ce75 | Data: {"action": "TRANSITION_ANALYZED_TO_PENDING_CLOSURE", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "feade013-f8ce-4ced-9a20-6c16899bf8d5", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-11T11:21:29.532312+00:00"}
+INFO 2026-03-11 14:21:29,554 state_machine 9292 28920 Case feade013-f8ce-4ced-9a20-6c16899bf8d5 transitioned from ANALYZED to PENDING_CLOSURE by bernard
+WARNING 2026-03-11 14:28:20,275 log 9292 19424 Bad Request: /api/facial-recognition/missing-persons/e439c106-055d-43c8-9f45-e6b6bbf12220/upload_image/
+WARNING 2026-03-11 14:28:27,195 log 9292 19424 Bad Request: /api/facial-recognition/missing-persons/e439c106-055d-43c8-9f45-e6b6bbf12220/upload_image/
+WARNING 2026-03-11 14:28:41,829 log 9292 19424 Bad Request: /api/facial-recognition/missing-persons/e439c106-055d-43c8-9f45-e6b6bbf12220/upload_image/
+WARNING 2026-03-11 14:30:33,338 log 9292 21736 Bad Request: /api/facial-recognition/missing-persons/71187521-fecd-4b9c-8f97-3c12262fd9f6/upload_image/
+WARNING 2026-03-11 14:31:12,302 views 9292 19424 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-11 14:31:12,303 views 9292 19424 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-11 14:31:12,410 blockchain 9292 19424 [BLOCKCHAIN_EVENT] Hash: a4dc9139c4cc568d1d66f3fb734e2dd1acf722ff9759dc9ed15c33dc00e2f725 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "71187521-fecd-4b9c-8f97-3c12262fd9f6", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-11T11:31:12.410434+00:00"}
+INFO 2026-03-11 14:31:12,426 state_machine 9292 19424 Case 71187521-fecd-4b9c-8f97-3c12262fd9f6 transitioned from REPORTED to RAISED by amanda
+ERROR 2026-03-11 14:31:39,202 log 9292 19424 Internal Server Error: /api/facial-recognition/missing-persons/71187521-fecd-4b9c-8f97-3c12262fd9f6/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\.venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+WARNING 2026-03-11 14:32:41,879 views 9292 19424 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-11 14:32:41,880 views 9292 19424 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-11 14:32:41,901 views 9292 19424 Facial search completed in 41ms. Candidates: 4. Best confidence: 1.0000
+WARNING 2026-03-11 14:32:42,031 log 9292 19424 Forbidden: /api/facial-recognition/missing-persons/71187521-fecd-4b9c-8f97-3c12262fd9f6/raise_case/
+WARNING 2026-03-11 15:00:28,507 log 9292 16948 Not Found: /favicon.ico
+INFO 2026-03-11 15:39:41,507 autoreload 9292 8920 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-03-11 15:39:48,561 autoreload 23732 26632 Watching for file changes with StatReloader
+INFO 2026-03-11 15:40:41,588 autoreload 23732 26632 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-03-11 15:40:44,260 autoreload 24160 22280 Watching for file changes with StatReloader
+INFO 2026-03-11 15:41:10,138 autoreload 24160 22280 D:\SuraSmart_Project\backend\users\serializers.py changed, reloading.
+INFO 2026-03-11 15:41:12,536 autoreload 13412 10356 Watching for file changes with StatReloader
+INFO 2026-03-11 15:41:31,872 autoreload 13412 10356 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
+INFO 2026-03-11 15:41:34,540 autoreload 18756 23292 Watching for file changes with StatReloader
+WARNING 2026-03-11 15:46:31,027 log 18756 18264 Unauthorized: /api/auth/audit-logs/log_event/

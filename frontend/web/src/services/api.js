@@ -210,6 +210,39 @@ class ApiClient {
   updateCaseStatus(caseId, status) {
     return this.api.patch(`/facial-recognition/missing-persons/${caseId}/`, { status });
   }
+
+  // Administrative endpoints
+  getAllUsers() {
+    return this.api.get('/auth/users/');
+  }
+
+  getAuditLogs(params = {}) {
+    return this.api.get('/auth/audit-logs/', { params });
+  }
+
+  getSystemStats() {
+    return this.api.get('/auth/users/system_stats/');
+  }
+
+  approveUserRegistration(userId, data) {
+    return this.api.post(`/auth/users/${userId}/approve/`, data);
+  }
+
+  sendApprovalEmail(data) {
+    return this.api.post('/auth/users/send_approval_email/', data);
+  }
+
+  verifyMFA(data) {
+    return this.api.post('/auth/users/verify_mfa/', data);
+  }
+
+  logAuditEvent(data) {
+    return this.api.post('/auth/audit-logs/log_event/', data);
+  }
+
+  exportAuditLogs(params = {}) {
+    return this.api.get('/auth/audit-logs/export/', { params, responseType: 'blob' });
+  }
 }
 
 export default new ApiClient();

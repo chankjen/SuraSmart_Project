@@ -16,6 +16,7 @@ import Results from './pages/Results';
 import FacialRecognitionSearch from './pages/FacialRecognitionSearch';
 import FacialRecognitionResults from './pages/FacialRecognitionResults';
 import CaseSummaryPage from './pages/CaseSummaryPage';
+import AdminDashboard from './pages/AdminDashboard';
 
 // Styles
 import './styles/global.css';
@@ -108,6 +109,15 @@ function App() {
             element={
               <PrivateRoute>
                 <CaseSummaryPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/admin-dashboard"
+            element={
+              <PrivateRoute>
+                <AdminDashboard />
               </PrivateRoute>
             }
           />

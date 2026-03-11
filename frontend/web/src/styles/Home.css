@@ -182,6 +182,19 @@
   transform: translateY(-3px);
 }
 
+.nav-admin {
+  border: 2px solid var(--chase-gold) !important;
+  color: var(--chase-gold) !important;
+  margin-right: var(--spacing-sm);
+}
+
+.nav-admin:hover {
+  background: var(--chase-gold) !important;
+  color: var(--chase-white) !important;
+  box-shadow: 0 0 25px rgba(195, 155, 50, 0.5);
+  transform: translateY(-2px);
+}
+
 /* ===== Hero Section ===== */
 .hero {
   flex: 1 0 auto;

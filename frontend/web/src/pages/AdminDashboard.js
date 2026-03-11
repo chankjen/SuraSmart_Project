@@ -52,14 +52,16 @@ const AdminDashboard = () => {
         api.getSystemStats()
       ]);
 
-      const allUsers = usersResponse.data || [];
-      setPendingUsers(allUsers.filter(u => !u.is_verified && u.status === 'PENDING'));
-      setAuditLogs(auditResponse.data || []);
+      const allUsers = usersResponse.data.results || usersResponse.data || [];
+      const auditLogsData = auditResponse.data.results || auditResponse.data || [];
+      
+      setPendingUsers(allUsers.filter(u => u.verification_status === 'pending'));
+      setAuditLogs(auditLogsData);
       
       setSystemStats({
         totalUsers: allUsers.length,
-        pendingVerification: allUsers.filter(u => !u.is_verified).length,
-        verifiedUsers: allUsers.filter(u => u.is_verified).length,
+        pendingVerification: allUsers.filter(u => u.verification_status === 'pending').length,
+        verifiedUsers: allUsers.filter(u => u.verification_status === 'verified').length,
         systemUptime: '99.95%'
       });
     } catch (error) {
@@ -82,10 +84,15 @@ const AdminDashboard = () => {
     }
   }, [user, navigate, fetchAdminData]);
 
-  const handleLogout = () => {
-    api.logAuditEvent({ action: 'ADMIN_LOGOUT', user_id: user.id });
-    logout();
-    navigate('/login');
+  const handleLogout = async () => {
+    try {
+      await api.logAuditEvent({ action: 'ADMIN_LOGOUT', user_id: user.id });
+    } catch (error) {
+      console.warn('Failed to log admin logout event:', error);
+    } finally {
+      logout();
+      navigate('/login');
+    }
   };
 
   // Step 1: Open Verification Modal
@@ -270,7 +277,7 @@ const AdminDashboard = () => {
                   <tr key={log.id} style={{ borderBottom: '1px solid var(--chase-gray-100)' }}>
                     <td style={{ padding: '12px 24px', fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>{new Date(log.timestamp).toLocaleString()}</td>
                     <td style={{ padding: '12px 24px', fontSize: '0.85rem', fontWeight: '600' }}>{log.action}</td>
-                    <td style={{ padding: '12px 24px', fontSize: '0.85rem' }}>{log.actor_email || 'System'}</td>
+                    <td style={{ padding: '12px 24px', fontSize: '0.85rem' }}>{log.user_email || log.user_username || 'System'}</td>
                     <td style={{ padding: '12px 24px', fontSize: '0.75rem', fontFamily: 'monospace', color: 'var(--chase-blue)' }}>{log.blockchain_hash ? log.blockchain_hash.substring(0, 16) + '...' : 'Pending'}</td>
                   </tr>
                 ))}

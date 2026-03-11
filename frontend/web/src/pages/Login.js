@@ -53,7 +53,8 @@ const Login = () => {
       const dashboardRoutes = {
         'family_member': '/family-dashboard',
         'police_officer': '/police-dashboard',
-        'government_official': '/government-dashboard'
+        'government_official': '/government-dashboard',
+        'admin': '/admin-dashboard'
       };
       const userRole = user?.role || formData.role;
       navigate(dashboardRoutes[userRole] || '/');
@@ -106,6 +107,12 @@ const Login = () => {
       government_security_id: '44444444',
       government_position: 'ps'
     },
+    {
+      username: 'chakin',
+      password: 'adminpassword123',
+      role: 'Administrator',
+      is_admin: true
+    },
   ];
 
   const quickLogin = async (demoUser) => {
@@ -113,7 +120,8 @@ const Login = () => {
     const roleMapping = {
       'Family Member': 'family_member',
       'Police Officer': 'police_officer',
-      'Government Official': 'government_official'
+      'Government Official': 'government_official',
+      'Administrator': 'admin'
     };
 
     setFormData({
@@ -137,7 +145,8 @@ const Login = () => {
       const dashboardRoutes = {
         'family_member': '/family-dashboard',
         'police_officer': '/police-dashboard',
-        'government_official': '/government-dashboard'
+        'government_official': '/government-dashboard',
+        'admin': '/admin-dashboard'
       };
       const userRole = user?.role || roleMapping[demoUser.role];
 
@@ -360,6 +369,7 @@ const Login = () => {
                     {user.role === 'Family Member' && `ID: ${user.national_id}`}
                     {user.role === 'Police Officer' && `ID: ${user.service_id}`}
                     {user.role === 'Government Official' && `ID: ${user.government_security_id}`}
+                    {user.role === 'Administrator' && 'System Access'}
                   </small>
                 </button>
               </div>

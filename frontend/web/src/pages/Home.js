@@ -93,6 +93,12 @@ const Home = () => {
             </div>
           </div>
           <div className="nav-links">
+            <button 
+              className="nav-btn nav-admin" 
+              onClick={() => navigate('/admin-dashboard')}
+            >
+              Admin Login
+            </button>
             {isAuthenticated ? (
               <>
                 <span className="nav-user">
