@@ -1,0 +1,16 @@
+"""URLs for Users app."""
+from django.urls import path, include
+from rest_framework.routers import SimpleRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from users.views import UserViewSet, AuditLogViewSet, PermissionViewSet, CustomTokenObtainPairView
+
+router = SimpleRouter()
+router.register(r'users', UserViewSet, basename='user')
+router.register(r'audit-logs', AuditLogViewSet, basename='audit-log')
+router.register(r'permissions', PermissionViewSet, basename='permission')
+
+urlpatterns = [
+    path('', include(router.urls)),
+    path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]

@@ -1,0 +1,134 @@
+<!-- templates/base.html -->
+<!-- Sura Smart Base Template -->
+<!-- PRD 4.3: Multilingual Interface -->
+<!-- PRD 8: Accessibility Compliance -->
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>{% block title %}Sura Smart{% endblock %}</title>
+    
+    <!-- TRD 2.2.1: Frontend Framework -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    
+    <!-- Accessibility (TRD 8: WCAG 2.1 AA) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@accessible/components/dist/accessible.min.css">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    <!-- Skip to main content (Accessibility) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="navbar-brand">
+                <a href="/" class="logo">
+                    <img src="{% static 'images/sura-smart-logo.svg' %}" alt="Sura Smart Logo">
+                    <span>Sura Smart</span>
+                </a>
+            </div>
+            
+            <div class="navbar-menu">
+                <!-- TRD 4.3: Multilingual Support -->
+                <div class="language-selector">
+                    <label for="language-select" class="sr-only">Select Language</label>
+                    <select id="language-select" name="language" aria-label="Language">
+                        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                        <option value="es" {% if LANGUAGE_CODE == 'es' %}selected{% endif %}>Español</option>
+                        <option value="fr" {% if LANGUAGE_CODE == 'fr' %}selected{% endif %}>Français</option>
+                        <option value="ar" {% if LANGUAGE_CODE == 'ar' %}selected{% endif %}>العربية</option>
+                        <option value="zh" {% if LANGUAGE_CODE == 'zh' %}selected{% endif %}>中文</option>
+                        <option value="hi" {% if LANGUAGE_CODE == 'hi' %}selected{% endif %}>हिन्दी</option>
+                    </select>
+                </div>
+                
+                <!-- User Menu -->
+                {% if user.is_authenticated %}
+                <div class="user-menu">
+                    <span class="user-name">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}" class="btn btn-outline">Logout</a>
+                </div>
+                {% else %}
+                <div class="auth-buttons">
+                    <a href="{% url 'login' %}" class="btn btn-outline">Login</a>
+                    <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main id="main-content" class="site-main" role="main">
+        <!-- Messages -->
+        {% if messages %}
+        <div class="messages" role="alert">
+            {% for message in messages %}
+            <div class="message message-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sura Smart</h3>
+                <p>Revolutionizing Missing Persons Search</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'search' %}">Search</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="{% url 'privacy' %}">Privacy Policy</a></li>
+                    <li><a href="{% url 'terms' %}">Terms of Service</a></li>
+                    <li><a href="{% url 'accessibility' %}">Accessibility</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="mailto:support@surasmart.com">support@surasmart.com</a></li>
+                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; {% now "Y" %} Sura Smart. All rights reserved.</p>
+            <p class="compliance-badge">
+                <span>GDPR Compliant</span> | 
+                <span>CCPA Compliant</span> | 
+                <span>WCAG 2.1 AA</span>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

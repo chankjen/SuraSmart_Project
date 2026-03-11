@@ -1,0 +1,6 @@
+*.log
+backend/.git
+media   
+venv
+__pycache__     
+    

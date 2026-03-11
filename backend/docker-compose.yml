@@ -1,0 +1,118 @@
+# docker-compose.yml
+# TRD Section 2.3: Infrastructure
+
+version: '3.8'
+
+services:
+  # Flask Application (TRD 2.2.2)
+  app:
+    build: ./sura_smart
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://sura_admin:password@postgres:5432/sura_smart
+      - REDIS_URL=redis://redis:6379/0
+      - BLOCKCHAIN_ENDPOINT=http://blockchain:8545
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+      - blockchain
+    volumes:
+      - ./sura_smart:/app
+      - ./models:/app/models
+    networks:
+      - sura-smart-network
+
+  # Celery Worker (TRD 6.1.1 - Async Tasks)
+  celery_worker:
+    build: ./sura_smart
+    command: celery -A sura_smart.blockchain_audit.celery_app worker --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - DATABASE_URL=postgresql://sura_admin:password@postgres:5432/sura_smart
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./sura_smart:/app
+    networks:
+      - sura-smart-network
+
+  # Celery Beat (TRD 10.4 - Scheduled Tasks)
+  celery_beat:
+    build: ./sura_smart
+    command: celery -A sura_smart.blockchain_audit.celery_app beat --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    networks:
+      - sura-smart-network
+
+  # PostgreSQL (TRD 2.3.3)
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=sura_smart
+      - POSTGRES_USER=sura_admin
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - sura-smart-network
+
+  # Redis (TRD 2.3.3)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - sura-smart-network
+
+  # Blockchain Node (TRD 5.1.2)
+  blockchain:
+    image: hyperledger/fabric-peer:2.5
+    ports:
+      - "8545:8545"
+    environment:
+      - CORE_PEER_ID=peer0
+      - CORE_PEER_LOCALMSPID=Org1MSP
+    networks:
+      - sura-smart-network
+
+  # Monitoring - Prometheus (TRD 7.4)
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - sura-smart-network
+
+  # Monitoring - Grafana (TRD 7.4)
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - sura-smart-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  grafana_data:
+
+networks:
+  sura-smart-network:
+    driver: bridge

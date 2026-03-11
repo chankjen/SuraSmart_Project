@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="static/images/SuraSmart_logo.png" type="image/png"> 
+</head>
+<body>
+    <!-- Welcome message -->
+    <div class="welcome">
+        <h1>Welcome to SuraSmart</h1>
+    </div>
+
+    <!-- Image upload container -->
+    <div class="container">
+        <h1 class="title">Upload an Image to Search</h1>
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="image" accept="image/*" required>
+            <input type="submit" value="Upload and Compare" class="submit-button">
+        </form>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

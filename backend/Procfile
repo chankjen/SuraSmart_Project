@@ -1,0 +1,1 @@
+web: gunicorn wuzu-smart-no-db:app

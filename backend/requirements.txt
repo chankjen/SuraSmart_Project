@@ -1,0 +1,76 @@
+# sura_smart/requirements.txt
+# Sura Smart - TRD Section 2.2: Technical Stack
+
+# Web Framework (TRD 2.2.2)
+flask==2.3.0
+gunicorn==21.2.0
+python-dotenv==1.0.0
+
+# AI/ML (TRD 2.2.2, TRD 3)
+tensorflow==2.13.0
+torch==2.0.1
+opencv-python-headless==4.8.0
+scikit-learn==1.3.0
+facenet-pytorch==2.5.3
+
+# Blockchain (TRD 5.1.2)
+web3==6.0.0
+
+# Security (TRD 5)
+cryptography==41.0.0
+PyJWT==2.8.0
+bcrypt==4.0.1
+pyotp==2.9.0
+qrcode==7.4.2
+
+# Database (TRD 2.3.3-2.3.4)
+psycopg2-binary==2.9.6
+sqlalchemy==2.0.0
+alembic==1.11.0
+redis==4.5.0
+
+# Async Tasks (TRD 6.1.1)
+celery==5.3.0
+
+# Monitoring (TRD 7.4)
+newrelic==9.0.0
+datadog==0.47.0
+prometheus-client==0.17.0
+
+# API & Integration (TRD 4)
+requests==2.31.0
+httpx==0.24.0
+
+# Testing (TRD 7.2)
+pytest==7.4.0
+pytest-cov==4.1.0
+pytest-mock==3.11.0
+locust==2.15.0
+
+# Code Quality (TRD 7.2)
+flake8==6.1.0
+black==23.7.0
+mypy==1.5.0
+bandit==1.7.5
+safety==2.3.5
+
+# Internationalization (TRD 4.3, PRD 8)
+babel==2.12.1
+flask-babel==4.0.0
+
+# Edge AI (TRD 4.3.1)
+tensorflow-lite==2.13.0
+# Edge AI
+tensorflow-lite==2.13.0
+tensorflow==2.13.0
+
+# Image Processing
+opencv-python-headless==4.8.0
+Pillow==10.0.0
+
+# Edge Encryption
+cryptography==41.0.0
+
+# Performance
+scipy==1.11.0
+numpy==1.24.0

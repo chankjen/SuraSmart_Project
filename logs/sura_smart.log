@@ -4090,3 +4090,8 @@ INFO 2026-03-11 15:41:12,536 autoreload 13412 10356 Watching for file changes wi
 INFO 2026-03-11 15:41:31,872 autoreload 13412 10356 D:\SuraSmart_Project\backend\users\views.py changed, reloading.
 INFO 2026-03-11 15:41:34,540 autoreload 18756 23292 Watching for file changes with StatReloader
 WARNING 2026-03-11 15:46:31,027 log 18756 18264 Unauthorized: /api/auth/audit-logs/log_event/
+INFO 2026-03-11 20:58:39,601 autoreload 16900 24640 Watching for file changes with StatReloader
+WARNING 2026-03-11 20:59:10,091 log 16900 24272 Not Found: /api/health/check/
+WARNING 2026-03-11 20:59:25,003 log 16900 28624 Not Found: /favicon.ico
+INFO 2026-03-11 21:00:01,395 autoreload 16900 24640 D:\SuraSmart_Project\backend\shared\urls.py changed, reloading.
+INFO 2026-03-11 21:00:24,315 autoreload 5260 28996 Watching for file changes with StatReloader
