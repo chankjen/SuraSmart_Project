@@ -1,0 +1,78 @@
+/* Admin Portal Specific Styles */
+.admin-verification-modal {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.audit-log-table {
+  font-size: 0.85rem;
+}
+
+.audit-log-table th {
+  background: var(--chase-gray-50);
+  font-weight: 600;
+  color: var(--chase-blue-dark);
+}
+
+.audit-log-table tr:hover {
+  background: var(--chase-gray-50);
+}
+
+.verification-input {
+  letter-spacing: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.status-badge-pending {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-badge-verified {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-badge-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Responsive Audit Log Table */
+@media (max-width: 1024px) {
+  .audit-log-table {
+    font-size: 0.75rem;
+  }
+  
+  .audit-log-table th,
+  .audit-log-table td {
+    padding: 8px 12px;
+  }
+}
