@@ -60,6 +60,7 @@ const Register = () => {
     try {
       const { confirmPassword, ...registerData } = formData;
       await api.register(registerData);
+      alert("Registration Complete. Check Your Email to Complete Login Within 15 Minutes Time");
       navigate('/login?registered=true');
     } catch (err) {
       const errorData = err.response?.data;

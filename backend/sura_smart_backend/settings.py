@@ -232,6 +232,10 @@ LOGGING = {
 # Create logs directory if it doesn't exist
 os.makedirs(BASE_DIR / 'logs', exist_ok=True)
 
+# Email Configuration (for local testing without SMTP)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@surasmart.com'
+
 # AI/ML Configuration
 ML_MODELS = {
     'facial_recognition': {

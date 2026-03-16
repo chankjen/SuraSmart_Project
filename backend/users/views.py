@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import authenticate
+from django.core.mail import send_mail
+from django.conf import settings
 from users.models import User, AuditLog, Permission
 from users.serializers import (
     UserSerializer, UserCreateSerializer, AuditLogSerializer, PermissionSerializer,
@@ -64,6 +66,9 @@ class UserViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
+        user.set_password(new_password)
+        user.save()
+        return Response({'detail': 'Password changed successfully'})
     @action(detail=True, methods=['post'], permission_classes=[permissions.IsAdminUser])
     def verify(self, request, pk=None):
         """Verify a user account (admin only)."""
@@ -77,17 +82,61 @@ class UserViewSet(viewsets.ModelViewSet):
         """Approve a user registration (admin only)."""
         user = self.get_object()
         user.verification_status = 'verified'
-        # In a real app, record the admin who approved and the verification details
+        user.rejection_reason = None
         user.save()
+        
+        # Email: Registration Approval Confirmation
+        send_mail(
+            subject='SuraSmart - Registration Approved',
+            message=f'Dear {user.first_name},\n\nYour registration has been approved. Welcome to SuraSmart!',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            fail_silently=True,
+        )
+        print(f"EMAIL SENT TO {user.email}: Your registration has been approved. Welcome to SuraSmart!")
+        
         return Response({'detail': 'User approved successfully'})
+
+    @action(detail=True, methods=['post'], permission_classes=[permissions.IsAdminUser])
+    def reject(self, request, pk=None):
+        """Reject a user registration (admin only)."""
+        user = self.get_object()
+        reason = request.data.get('reason')
+        
+        # Automated role-based reason if none provided
+        if not reason:
+            if user.role == 'family_member':
+                reason = 'Please match ID number with ID Names correctly'
+            elif user.role == 'police_officer':
+                reason = 'Please match your service number with rank correctly'
+            elif user.role == 'government_official':
+                reason = 'Please match your position and government security ID correctly'
+            else:
+                reason = 'Details mismatch'
+
+        user.verification_status = 'rejected'
+        user.rejection_reason = reason
+        user.save()
+        
+        # Email: Registration Rejection
+        send_mail(
+            subject='SuraSmart - Registration Update',
+            message=f'Dear {user.first_name},\n\nYour registration was disapproved. Reason: {reason}',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            fail_silently=True,
+        )
+        print(f"EMAIL SENT TO {user.email}: Your registration was disapproved. Reason: {reason}")
+        
+        return Response({'detail': f'User disapproved: {reason}'})
 
     @action(detail=False, methods=['get'], permission_classes=[permissions.IsAdminUser])
     def system_stats(self, request):
         """Get system-wide statistics for the admin dashboard."""
         stats = {
-            'totalUsers': User.objects.count(),
+            'totalUsers': User.objects.filter(verification_status='verified').count(),
             'pendingVerification': User.objects.filter(verification_status='pending').count(),
-            'verifiedUsers': User.objects.filter(verification_status='verified').count(),
+            'verifiedUsers': User.objects.count(),
             'systemUptime': '99.95%' # Mocked
         }
         return Response(stats)
@@ -126,7 +175,7 @@ class AuditLogViewSet(viewsets.ReadOnlyModelViewSet):
         # In production, validate actor_id matches request.user
         AuditLog.objects.create(
             user=request.user,
-            action='api_call', # Map to existing choice
+            action=action, # Use the provided action parameter instead of mapping all to api_call
             description=f"Client Action: {action}",
             ip_address="127.0.0.1", # In production, get actual IP
             metadata=metadata

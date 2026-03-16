@@ -59,10 +59,10 @@ const AdminDashboard = () => {
       setAuditLogs(auditLogsData);
       
       setSystemStats({
-        totalUsers: allUsers.length,
-        pendingVerification: allUsers.filter(u => u.verification_status === 'pending').length,
-        verifiedUsers: allUsers.filter(u => u.verification_status === 'verified').length,
-        systemUptime: '99.95%'
+        totalUsers: statsResponse.data.totalUsers || 0,
+        pendingVerification: statsResponse.data.pendingVerification || 0,
+        verifiedUsers: statsResponse.data.verifiedUsers || 0,
+        systemUptime: statsResponse.data.systemUptime || '99.99%'
       });
     } catch (error) {
       console.error('Error fetching admin ', error);
@@ -130,8 +130,8 @@ const AdminDashboard = () => {
     }
 
     try {
-      // 1. Verify MFA + Password
-      await api.verifyMFA({ password: mfaPassword, otp_code: ' scanned_via_qr ' });
+      // 1. Verify MFA + Password (Mocked for now)
+      await api.verifyMFA({ password: mfaPassword, otp_code: 'scanned_via_qr' });
 
       // 2. Approve User
       await api.approveUserRegistration(selectedUser.id, {
@@ -140,13 +140,13 @@ const AdminDashboard = () => {
         verification_number: verificationNumber
       });
 
-      // 3. Send Email (10-min token expiry handled backend)
+      // 3. Send Email (Backend handles this)
       await api.sendApprovalEmail({
         to: selectedUser.email,
         user_id: selectedUser.id
       });
 
-      // 4. Audit Log (TRD §5.1)
+      // 4. Audit Log
       await api.logAuditEvent({
         action: 'USER_APPROVED',
         user_id: selectedUser.id,
@@ -160,6 +160,38 @@ const AdminDashboard = () => {
     } catch (error) {
       console.error('Error approving user:', error);
       alert('Approval failed. Check MFA credentials.');
+    }
+  };
+
+  const handleReject = async (userItem) => {
+    let reason = '';
+    if (userItem.role === 'family_member') {
+      reason = 'Please match ID number with ID Names correctly';
+    } else if (userItem.role === 'police_officer') {
+      reason = 'Please match your service number with rank correctly';
+    } else if (userItem.role === 'government_official') {
+      reason = 'Please match your position and government security ID correctly';
+    } else {
+      reason = 'Details mismatch';
+    }
+
+    if (!window.confirm(`Are you sure you want to disapprove ${userItem.first_name} ${userItem.last_name}? Reason: ${reason}`)) {
+      return;
+    }
+
+    try {
+      await api.rejectUserRegistration(userItem.id, { reason });
+      await api.logAuditEvent({
+        action: 'USER_REJECTED',
+        user_id: userItem.id,
+        actor_id: user.id,
+        metadata: { reason }
+      });
+      alert(`User disapproved: ${reason}`);
+      fetchAdminData();
+    } catch (error) {
+      console.error('Error disapproving user:', error);
+      alert('Disapproval failed.');
     }
   };
 
@@ -239,7 +271,8 @@ const AdminDashboard = () => {
                       <span className="chase-status-pill" style={{ background: '#fef3c7', color: '#92400e' }}>PENDING</span>
                     </div>
                     <div style={{ width: '100%', display: 'flex', gap: '10px', borderTop: '1px solid var(--chase-gray-100)', paddingTop: '15px' }}>
-                      <button onClick={() => handleVerifyClick(userItem)} className="chase-button" style={{ fontSize: '0.85rem' }}>✓ Verify</button>
+                      <button onClick={() => handleVerifyClick(userItem)} className="chase-button" style={{ fontSize: '0.85rem' }}>✓ Approve</button>
+                      <button onClick={() => handleReject(userItem)} className="chase-button-outline" style={{ fontSize: '0.85rem', color: '#dc2626', borderColor: '#dc2626' }}>✕ Disapprove</button>
                       <Link to={`/admin/user/${userItem.id}`} className="chase-button-outline" style={{ fontSize: '0.85rem' }}>View Details</Link>
                     </div>
                   </div>
@@ -273,7 +306,14 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {auditLogs.slice(0, 50).map(log => (
+                {auditLogs
+                  .filter(log => {
+                    if (auditFilter === 'all') return true;
+                    if (auditFilter === 'USER_APPROVED') return log.action === 'USER_APPROVED' || log.action === 'USER_REJECTED';
+                    if (auditFilter === 'ADMIN_ACTION') return log.action === 'ADMIN_LOGOUT' || log.action === 'USER_APPROVED' || log.action === 'USER_REJECTED';
+                    return log.action === auditFilter;
+                  })
+                  .slice(0, 50).map(log => (
                   <tr key={log.id} style={{ borderBottom: '1px solid var(--chase-gray-100)' }}>
                     <td style={{ padding: '12px 24px', fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>{new Date(log.timestamp).toLocaleString()}</td>
                     <td style={{ padding: '12px 24px', fontSize: '0.85rem', fontWeight: '600' }}>{log.action}</td>

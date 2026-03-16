@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import PrivateRoute from './components/PrivateRoute';
@@ -21,23 +21,8 @@ import AdminDashboard from './pages/AdminDashboard';
 // Styles
 import './styles/global.css';
 
+
 function App() {
-  // Prevent web3 extensions from interfering with this non-blockchain app
-  useEffect(() => {
-    // Override any web3 connection attempts
-    if (typeof window !== 'undefined') {
-      const originalEthereum = window.ethereum;
-      if (originalEthereum) {
-        // Replace ethereum object to prevent connection attempts
-        window.ethereum = {
-          ...originalEthereum,
-          isMetaMask: false,
-          request: () => Promise.reject(new Error('Web3 not supported in this application')),
-          enable: () => Promise.reject(new Error('Web3 not supported in this application')),
-        };
-      }
-    }
-  }, []);
   return (
     <AuthProvider>
       <BrowserRouter>

@@ -56,6 +56,7 @@ class UserSerializer(serializers.ModelSerializer):
 class UserCreateSerializer(serializers.ModelSerializer):
     """Serializer for user registration."""
     password = serializers.CharField(write_only=True, min_length=8)
+    police_rank_display = serializers.CharField(source='get_police_rank_display', read_only=True)
     
     class Meta:
         model = User

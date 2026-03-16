@@ -228,6 +228,10 @@ class ApiClient {
     return this.api.post(`/auth/users/${userId}/approve/`, data);
   }
 
+  rejectUserRegistration(userId, data) {
+    return this.api.post(`/auth/users/${userId}/reject/`, data);
+  }
+
   sendApprovalEmail(data) {
     return this.api.post('/auth/users/send_approval_email/', data);
   }

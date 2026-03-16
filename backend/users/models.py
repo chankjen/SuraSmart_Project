@@ -104,10 +104,10 @@ class User(AbstractUser):
             ('pending', _('Pending')),
             ('verified', _('Verified')),
             ('rejected', _('Rejected')),
-
         ),
         default='pending'
     )
+    rejection_reason = models.TextField(blank=True, null=True)
     is_active_user = models.BooleanField(
         default=True,
         help_text=_('Designates whether this user can log in')
@@ -133,6 +133,9 @@ class AuditLog(models.Model):
         ('data_access', _('Data Access')),
         ('user_login', _('User Login')),
         ('api_call', _('API Call')),
+        ('USER_APPROVED', _('User Approved')),
+        ('USER_REJECTED', _('User Rejected')),
+        ('ADMIN_LOGOUT', _('Admin Logout')),
     )
     
     user = models.ForeignKey(
