@@ -17,7 +17,7 @@ const FacialRecognitionResults = () => {
   const { results = [], uploadedImage, hasMatch, error, missingPersonId } = state;
 
   const handleRetry = () => {
-    navigate('/facial-search');
+    navigate(missingPersonId ? `/facial-search/${missingPersonId}` : '/facial-search');
   };
 
   const handleLogout = () => {
@@ -34,7 +34,10 @@ const FacialRecognitionResults = () => {
   };
 
   const handleForwardForClosure = async () => {
-    if (!missingPersonId) return;
+    if (!missingPersonId) {
+      alert('Error: Case ID not found. Cannot forward for closure.');
+      return;
+    }
     setSubmitting(true);
     try {
       if (reportText) {
@@ -52,7 +55,10 @@ const FacialRecognitionResults = () => {
   };
 
   const handleEscalate = async () => {
-    if (!missingPersonId) return;
+    if (!missingPersonId) {
+      alert('Error: Case ID not found. Cannot escalate.');
+      return;
+    }
     setSubmitting(true);
     try {
       if (reportText) {
@@ -233,14 +239,14 @@ const FacialRecognitionResults = () => {
                       <button
                         className="btn-success"
                         onClick={handleForwardForClosure}
-                        disabled={submitting}
+                        disabled={submitting || !missingPersonId}
                       >
                         Forward to Family for Closure
                       </button>
                       <button
                         className="btn-warning"
                         onClick={handleEscalate}
-                        disabled={submitting}
+                        disabled={submitting || !missingPersonId}
                       >
                         Escalate Case
                       </button>
@@ -325,7 +331,7 @@ const FacialRecognitionResults = () => {
               <button className="btn-primary" onClick={handleRetry}>
                 🔄 Retry Search
               </button>
-              <button className="btn-secondary" onClick={() => navigate('/dashboard')}>
+              <button className="btn-secondary" onClick={() => navigate(user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard')}>
                 Back to Dashboard
               </button>
             </div>
@@ -355,7 +361,7 @@ const FacialRecognitionResults = () => {
               <button className="btn-primary" onClick={handleRetry}>
                 🔄 Try Again
               </button>
-              <button className="btn-secondary" onClick={() => navigate('/dashboard')}>
+              <button className="btn-secondary" onClick={() => navigate(user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard')}>
                 Back to Dashboard
               </button>
             </div>

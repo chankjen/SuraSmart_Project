@@ -15,18 +15,46 @@ const FacialRecognitionSearch = () => {
   const [missingPerson, setMissingPerson] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [primaryPhoto, setPrimaryPhoto] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [activeCases, setActiveCases] = useState([]);
+  const [fetchingCases, setFetchingCases] = useState(false);
 
   // Load missing person data if ID is provided
   useEffect(() => {
     if (missingPersonId) {
       loadMissingPerson();
+    } else if (user?.role === 'police_officer') {
+      fetchActiveCases();
     }
-  }, [missingPersonId]);
+  }, [missingPersonId, user]);
+
+  const fetchActiveCases = async () => {
+    setFetchingCases(true);
+    try {
+      const response = await api.getMissingPersons();
+      const results = response.data.results || response.data || [];
+      // Filter for actionable cases
+      const actionable = results.filter(c => ['RAISED', 'UNDER_INVESTIGATION', 'REPORTED'].includes(c.status));
+      setActiveCases(actionable);
+    } catch (err) {
+      console.error('Failed to fetch cases:', err);
+    } finally {
+      setFetchingCases(false);
+    }
+  };
 
   const loadMissingPerson = async () => {
     try {
       const response = await api.getMissingPerson(missingPersonId);
-      setMissingPerson(response.data);
+      const data = response.data;
+      setMissingPerson(data);
+      
+      // Find primary photo from case data
+      if (data.facial_recognition_images && data.facial_recognition_images.length > 0) {
+        const primary = data.facial_recognition_images.find(img => img.is_primary) || data.facial_recognition_images[0];
+        setPrimaryPhoto(primary);
+      }
     } catch (err) {
       console.error('Failed to load missing person:', err);
       setError('Failed to load missing person details');
@@ -94,8 +122,13 @@ const FacialRecognitionSearch = () => {
         // If searching within a case context, we also "Raise" it as per workflow
         try {
           await api.raiseCase(missingPersonId);
-          navigate('/family-dashboard');
-          return; // Stop here and return to portal
+          // Only redirect to dashboard for family members. 
+          // Authorities (Police) need to proceed to the results page to review matches and take actions.
+          if (user?.role === 'family_member' || user?.role === 'individual_user') {
+            alert("Case raised to police successfully.");
+            navigate('/family-dashboard');
+            return;
+          }
         } catch (e) {
           console.error("Auto-raise failed:", e);
         }
@@ -122,6 +155,35 @@ const FacialRecognitionSearch = () => {
     }
   };
 
+  const handleAutomatedSearch = async () => {
+    if (!missingPersonId || !primaryPhoto) return;
+
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await api.runAiSearch(missingPersonId);
+      const searchData = response.data;
+
+      // Navigate to results page with the automated match data
+      navigate('/facial-results', {
+        state: {
+          results: searchData.match ? [searchData.match] : [],
+          uploadedImage: primaryPhoto.image_file,
+          hasMatch: searchData.match_found,
+          message: searchData.message,
+          missingPersonId: missingPersonId,
+          isAutomated: true
+        }
+      });
+    } catch (err) {
+      console.error('Automated search error:', err);
+      setError(err.response?.data?.error || 'Failed to complete automated search.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const handleCloseCase = async () => {
     if (!missingPerson) return;
 
@@ -131,7 +193,7 @@ const FacialRecognitionSearch = () => {
         notes: 'Case closed - facial recognition match confirmed'
       });
       alert('Case closed successfully!');
-      navigate('/dashboard');
+      navigate(user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard');
     } catch (err) {
       console.error('Failed to close case:', err);
       alert('Failed to close case. Please try again.');
@@ -147,7 +209,7 @@ const FacialRecognitionSearch = () => {
         notes: 'Case escalated - facial recognition successful but requires further investigation'
       });
       alert('Case escalated successfully!');
-      navigate('/dashboard');
+      navigate(user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard');
     } catch (err) {
       console.error('Failed to escalate case:', err);
       alert('Failed to escalate case. Please try again.');
@@ -163,7 +225,7 @@ const FacialRecognitionSearch = () => {
         notes: 'Case requires more details - no matches found'
       });
       alert('Case marked for zoom investigation!');
-      navigate('/dashboard');
+      navigate(user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard');
     } catch (err) {
       console.error('Failed to update case:', err);
       alert('Failed to update case. Please try again.');
@@ -195,6 +257,38 @@ const FacialRecognitionSearch = () => {
 
       {/* Main Content */}
       <main className="facial-main">
+        {!missingPersonId && user?.role === 'police_officer' && activeCases.length > 0 && (
+          <div className="case-selection-section" style={{ marginBottom: '40px' }}>
+            <div className="upload-card" style={{ borderLeft: '4px solid var(--chase-blue)' }}>
+              <h3>Select an Active Case for Analysis</h3>
+              <p className="upload-subtitle">Choose a case from your jurisdiction to run an automated AI match using existing evidence.</p>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px', marginTop: '20px' }}>
+                {activeCases.map(c => (
+                  <div 
+                    key={c.id} 
+                    onClick={() => navigate(`/facial-search/${c.id}`)}
+                    className="chase-list-item" 
+                    style={{ 
+                      padding: '15px', 
+                      cursor: 'pointer', 
+                      border: '1px solid var(--chase-gray-100)',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--chase-blue)'}
+                    onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--chase-gray-100)'}
+                  >
+                    <div style={{ fontWeight: 'bold', color: '#f59e0b' }}>{c.full_name}</div>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--chase-gray-500)', marginTop: '4px' }}>
+                      Status: {c.status} | Reported: {new Date(c.date_reported).toLocaleDateString()}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
         {missingPerson && (
           <div className="missing-person-details">
             <h2>Searching for: {missingPerson.full_name}</h2>
@@ -203,6 +297,34 @@ const FacialRecognitionSearch = () => {
               <div className="info-item"><strong>Gender:</strong> {missingPerson.gender || 'Unknown'}</div>
               <div className="info-item"><strong>Last Seen:</strong> {missingPerson.last_seen_location || 'Unknown'}</div>
               <div className="info-item"><strong>Description:</strong> {missingPerson.description || 'No description'}</div>
+            </div>
+          </div>
+        )}
+
+        {primaryPhoto && (
+          <div className="case-photo-section" style={{ marginBottom: '30px' }}>
+            <div className="upload-card" style={{ borderLeft: '4px solid var(--chase-blue)' }}>
+              <h3>Case Evidence Detected</h3>
+              <p className="upload-subtitle">We found a primary photo for this case. You can run AI matching directly using this image.</p>
+              
+              <div style={{ display: 'flex', gap: '25px', alignItems: 'center', marginTop: '20px' }}>
+                <div className="image-preview-large" style={{ margin: 0, width: '150px', height: '150px' }}>
+                  <img src={primaryPhoto.image_file} alt="Case Primary" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div>
+                  <button 
+                    onClick={handleAutomatedSearch}
+                    disabled={submitting || loading}
+                    className="chase-button"
+                    style={{ padding: '0.85rem 1.5rem', background: 'var(--chase-blue-dark)' }}
+                  >
+                    {submitting ? 'Analyzing Case Photo...' : '🔍 Analyze Case Photo Now'}
+                  </button>
+                  <p style={{ marginTop: '10px', fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>
+                    Uses the officially reported photo to search all compatible databases.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         )}

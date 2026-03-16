@@ -47,6 +47,18 @@ const CaseSummaryPage = () => {
         }
     }, [user, filterStatus]);
 
+    const handleApproveClosure = async (id) => {
+        if (!window.confirm('Are you sure you want to approve this match and close the case? (Dual Signature)')) return;
+        try {
+            await api.signClosure(id);
+            alert('Case closure signed. If the police have also signed, the case is now CLOSED.');
+            fetchCases();
+        } catch (error) {
+            console.error('Error closing case:', error);
+            alert('Failed to sign case closure.');
+        }
+    };
+
     useEffect(() => {
         if (user && user.role === 'family_member') {
             fetchCases();
@@ -94,10 +106,36 @@ const CaseSummaryPage = () => {
                                             Reported on {new Date(caseItem.date_reported).toLocaleDateString()}
                                         </div>
                                     </div>
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                                        <span className={`chase-status-pill ${caseItem.status === 'CLOSED' ? 'status-resolved' : 'status-active'}`}>
-                                            {caseItem.status}
-                                        </span>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                                        {caseItem.status === 'PENDING_CLOSURE' && (
+                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-start' }}>
+                                                {!caseItem.dual_signature_family ? (
+                                                    <button 
+                                                        onClick={() => handleApproveClosure(caseItem.id)} 
+                                                        className="chase-button" 
+                                                        style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'var(--chase-green)' }}
+                                                    >
+                                                        {caseItem.dual_signature_police ? 'Finalize & Close Case' : 'Approve Closure'}
+                                                    </button>
+                                                ) : (
+                                                    <span className="chase-status-pill" style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #f59e0b', fontSize: '0.75rem' }}>
+                                                        Awaiting Police
+                                                    </span>
+                                                )}
+                                                {caseItem.dual_signature_police && !caseItem.dual_signature_family && (
+                                                    <small style={{ color: 'var(--chase-green)', fontSize: '0.7rem', fontWeight: 'bold' }}>✓ Police Signed</small>
+                                                )}
+                                            </div>
+                                        )}
+                                        {caseItem.status === 'CLOSED' ? (
+                                            <button disabled className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem', background: '#dc2626', cursor: 'default' }}>
+                                                Case Closed
+                                            </button>
+                                        ) : (
+                                            <span className="chase-status-pill status-active">
+                                                {caseItem.status}
+                                            </span>
+                                        )}
                                         <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 16px', fontSize: '0.85rem' }}>
                                             View Details
                                         </Link>

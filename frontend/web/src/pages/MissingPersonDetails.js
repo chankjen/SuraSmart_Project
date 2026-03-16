@@ -29,6 +29,18 @@ const MissingPersonDetails = () => {
         fetchData();
     }, [fetchData]);
 
+    const handleApproveClosure = async () => {
+        if (!window.confirm('Are you sure you want to approve this match and close the case? (Dual Signature)')) return;
+        try {
+            await api.signClosure(id);
+            alert('Case closure signed. If the police have also signed, the case is now CLOSED.');
+            fetchData();
+        } catch (err) {
+            console.error('Error closing case:', err);
+            alert('Failed to sign case closure.');
+        }
+    };
+
     const handleRaiseCase = async () => {
         if (!window.confirm('Are you sure you want to raise this case to the police?')) return;
         try {
@@ -73,19 +85,47 @@ const MissingPersonDetails = () => {
                         <div>
                             <h1 style={{ fontSize: '2rem', color: 'var(--chase-blue-dark)', marginBottom: '8px' }}>{missingPerson.full_name}</h1>
                             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                                <span className={`chase-status-pill ${missingPerson.status === 'CLOSED' ? 'status-resolved' : 'status-active'}`}>
-                                    {missingPerson.status}
-                                </span>
+                                {missingPerson.status === 'CLOSED' ? (
+                                    <button disabled className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem', background: '#dc2626', cursor: 'default' }}>
+                                        Case Closed
+                                    </button>
+                                ) : (
+                                    <span className={`chase-status-pill status-active`}>
+                                        {missingPerson.status}
+                                    </span>
+                                )}
                                 <span style={{ color: 'var(--chase-gray-500)', fontSize: '0.9rem' }}>
                                     Case ID: {missingPerson.id.substring(0, 8)}...
                                 </span>
                             </div>
                         </div>
-                        {missingPerson.status === 'REPORTED' && user?.role === 'family_member' && (
-                            <button onClick={handleRaiseCase} className="chase-button" style={{ padding: '0.75rem 1.5rem' }}>
-                                Raise to Police
-                            </button>
-                        )}
+                        <div style={{ display: 'flex', gap: '10px' }}>
+                            {missingPerson.status === 'REPORTED' && user?.role === 'family_member' && (
+                                <button onClick={handleRaiseCase} className="chase-button" style={{ padding: '0.75rem 1.5rem' }}>
+                                    Raise to Police
+                                </button>
+                            )}
+                            {missingPerson.status === 'PENDING_CLOSURE' && user?.role === 'family_member' && (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
+                                    {!missingPerson.dual_signature_family ? (
+                                        <button 
+                                            onClick={handleApproveClosure} 
+                                            className="chase-button" 
+                                            style={{ padding: '0.75rem 1.5rem', background: 'var(--chase-green)' }}
+                                        >
+                                            {missingPerson.dual_signature_police ? 'Finalize & Close Case' : 'Approve Closure'}
+                                        </button>
+                                    ) : (
+                                        <span className="chase-status-pill" style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #f59e0b' }}>
+                                            Family Signed - Awaiting Police
+                                        </span>
+                                    )}
+                                    {missingPerson.dual_signature_police && !missingPerson.dual_signature_family && (
+                                        <small style={{ color: 'var(--chase-green)', fontSize: '0.85rem', fontWeight: 'bold' }}>✓ Police Signature Verified</small>
+                                    )}
+                                </div>
+                            )}
+                        </div>
                     </div>
 
                     <div className="chase-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>

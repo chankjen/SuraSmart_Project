@@ -73,15 +73,8 @@ const PoliceDashboard = () => {
     }
   };
 
-  const handleRunAiSearch = async (caseId) => {
-    try {
-      const result = await api.runAiSearch(caseId);
-      alert(`Search Complete. Match Confidence: ${result.confidence}%`);
-      // In real app, this would open the match verification modal
-      navigate(`/facial-search/${caseId}`);
-    } catch (error) {
-      alert('AI Search failed.');
-    }
+  const handleRunAiSearch = (caseId) => {
+    navigate(`/facial-search/${caseId}`);
   };
 
   const handleEscalate = async (caseId) => {
@@ -99,12 +92,13 @@ const PoliceDashboard = () => {
     const report = prompt("Enter match details and description statement:");
     if (!report) return;
     try {
-      await api.submitReport(caseId, report);
-      await api.updateCaseStatus(caseId, 'PENDING_CLOSURE');
-      alert('Report sent to Family. Awaiting dual signature for closure.');
+      await api.submitPoliceReport(caseId, report);
+      await api.forwardForClosure(caseId);
+      alert('Report sent and closure signed as Police. Awaiting Family approval.');
       fetchCases();
     } catch (error) {
       console.error('Error submitting report:', error);
+      alert('Failed to submit report or forward for closure.');
     }
   };
 

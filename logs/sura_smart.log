@@ -16925,3 +16925,72 @@ WARNING 2026-03-16 20:02:57,315 views 20748 22156 DeepFace not found. Running in
 INFO 2026-03-16 20:02:57,315 views 20748 22156 Generating simulated embedding for Python 3.14 compatibility.
 INFO 2026-03-16 20:02:57,320 views 20748 22156 Facial search completed in 15ms. Candidates: 6. Best confidence: 1.0000
 WARNING 2026-03-16 20:02:57,366 log 20748 22156 Forbidden: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/raise_case/
+WARNING 2026-03-16 21:30:36,963 log 20748 17136 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-16 23:08:10,597 views 20748 16156 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 23:08:10,598 views 20748 16156 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 23:08:10,681 blockchain 20748 16156 [BLOCKCHAIN_EVENT] Hash: 54643c505c1280181a1c6db1c8a00ae8a074a9453393ae6da5dd8d1a41d68a48 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-16T20:08:10.681154+00:00"}
+INFO 2026-03-16 23:08:10,693 state_machine 20748 16156 Case ecf8cae4-6013-457e-b897-9d5d0e992e6e transitioned from REPORTED to RAISED by alex
+ERROR 2026-03-16 23:09:27,276 log 20748 16156 Internal Server Error: /api/facial-recognition/missing-persons/ecf8cae4-6013-457e-b897-9d5d0e992e6e/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+WARNING 2026-03-16 23:11:30,703 views 20748 22324 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 23:11:30,703 views 20748 22324 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 23:11:30,710 views 20748 22324 Facial search completed in 19ms. Candidates: 7. Best confidence: 1.0000
+WARNING 2026-03-16 23:19:30,112 views 20748 22712 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 23:19:30,112 views 20748 22712 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 23:19:30,117 views 20748 22712 Facial search completed in 16ms. Candidates: 7. Best confidence: 1.0000
+WARNING 2026-03-16 23:40:22,668 views 20748 3820 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 23:40:22,669 views 20748 3820 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 23:40:22,674 views 20748 3820 Facial search completed in 23ms. Candidates: 7. Best confidence: 1.0000
+INFO 2026-03-16 23:49:40,776 autoreload 20748 18464 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-16 23:49:46,508 autoreload 16328 22352 Watching for file changes with StatReloader
+INFO 2026-03-16 23:59:39,058 blockchain 16328 19652 [BLOCKCHAIN_EVENT] Hash: 6f05e6c29d10e57e32a2dd90edb3291584af1e13604338726269a0486fc7447a | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-16T20:59:39.057933+00:00"}
+INFO 2026-03-16 23:59:39,115 state_machine 16328 19652 Case ecf8cae4-6013-457e-b897-9d5d0e992e6e transitioned from RAISED to ANALYZED by bernard
+INFO 2026-03-16 23:59:39,530 blockchain 16328 19652 [BLOCKCHAIN_EVENT] Hash: d37e1fc8c2475ddd58cd37d0859e79dd8033e488ffff236dd2857ee88aedfe52 | Data: {"action": "TRANSITION_ANALYZED_TO_PENDING_CLOSURE", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-16T20:59:39.529770+00:00"}
+INFO 2026-03-16 23:59:39,664 state_machine 16328 19652 Case ecf8cae4-6013-457e-b897-9d5d0e992e6e transitioned from ANALYZED to PENDING_CLOSURE by bernard
+INFO 2026-03-17 00:21:26,057 autoreload 16328 22352 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-17 00:21:32,694 autoreload 532 7820 Watching for file changes with StatReloader
+INFO 2026-03-17 00:22:17,459 blockchain 532 22612 [BLOCKCHAIN_EVENT] Hash: 223b26d7fda74bf9b066ac3bf3ef317e9aada0152deb8113442cfac4c15a3cfb | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:22:17.458870+00:00"}
+INFO 2026-03-17 00:23:31,401 blockchain 532 8124 [BLOCKCHAIN_EVENT] Hash: cfdadd83975a4b43814f43cc9c2fd746c28fda2e2c613ff7f3abfce2004a12aa | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:23:31.401131+00:00"}
+INFO 2026-03-17 00:23:55,737 blockchain 532 8124 [BLOCKCHAIN_EVENT] Hash: a34c3aaaae4add87819f782e60a8bb87ad23a47c055f21bedf93f7d1381e0433 | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:23:55.737254+00:00"}
+INFO 2026-03-17 00:24:05,550 blockchain 532 22612 [BLOCKCHAIN_EVENT] Hash: 3486d02b055a6d9c4f0d765ead4bfd6c25dd8b46ae64165ed920716d3f057b1f | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:24:05.549867+00:00"}
+INFO 2026-03-17 00:25:52,752 autoreload 532 7820 D:\SuraSmart_Project\backend\ai_models\facial_recognition\state_machine.py changed, reloading.
+INFO 2026-03-17 00:25:56,639 autoreload 22140 22340 Watching for file changes with StatReloader
+INFO 2026-03-17 00:26:50,330 blockchain 22140 21540 [BLOCKCHAIN_EVENT] Hash: ddd6f81c85b10ba5c0a027aab9efecce5763db06bf2bc77f3f6fb8f3df333ffe | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:26:50.330751+00:00"}
+INFO 2026-03-17 00:27:03,912 blockchain 22140 21808 [BLOCKCHAIN_EVENT] Hash: 76e859930d13e59299af2752b38e5f2d5dc222d973643db13aba37911cb8cf4c | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:27:03.911874+00:00"}
+INFO 2026-03-17 00:27:30,408 blockchain 22140 21540 [BLOCKCHAIN_EVENT] Hash: 6502a64d796e67e8998ca615802c4039e2bbfd56eacddf723817eeee0e374139 | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ecf8cae4-6013-457e-b897-9d5d0e992e6e", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:27:30.407815+00:00"}
+WARNING 2026-03-17 00:31:13,876 log 22140 20132 Not Found: /favicon.ico
+WARNING 2026-03-17 00:32:04,228 log 22140 23008 Unauthorized: /api/auth/token/
+INFO 2026-03-17 00:33:31,725 blockchain 22140 14536 [BLOCKCHAIN_EVENT] Hash: 99d64983fa72f74bd13668eb5ee8a1ebadb14ff3f3136695d6cd23595d6ac813 | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "e233aca3-3566-4d86-9e85-81b55a18c62b", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:33:31.724906+00:00"}
+INFO 2026-03-17 00:34:23,152 blockchain 22140 14536 [BLOCKCHAIN_EVENT] Hash: 598a0bb564ec84c60c53eb38d00d3648202046718a768561cccd9cff769992f9 | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "e233aca3-3566-4d86-9e85-81b55a18c62b", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:34:23.152523+00:00"}
+INFO 2026-03-17 00:35:55,087 blockchain 22140 21380 [BLOCKCHAIN_EVENT] Hash: 3526b90254f2480cfa805df12290a933cfc08e57be9cebd9a4ff4fdde9f08cef | Data: {"action": "SIGNATURE_ADDED_BY_family_member", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "e233aca3-3566-4d86-9e85-81b55a18c62b", "jurisdiction": "KE", "metadata": {"role": "family_member"}, "timestamp": "2026-03-16T21:35:55.087074+00:00"}
+INFO 2026-03-17 00:36:15,238 blockchain 22140 21380 [BLOCKCHAIN_EVENT] Hash: 0a21ab2997f07a18346ddc60c793b84d005ee8b8acbb40007d1499370edc091d | Data: {"action": "TRANSITION_PENDING_CLOSURE_TO_CLOSED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "def20ee4-e416-4a10-95b9-a0d910b8d7d6", "jurisdiction": "KE", "metadata": {"notes": "Dual signature confirmed"}, "timestamp": "2026-03-16T21:36:15.238619+00:00"}
+INFO 2026-03-17 00:36:15,259 state_machine 22140 21380 Case def20ee4-e416-4a10-95b9-a0d910b8d7d6 transitioned from PENDING_CLOSURE to CLOSED by amanda
+INFO 2026-03-17 00:38:14,435 autoreload 22140 22340 D:\SuraSmart_Project\backend\ai_models\facial_recognition\serializers.py changed, reloading.
+INFO 2026-03-17 00:38:17,829 autoreload 14976 12416 Watching for file changes with StatReloader

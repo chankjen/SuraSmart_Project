@@ -210,6 +210,19 @@ class ApiClient {
     return this.api.post(`/facial-recognition/missing-persons/${id}/forward_for_closure/`);
   }
 
+  runAiSearch(id) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/run_ai_search/`);
+  }
+
+  signClosure(id) {
+    return this.api.post(`/facial-recognition/missing-persons/${id}/sign_closure/`);
+  }
+
+  downloadImage(imageUrl) {
+    // imageUrl is expected to be a full URL or relative path from MEDIA_URL
+    return this.api.get(imageUrl, { responseType: 'blob' }).then(response => response.data);
+  }
+
   // Case management endpoints
   updateCaseStatus(caseId, status) {
     return this.api.patch(`/facial-recognition/missing-persons/${caseId}/`, { status });

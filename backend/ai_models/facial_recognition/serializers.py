@@ -30,7 +30,8 @@ class MissingPersonSerializer(serializers.ModelSerializer):
             'date_reported', 'last_seen_date', 'last_seen_location',
             'age', 'gender', 'identifying_marks', 'facial_recognition_images',
             'match_count', 'police_analysis_report', 'government_analysis_report',
-            'raised_at', 'escalated_at', 'created_at', 'updated_at'
+            'raised_at', 'escalated_at', 'dual_signature_family', 'dual_signature_police',
+            'created_at', 'updated_at'
         ]
         read_only_fields = ['id', 'status', 'created_at', 'updated_at', 'facial_recognition_images', 'raised_at', 'escalated_at']
     

@@ -396,9 +396,95 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
         sm = CaseStateMachine(case)
         try:
             sm.transition_to('PENDING_CLOSURE', actor=request.user, notes='Case forwarded to family for closure')
+            sm.toggle_signature('police_officer') # Automatically sign as police when forwarding
             return Response(MissingPersonSerializer(case).data)
         except ValueError as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['post'])
+    def run_ai_search(self, request, pk=None):
+        """Perform automated AI facial search using the case's primary photo."""
+        case = self.get_object()
+        primary_image = case.facial_recognition_images.filter(is_primary=True).first()
+        
+        if not primary_image:
+            return Response({'error': 'No primary photo found for this case. Please upload a photo first.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        if primary_image.status != 'completed' or not primary_image.face_embedding:
+            # Try to extract embedding if missing but file exists
+            if primary_image.image_file:
+                try:
+                    image_bytes = _bytes_from_file(primary_image.image_file)
+                    embedding = _extract_embedding(image_bytes)
+                    if embedding:
+                        primary_image.face_embedding = embedding
+                        primary_image.status = 'completed'
+                        primary_image.save()
+                    else:
+                        return Response({'error': 'Face detection failed for the primary photo.'}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+                except Exception as e:
+                    return Response({'error': f'Failed to process image: {str(e)}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            else:
+                return Response({'error': 'Primary photo file is missing.'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Start search logic
+        import time
+        start_time = time.time()
+        query_embedding = primary_image.face_embedding
+
+        # Retrieve candidates (exclude current person)
+        db_images = FacialRecognitionImage.objects.filter(
+            status='completed'
+        ).exclude(missing_person=case).exclude(face_embedding__isnull=True)
+
+        best_match = None
+        best_confidence = 0.0
+
+        for db_image in db_images:
+            confidence = _cosine_similarity(query_embedding, db_image.face_embedding)
+            if confidence > best_confidence:
+                best_confidence = confidence
+                best_match = db_image
+
+        elapsed_ms = int((time.time() - start_time) * 1000)
+
+        # Create or update match record
+        result_match = None
+        if best_match and best_confidence >= 0.50:
+            hitl_flag = _determine_hitl(best_confidence)
+            match, created = FacialMatch.objects.get_or_create(
+                missing_person=case,
+                source_image=best_match,
+                defaults={
+                    'match_confidence': best_confidence,
+                    'distance_metric': round(1.0 - best_confidence, 6),
+                    'source_database': 'internal',
+                    'source_reference': str(best_match.id),
+                    'algorithm_version': 'v2.0',
+                    'model_name': 'Facenet512',
+                    'requires_human_review': hitl_flag,
+                }
+            )
+            if not created:
+                match.match_confidence = best_confidence
+                match.distance_metric = round(1.0 - best_confidence, 6)
+                match.requires_human_review = hitl_flag
+                match.save()
+            result_match = match
+
+        # Update case status if high confidence match found
+        if best_confidence >= 0.98:
+            case.status = 'MATCH_FOUND'
+            case.save()
+
+        return Response({
+            'status': 'success',
+            'match_found': best_confidence >= 0.50,
+            'match_confidence': round(best_confidence * 100, 2),
+            'confidence': round(best_confidence * 100, 2), # field for consistency with frontend usage
+            'match': FacialMatchSerializer(result_match).data if result_match else None,
+            'search_time_ms': elapsed_ms
+        })
 
     @action(detail=False, methods=['post'])
     def search(self, request):

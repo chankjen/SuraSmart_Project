@@ -62,12 +62,12 @@ const FamilyDashboard = () => {
   const handleApproveClosure = async (id) => {
     if (!window.confirm('Are you sure you want to approve this match and close the case? (Dual Signature)')) return;
     try {
-      await api.updateCaseStatus(id, 'CLOSED');
-      alert('Case closed successfully. Data will be purged in 30 days.');
+      await api.signClosure(id);
+      alert('Case closure signed. If the police have also signed, the case is now CLOSED.');
       fetchCases();
     } catch (error) {
       console.error('Error closing case:', error);
-      alert('Failed to close case.');
+      alert('Failed to sign case closure.');
     }
   };
 
@@ -148,14 +148,40 @@ const FamilyDashboard = () => {
                             Raise to Police
                           </button>
                         )}
-                        {caseItem.status === 'PENDING_CLOSURE' && (
-                          <button onClick={() => handleApproveClosure(caseItem.id)} className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'var(--chase-green)' }}>
-                            Approve Closure
-                          </button>
-                        )}
-                        <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
-                          Details
-                        </Link>
+                        <div className="case-actions">
+                          {caseItem.status === 'PENDING_CLOSURE' && (
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', alignItems: 'flex-end' }}>
+                              {!caseItem.dual_signature_family ? (
+                                <button 
+                                  onClick={() => handleApproveClosure(caseItem.id)} 
+                                  className="chase-button" 
+                                  style={{ padding: '6px 12px', fontSize: '0.85rem', background: 'var(--chase-green)' }}
+                                >
+                                  {caseItem.dual_signature_police ? 'Finalize & Close Case' : 'Approve Closure'}
+                                </button>
+                              ) : (
+                                <span className="chase-status-pill" style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #f59e0b' }}>
+                                  Family Signed - Awaiting Police
+                                </span>
+                              )}
+                              {caseItem.dual_signature_police && !caseItem.dual_signature_family && (
+                                <small style={{ color: 'var(--chase-green)', fontSize: '0.75rem', fontWeight: 'bold' }}>✓ Police Signature Verified</small>
+                              )}
+                            </div>
+                          )}
+                          {caseItem.status === 'CLOSED' ? (
+                            <button disabled className="chase-button" style={{ padding: '6px 12px', fontSize: '0.85rem', background: '#dc2626', cursor: 'default' }}>
+                              Case Closed
+                            </button>
+                          ) : (
+                            <span className={`chase-status-pill ${caseItem.status === 'CLOSED' ? 'status-resolved' : 'status-active'}`}>
+                              {caseItem.status}
+                            </span>
+                          )}
+                          <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 16px', fontSize: '0.85rem' }}>
+                            View Details
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>

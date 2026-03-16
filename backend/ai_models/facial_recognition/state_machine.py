@@ -74,7 +74,7 @@ class CaseStateMachine:
         self.case.save()
 
         if self.case.dual_signature_family and self.case.dual_signature_police:
-            self.transition_to('CLOSED', actor=self.case.assigned_officer_id or self.case.reported_by, notes="Dual signature confirmed")
+            self.transition_to('CLOSED', actor=self.case.assigned_officer or self.case.reported_by, notes="Dual signature confirmed")
             return True
             
         BlockchainService.log_event(
