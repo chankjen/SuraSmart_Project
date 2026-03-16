@@ -17,6 +17,8 @@ import FacialRecognitionSearch from './pages/FacialRecognitionSearch';
 import FacialRecognitionResults from './pages/FacialRecognitionResults';
 import CaseSummaryPage from './pages/CaseSummaryPage';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminUserDetails from './pages/AdminUserDetails';
+import MissingPersonDetails from './pages/MissingPersonDetails';
 
 // Styles
 import './styles/global.css';
@@ -108,6 +110,15 @@ function App() {
           />
 
           <Route
+            path="/admin/user/:userId"
+            element={
+              <PrivateRoute>
+                <AdminUserDetails />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
             path="/police-dashboard"
             element={
               <PrivateRoute>
@@ -139,6 +150,15 @@ function App() {
             element={
               <PrivateRoute>
                 <UploadImage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/missing-person/:id"
+            element={
+              <PrivateRoute>
+                <MissingPersonDetails />
               </PrivateRoute>
             }
           />

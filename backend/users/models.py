@@ -112,6 +112,11 @@ class User(AbstractUser):
         default=True,
         help_text=_('Designates whether this user can log in')
     )
+    
+    # MFA Fields (TRD §4.2)
+    mfa_secret = models.CharField(max_length=32, blank=True, null=True)
+    mfa_enabled = models.BooleanField(default=False)
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

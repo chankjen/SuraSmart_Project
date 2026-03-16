@@ -1,4 +1,5 @@
 """API Views for Users app."""
+import pyotp
 from rest_framework import viewsets, status, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -141,11 +142,71 @@ class UserViewSet(viewsets.ModelViewSet):
         }
         return Response(stats)
 
+    @action(detail=False, methods=['get'], permission_classes=[permissions.IsAdminUser])
+    def get_mfa_qr(self, request):
+        """Generate/get TOTP provisioning URI for the user."""
+        user = request.user
+        if not user.mfa_secret:
+            user.mfa_secret = pyotp.random_base32()
+            user.save()
+        
+        totp = pyotp.TOTP(user.mfa_secret)
+        provisioning_uri = totp.provisioning_uri(
+            name=user.email,
+            issuer_name="SuraSmart"
+        )
+        return Response({'provisioning_uri': provisioning_uri})
+
     @action(detail=False, methods=['post'], permission_classes=[permissions.IsAdminUser])
     def verify_mfa(self, request):
-        """Mock MFA verification for admin actions."""
-        # In production, use pyotp or django-two-factor-auth
-        return Response({'detail': 'MFA verified (Mock)'})
+        """Verify TOTP code for admin actions."""
+        user = request.user
+        otp_code = request.data.get('otp_code')
+        password = request.data.get('password')
+
+        # 1. Verify Password
+        if not user.check_password(password):
+            return Response({
+                'detail': 'Invalid password.',
+                'error_code': 'WRONG_PASSWORD'
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+        # 2. Verify OTP
+        if not user.mfa_secret:
+             return Response({
+                 'detail': 'MFA not set up.',
+                 'error_code': 'MFA_NOT_SETUP'
+             }, status=status.HTTP_400_BAD_REQUEST)
+
+        totp = pyotp.TOTP(user.mfa_secret)
+        is_valid = totp.verify(otp_code, valid_window=1)
+        
+        print(f"--- MFA DEBUG ---")
+        print(f"User: {user.username}")
+        print(f"Received Code: {otp_code}")
+        print(f"Current TOTP: {totp.now()}")
+        print(f"Valid: {is_valid}")
+        print(f"------------------")
+
+        if is_valid:
+            if not user.mfa_enabled:
+                user.mfa_enabled = True
+                user.save()
+            return Response({'detail': 'MFA verified (Real)'})
+        
+        return Response({
+            'detail': 'Invalid MFA code.',
+            'error_code': 'WRONG_OTP'
+        }, status=status.HTTP_401_UNAUTHORIZED)
+
+    @action(detail=False, methods=['post'], permission_classes=[permissions.IsAdminUser])
+    def reset_mfa(self, request):
+        """Reset MFA secret for the current admin user."""
+        user = request.user
+        user.mfa_secret = None
+        user.mfa_enabled = False
+        user.save()
+        return Response({'detail': 'MFA reset successful. You will need to re-scan the QR code.'})
 
     @action(detail=False, methods=['post'], permission_classes=[permissions.IsAdminUser])
     def send_approval_email(self, request):

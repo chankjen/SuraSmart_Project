@@ -181,6 +181,10 @@ class ApiClient {
     return this.api.post(`/auth/users/${userId}/verify/`);
   }
 
+  getUser(userId) {
+    return this.api.get(`/auth/users/${userId}/`);
+  }
+
   // Workflow actions
   raiseCase(id) {
     return this.api.post(`/facial-recognition/missing-persons/${id}/raise_case/`);
@@ -236,8 +240,16 @@ class ApiClient {
     return this.api.post('/auth/users/send_approval_email/', data);
   }
 
+  getMfaQr() {
+    return this.api.get('/auth/users/get_mfa_qr/');
+  }
+
   verifyMFA(data) {
     return this.api.post('/auth/users/verify_mfa/', data);
+  }
+
+  resetMfa() {
+    return this.api.post('/auth/users/reset_mfa/');
   }
 
   logAuditEvent(data) {

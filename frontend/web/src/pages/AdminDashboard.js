@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
 import '../styles/ChaseUI.css';
-// Import QR Code Scanner library (e.g., html5-qrcode)
-// import { Html5QrcodeScanner } from "html5-qrcode";
+import { QRCodeCanvas } from 'qrcode.react';
 
 const AdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -30,8 +29,8 @@ const AdminDashboard = () => {
   // MFA State (TRD §4.2)
   const [showMfaModal, setShowMfaModal] = useState(false);
   const [mfaPassword, setMfaPassword] = useState('');
+  const [otpCode, setOtpCode] = useState('');
   const [qrCodeData, setQrCodeData] = useState(null);
-  const [mfaVerified, setMfaVerified] = useState(false);
 
   // Audit Filter
   const [auditFilter, setAuditFilter] = useState('all');
@@ -101,7 +100,6 @@ const AdminDashboard = () => {
     setShowVerificationModal(true);
     setVerificationType('');
     setVerificationNumber('');
-    setMfaVerified(false); // Reset MFA
   };
 
   // Step 2: Handle Verification Input
@@ -111,27 +109,33 @@ const AdminDashboard = () => {
   };
 
   // Step 3: Trigger MFA Before Approval (TRD §4.2)
-  const handleProceedToMfa = () => {
+  const handleProceedToMfa = async () => {
     if (verificationNumber.length !== 8 || !verificationType) {
       alert('Please complete verification details first.');
       return;
     }
-    setShowVerificationModal(false);
-    setShowMfaModal(true);
-    // In production, fetch QR code from backend here
-    setQrCodeData(`otpauth://totp/SuraSmart:${user.email}?secret=JBSWY3DPEHPK3PXP&issuer=SuraSmart`);
+    
+    try {
+        const response = await api.getMfaQr();
+        setQrCodeData(response.data.provisioning_uri);
+        setShowVerificationModal(false);
+        setShowMfaModal(true);
+    } catch (error) {
+        console.error('Error fetching MFA QR:', error);
+        alert('Failed to initialize MFA. Please try again.');
+    }
   };
 
   // Step 4: Final Approval (After MFA)
   const handleFinalApprove = async () => {
-    if (!mfaPassword) {
-      alert('Please enter your password to confirm.');
+    if (!mfaPassword || otpCode.length !== 6) {
+      alert('Please enter your password and binary 6-digit MFA code.');
       return;
     }
 
     try {
-      // 1. Verify MFA + Password (Mocked for now)
-      await api.verifyMFA({ password: mfaPassword, otp_code: 'scanned_via_qr' });
+      // 1. Verify MFA + Password
+      await api.verifyMFA({ password: mfaPassword, otp_code: otpCode });
 
       // 2. Approve User
       await api.approveUserRegistration(selectedUser.id, {
@@ -159,7 +163,31 @@ const AdminDashboard = () => {
       fetchAdminData();
     } catch (error) {
       console.error('Error approving user:', error);
-      alert('Approval failed. Check MFA credentials.');
+      const errorCode = error.response?.data?.error_code;
+      if (errorCode === 'WRONG_PASSWORD') {
+        alert('Verification Failed: Incorrect admin password.');
+      } else if (errorCode === 'WRONG_OTP') {
+        alert('Verification Failed: Invalid MFA code. Please ensure your device time is correct and you are using the latest code.');
+      } else {
+        alert('Approval failed. Please check your credentials and try again.');
+      }
+    }
+  };
+
+  const handleResetMfa = async () => {
+    if (!window.confirm('This will clear your current MFA setup. You will need to scan a new QR code. Continue?')) {
+        return;
+    }
+    try {
+        await api.resetMfa();
+        // Refresh QR code
+        const response = await api.getMfaQr();
+        setQrCodeData(response.data.provisioning_uri);
+        setOtpCode('');
+        alert('MFA has been reset. Please delete the old entry in your app and scan the new QR code.');
+    } catch (error) {
+        console.error('Error resetting MFA:', error);
+        alert('Failed to reset MFA.');
     }
   };
 
@@ -266,7 +294,7 @@ const AdminDashboard = () => {
                       <div>
                         <h3 style={{ margin: '0 0 5px 0', color: 'var(--chase-blue-dark)' }}>{userItem.first_name} {userItem.last_name}</h3>
                         <p style={{ margin: '0', fontSize: '0.9rem', color: 'var(--chase-gray-500)' }}>Email: {userItem.email} | Role: <strong>{userItem.role}</strong></p>
-                        <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>Registered: {new Date(userItem.date_joined).toLocaleDateString()}</p>
+                        <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>Registered: {new Date(userItem.created_at).toLocaleString()}</p>
                       </div>
                       <span className="chase-status-pill" style={{ background: '#fef3c7', color: '#92400e' }}>PENDING</span>
                     </div>
@@ -358,22 +386,33 @@ const AdminDashboard = () => {
             <h2 style={{ marginBottom: '1.5rem', color: 'var(--chase-blue-dark)' }}>Security Verification (MFA)</h2>
             <p style={{ marginBottom: '20px', color: 'var(--chase-gray-500)' }}>Scan the QR code with your authenticator app and enter your password to approve this user.</p>
             
-            {/* QR Code Placeholder */}
-            <div style={{ marginBottom: '20px', textAlign: 'center', padding: '20px', background: '#f4f7f9', borderRadius: '8px' }}>
-              <div style={{ width: '200px', height: '200px', margin: '0 auto', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid #cbd5e1' }}>
-                {/* In production, render QR code here using qrCodeData */}
-                <span style={{ color: 'var(--chase-gray-500)' }}>QR Code Scanner</span>
-              </div>
+            {/* Real QR Code */}
+            <div style={{ marginBottom: '20px', textAlign: 'center', padding: '20px', background: 'white', borderRadius: '12px', border: '1px solid var(--chase-gray-200)', boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)' }}>
+              {qrCodeData ? (
+                <QRCodeCanvas value={qrCodeData} size={180} level="H" />
+              ) : (
+                <div style={{ height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--chase-gray-400)' }}>
+                    Loading QR Code...
+                </div>
+              )}
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>Admin Password *</label>
-              <input type="password" value={mfaPassword} onChange={(e) => setMfaPassword(e.target.value)} placeholder="Re-enter password" style={{ width: '100%', padding: '12px', border: '1px solid var(--chase-gray-200)', borderRadius: '8px' }} />
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '0.9rem' }}>6-Digit MFA Code *</label>
+              <input type="text" value={otpCode} onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, '').substring(0, 6))} placeholder="000000" style={{ width: '100%', padding: '12px', border: '1px solid var(--chase-gray-200)', borderRadius: '8px', letterSpacing: '4px', textAlign: 'center', fontSize: '1.25rem', fontWeight: 'bold' }} />
             </div>
 
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button onClick={handleFinalApprove} className="chase-button" style={{ flex: 1, padding: '1rem' }}>Confirm & Approve</button>
-              <button onClick={() => setShowMfaModal(false)} className="chase-button-outline" style={{ flex: 1, padding: '1rem' }}>Cancel</button>
+            <div style={{ marginBottom: '20px' }}>
+              <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600', fontSize: '0.9rem' }}>Admin Password *</label>
+              <input type="password" value={mfaPassword} onChange={(e) => setMfaPassword(e.target.value)} placeholder="Enter password to confirm" style={{ width: '100%', padding: '12px', border: '1px solid var(--chase-gray-200)', borderRadius: '8px' }} />
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <button onClick={handleFinalApprove} className="chase-button" style={{ padding: '1rem' }}>Confirm & Approve</button>
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <button onClick={handleResetMfa} className="chase-button-outline" style={{ flex: 1, padding: '0.75rem', fontSize: '0.85rem', color: 'var(--chase-gray-500)' }}>Reset MFA Setup</button>
+                <button onClick={() => setShowMfaModal(false)} className="chase-button-outline" style={{ flex: 1, padding: '0.75rem' }}>Cancel</button>
+              </div>
             </div>
           </div>
         </div>

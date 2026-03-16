@@ -98,7 +98,7 @@ const CaseSummaryPage = () => {
                                         <span className={`chase-status-pill ${caseItem.status === 'CLOSED' ? 'status-resolved' : 'status-active'}`}>
                                             {caseItem.status}
                                         </span>
-                                        <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 16px', fontSize: '0.85rem' }}>
+                                        <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 16px', fontSize: '0.85rem' }}>
                                             View Details
                                         </Link>
                                     </div>

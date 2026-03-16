@@ -100,6 +100,7 @@ class AuditLogSerializer(serializers.ModelSerializer):
     """Serializer for audit logs."""
     user_username = serializers.CharField(source='user.username', read_only=True)
     user_email = serializers.CharField(source='user.email', read_only=True)
+    ip_address = serializers.CharField(read_only=True) # Bypass broken GenericIPAddressField validator
     
     class Meta:
         model = AuditLog

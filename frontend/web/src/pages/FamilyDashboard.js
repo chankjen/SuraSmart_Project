@@ -153,7 +153,7 @@ const FamilyDashboard = () => {
                             Approve Closure
                           </button>
                         )}
-                        <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
+                        <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
                           Details
                         </Link>
                       </div>
