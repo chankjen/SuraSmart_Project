@@ -19,6 +19,7 @@ import CaseSummaryPage from './pages/CaseSummaryPage';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminUserDetails from './pages/AdminUserDetails';
 import MissingPersonDetails from './pages/MissingPersonDetails';
+import ReportGenerator from './pages/ReportGenerator';
 
 // Styles
 import './styles/global.css';
@@ -159,6 +160,24 @@ function App() {
             element={
               <PrivateRoute>
                 <MissingPersonDetails />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/reports"
+            element={
+              <PrivateRoute>
+                <ReportGenerator />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/reports/:id"
+            element={
+              <PrivateRoute>
+                <ReportGenerator />
               </PrivateRoute>
             }
           />

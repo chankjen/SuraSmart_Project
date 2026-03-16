@@ -16871,3 +16871,52 @@ INFO 2026-03-16 16:24:37,197 state_machine 19600 21240 Case e439c106-055d-43c8-9
 WARNING 2026-03-16 16:37:46,867 log 19600 21240 Bad Request: /api/facial-recognition/missing-persons/cd46083f-fc38-4821-a023-58e05fcfa424/upload_image/
 INFO 2026-03-16 17:21:16,660 autoreload 19600 18888 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
 INFO 2026-03-16 17:21:18,929 autoreload 20748 18464 Watching for file changes with StatReloader
+WARNING 2026-03-16 17:22:09,741 log 20748 5936 Bad Request: /api/facial-recognition/missing-persons/cd46083f-fc38-4821-a023-58e05fcfa424/upload_image/
+WARNING 2026-03-16 17:24:47,592 log 20748 20700 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-16 17:25:05,758 log 20748 20700 Bad Request: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/upload_image/
+WARNING 2026-03-16 17:25:57,632 views 20748 20700 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 17:25:57,632 views 20748 20700 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 17:25:57,690 blockchain 20748 20700 [BLOCKCHAIN_EVENT] Hash: 3b36f2b7826e2a9c77ea2915783859216d6bb3cb3c542b608be7c669b8299ecd | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "5864a91f-5542-4f01-9a29-30e55f8f9502", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-16T14:25:57.689884+00:00"}
+INFO 2026-03-16 17:25:57,698 state_machine 20748 20700 Case 5864a91f-5542-4f01-9a29-30e55f8f9502 transitioned from REPORTED to RAISED by alex
+ERROR 2026-03-16 19:17:19,812 log 20748 21060 Internal Server Error: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\django\core\handlers\base.py", line 198, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 187, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+WARNING 2026-03-16 19:19:13,807 views 20748 19836 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 19:19:13,808 views 20748 19836 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 19:19:13,823 views 20748 19836 Facial search completed in 28ms. Candidates: 6. Best confidence: 0.7764
+WARNING 2026-03-16 19:19:13,877 log 20748 19836 Forbidden: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/raise_case/
+WARNING 2026-03-16 19:31:17,837 views 20748 10204 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 19:31:17,837 views 20748 10204 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 19:31:17,841 views 20748 10204 Facial search completed in 14ms. Candidates: 6. Best confidence: 1.0000
+WARNING 2026-03-16 19:31:17,904 log 20748 10204 Forbidden: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/raise_case/
+WARNING 2026-03-16 19:43:45,791 log 20748 22156 Bad Request: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/escalate_case/
+INFO 2026-03-16 19:44:45,090 blockchain 20748 22156 [BLOCKCHAIN_EVENT] Hash: 9c9d101205424132f6db3907ec96c47b0474fa231721c164fbe770896db16e3d | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "5864a91f-5542-4f01-9a29-30e55f8f9502", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-16T16:44:45.090370+00:00"}
+INFO 2026-03-16 19:44:45,101 state_machine 20748 22156 Case 5864a91f-5542-4f01-9a29-30e55f8f9502 transitioned from RAISED to ANALYZED by bernard
+INFO 2026-03-16 19:44:45,148 blockchain 20748 22156 [BLOCKCHAIN_EVENT] Hash: 0db39b8badd778ae25beda20088991bfafca34bf750eddb0e9c8851f661c9749 | Data: {"action": "TRANSITION_ANALYZED_TO_ESCALATED", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "5864a91f-5542-4f01-9a29-30e55f8f9502", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-16T16:44:45.148499+00:00"}
+INFO 2026-03-16 19:44:45,158 state_machine 20748 22156 Case 5864a91f-5542-4f01-9a29-30e55f8f9502 transitioned from ANALYZED to ESCALATED by bernard
