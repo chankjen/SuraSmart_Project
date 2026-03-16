@@ -215,10 +215,13 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
             )
 
         # Create image record
+        is_first_image = not FacialRecognitionImage.objects.filter(missing_person=missing_person).exists()
+        
         facial_image = FacialRecognitionImage.objects.create(
             missing_person=missing_person,
             image_file=image_file,
             image_hash=image_hash,
+            is_primary=is_first_image,
             status='processing',
         )
 

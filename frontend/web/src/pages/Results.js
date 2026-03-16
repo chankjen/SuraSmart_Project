@@ -161,7 +161,7 @@ const Results = () => {
           onClick={() => navigate(`/facial-search/${missingPersonId}`)}
           className="btn-primary"
         >
-          🔍 Rerun Facial Search
+          🔍 Procced to Facial Matching
         </button>
         {missingPerson?.status === 'REPORTED' && (
           <button

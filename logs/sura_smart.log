@@ -16869,3 +16869,5 @@ INFO 2026-03-16 16:24:24,064 state_machine 19600 21240 Case cd46083f-fc38-4821-a
 INFO 2026-03-16 16:24:37,185 blockchain 19600 21240 [BLOCKCHAIN_EVENT] Hash: d7eedb8887b182465a06cc9b2af7d542a2e301c30c994f2cf555be4d713b7d15 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "e439c106-055d-43c8-9f45-e6b6bbf12220", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-16T13:24:37.184728+00:00"}
 INFO 2026-03-16 16:24:37,197 state_machine 19600 21240 Case e439c106-055d-43c8-9f45-e6b6bbf12220 transitioned from REPORTED to RAISED by alex
 WARNING 2026-03-16 16:37:46,867 log 19600 21240 Bad Request: /api/facial-recognition/missing-persons/cd46083f-fc38-4821-a023-58e05fcfa424/upload_image/
+INFO 2026-03-16 17:21:16,660 autoreload 19600 18888 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-16 17:21:18,929 autoreload 20748 18464 Watching for file changes with StatReloader

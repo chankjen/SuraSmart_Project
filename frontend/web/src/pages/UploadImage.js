@@ -54,9 +54,8 @@ const UploadImage = () => {
 
       // 3. Success State & Redirect
       setSuccess(true);
-      setTimeout(() => {
-        navigate('/family-dashboard');
-      }, 2000); // 2 second delay to read message
+      alert('Your Case has been successfully raised to the Police.');
+      navigate('/family-dashboard');
     } catch (err) {
       const errorData = err.response?.data;
       const errorMessage = typeof errorData === 'object'

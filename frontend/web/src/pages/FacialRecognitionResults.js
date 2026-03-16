@@ -233,16 +233,16 @@ const FacialRecognitionResults = () => {
                       <button
                         className="btn-success"
                         onClick={handleForwardForClosure}
-                        disabled={submitting || !reportText}
+                        disabled={submitting}
                       >
                         Forward to Family for Closure
                       </button>
                       <button
                         className="btn-warning"
                         onClick={handleEscalate}
-                        disabled={submitting || !reportText}
+                        disabled={submitting}
                       >
-                        Escalate to Government
+                        Escalate Case
                       </button>
                     </>
                   )}
@@ -250,7 +250,7 @@ const FacialRecognitionResults = () => {
                     <button
                       className="btn-primary"
                       onClick={handleSubmitGovReport}
-                      disabled={submitting || !reportText}
+                      disabled={submitting}
                     >
                       Submit Government Report & Approve
                     </button>

@@ -285,7 +285,7 @@ const FacialRecognitionSearch = () => {
                   </>
                 ) : (
                   <>
-                    Raise Case
+                    View Facial Matching Results
                   </>
                 )}
               </button>
