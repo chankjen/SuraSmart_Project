@@ -20,6 +20,8 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminUserDetails from './pages/AdminUserDetails';
 import MissingPersonDetails from './pages/MissingPersonDetails';
 import ReportGenerator from './pages/ReportGenerator';
+import AnalyticsDashboard from './pages/AnalyticsDashboard';
+import SystemReports from './pages/SystemReports';
 
 // Styles
 import './styles/global.css';
@@ -178,6 +180,24 @@ function App() {
             element={
               <PrivateRoute>
                 <ReportGenerator />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/analytics"
+            element={
+              <PrivateRoute>
+                <AnalyticsDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/system-reports"
+            element={
+              <PrivateRoute>
+                <SystemReports />
               </PrivateRoute>
             }
           />

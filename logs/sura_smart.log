@@ -16920,3 +16920,8 @@ INFO 2026-03-16 19:44:45,090 blockchain 20748 22156 [BLOCKCHAIN_EVENT] Hash: 9c9
 INFO 2026-03-16 19:44:45,101 state_machine 20748 22156 Case 5864a91f-5542-4f01-9a29-30e55f8f9502 transitioned from RAISED to ANALYZED by bernard
 INFO 2026-03-16 19:44:45,148 blockchain 20748 22156 [BLOCKCHAIN_EVENT] Hash: 0db39b8badd778ae25beda20088991bfafca34bf750eddb0e9c8851f661c9749 | Data: {"action": "TRANSITION_ANALYZED_TO_ESCALATED", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "5864a91f-5542-4f01-9a29-30e55f8f9502", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-16T16:44:45.148499+00:00"}
 INFO 2026-03-16 19:44:45,158 state_machine 20748 22156 Case 5864a91f-5542-4f01-9a29-30e55f8f9502 transitioned from ANALYZED to ESCALATED by bernard
+WARNING 2026-03-16 19:55:42,279 log 20748 12364 Forbidden: /api/facial-recognition/matches/629eaa2e-54cb-4522-8e42-a5d73fe7fe20/verify/
+WARNING 2026-03-16 20:02:57,315 views 20748 22156 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-16 20:02:57,315 views 20748 22156 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-16 20:02:57,320 views 20748 22156 Facial search completed in 15ms. Candidates: 6. Best confidence: 1.0000
+WARNING 2026-03-16 20:02:57,366 log 20748 22156 Forbidden: /api/facial-recognition/missing-persons/5864a91f-5542-4f01-9a29-30e55f8f9502/raise_case/

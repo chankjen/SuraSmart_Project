@@ -207,7 +207,7 @@ const PoliceDashboard = () => {
                         <button onClick={() => handleEscalate(caseItem.id)} className="chase-button-outline" style={{ fontSize: '0.85rem', borderColor: '#d97706', color: '#d97706' }}>Escalate</button>
                       )}
 
-                      <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ fontSize: '0.85rem' }}>View Details</Link>
+                      <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ fontSize: '0.85rem' }}>View Details</Link>
                     </div>
                   </div>
                 ))}

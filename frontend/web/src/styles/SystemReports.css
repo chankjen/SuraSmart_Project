@@ -1,0 +1,107 @@
+.system-reports-page {
+    background: #f1f5f9;
+    min-height: 100vh;
+    padding-bottom: 60px;
+}
+
+.report-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.audit-document {
+    background: white;
+    padding: 60px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid #cbd5e1;
+    position: relative;
+}
+
+.audit-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid #1e293b;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.audit-logo {
+    font-size: 24px;
+    font-weight: 900;
+    color: #1e293b;
+}
+
+.audit-logo span { color: #3182ce; }
+
+.audit-meta {
+    text-align: right;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.audit-table-container {
+    margin-bottom: 50px;
+}
+
+.audit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.audit-table th {
+    text-align: left;
+    background: #f8fafc;
+    padding: 12px;
+    border-bottom: 2px solid #1e293b;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.audit-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 13px;
+    color: #334155;
+}
+
+.audit-footer {
+    border-top: 1px solid #cbd5e1;
+    padding-top: 30px;
+    margin-top: 60px;
+    text-align: center;
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.audit-stamp {
+    margin-top: 30px;
+    display: inline-block;
+    border: 3px solid #e53e3e;
+    color: #e53e3e;
+    padding: 10px 20px;
+    font-weight: 900;
+    font-size: 16px;
+    opacity: 0.6;
+    transform: rotate(-5deg);
+    text-transform: uppercase;
+}
+
+@media print {
+    body { background: white; }
+    .no-print { display: none !important; }
+    .audit-document {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+    .system-reports-page { background: transparent; padding: 0; }
+}

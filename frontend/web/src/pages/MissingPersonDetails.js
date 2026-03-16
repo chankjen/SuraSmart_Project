@@ -51,7 +51,13 @@ const MissingPersonDetails = () => {
                 <div className="chase-logo">Sura<span>Smart</span></div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <span style={{ color: 'white' }}>{user?.first_name} {user?.last_name}</span>
-                    <Link to="/family-dashboard" className="chase-button-outline" style={{ color: 'white', borderColor: 'white', padding: '0.5rem 1rem', textDecoration: 'none' }}>Dashboard</Link>
+                    <Link 
+                        to={user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard'} 
+                        className="chase-button-outline" 
+                        style={{ color: 'white', borderColor: 'white', padding: '0.5rem 1rem', textDecoration: 'none' }}
+                    >
+                        Dashboard
+                    </Link>
                 </div>
             </header>
 
@@ -75,7 +81,7 @@ const MissingPersonDetails = () => {
                                 </span>
                             </div>
                         </div>
-                        {missingPerson.status === 'REPORTED' && (
+                        {missingPerson.status === 'REPORTED' && user?.role === 'family_member' && (
                             <button onClick={handleRaiseCase} className="chase-button" style={{ padding: '0.75rem 1.5rem' }}>
                                 Raise to Police
                             </button>

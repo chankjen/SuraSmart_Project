@@ -151,7 +151,7 @@ const GovernmentDashboard = () => {
                       <button onClick={() => handleReviewCase(caseItem.id)} className="chase-button" style={{ fontSize: '0.85rem', background: 'var(--chase-blue-dark)' }}>
                         Submit Review to Police
                       </button>
-                      <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ fontSize: '0.85rem' }}>
+                      <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ fontSize: '0.85rem' }}>
                         View Details
                       </Link>
                     </div>
@@ -174,7 +174,7 @@ const GovernmentDashboard = () => {
                       Status: <span style={{ fontWeight: '600', color: 'var(--chase-blue)' }}>{caseItem.status}</span>
                     </div>
                   </div>
-                  <Link to={`/results/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
+                  <Link to={`/missing-person/${caseItem.id}`} className="chase-button-outline" style={{ padding: '6px 12px', fontSize: '0.85rem' }}>
                     View Details
                   </Link>
                 </div>
