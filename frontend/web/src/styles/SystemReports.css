@@ -16,7 +16,7 @@
 }
 
 .audit-document {
-    background: rgb(215, 221, 120);
+    background: rgb(248, 249, 246);
     padding: 60px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     font-family: 'Courier New', Courier, monospace;
@@ -57,7 +57,7 @@
 
 .audit-table th {
     text-align: left;
-    background: #043c74;
+    background: #0d3b6a;
     padding: 12px;
     border-bottom: 2px solid #0c4cb3;
     font-size: 13px;

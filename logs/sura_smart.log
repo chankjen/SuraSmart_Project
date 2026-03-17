@@ -17118,3 +17118,65 @@ AttributeError: 'function' object has no attribute 'norm'
 INFO 2026-03-17 16:29:22,948 autoreload 15824 12012 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
 INFO 2026-03-17 16:29:31,083 autoreload 5664 6580 Watching for file changes with StatReloader
 WARNING 2026-03-17 16:29:32,995 views 5664 6580 Numpy not found. Using minimal stub.
+INFO 2026-03-17 16:33:34,324 blockchain 5664 15928 [BLOCKCHAIN_EVENT] Hash: 13f525343313a3150c9530b5cb269be2b68c7b6fb2e27d2c80068b8fd388fc65 | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "1666b834-96a3-488b-ab60-14a510eb5160", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-17T13:33:34.324610+00:00"}
+INFO 2026-03-17 16:33:34,333 state_machine 5664 15928 Case 1666b834-96a3-488b-ab60-14a510eb5160 transitioned from RAISED to ANALYZED by betty
+INFO 2026-03-17 16:33:34,397 blockchain 5664 15928 [BLOCKCHAIN_EVENT] Hash: bfe1d698453b1712f437f127d6fc5653de132f343986462a688fe6f43569dbee | Data: {"action": "TRANSITION_ANALYZED_TO_PENDING_CLOSURE", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "1666b834-96a3-488b-ab60-14a510eb5160", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-17T13:33:34.396924+00:00"}
+INFO 2026-03-17 16:33:34,405 state_machine 5664 15928 Case 1666b834-96a3-488b-ab60-14a510eb5160 transitioned from ANALYZED to PENDING_CLOSURE by betty
+INFO 2026-03-17 16:33:34,416 blockchain 5664 15928 [BLOCKCHAIN_EVENT] Hash: 9c4e0ac2cecd55363ca153bac0279301cebb2469c0ebf80afbe8abc003ed4b6c | Data: {"action": "SIGNATURE_ADDED_BY_police_officer", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "1666b834-96a3-488b-ab60-14a510eb5160", "jurisdiction": "KE", "metadata": {"role": "police_officer"}, "timestamp": "2026-03-17T13:33:34.416790+00:00"}
+INFO 2026-03-17 16:35:46,213 blockchain 5664 15928 [BLOCKCHAIN_EVENT] Hash: c8081ed7d028845f1309a995168adbf2f42380f0f50d6549e498af235980783a | Data: {"action": "TRANSITION_PENDING_CLOSURE_TO_CLOSED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "1666b834-96a3-488b-ab60-14a510eb5160", "jurisdiction": "KE", "metadata": {"notes": "Dual signature confirmed"}, "timestamp": "2026-03-17T13:35:46.213720+00:00"}
+INFO 2026-03-17 16:35:46,229 state_machine 5664 15928 Case 1666b834-96a3-488b-ab60-14a510eb5160 transitioned from PENDING_CLOSURE to CLOSED by amanda
+WARNING 2026-03-17 16:39:38,872 views 5664 17740 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-17 16:39:38,872 views 5664 17740 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-17 16:39:38,917 blockchain 5664 17740 [BLOCKCHAIN_EVENT] Hash: 3a31af06c2334f7d73c56f3baf435597257471fc2ab61942f92bfa4df4fb268a | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "6314e023-c34a-4db2-a3ae-c742e87d784f", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-17T13:39:38.917158+00:00"}
+INFO 2026-03-17 16:39:38,928 state_machine 5664 17740 Case 6314e023-c34a-4db2-a3ae-c742e87d784f transitioned from REPORTED to RAISED by amanda
+INFO 2026-03-17 16:44:22,655 blockchain 5664 17740 [BLOCKCHAIN_EVENT] Hash: 1917b2f8734ef0ed1376a7837032ed2e67cedda7a002963a765f794791999c87 | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "6314e023-c34a-4db2-a3ae-c742e87d784f", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-17T13:44:22.654903+00:00"}
+INFO 2026-03-17 16:44:22,663 state_machine 5664 17740 Case 6314e023-c34a-4db2-a3ae-c742e87d784f transitioned from RAISED to ANALYZED by betty
+INFO 2026-03-17 16:44:22,707 blockchain 5664 17740 [BLOCKCHAIN_EVENT] Hash: 206724d2237de63910380467550224810f6cedacb9cc740b9a198415fe292778 | Data: {"action": "TRANSITION_ANALYZED_TO_ESCALATED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "6314e023-c34a-4db2-a3ae-c742e87d784f", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-17T13:44:22.707221+00:00"}
+INFO 2026-03-17 16:44:22,715 state_machine 5664 17740 Case 6314e023-c34a-4db2-a3ae-c742e87d784f transitioned from ANALYZED to ESCALATED by betty
+INFO 2026-03-17 16:55:14,199 blockchain 5664 11324 [BLOCKCHAIN_EVENT] Hash: 6cc3c8e603c3dacc7a407263b818ad70de9e1096b4f8bbef19c08b1feda8ba4e | Data: {"action": "TRANSITION_ESCALATED_TO_GOVERNMENT_REVIEW", "actor_hash": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451", "case_id": "6314e023-c34a-4db2-a3ae-c742e87d784f", "jurisdiction": "KE", "metadata": {"notes": "Escalation approved by government official"}, "timestamp": "2026-03-17T13:55:14.199729+00:00"}
+INFO 2026-03-17 16:55:14,214 state_machine 5664 11324 Case 6314e023-c34a-4db2-a3ae-c742e87d784f transitioned from ESCALATED to GOVERNMENT_REVIEW by dan
+WARNING 2026-03-17 19:13:33,514 log 5664 11480 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-17 20:14:51,276 log 5664 8708 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-17 20:14:51,281 log 5664 9344 Unauthorized: /api/auth/users/
+WARNING 2026-03-17 20:14:51,287 log 5664 8708 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-17 20:14:51,291 log 5664 9344 Unauthorized: /api/auth/users/
+WARNING 2026-03-17 20:19:27,274 log 5664 9344 Unauthorized: /api/auth/token/
+WARNING 2026-03-17 20:19:45,229 log 5664 9344 Unauthorized: /api/auth/token/
+WARNING 2026-03-17 20:37:04,458 log 5664 1776 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-17 20:38:31,198 views 5664 1776 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-17 20:38:31,199 views 5664 1776 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-17 20:38:31,261 blockchain 5664 1776 [BLOCKCHAIN_EVENT] Hash: fa51a72627a0fa924989181a1d29b8cd10a61128e310458cf22158597ed23ca3 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "fa712958-f390-486f-8d27-392e37299d0f", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-17T17:38:31.261825+00:00"}
+INFO 2026-03-17 20:38:31,273 state_machine 5664 1776 Case fa712958-f390-486f-8d27-392e37299d0f transitioned from REPORTED to RAISED by amanda
+ERROR 2026-03-17 20:44:19,958 log 5664 16040 Internal Server Error: /api/facial-recognition/missing-persons/fa712958-f390-486f-8d27-392e37299d0f/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 204, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+INFO 2026-03-17 20:49:23,306 blockchain 5664 11272 [BLOCKCHAIN_EVENT] Hash: e73459dbdc29050bd8d1948bb0da293373cce4890feb338f261f8a1144448c64 | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "fa712958-f390-486f-8d27-392e37299d0f", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-17T17:49:23.306296+00:00"}
+INFO 2026-03-17 20:49:23,318 state_machine 5664 11272 Case fa712958-f390-486f-8d27-392e37299d0f transitioned from RAISED to ANALYZED by betty
+INFO 2026-03-17 20:49:23,383 blockchain 5664 11272 [BLOCKCHAIN_EVENT] Hash: 007429f5027c5d1892ca388257171ce261fabe02086df3bbcee9ada45d4c0967 | Data: {"action": "TRANSITION_ANALYZED_TO_ESCALATED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "fa712958-f390-486f-8d27-392e37299d0f", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-17T17:49:23.383450+00:00"}
+INFO 2026-03-17 20:49:23,393 state_machine 5664 11272 Case fa712958-f390-486f-8d27-392e37299d0f transitioned from ANALYZED to ESCALATED by betty
