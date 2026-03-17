@@ -12,10 +12,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('users.urls')),
     path('api/facial-recognition/', include('ai_models.facial_recognition.urls')),
+
     path('api/notifications/', include('notifications.urls')),
     path('api/database/', include('database_integration.urls')),
     path('api/health/', include('shared.urls')),
     path('api/chat/', include('chat.urls')),
+
+
 ]
 
 if settings.DEBUG:

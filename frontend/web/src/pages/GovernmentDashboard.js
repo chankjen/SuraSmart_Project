@@ -62,7 +62,8 @@ const GovernmentDashboard = () => {
     if (!review) return;
     try {
       await api.submitReview(caseId, review);
-      await api.updateCaseStatus(caseId, 'GOVERNMENT_REVIEW'); // Or back to UNDER_INVESTIGATION
+      await api.approveEscalation(caseId); // Correct state machine transition
+
       alert('Review sent to Police Officer.');
       fetchData();
     } catch (error) {

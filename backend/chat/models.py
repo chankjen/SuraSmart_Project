@@ -2,12 +2,16 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from users.models import User
 from ai_models.facial_recognition.models import MissingPerson
+
+
 import uuid
 
 class SecureChannel(models.Model):
     """A secure communication channel associated with a case."""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     case = models.OneToOneField(MissingPerson, on_delete=models.CASCADE, related_name='chat_channel')
+
+
     participants = models.ManyToManyField(User, related_name='secure_channels')
     
     is_active = models.BooleanField(default=True)

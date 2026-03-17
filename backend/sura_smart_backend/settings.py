@@ -36,10 +36,13 @@ INSTALLED_APPS = [
     'users',
     'ai_models.facial_recognition',
     'notifications',
+
     'database_integration',
     'shared',
     'chat',
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -183,12 +186,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 # Celery Beat Schedule
 from celery.schedules import crontab
 
-CELERY_BEAT_SCHEDULE = {
-    'cleanup-old-uploads': {
-        'task': 'ai_models.facial_recognition.tasks.cleanup_old_uploads',
-        'schedule': crontab(hour=2, minute=0),  # Daily at 2 AM
-    },
-}
+# CELERY_BEAT_SCHEDULE = {
+#     'cleanup-old-uploads': {
+#         'task': 'ai_models.facial_recognition.tasks.cleanup_old_uploads',
+#         'schedule': crontab(hour=2, minute=0),  # Daily at 2 AM
+#     },
+# }
+
 
 # Security Settings (Update for production)
 if not DEBUG:

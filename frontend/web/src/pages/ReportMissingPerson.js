@@ -3,11 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import '../styles/Forms.css';
 
+import { KENYA_LOCATIONS } from '../constants/kenyaLocations';
+
 const ReportMissingPerson = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  
+  const [selectedCounty, setSelectedCounty] = useState('');
+  const [selectedSubcounty, setSelectedSubcounty] = useState('');
+
   const [formData, setFormData] = useState({
     full_name: '',
     description: '',
@@ -23,6 +29,25 @@ const ReportMissingPerson = () => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const handleCountyChange = (e) => {
+    const county = e.target.value;
+    setSelectedCounty(county);
+    setSelectedSubcounty(''); // Reset subcounty
+    setFormData(prev => ({
+      ...prev,
+      last_seen_location: county ? `Unspecified, ${county}` : ''
+    }));
+  };
+
+  const handleSubcountyChange = (e) => {
+    const subcounty = e.target.value;
+    setSelectedSubcounty(subcounty);
+    setFormData(prev => ({
+      ...prev,
+      last_seen_location: subcounty ? `${subcounty}, ${selectedCounty}` : `Unspecified, ${selectedCounty}`
     }));
   };
 
@@ -151,18 +176,52 @@ const ReportMissingPerson = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="last_seen_location">Last Seen Location</label>
-              <input
-                type="text"
-                id="last_seen_location"
-                name="last_seen_location"
-                value={formData.last_seen_location}
-                onChange={handleChange}
+              <label htmlFor="county">County *</label>
+              <select
+                id="county"
+                value={selectedCounty}
+                onChange={handleCountyChange}
                 disabled={loading}
-                placeholder="Location"
+                required
+              >
+                <option value="">Select County</option>
+                {Object.keys(KENYA_LOCATIONS).map(county => (
+                  <option key={county} value={county}>{county}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="subcounty">Subcounty *</label>
+              <select
+                id="subcounty"
+                value={selectedSubcounty}
+                onChange={handleSubcountyChange}
+                disabled={loading || !selectedCounty}
+                required={!!selectedCounty}
+              >
+                <option value="">Select Subcounty</option>
+                {selectedCounty && KENYA_LOCATIONS[selectedCounty].map(sub => (
+                  <option key={sub} value={sub}>{sub}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div className="form-group">
+              <label>Current Selection</label>
+              <input 
+                type="text" 
+                value={formData.last_seen_location} 
+                readOnly 
+                disabled 
+                className="chase-input-readonly"
+                style={{ background: '#f8fafc', fontStyle: 'italic', color: '#1e3a8a', fontWeight: 'bold' }}
               />
             </div>
           </div>
+
 
           <button type="submit" disabled={loading} className="btn-primary btn-large">
             {loading ? 'Reporting...' : 'Report Missing Person'}

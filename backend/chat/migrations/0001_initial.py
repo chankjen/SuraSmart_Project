@@ -12,7 +12,9 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('facial_recognition', '0008_missingperson_assigned_officer_and_more'),
+        ('facial_recognition', '0001_initial'),
+
+
     ]
 
     operations = [
@@ -23,6 +25,8 @@ class Migration(migrations.Migration):
                 ('is_active', models.BooleanField(default=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('case', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='chat_channel', to='facial_recognition.missingperson')),
+
+
                 ('participants', models.ManyToManyField(related_name='secure_channels', to=settings.AUTH_USER_MODEL)),
             ],
             options={

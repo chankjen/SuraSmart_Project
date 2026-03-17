@@ -202,7 +202,12 @@ class ApiClient {
     return this.api.post(`/facial-recognition/missing-persons/${id}/approve_escalation/`);
   }
 
+  submitReview(id, report) {
+    return this.submitGovernmentReport(id, report);
+  }
+
   submitGovernmentReport(id, report) {
+
     return this.api.post(`/facial-recognition/missing-persons/${id}/submit_government_report/`, { report });
   }
 

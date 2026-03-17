@@ -11,7 +11,9 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('facial_recognition', '0002_initial'),
+        ('facial_recognition', '0001_initial'),
+
+
         ('notifications', '0001_initial'),
     ]
 
@@ -31,6 +33,7 @@ class Migration(migrations.Migration):
             name='related_match',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='notifications', to='facial_recognition.facialmatch'),
         ),
+
         migrations.AddIndex(
             model_name='notification',
             index=models.Index(fields=['recipient', 'status'], name='notificatio_recipie_e285de_idx'),

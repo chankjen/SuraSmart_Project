@@ -3,9 +3,10 @@ Admin configuration for SuraSmart backend.
 """
 from django.contrib import admin
 from users.models import User, AuditLog, Permission
-from ai_models.facial_recognition.models import (
-    MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue
-)
+# from ai_models.facial_recognition.models import (
+#     MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue
+# )
+
 from notifications.models import Notification, NotificationPreference
 from database_integration.models import (
     ExternalDatabase, DatabaseSchema, SyncLog, QueryLog
@@ -42,43 +43,44 @@ class PermissionAdmin(admin.ModelAdmin):
     list_filter = ('role', 'resource')
 
 
-# Facial Recognition Admin
-@admin.register(MissingPerson)
-class MissingPersonAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'status', 'reported_by', 'date_reported')
-    list_filter = ('status', 'date_reported', 'gender')
-    search_fields = ('full_name', 'description')
-    readonly_fields = ('created_at', 'updated_at')
-    
-    fieldsets = (
-        ('Basic Information', {'fields': ('full_name', 'reported_by', 'status')}),
-        ('Details', {'fields': ('description', 'age', 'gender', 'identifying_marks')}),
-        ('Location', {'fields': ('last_seen_date', 'last_seen_location')}),
-        ('Timestamps', {'fields': ('date_reported', 'created_at', 'updated_at'), 'classes': ('collapse',)}),
-    )
+# # Facial Recognition Admin
+# @admin.register(MissingPerson)
+# class MissingPersonAdmin(admin.ModelAdmin):
+#     list_display = ('full_name', 'status', 'reported_by', 'date_reported')
+#     list_filter = ('status', 'date_reported', 'gender')
+#     search_fields = ('full_name', 'description')
+#     readonly_fields = ('created_at', 'updated_at')
+#     
+#     fieldsets = (
+#         ('Basic Information', {'fields': ('full_name', 'reported_by', 'status')}),
+#         ('Details', {'fields': ('description', 'age', 'gender', 'identifying_marks')}),
+#         ('Location', {'fields': ('last_seen_date', 'last_seen_location')}),
+#         ('Timestamps', {'fields': ('date_reported', 'created_at', 'updated_at'), 'classes': ('collapse',)}),
+#     )
+# 
+# 
+# @admin.register(FacialRecognitionImage)
+# class FacialRecognitionImageAdmin(admin.ModelAdmin):
+#     list_display = ('missing_person', 'status', 'is_primary', 'created_at')
+#     list_filter = ('status', 'is_primary', 'created_at')
+#     search_fields = ('missing_person__full_name',)
+#     readonly_fields = ('image_hash', 'created_at', 'processed_at')
+# 
+# 
+# @admin.register(FacialMatch)
+# class FacialMatchAdmin(admin.ModelAdmin):
+#     list_display = ('missing_person', 'match_confidence', 'status', 'source_database', 'created_at')
+#     list_filter = ('status', 'source_database', 'created_at')
+#     search_fields = ('missing_person__full_name',)
+#     readonly_fields = ('created_at', 'updated_at')
+# 
+# 
+# @admin.register(ProcessingQueue)
+# class ProcessingQueueAdmin(admin.ModelAdmin):
+#     list_display = ('image', 'status', 'priority', 'retries', 'created_at')
+#     list_filter = ('status', 'priority')
+#     readonly_fields = ('created_at',)
 
-
-@admin.register(FacialRecognitionImage)
-class FacialRecognitionImageAdmin(admin.ModelAdmin):
-    list_display = ('missing_person', 'status', 'is_primary', 'created_at')
-    list_filter = ('status', 'is_primary', 'created_at')
-    search_fields = ('missing_person__full_name',)
-    readonly_fields = ('image_hash', 'created_at', 'processed_at')
-
-
-@admin.register(FacialMatch)
-class FacialMatchAdmin(admin.ModelAdmin):
-    list_display = ('missing_person', 'match_confidence', 'status', 'source_database', 'created_at')
-    list_filter = ('status', 'source_database', 'created_at')
-    search_fields = ('missing_person__full_name',)
-    readonly_fields = ('created_at', 'updated_at')
-
-
-@admin.register(ProcessingQueue)
-class ProcessingQueueAdmin(admin.ModelAdmin):
-    list_display = ('image', 'status', 'priority', 'retries', 'created_at')
-    list_filter = ('status', 'priority')
-    readonly_fields = ('created_at',)
 
 
 # Notifications Admin

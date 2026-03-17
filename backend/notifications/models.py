@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from users.models import User
 from ai_models.facial_recognition.models import FacialMatch
+
+
 import uuid
 
 
@@ -40,6 +42,8 @@ class Notification(models.Model):
         blank=True,
         related_name='notifications'
     )
+
+
     
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     

@@ -47,6 +47,8 @@ class BlockchainService:
             case = MissingPerson.objects.get(id=case_id)
         except MissingPerson.DoesNotExist:
             case = None
+
+
             
         AuditLog.objects.create(
             user=actor,

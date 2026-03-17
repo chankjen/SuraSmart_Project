@@ -17,12 +17,29 @@ from django.utils import timezone
 import logging
 import hashlib
 import time
-import numpy as np
 import io
+
+try:
+    import numpy as np
+except ImportError:
+    # Minimal stub for numpy if not installed (for local dev on Python 3.14)
+    logging.warning("Numpy not found. Using minimal stub.")
+    class MockNumpy:
+        def __init__(self):
+            self.float64 = float
+            self.linalg = self
+        def array(self, data, dtype=None): return data
+        def dot(self, a, b): return sum(x*y for x, y in zip(a, b))
+        def norm(self, a): return (sum(float(x)**2 for x in a))**0.5
+        def clip(self, val, min_val, max_val): return max(min_val, min(max_val, val))
+    np = MockNumpy()
+
+
 
 from ai_models.facial_recognition.models import (
     MissingPerson, FacialRecognitionImage, FacialMatch, ProcessingQueue, SearchSession, OfflineSignatureQueue
 )
+
 from ai_models.facial_recognition.serializers import (
     MissingPersonSerializer, FacialRecognitionImageSerializer,
     FacialMatchSerializer, ProcessingQueueSerializer, SearchSessionSerializer, OfflineSignatureQueueSerializer
