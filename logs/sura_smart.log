@@ -17180,3 +17180,6 @@ INFO 2026-03-17 20:49:23,306 blockchain 5664 11272 [BLOCKCHAIN_EVENT] Hash: e734
 INFO 2026-03-17 20:49:23,318 state_machine 5664 11272 Case fa712958-f390-486f-8d27-392e37299d0f transitioned from RAISED to ANALYZED by betty
 INFO 2026-03-17 20:49:23,383 blockchain 5664 11272 [BLOCKCHAIN_EVENT] Hash: 007429f5027c5d1892ca388257171ce261fabe02086df3bbcee9ada45d4c0967 | Data: {"action": "TRANSITION_ANALYZED_TO_ESCALATED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "fa712958-f390-486f-8d27-392e37299d0f", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-17T17:49:23.383450+00:00"}
 INFO 2026-03-17 20:49:23,393 state_machine 5664 11272 Case fa712958-f390-486f-8d27-392e37299d0f transitioned from ANALYZED to ESCALATED by betty
+WARNING 2026-03-17 21:20:05,295 log 5664 3880 Unauthorized: /api/auth/users/
+WARNING 2026-03-17 21:20:05,296 log 5664 7840 Unauthorized: /api/auth/audit-logs/
+WARNING 2026-03-17 21:20:05,297 log 5664 17716 Unauthorized: /api/auth/users/system_stats/

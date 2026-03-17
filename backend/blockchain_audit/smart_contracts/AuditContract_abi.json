@@ -1,0 +1,155 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true,  "internalType": "string",  "name": "search_id",             "type": "string"  },
+      { "indexed": false, "internalType": "string",  "name": "user_id_hash",           "type": "string"  },
+      { "indexed": false, "internalType": "string",  "name": "user_role_hash",         "type": "string"  },
+      { "indexed": false, "internalType": "bool",    "name": "match_found",            "type": "bool"    },
+      { "indexed": false, "internalType": "bool",    "name": "consent_verified",       "type": "bool"    },
+      { "indexed": false, "internalType": "string",  "name": "timestamp",              "type": "string"  },
+      { "indexed": false, "internalType": "string",  "name": "data_retention_expiry",  "type": "string"  }
+    ],
+    "name": "AuditLogged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "address", "name": "auditor", "type": "address" }
+    ],
+    "name": "AuditorAuthorised",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "address", "name": "auditor", "type": "address" }
+    ],
+    "name": "AuditorRevoked",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "auditor", "type": "address" }
+    ],
+    "name": "authoriseAuditor",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" }
+    ],
+    "name": "authorisedAuditors",
+    "outputs": [
+      { "internalType": "bool", "name": "", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAuditCount",
+    "outputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_search_id", "type": "string" }
+    ],
+    "name": "getAudit",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "search_id",               "type": "string"  },
+          { "internalType": "string", "name": "user_id_hash",             "type": "string"  },
+          { "internalType": "string", "name": "user_role_hash",           "type": "string"  },
+          { "internalType": "string", "name": "query_type_hash",          "type": "string"  },
+          { "internalType": "string", "name": "database_searched_hash",   "type": "string"  },
+          { "internalType": "bool",   "name": "match_found",              "type": "bool"    },
+          { "internalType": "bool",   "name": "consent_verified",         "type": "bool"    },
+          { "internalType": "string", "name": "timestamp",                "type": "string"  },
+          { "internalType": "string", "name": "data_retention_expiry",    "type": "string"  },
+          { "internalType": "string", "name": "version",                  "type": "string"  },
+          { "internalType": "string", "name": "transaction_hash",         "type": "string"  },
+          { "internalType": "bool",   "name": "exists",                   "type": "bool"    }
+        ],
+        "internalType": "struct AuditContract.AuditRecord",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "index", "type": "uint256" }
+    ],
+    "name": "getSearchIdByIndex",
+    "outputs": [
+      { "internalType": "string", "name": "", "type": "string" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string",  "name": "_search_id",              "type": "string"  },
+      { "internalType": "string",  "name": "_user_id_hash",            "type": "string"  },
+      { "internalType": "string",  "name": "_user_role_hash",          "type": "string"  },
+      { "internalType": "string",  "name": "_query_type_hash",         "type": "string"  },
+      { "internalType": "string",  "name": "_database_searched_hash",  "type": "string"  },
+      { "internalType": "bool",    "name": "_match_found",             "type": "bool"    },
+      { "internalType": "bool",    "name": "_consent_verified",        "type": "bool"    },
+      { "internalType": "string",  "name": "_timestamp",               "type": "string"  },
+      { "internalType": "string",  "name": "_data_retention_expiry",   "type": "string"  },
+      { "internalType": "string",  "name": "_version",                 "type": "string"  }
+    ],
+    "name": "logAudit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
+      { "internalType": "address", "name": "", "type": "address" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "auditor", "type": "address" }
+    ],
+    "name": "revokeAuditor",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_search_id", "type": "string" }
+    ],
+    "name": "verifyAudit",
+    "outputs": [
+      { "internalType": "bool",   "name": "exists",    "type": "bool"   },
+      { "internalType": "string", "name": "tx_hash",   "type": "string" },
+      { "internalType": "string", "name": "timestamp", "type": "string" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
