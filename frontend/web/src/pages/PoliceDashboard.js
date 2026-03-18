@@ -15,6 +15,7 @@ const PoliceDashboard = () => {
     resolvedCases: 0,
     pendingVerification: 0
   });
+  const [processingCases, setProcessingCases] = useState(new Set());
 
   const fetchCases = useCallback(async () => {
     try {
@@ -50,12 +51,20 @@ const PoliceDashboard = () => {
   };
 
   const handleTakeCase = async (caseId) => {
+    setProcessingCases(prev => new Set(prev).add(caseId));
     try {
       await api.updateCaseStatus(caseId, 'UNDER_INVESTIGATION');
-      alert('Case taken. You can now download images and run searches.');
+      // No alert needed now that we have clear button feedback
       fetchCases();
     } catch (error) {
       console.error('Error taking case:', error);
+      alert('Failed to take case. Please try again.');
+    } finally {
+      setProcessingCases(prev => {
+        const next = new Set(prev);
+        next.delete(caseId);
+        return next;
+      });
     }
   };
 
@@ -183,7 +192,24 @@ const PoliceDashboard = () => {
                     <div style={{ width: '100%', display: 'flex', gap: '10px', flexWrap: 'wrap', borderTop: '1px solid var(--chase-gray-100)', paddingTop: '15px' }}>
                       {/* Workflow Actions */}
                       {caseItem.status === 'RAISED' && (
-                        <button onClick={() => handleTakeCase(caseItem.id)} className="chase-button" style={{ fontSize: '0.85rem' }}>Take Case</button>
+                        <button 
+                          onClick={() => handleTakeCase(caseItem.id)} 
+                          className="chase-button" 
+                          style={{ fontSize: '0.85rem' }}
+                          disabled={processingCases.has(caseItem.id)}
+                        >
+                          {processingCases.has(caseItem.id) ? 'Taking Case...' : 'Take Case'}
+                        </button>
+                      )}
+
+                      {caseItem.status === 'UNDER_INVESTIGATION' && (
+                        <button 
+                          className="chase-button" 
+                          style={{ fontSize: '0.85rem', background: 'var(--chase-green)', cursor: 'default' }}
+                          disabled={true}
+                        >
+                          ✓ Case Taken
+                        </button>
                       )}
                       
                       {caseItem.status === 'UNDER_INVESTIGATION' && (

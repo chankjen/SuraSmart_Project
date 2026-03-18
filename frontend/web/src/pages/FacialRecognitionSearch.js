@@ -137,7 +137,7 @@ const FacialRecognitionSearch = () => {
       // Navigate to results page with the AI match data (for general search without case context)
       navigate('/facial-results', {
         state: {
-          results: searchData.match ? [searchData.match] : [],
+          results: (searchData.match || searchData.best_match) ? [searchData.match || searchData.best_match] : [],
           uploadedImage: preview,
           hasMatch: searchData.match_found,
           message: searchData.message,
@@ -168,7 +168,7 @@ const FacialRecognitionSearch = () => {
       // Navigate to results page with the automated match data
       navigate('/facial-results', {
         state: {
-          results: searchData.match ? [searchData.match] : [],
+          results: (searchData.match || searchData.best_match) ? [searchData.match || searchData.best_match] : [],
           uploadedImage: primaryPhoto.image_file,
           hasMatch: searchData.match_found,
           message: searchData.message,

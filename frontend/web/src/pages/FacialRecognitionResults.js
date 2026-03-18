@@ -151,7 +151,12 @@ const FacialRecognitionResults = () => {
                 <div key={index} className="match-card">
                   <div className="match-header">
                     <div className="match-info">
-                      <h3>{match.missing_person?.full_name || 'Unknown'}</h3>
+                      <h3>
+                        {match.missing_person?.full_name || 'Unknown'}
+                        <span className={`source-badge source-${match.source_database}`}>
+                          {match.source_database === 'training_dataset' ? 'Training Dataset' : 'System Database'}
+                        </span>
+                      </h3>
                       <div className="match-confidence">
                         <span className="confidence-label">Confidence Score:</span>
                         <span className="confidence-value">

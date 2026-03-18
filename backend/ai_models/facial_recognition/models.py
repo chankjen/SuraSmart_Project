@@ -19,6 +19,7 @@ class MissingPerson(models.Model):
         ('PENDING_CLOSURE', _('Pending Closure')),
         ('CLOSED', _('Closed')),
         ('NO_MATCH', _('No Match')),
+        ('TRAINING_DATASET', _('Training Dataset')),
     )
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -193,6 +194,7 @@ class FacialMatch(models.Model):
         ('jail', _('Jail Database')),
         ('police', _('Police Database')),
         ('user_upload', _('User Upload')),
+        ('training_dataset', _('Training Dataset')),
     )
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

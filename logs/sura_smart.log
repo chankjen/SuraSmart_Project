@@ -17209,3 +17209,209 @@ WARNING 2026-03-18 14:54:23,927 views 17056 27508 Numpy not found. Using minimal
 INFO 2026-03-18 14:55:40,788 autoreload 17056 27508 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
 INFO 2026-03-18 14:55:42,373 autoreload 23412 5232 Watching for file changes with StatReloader
 WARNING 2026-03-18 14:55:42,639 views 23412 5232 Numpy not found. Using minimal stub.
+INFO 2026-03-18 15:26:45,439 blockchain 23412 25484 [BLOCKCHAIN_EVENT] Hash: a0f5ed1f86910b55d4332a098889bb4d7ed68fa16dd9321316ade5fdd1bfa09f | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "b66a051d-29dd-4498-8474-897c0884509f", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-18T12:26:45.439637+00:00"}
+INFO 2026-03-18 15:26:45,453 state_machine 23412 25484 Case b66a051d-29dd-4498-8474-897c0884509f transitioned from RAISED to ANALYZED by bernard
+WARNING 2026-03-18 15:39:11,115 log 23412 13056 Unauthorized: /api/auth/token/
+WARNING 2026-03-18 15:48:36,824 log 23412 15756 Bad Request: /api/facial-recognition/missing-persons/ec06a4b4-a2e2-4681-87de-831e663155a0/upload_image/
+WARNING 2026-03-18 15:48:42,989 log 23412 15756 Bad Request: /api/facial-recognition/missing-persons/ec06a4b4-a2e2-4681-87de-831e663155a0/upload_image/
+WARNING 2026-03-18 15:50:39,915 log 23412 15756 Bad Request: /api/facial-recognition/missing-persons/ec06a4b4-a2e2-4681-87de-831e663155a0/upload_image/
+WARNING 2026-03-18 15:53:31,222 views 23412 15756 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-18 15:53:31,223 views 23412 15756 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-18 15:53:31,264 blockchain 23412 15756 [BLOCKCHAIN_EVENT] Hash: 89f70adfa9c6a2b1744fcc327a2bcbe21bf89232883a9bdbdb87efc1f2f6ef7c | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "ec06a4b4-a2e2-4681-87de-831e663155a0", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-18T12:53:31.264631+00:00"}
+INFO 2026-03-18 15:53:31,273 state_machine 23412 15756 Case ec06a4b4-a2e2-4681-87de-831e663155a0 transitioned from REPORTED to RAISED by alex
+ERROR 2026-03-18 15:54:13,872 log 23412 17912 Internal Server Error: /api/facial-recognition/missing-persons/ec06a4b4-a2e2-4681-87de-831e663155a0/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 204, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+INFO 2026-03-18 16:12:05,499 autoreload 23412 5232 D:\SuraSmart_Project\backend\ai_models\facial_recognition\models.py changed, reloading.
+INFO 2026-03-18 16:12:06,894 autoreload 14504 9508 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:12:07,179 views 14504 9508 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:12:42,228 views 17648 21872 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:12:58,888 views 14976 12180 Numpy not found. Using minimal stub.
+INFO 2026-03-18 16:17:56,256 autoreload 14504 9508 D:\SuraSmart_Project\backend\ai_models\facial_recognition\models.py changed, reloading.
+INFO 2026-03-18 16:17:57,643 autoreload 4680 11592 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:17:57,967 views 4680 11592 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:18:12,513 views 19980 7748 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:18:53,920 views 21348 18636 Numpy not found. Using minimal stub.
+INFO 2026-03-18 16:19:52,649 autoreload 4680 11592 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 16:19:53,810 autoreload 17428 28264 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:19:54,180 views 17428 28264 Numpy not found. Using minimal stub.
+INFO 2026-03-18 16:30:24,924 autoreload 17428 28264 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 16:30:26,827 autoreload 11044 6372 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:30:27,318 views 11044 6372 Numpy not found. Using minimal stub.
+INFO 2026-03-18 16:41:01,316 autoreload 11044 6372 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 16:41:03,631 autoreload 2984 22632 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:41:04,002 views 2984 22632 Numpy not found. Using minimal stub.
+INFO 2026-03-18 16:41:10,082 autoreload 2984 22632 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 16:41:11,897 autoreload 2796 26492 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:41:12,279 views 2796 26492 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:43:44,175 views 16092 7480 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:44:26,259 views 28060 23836 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 16:44:26,265 views 28060 23836 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-18 16:44:26,265 views 28060 23836 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-18 16:48:18,279 autoreload 2796 26492 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 16:48:20,074 autoreload 2172 12400 Watching for file changes with StatReloader
+WARNING 2026-03-18 16:48:20,417 views 2172 12400 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 17:06:35,766 log 2172 5228 Bad Request: /api/facial-recognition/missing-persons/e6b70fff-aed5-4dbe-a966-8f9523c0ead9/upload_image/
+WARNING 2026-03-18 17:07:07,339 log 2172 5228 Bad Request: /api/facial-recognition/missing-persons/e6b70fff-aed5-4dbe-a966-8f9523c0ead9/upload_image/
+WARNING 2026-03-18 17:08:26,859 log 2172 5228 Bad Request: /api/facial-recognition/missing-persons/e6b70fff-aed5-4dbe-a966-8f9523c0ead9/upload_image/
+WARNING 2026-03-18 17:12:36,390 views 2172 5228 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-18 17:12:36,390 views 2172 5228 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-18 17:12:36,430 blockchain 2172 5228 [BLOCKCHAIN_EVENT] Hash: d5bbf3d3bce9b31903403f120b09d861f287a0268451c019fcfea01d82505c39 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "83336b43-50aa-4812-a4f2-93f69fa07639", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-18T14:12:36.430758+00:00"}
+INFO 2026-03-18 17:12:36,440 state_machine 2172 5228 Case 83336b43-50aa-4812-a4f2-93f69fa07639 transitioned from REPORTED to RAISED by amanda
+ERROR 2026-03-18 17:13:10,467 log 2172 18376 Internal Server Error: /api/facial-recognition/missing-persons/83336b43-50aa-4812-a4f2-93f69fa07639/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 208, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+ERROR 2026-03-18 17:18:53,977 log 2172 5228 Internal Server Error: /api/facial-recognition/missing-persons/83336b43-50aa-4812-a4f2-93f69fa07639/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 208, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+ERROR 2026-03-18 17:19:03,334 log 2172 5228 Internal Server Error: /api/facial-recognition/missing-persons/83336b43-50aa-4812-a4f2-93f69fa07639/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 208, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+ERROR 2026-03-18 17:20:31,497 log 2172 5228 Internal Server Error: /api/facial-recognition/missing-persons/83336b43-50aa-4812-a4f2-93f69fa07639/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 208, in perform_update
+    raise PermissionError('You can only modify your own reports.')
+PermissionError: You can only modify your own reports.
+INFO 2026-03-18 17:24:20,250 autoreload 2172 12400 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 17:24:21,843 autoreload 20452 22924 Watching for file changes with StatReloader
+WARNING 2026-03-18 17:24:22,130 views 20452 22924 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 17:24:22,145 views 20452 22696 Numpy not found. Using minimal stub.
+INFO 2026-03-18 17:35:52,317 autoreload 21412 15440 Watching for file changes with StatReloader
+WARNING 2026-03-18 17:35:52,678 views 21412 15440 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 17:35:52,690 views 21412 3860 Numpy not found. Using minimal stub.
+INFO 2026-03-18 17:36:11,482 autoreload 21412 15440 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 17:36:12,216 autoreload 20452 22924 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 17:36:13,999 autoreload 14608 27920 Watching for file changes with StatReloader
+WARNING 2026-03-18 17:36:14,490 views 14608 27920 Numpy not found. Using minimal stub.
+INFO 2026-03-18 17:36:14,662 autoreload 9768 25396 Watching for file changes with StatReloader
+WARNING 2026-03-18 17:36:15,137 views 9768 25396 Numpy not found. Using minimal stub.
+INFO 2026-03-18 17:36:29,674 autoreload 6020 12356 Watching for file changes with StatReloader
+WARNING 2026-03-18 17:36:30,005 views 6020 12356 Numpy not found. Using minimal stub.

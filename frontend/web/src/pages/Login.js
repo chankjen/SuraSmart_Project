@@ -84,14 +84,14 @@ const Login = () => {
       password: 'police456',
       role: 'Police Officer',
       service_id: '11111111',
-      police_rank: 'lieutenant'
+      police_rank: 'ip'
     },
     {
       username: 'betty',
       password: 'police456',
       role: 'Police Officer',
       service_id: '22222222',
-      police_rank: 'general'
+      police_rank: 'ig'
     },
     {
       username: 'cate',

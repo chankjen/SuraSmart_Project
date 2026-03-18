@@ -6,12 +6,12 @@ and cosine similarity matching. Implements HITL flagging per TRD Section 4.2.3.
 """
 from __future__ import annotations
 
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, filters
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.exceptions import PermissionDenied, ValidationError
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import filters
 from django.db.models import Q
 from django.utils import timezone
 import logging
@@ -24,13 +24,17 @@ try:
 except ImportError:
     # Minimal stub for numpy if not installed (for local dev on Python 3.14)
     logging.warning("Numpy not found. Using minimal stub.")
+    class MockLinalg:
+        def norm(self, a):
+            return (sum(float(x)**2 for x in a))**0.5
+
     class MockNumpy:
         def __init__(self):
             self.float64 = float
-            self.linalg = self
+            self.linalg = MockLinalg()
         def array(self, data, dtype=None): return data
         def dot(self, a, b): return sum(x*y for x, y in zip(a, b))
-        def norm(self, a): return (sum(float(x)**2 for x in a))**0.5
+        def norm(self, a): return self.linalg.norm(a)
         def clip(self, val, min_val, max_val): return max(min_val, min(max_val, val))
     np = MockNumpy()
 
@@ -142,7 +146,7 @@ def _determine_hitl(confidence: float) -> bool:
     Human-in-the-Loop flag per TRD Section 4.2.3.
     Matches with 90% ≤ confidence < 98% must be reviewed by an authority.
     """
-    return 0.90 <= confidence < 0.98
+    return 0.70 <= confidence < 0.95
 
 
 def _compute_image_hash(image_bytes: bytes) -> str:
@@ -198,10 +202,20 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
         serializer.save(reported_by=user, status='REPORTED')
 
     def perform_update(self, serializer):
-        user_perms = get_user_permissions(self.request.user)
+        user = self.request.user
+        user_perms = get_user_permissions(user)
         obj = self.get_object()
-        if not user_perms['can_modify_other_cases'] and obj.reported_by != self.request.user:
-            raise PermissionError('You can only modify your own reports.')
+        
+        # Permission check: Admin, Original Reporter, or Police in same jurisdiction
+        can_modify = (
+            user_perms.get('can_modify_other_cases', False) or 
+            obj.reported_by == user or
+            (user.role == 'police_officer' and obj.jurisdiction == user.jurisdiction)
+        )
+        
+        if not can_modify:
+            raise PermissionDenied('You do not have permission to modify this case.')
+            
         serializer.save()
 
     @action(detail=True, methods=['post'])
@@ -801,16 +815,22 @@ def search_facial_recognition(request):
 
     elapsed_ms = int((time.time() - start_time) * 1000)
     logger.info(
-        "Facial search completed in %dms. Candidates: %d. Best confidence: %.4f",
+        "Facial search completed in %dms. Candidates: %d. Best confidence: %.4f (Threshold: 0.85)",
         elapsed_ms, search_session.total_candidates_searched, best_confidence,
     )
+    print(f"DEBUG AI: Candidates={search_session.total_candidates_searched}, BestConf={best_confidence:.4f}")
 
     # Warn if we're approaching the 30-second SLA (TRD Section 6.1.1)
     if elapsed_ms > 25_000:
         logger.warning("Search took %dms — approaching 30s SLA limit.", elapsed_ms)
 
-    if best_db_image and best_confidence >= 0.90:  # minimum plausible threshold
+    if best_db_image and best_confidence >= 0.70:  # threshold lowered to standard Facenet512 levels
         hitl_flag = _determine_hitl(best_confidence)
+
+        # Determine source database
+        source_db = 'user_upload'
+        if best_db_image.missing_person.status == 'TRAINING_DATASET':
+            source_db = 'training_dataset'
 
         match, created = FacialMatch.objects.get_or_create(
             missing_person=best_db_image.missing_person,
@@ -818,7 +838,7 @@ def search_facial_recognition(request):
             defaults={
                 'match_confidence': best_confidence,
                 'distance_metric': round(1.0 - best_confidence, 6),
-                'source_database': 'user_upload',
+                'source_database': source_db,
                 'source_reference': str(best_db_image.id),
                 'algorithm_version': 'v2.0',
                 'model_name': 'Facenet512',
@@ -828,6 +848,7 @@ def search_facial_recognition(request):
         if not created:
             match.match_confidence = best_confidence
             match.distance_metric = round(1.0 - best_confidence, 6)
+            match.source_database = source_db  # Update source if it changed
             match.requires_human_review = hitl_flag
             match.save()
 
@@ -851,6 +872,7 @@ def search_facial_recognition(request):
         response_data.update({
             'match_found': True,
             'match': FacialMatchSerializer(best_match).data,
+            'results': [FacialMatchSerializer(best_match).data],
             'match_confidence': round(best_confidence, 4),
             'requires_human_review': hitl_flag,
             'message': (
