@@ -105,8 +105,24 @@ const SystemReports = () => {
                                         <td><strong>{c.full_name}</strong></td>
                                         <td>{c.status}</td>
                                         <td>{new Date(c.date_reported).toLocaleDateString()}</td>
-                                        <td>{c.reporter_name}</td>
-                                        <td>{c.jurisdiction}</td>
+                                        <td>
+                                            <div style={{fontWeight: 'bold'}}>{c.reporter_name || 'System Generated'}</div>
+                                            {c.reporter_blockchain_hash && (
+                                                <div style={{fontSize: '0.8em', color: '#64748b', fontFamily: 'monospace'}}>
+                                                    {c.reporter_blockchain_hash.substring(0, 16)}...
+                                                </div>
+                                            )}
+                                        </td>
+                                        <td>
+                                            {(() => {
+                                                const loc = c.last_seen_location || '';
+                                                const parts = loc.split(', ');
+                                                if (parts.length > 1) {
+                                                    return `${parts[parts.length - 1]} - ${parts[0]}`;
+                                                }
+                                                return loc || c.jurisdiction;
+                                            })()}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>

@@ -9,6 +9,7 @@ const FacialRecognitionResults = () => {
   const location = useLocation();
   const { user, logout } = useAuth();
   const [showDetails, setShowDetails] = useState(null);
+  const [showContact, setShowContact] = useState(false);
 
   const [reportText, setReportText] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -75,6 +76,27 @@ const FacialRecognitionResults = () => {
     }
   };
 
+  const handleUpdateFamilyNoMatch = async () => {
+    if (!missingPersonId) return;
+    setSubmitting(true);
+    try {
+      if (reportText) {
+        await api.submitPoliceReport(missingPersonId, reportText);
+      }
+      alert('Family updated with unsuccessful search results.');
+      navigate('/police-dashboard');
+    } catch (err) {
+      console.error('Error updating family:', err);
+      alert('Failed to submit report.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleCreateReport = () => {
+    navigate('/report', { state: { uploadedImage } });
+  };
+
   const handleSubmitGovReport = async () => {
     if (!missingPersonId) return;
     setSubmitting(true);
@@ -115,14 +137,6 @@ const FacialRecognitionResults = () => {
 
       {/* Main Content */}
       <main className="facial-main">
-        {/* Uploaded Image Display */}
-        {uploadedImage && (
-          <div className="results-uploaded-image">
-            <h3>Uploaded Image</h3>
-            <img src={uploadedImage} alt="Uploaded" className="uploaded-preview" />
-          </div>
-        )}
-
         {/* Success Results */}
         {hasMatch && results.length > 0 ? (
           <div className="results-success-section">
@@ -205,16 +219,30 @@ const FacialRecognitionResults = () => {
                         </div>
                       </div>
 
-                      {match.source_image?.image_file && (
-                        <div className="match-image-container">
-                          <h4>Database Image:</h4>
-                          <img
-                            src={match.source_image.image_file}
-                            alt="Database Match"
-                            className="match-image"
-                          />
-                        </div>
-                      )}
+                      <div className="match-images-comparison" style={{ display: 'flex', gap: '20px', marginTop: '15px' }}>
+                        {uploadedImage && (
+                          <div className="match-image-container" style={{ flex: 1 }}>
+                            <h4 style={{marginBottom: '10px', color: '#1e293b'}}>Primary / Uploaded Photo:</h4>
+                            <img
+                              src={uploadedImage}
+                              alt="Uploaded Source"
+                              className="match-image"
+                              style={{ width: '100%', objectFit: 'cover', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                            />
+                          </div>
+                        )}
+                        {match.source_image?.image_file && (
+                          <div className="match-image-container" style={{ flex: 1 }}>
+                            <h4 style={{marginBottom: '10px', color: '#1e293b'}}>Database Match Photo:</h4>
+                            <img
+                              src={match.source_image.image_file}
+                              alt="Database Match"
+                              className="match-image"
+                              style={{ width: '100%', objectFit: 'cover', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -283,12 +311,25 @@ const FacialRecognitionResults = () => {
           <div className="results-no-match-section">
             <div className="no-match-banner">
               <div className="no-match-icon">😔</div>
-              <h2>No Match Found</h2>
+              <h2>No Successful Match</h2>
               <p>
                 Unfortunately, we didn't find a match for this image in our database.
                 This person may not be in our system yet.
               </p>
             </div>
+
+            {/* Display the uploaded image so the officer can still view it */}
+            {uploadedImage && (
+              <div className="no-match-image-container" style={{ margin: '20px auto', maxWidth: '300px', textAlign: 'center' }}>
+                <h4 style={{marginBottom: '10px', color: '#1e293b'}}>Primary / Uploaded Photo:</h4>
+                <img
+                  src={uploadedImage}
+                  alt="Uploaded Source"
+                  className="match-image"
+                  style={{ width: '100%', objectFit: 'cover', borderRadius: '6px', border: '1px solid #cbd5e1' }}
+                />
+              </div>
+            )}
 
             <div className="no-match-suggestions">
               <h3>What You Can Do:</h3>
@@ -297,7 +338,7 @@ const FacialRecognitionResults = () => {
                   <div className="suggestion-icon">📋</div>
                   <h4>Report Missing Person</h4>
                   <p>If you know this person is missing, help us create their profile</p>
-                  <button className="btn-primary btn-sm">
+                  <button className="btn-primary btn-sm" onClick={handleCreateReport}>
                     Create Report
                   </button>
                 </div>
@@ -313,12 +354,44 @@ const FacialRecognitionResults = () => {
                   <div className="suggestion-icon">📞</div>
                   <h4>Contact Support</h4>
                   <p>Reach out to authorities if you have additional information</p>
-                  <button className="btn-secondary btn-sm">
-                    Contact Us
-                  </button>
+                  {showContact ? (
+                    <div style={{ marginTop: '10px', fontSize: '0.9em', textAlign: 'left', background: '#f8fafc', padding: '10px', borderRadius: '6px', border: '1px solid #e2e8f0', color: '#334155' }}>
+                      <p style={{ margin: '0 0 5px 0' }}><strong>📞 Phone:</strong> +254 700 000 000</p>
+                      <p style={{ margin: '0 0 5px 0' }}><strong>📧 Email:</strong> support@surasmart-police.go.ke</p>
+                      <p style={{ margin: '0' }}><strong>🌐 Web:</strong> www.surasmart-police.go.ke</p>
+                    </div>
+                  ) : (
+                    <button className="btn-secondary btn-sm" onClick={() => setShowContact(true)}>
+                      Contact Us
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
+
+            {/* Analysis Report Section for Authorities when NO Match */}
+            {missingPersonId && (user?.role === 'police_officer' || user?.role === 'government_official') && (
+              <div className="analysis-report-section" style={{ marginTop: '30px' }}>
+                <h3>Update Family on Search Results</h3>
+                <p style={{color: '#64748b', marginBottom: '15px'}}>Record the unsuccessful search attempt to keep the family informed.</p>
+                <textarea
+                  className="report-textarea"
+                  placeholder="Enter your summary here to update the family portal..."
+                  value={reportText}
+                  onChange={(e) => setReportText(e.target.value)}
+                  disabled={submitting}
+                ></textarea>
+                <div className="workflow-actions">
+                  <button
+                    className="btn-primary"
+                    onClick={handleUpdateFamilyNoMatch}
+                    disabled={submitting || !reportText}
+                  >
+                    Post Update to Family Portal
+                  </button>
+                </div>
+              </div>
+            )}
 
             <div className="apology-message">
               <p>

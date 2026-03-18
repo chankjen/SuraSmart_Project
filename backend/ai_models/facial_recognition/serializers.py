@@ -22,11 +22,14 @@ class MissingPersonSerializer(serializers.ModelSerializer):
     """Serializer for missing person records."""
     facial_recognition_images = FacialRecognitionImageSerializer(many=True, read_only=True)
     match_count = serializers.SerializerMethodField()
+    reporter_name = serializers.CharField(source='reported_by.get_full_name', read_only=True)
+    reporter_blockchain_hash = serializers.SerializerMethodField()
     
     class Meta:
         model = MissingPerson
         fields = [
-            'id', 'reported_by', 'full_name', 'description', 'status',
+            'id', 'reported_by', 'reporter_name', 'reporter_blockchain_hash', 'jurisdiction',
+            'full_name', 'description', 'status',
             'date_reported', 'last_seen_date', 'last_seen_location',
             'age', 'gender', 'identifying_marks', 'facial_recognition_images',
             'match_count', 'police_analysis_report', 'government_analysis_report',
@@ -38,6 +41,18 @@ class MissingPersonSerializer(serializers.ModelSerializer):
     def get_match_count(self, obj):
         return obj.facial_matches.filter(status='verified').count()
 
+    def get_reporter_blockchain_hash(self, obj):
+        from users.models import AuditLog
+        # Attempt to get the hash from the first API log related to this reporter and case
+        log = AuditLog.objects.filter(user=obj.reported_by, action='api_call').first()
+        if log and log.actor_hash:
+            return log.actor_hash
+        # Fallback reproducible hash per user
+        import hashlib
+        if obj.reported_by:
+            return hashlib.sha256(str(obj.reported_by.id).encode()).hexdigest()
+        return None
+
 
 class FacialMatchSerializer(serializers.ModelSerializer):
     """Serializer for facial match results."""
@@ -47,6 +62,7 @@ class FacialMatchSerializer(serializers.ModelSerializer):
     missing_person_details = MissingPersonSerializer(
         source='missing_person', read_only=True
     )
+    source_image = FacialRecognitionImageSerializer(read_only=True)
     
     class Meta:
         model = FacialMatch

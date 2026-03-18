@@ -467,7 +467,7 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
 
         # Create or update match record
         result_match = None
-        if best_match and best_confidence >= 0.50:
+        if best_match and best_confidence >= 0.90:
             hitl_flag = _determine_hitl(best_confidence)
             match, created = FacialMatch.objects.get_or_create(
                 missing_person=case,
@@ -496,7 +496,7 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
 
         return Response({
             'status': 'success',
-            'match_found': best_confidence >= 0.50,
+            'match_found': best_confidence >= 0.90,
             'match_confidence': round(best_confidence * 100, 2),
             'confidence': round(best_confidence * 100, 2), # field for consistency with frontend usage
             'match': FacialMatchSerializer(result_match).data if result_match else None,
@@ -809,7 +809,7 @@ def search_facial_recognition(request):
     if elapsed_ms > 25_000:
         logger.warning("Search took %dms — approaching 30s SLA limit.", elapsed_ms)
 
-    if best_db_image and best_confidence >= 0.50:  # minimum plausible threshold
+    if best_db_image and best_confidence >= 0.90:  # minimum plausible threshold
         hitl_flag = _determine_hitl(best_confidence)
 
         match, created = FacialMatch.objects.get_or_create(

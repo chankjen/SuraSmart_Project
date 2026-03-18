@@ -131,16 +131,19 @@ def anonymize_pii(data, user):
     visibility = permissions.get('data_visibility', 'system_metadata_only')
     
     if visibility == 'aggregated_anonymized':
-        # Mask names and exact locations
+        # Mask exact names but keep general locations for analytics
         if isinstance(data, dict):
-            if 'full_name' in data:
+            if 'full_name' in data and data['full_name']:
                 data['full_name'] = data['full_name'][0] + '***'
-            if 'last_seen_location' in data:
-                data['last_seen_location'] = 'REDACTED'
+            # Do NOT redact last_seen_location because it's required for Regional Oversight piece
     elif visibility == 'system_metadata_only':
-        # Return only IDs and status
+        # Return IDs, status, and fields required for analytics/reports
         if isinstance(data, dict):
-            return {k: v for k, v in data.items() if k in ['id', 'status', 'jurisdiction']}
+            allowed_fields = [
+                'id', 'status', 'jurisdiction', 'last_seen_location',
+                'reporter_blockchain_hash', 'reporter_name', 'date_reported'
+            ]
+            return {k: v for k, v in data.items() if k in allowed_fields}
             
     return data
 

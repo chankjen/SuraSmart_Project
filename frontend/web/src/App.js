@@ -23,6 +23,14 @@ import ReportGenerator from './pages/ReportGenerator';
 import AnalyticsDashboard from './pages/AnalyticsDashboard';
 import SystemReports from './pages/SystemReports';
 
+// Documentation Pages (public)
+import DocHub from './pages/docs/DocHub';
+import RequirementsDoc from './pages/docs/RequirementsDoc';
+import ArchitectureDoc from './pages/docs/ArchitectureDoc';
+import TechnicalDoc from './pages/docs/TechnicalDoc';
+import EndUserDoc from './pages/docs/EndUserDoc';
+
+
 // Styles
 import './styles/global.css';
 
@@ -36,6 +44,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
+          {/* Documentation (public access) */}
+          <Route path="/docs" element={<DocHub />} />
+          <Route path="/docs/requirements" element={<RequirementsDoc />} />
+          <Route path="/docs/architecture" element={<ArchitectureDoc />} />
+          <Route path="/docs/technical" element={<TechnicalDoc />} />
+          <Route path="/docs/end-user" element={<EndUserDoc />} />
 
 
           <Route

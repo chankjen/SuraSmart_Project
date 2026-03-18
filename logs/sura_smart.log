@@ -17183,3 +17183,29 @@ INFO 2026-03-17 20:49:23,393 state_machine 5664 11272 Case fa712958-f390-486f-8d
 WARNING 2026-03-17 21:20:05,295 log 5664 3880 Unauthorized: /api/auth/users/
 WARNING 2026-03-17 21:20:05,296 log 5664 7840 Unauthorized: /api/auth/audit-logs/
 WARNING 2026-03-17 21:20:05,297 log 5664 17716 Unauthorized: /api/auth/users/system_stats/
+INFO 2026-03-18 01:36:34,157 autoreload 15856 23136 Watching for file changes with StatReloader
+WARNING 2026-03-18 01:36:35,957 views 15856 23136 Numpy not found. Using minimal stub.
+INFO 2026-03-18 12:47:42,849 autoreload 8236 7000 Watching for file changes with StatReloader
+WARNING 2026-03-18 12:47:43,413 views 8236 7000 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 12:48:09,933 log 8236 6656 Not Found: /favicon.ico
+INFO 2026-03-18 13:24:45,868 autoreload 8236 7000 D:\SuraSmart_Project\backend\ai_models\facial_recognition\serializers.py changed, reloading.
+INFO 2026-03-18 13:24:47,193 autoreload 7248 22664 Watching for file changes with StatReloader
+WARNING 2026-03-18 13:24:47,484 views 7248 22664 Numpy not found. Using minimal stub.
+INFO 2026-03-18 13:40:39,360 autoreload 7248 22664 D:\SuraSmart_Project\backend\users\permissions.py changed, reloading.
+INFO 2026-03-18 13:40:40,726 autoreload 21796 12696 Watching for file changes with StatReloader
+WARNING 2026-03-18 13:40:41,011 views 21796 12696 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 14:04:36,115 log 21796 25244 Unauthorized: /api/auth/token/
+WARNING 2026-03-18 14:25:26,829 log 21796 23888 Bad Request: /api/facial-recognition/missing-persons/85a1d16d-f645-4469-9150-b4d65a27e85e/run_ai_search/
+WARNING 2026-03-18 14:32:16,556 views 21796 22384 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-18 14:32:16,556 views 21796 22384 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-18 14:32:16,602 blockchain 21796 22384 [BLOCKCHAIN_EVENT] Hash: 2ec2a906262a2e0c38e3f1cc8a58ff46fa31479443b9bb5e434d8dcc174569f6 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "b66a051d-29dd-4498-8474-897c0884509f", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-18T11:32:16.602889+00:00"}
+INFO 2026-03-18 14:32:16,611 state_machine 21796 22384 Case b66a051d-29dd-4498-8474-897c0884509f transitioned from REPORTED to RAISED by alex
+INFO 2026-03-18 14:38:39,762 autoreload 21796 12696 D:\SuraSmart_Project\backend\ai_models\facial_recognition\serializers.py changed, reloading.
+INFO 2026-03-18 14:38:41,361 autoreload 14180 22824 Watching for file changes with StatReloader
+WARNING 2026-03-18 14:38:41,645 views 14180 22824 Numpy not found. Using minimal stub.
+INFO 2026-03-18 14:54:22,300 autoreload 14180 22824 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 14:54:23,643 autoreload 17056 27508 Watching for file changes with StatReloader
+WARNING 2026-03-18 14:54:23,927 views 17056 27508 Numpy not found. Using minimal stub.
+INFO 2026-03-18 14:55:40,788 autoreload 17056 27508 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-18 14:55:42,373 autoreload 23412 5232 Watching for file changes with StatReloader
+WARNING 2026-03-18 14:55:42,639 views 23412 5232 Numpy not found. Using minimal stub.

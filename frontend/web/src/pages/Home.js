@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import '../styles/Home.css';
 
+
 const Home = () => {
   const navigate = useNavigate();
   const { isAuthenticated, user } = useAuth();
@@ -93,6 +94,13 @@ const Home = () => {
             </div>
           </div>
           <div className="nav-links">
+            <button
+              className="nav-btn"
+              style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.5)', color: 'white' }}
+              onClick={() => navigate('/docs')}
+            >
+              Documentation
+            </button>
             <button 
               className="nav-btn nav-admin" 
               onClick={() => navigate('/admin-dashboard')}
