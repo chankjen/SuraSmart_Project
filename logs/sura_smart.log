@@ -17415,3 +17415,40 @@ INFO 2026-03-18 17:36:14,662 autoreload 9768 25396 Watching for file changes wit
 WARNING 2026-03-18 17:36:15,137 views 9768 25396 Numpy not found. Using minimal stub.
 INFO 2026-03-18 17:36:29,674 autoreload 6020 12356 Watching for file changes with StatReloader
 WARNING 2026-03-18 17:36:30,005 views 6020 12356 Numpy not found. Using minimal stub.
+WARNING 2026-03-18 17:38:11,929 log 14608 17476 Not Found: /favicon.ico
+WARNING 2026-03-18 17:52:23,495 log 14608 14480 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:52:24,225 log 14608 14480 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:53:13,737 log 14608 14480 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:53:14,468 log 14608 14480 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:53:34,619 log 14608 8148 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:53:35,504 log 14608 8148 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:54:09,570 log 14608 11896 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:54:10,256 log 14608 11896 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:55:21,801 log 14608 11896 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:55:22,500 log 14608 11896 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:55:42,842 log 14608 8148 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:55:43,808 log 14608 8148 Unauthorized: /api/auth/users/verify_mfa/
+WARNING 2026-03-18 17:59:09,612 log 14608 11896 Bad Request: /api/facial-recognition/missing-persons/9ffb59df-9388-45f1-bf2a-1fb2d9e46ec6/upload_image/
+WARNING 2026-03-18 17:59:12,450 log 14608 11896 Bad Request: /api/facial-recognition/missing-persons/9ffb59df-9388-45f1-bf2a-1fb2d9e46ec6/upload_image/
+WARNING 2026-03-18 18:00:35,008 views 14608 11896 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-18 18:00:35,009 views 14608 11896 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-18 18:00:35,096 blockchain 14608 11896 [BLOCKCHAIN_EVENT] Hash: e2721dc4ed53c070a6bc968ed0bb788ada428e0962eea2456c6d953aa58c8d46 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "9ffb59df-9388-45f1-bf2a-1fb2d9e46ec6", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-18T15:00:35.096263+00:00"}
+INFO 2026-03-18 18:00:35,110 state_machine 14608 11896 Case 9ffb59df-9388-45f1-bf2a-1fb2d9e46ec6 transitioned from REPORTED to RAISED by amanda
+INFO 2026-03-18 18:02:52,061 blockchain 14608 11896 [BLOCKCHAIN_EVENT] Hash: 3b75ef658f914dcac98536d565d012615be2930057a3998715ff18d3240dea22 | Data: {"action": "TRANSITION_RAISED_TO_ANALYZED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "9ffb59df-9388-45f1-bf2a-1fb2d9e46ec6", "jurisdiction": "KE", "metadata": {"notes": "Police analysis report submitted"}, "timestamp": "2026-03-18T15:02:52.061320+00:00"}
+INFO 2026-03-18 18:02:52,079 state_machine 14608 11896 Case 9ffb59df-9388-45f1-bf2a-1fb2d9e46ec6 transitioned from RAISED to ANALYZED by betty
+INFO 2026-03-20 07:44:24,505 autoreload 4328 5008 Watching for file changes with StatReloader
+WARNING 2026-03-20 07:44:46,998 log 4328 1916 Not Found: /favicon.ico
+WARNING 2026-03-20 07:45:48,219 connection 4328 14560 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-03-20 07:45:54,944 log 4328 14560 Service Unavailable: /api/health/check/
+WARNING 2026-03-20 07:45:57,249 log 4328 9844 Not Found: /favicon.ico
+WARNING 2026-03-20 07:46:03,028 log 4328 2740 Not Found: /favicon.ico
+WARNING 2026-03-20 07:58:30,809 log 4328 16252 Bad Request: /api/facial-recognition/missing-persons/ba03f7cb-0ae4-4f2b-81a8-ccc68e2f1870/upload_image/
+WARNING 2026-03-20 07:59:39,214 views 4328 16252 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-20 07:59:39,216 views 4328 16252 Generating simulated embedding for Python 3.14 compatibility.
+INFO 2026-03-20 07:59:39,362 blockchain 4328 16252 [BLOCKCHAIN_EVENT] Hash: fc6ca67f98fc08476069543f8edfb7168821fc87aabf677ea3c24c338aa816b6 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "ba03f7cb-0ae4-4f2b-81a8-ccc68e2f1870", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-20T04:59:39.362423+00:00"}
+INFO 2026-03-20 07:59:39,393 state_machine 4328 16252 Case ba03f7cb-0ae4-4f2b-81a8-ccc68e2f1870 transitioned from REPORTED to RAISED by amanda
+WARNING 2026-03-20 08:49:46,935 log 4328 17196 Unauthorized: /api/auth/users/
+WARNING 2026-03-20 08:49:46,942 log 4328 24072 Unauthorized: /api/auth/audit-logs/
+WARNING 2026-03-20 08:49:46,948 log 4328 15148 Unauthorized: /api/auth/users/system_stats/
+INFO 2026-03-20 09:17:07,872 autoreload 4328 5008 C:\Users\Zeni_Bets\AppData\Roaming\Python\Python314\site-packages\click\_utils.py changed, reloading.
+INFO 2026-03-20 09:17:13,561 autoreload 24428 30352 Watching for file changes with StatReloader
