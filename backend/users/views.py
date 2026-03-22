@@ -165,6 +165,9 @@ class UserViewSet(viewsets.ModelViewSet):
         password = request.data.get('password')
 
         # 1. Verify Password
+        if password:
+            password = password.strip()
+
         if not user.check_password(password):
             return Response({
                 'detail': 'Invalid password.',

@@ -114,6 +114,17 @@ const AdminDashboard = () => {
       alert('Please complete verification details first.');
       return;
     }
+
+    // Role-based ID matching check
+    let expectedId = '';
+    if (selectedUser.role === 'family_member') expectedId = selectedUser.national_id;
+    else if (selectedUser.role === 'police_officer') expectedId = selectedUser.service_id;
+    else if (selectedUser.role === 'government_official') expectedId = selectedUser.government_security_id;
+
+    if (verificationNumber !== expectedId) {
+      alert(`ID Mismatch: The input ID number (${verificationNumber}) does not match the registered record for this ${selectedUser.role.replace('_', ' ')}. Please re-entry the 8-digit ID or consider disapproval.`);
+      return;
+    }
     
     try {
         const response = await api.getMfaQr();
@@ -134,8 +145,8 @@ const AdminDashboard = () => {
     }
 
     try {
-      // 1. Verify MFA + Password
-      await api.verifyMFA({ password: mfaPassword, otp_code: otpCode });
+      // 1. Verify MFA + Password (TRIM password to avoid mismatch)
+      await api.verifyMFA({ password: mfaPassword.trim(), otp_code: otpCode });
 
       // 2. Approve User
       await api.approveUserRegistration(selectedUser.id, {

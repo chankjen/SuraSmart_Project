@@ -348,6 +348,17 @@ const Login = () => {
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
 
+        <div style={{ marginTop: '10px', textAlign: 'center' }}>
+          <button 
+            type="button" 
+            onClick={() => navigate('/')} 
+            className="chase-button-outline"
+            style={{ width: '100%', padding: '0.75rem' }}
+          >
+            ← Back to Home
+          </button>
+        </div>
+
         {/* Demo Users Section */}
         <div className="demo-section">
           <h3>Demo Users (Testing)</h3>

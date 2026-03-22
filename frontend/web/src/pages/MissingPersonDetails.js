@@ -133,7 +133,11 @@ const MissingPersonDetails = () => {
                             <h3 style={{ color: 'var(--chase-blue)', marginBottom: '1rem', borderBottom: '1px solid var(--chase-gray-100)', paddingBottom: '0.5rem' }}>Personal Information</h3>
                             <div style={{ display: 'grid', gap: '12px' }}>
                                 <p><strong>Age:</strong> {missingPerson.age || 'Not specified'}</p>
-                                <p><strong>Gender:</strong> {missingPerson.gender || 'Not specified'}</p>
+                                <p><strong>Gender:</strong> {missingPerson.gender ? missingPerson.gender.charAt(0).toUpperCase() + missingPerson.gender.slice(1) : 'Not specified'}</p>
+                                <p><strong>Eye Color:</strong> {missingPerson.eye_color || 'Not specified'}</p>
+                                <p><strong>Complexion:</strong> {missingPerson.complexion || 'Not specified'}</p>
+                                <p><strong>Height:</strong> {missingPerson.height ? `${missingPerson.height} ${missingPerson.height_unit}` : 'Not specified'}</p>
+                                <p><strong>Languages:</strong> {missingPerson.languages || 'Not specified'}</p>
                                 <p><strong>Identifying Marks:</strong> {missingPerson.identifying_marks || 'None reported'}</p>
                                 <p><strong>Description:</strong> {missingPerson.description || 'No description provided'}</p>
                             </div>

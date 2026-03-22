@@ -80,6 +80,15 @@ class MissingPerson(models.Model):
         choices=(('male', _('Male')), ('female', _('Female')), ('other', _('Other'))),
         blank=True
     )
+    eye_color = models.CharField(max_length=20, blank=True)
+    height = models.FloatField(null=True, blank=True)
+    height_unit = models.CharField(
+        max_length=10, 
+        choices=[('inches', 'Inches'), ('ft', 'Feet'), ('meters', 'Meters')], 
+        default='inches'
+    )
+    complexion = models.CharField(max_length=20, blank=True)
+    languages = models.TextField(blank=True, help_text='Comma-separated list of languages')
     identifying_marks = models.TextField(blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)

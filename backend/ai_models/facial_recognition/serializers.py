@@ -31,7 +31,8 @@ class MissingPersonSerializer(serializers.ModelSerializer):
             'id', 'reported_by', 'reporter_name', 'reporter_blockchain_hash', 'jurisdiction',
             'full_name', 'description', 'status',
             'date_reported', 'last_seen_date', 'last_seen_location',
-            'age', 'gender', 'identifying_marks', 'facial_recognition_images',
+            'age', 'gender', 'eye_color', 'height', 'height_unit', 'complexion', 'languages',
+            'identifying_marks', 'facial_recognition_images',
             'match_count', 'police_analysis_report', 'government_analysis_report',
             'raised_at', 'escalated_at', 'dual_signature_family', 'dual_signature_police',
             'created_at', 'updated_at'

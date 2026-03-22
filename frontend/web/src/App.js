@@ -79,6 +79,24 @@ function App() {
             }
           />
 
+          <Route
+            path="/facial-results/success"
+            element={
+              <PrivateRoute>
+                <FacialRecognitionResults />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/facial-results/failure"
+            element={
+              <PrivateRoute>
+                <FacialRecognitionResults />
+              </PrivateRoute>
+            }
+          />
+
 
 
           <Route

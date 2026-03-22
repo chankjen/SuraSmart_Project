@@ -17,6 +17,9 @@ const FacialRecognitionResults = () => {
   const state = location.state || {};
   const { results = [], uploadedImage, hasMatch, error, missingPersonId } = state;
 
+  const isSuccessPath = location.pathname === '/facial-results/success';
+  const isFailurePath = location.pathname === '/facial-results/failure';
+
   const handleRetry = () => {
     navigate(missingPersonId ? `/facial-search/${missingPersonId}` : '/facial-search');
   };
@@ -94,7 +97,11 @@ const FacialRecognitionResults = () => {
   };
 
   const handleCreateReport = () => {
-    navigate('/report', { state: { uploadedImage } });
+    if (user?.role === 'police_officer') {
+      navigate('/reports', { state: { uploadedImage } });
+    } else {
+      navigate('/report', { state: { uploadedImage } });
+    }
   };
 
   const handleSubmitGovReport = async () => {
@@ -138,7 +145,7 @@ const FacialRecognitionResults = () => {
       {/* Main Content */}
       <main className="facial-main">
         {/* Success Results */}
-        {hasMatch && results.length > 0 ? (
+        {isSuccessPath && hasMatch && results.length > 0 ? (
           <div className="results-success-section">
             <div className="success-banner">
               <div className="success-icon">✅</div>
@@ -311,7 +318,7 @@ const FacialRecognitionResults = () => {
               </button>
             </div>
           </div>
-        ) : !hasMatch && !error ? (
+        ) : isFailurePath && !hasMatch && !error ? (
           // No Match Found
           <div className="results-no-match-section">
             <div className="no-match-banner">

@@ -135,7 +135,8 @@ const FacialRecognitionSearch = () => {
       }
 
       // Navigate to results page with the AI match data (for general search without case context)
-      navigate('/facial-results', {
+      const resultsRoute = searchData.match_found ? '/facial-results/success' : '/facial-results/failure';
+      navigate(resultsRoute, {
         state: {
           results: (searchData.match || searchData.best_match) ? [searchData.match || searchData.best_match] : [],
           uploadedImage: preview,
@@ -166,7 +167,8 @@ const FacialRecognitionSearch = () => {
       const searchData = response.data;
 
       // Navigate to results page with the automated match data
-      navigate('/facial-results', {
+      const resultsRoute = searchData.match_found ? '/facial-results/success' : '/facial-results/failure';
+      navigate(resultsRoute, {
         state: {
           results: (searchData.match || searchData.best_match) ? [searchData.match || searchData.best_match] : [],
           uploadedImage: primaryPhoto.image_file,
