@@ -154,8 +154,8 @@ class FacialRecognitionImage(models.Model):
     )
     image_hash = models.CharField(
         max_length=64,
-        unique=True,
-        help_text=_('SHA256 hash of image for deduplication')
+        db_index=True,
+        help_text=_('SHA256 hash of image for deduplication (not unique to allow re-uploads for testing)')
     )
     is_primary = models.BooleanField(
         default=False,

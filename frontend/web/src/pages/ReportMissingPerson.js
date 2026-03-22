@@ -113,6 +113,18 @@ const ReportMissingPerson = () => {
     setLoading(true);
     setError(null);
 
+    // Date Validation: Must be at least 1 hour ago
+    if (formData.last_seen_date) {
+      const selectedDate = new Date(formData.last_seen_date);
+      const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000);
+      
+      if (selectedDate > oneHourAgo) {
+        alert('Last seen date must be at least one hour before the current time.');
+        setLoading(false);
+        return;
+      }
+    }
+
     // Age Validation
     const ageNum = parseInt(formData.age);
     if (ageNum < 1 || ageNum > 140) {
@@ -378,6 +390,12 @@ const ReportMissingPerson = () => {
                 value={formData.last_seen_date}
                 onChange={handleChange}
                 disabled={loading}
+                max={(() => {
+                  const now = new Date();
+                  const offset = now.getTimezoneOffset() * 60000;
+                  const localISOTime = new Date(now.getTime() - offset - (60 * 60 * 1000)).toISOString().slice(0, 16);
+                  return localISOTime;
+                })()}
               />
             </div>
 

@@ -39,6 +39,22 @@ class MissingPersonSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = ['id', 'status', 'created_at', 'updated_at', 'facial_recognition_images', 'raised_at', 'escalated_at']
     
+    def validate_last_seen_date(self, value):
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        if value:
+            now = timezone.now()
+            # Must be at least 1 hour ago
+            one_hour_ago = now - timedelta(hours=1)
+            
+            if value > now:
+                raise serializers.ValidationError("Last seen date cannot be in the future.")
+            if value > one_hour_ago:
+                raise serializers.ValidationError("Last seen date must be at least one hour before the current time.")
+        
+        return value
+    
     def get_match_count(self, obj):
         return obj.facial_matches.filter(status='verified').count()
 

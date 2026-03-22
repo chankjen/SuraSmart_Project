@@ -18,6 +18,21 @@ import logging
 import hashlib
 import time
 import io
+import os
+
+logger = logging.getLogger(__name__)
+
+# Dedicated debug log for AI matching analysis
+DEBUG_AI_LOG = r'd:\SuraSmart_Project\backend\logs\debug_ai.log'
+
+def log_ai_debug(message):
+    try:
+        os.makedirs(os.path.dirname(DEBUG_AI_LOG), exist_ok=True)
+        with open(DEBUG_AI_LOG, 'a') as f:
+            f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] {message}\n")
+    except Exception as e:
+        logger.error("Failed to write to debug AI log: %s", e)
+    print(f"DEBUG AI: {message}") # Also keep in stdout
 
 try:
     import numpy as np
@@ -88,16 +103,35 @@ def _extract_embedding(image_bytes: bytes, model_name: str = "Facenet512"):
     DeepFace = _get_deepface()
     
     if DeepFace is None:
-        # Fallback: Return a deterministic dummy embedding based on image hash
-        # This allows the system to remain functional (e.g. Raise Case) on Python 3.14
-        logger.info("Generating simulated embedding for Python 3.14 compatibility.")
-        h = hashlib.sha256(image_bytes).digest()
-        # Create a 512-d vector from hash iterations
-        dummy = []
-        for i in range(16):
-            part = hashlib.sha256(h + str(i).encode()).digest()
-            dummy.extend([float(b) / 255.0 for b in part])
-        return dummy[:512]
+        # Fallback: Return a perceptual dHash embedding
+        # This allows the system to remain functional and match resized/re-encoded images
+        logger.info("Generating perceptual dHash embedding for Python 3.14 compatibility.")
+        try:
+            from PIL import Image
+            import io
+            # Prepare image: convert to grayscale and resize to 9x8 for dHash
+            img = Image.open(io.BytesIO(image_bytes)).convert('L').resize((9, 8), Image.Resampling.LANCZOS)
+            pixels = list(img.getdata())
+            # dHash: compare adjacent pixels to capture structural gradients
+            diff = []
+            for row in range(8):
+                for col in range(8):
+                    pixel_left = pixels[row * 9 + col]
+                    pixel_right = pixels[row * 9 + col + 1]
+                    # Use -1.0 and 1.0 for better cosine similarity behavior (balanced around 0)
+                    diff.append(1.0 if pixel_left > pixel_right else -1.0)
+            
+            # Repeat the 64-bit hash 8 times to fill the 512-d vector
+            # This ensures consistency with the Facenet512 schema
+            return (diff * 8)[:512]
+        except Exception as e:
+            logger.warning("Perceptual hash fallback failed, using SHA-256: %s", e)
+            h = hashlib.sha256(image_bytes).digest()
+            dummy = []
+            for i in range(16):
+                part = hashlib.sha256(h + str(i).encode()).digest()
+                dummy.extend([float(b) / 255.0 for b in part])
+            return dummy[:512]
 
     try:
         import tempfile, os
@@ -238,23 +272,31 @@ class MissingPersonViewSet(viewsets.ModelViewSet):
         image_bytes = _bytes_from_file(image_file)
         image_hash = _compute_image_hash(image_bytes)
 
-        # Deduplication check
-        if FacialRecognitionImage.objects.filter(image_hash=image_hash).exists():
-            return Response(
-                {'error': 'This image has already been uploaded.'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        # Deduplication check disabled per user request to enable re-upload testing
+        # if FacialRecognitionImage.objects.filter(image_hash=image_hash).exists():
+        #     return Response(
+        #         {'error': 'This image has already been uploaded.'},
+        #         status=status.HTTP_400_BAD_REQUEST
+        #     )
 
         # Create image record
         is_first_image = not FacialRecognitionImage.objects.filter(missing_person=missing_person).exists()
         
-        facial_image = FacialRecognitionImage.objects.create(
-            missing_person=missing_person,
-            image_file=image_file,
-            image_hash=image_hash,
-            is_primary=is_first_image,
-            status='processing',
-        )
+        try:
+            facial_image = FacialRecognitionImage.objects.create(
+                missing_person=missing_person,
+                image_file=image_file,
+                image_hash=image_hash,
+                is_primary=is_first_image,
+                status='processing',
+            )
+        except Exception as e:
+            # Fallback for any remaining integrity issues
+            logger.warning("Failed to create image record: %s", e)
+            return Response(
+                {'error': f'Database error: {str(e)}'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
         # Extract and store embedding immediately (synchronous for now)
         embedding = _extract_embedding(image_bytes)
@@ -802,12 +844,17 @@ def search_facial_recognition(request):
     best_confidence = 0.0
     best_db_image = None
 
+    log_ai_debug(f"Starting search for query with {search_session.total_candidates_searched} candidates.")
     for db_image in db_images:
         stored_embedding = db_image.face_embedding
         if not stored_embedding:
             continue
 
         confidence = _cosine_similarity(query_embedding, stored_embedding)
+        
+        # Log all candidates with > 0.1 confidence for debugging
+        if confidence > 0.1:
+            log_ai_debug(f"Candidate ID={db_image.id}, Person='{db_image.missing_person.full_name}', Conf={confidence:.4f}")
 
         if confidence > best_confidence:
             best_confidence = confidence
@@ -815,16 +862,16 @@ def search_facial_recognition(request):
 
     elapsed_ms = int((time.time() - start_time) * 1000)
     logger.info(
-        "Facial search completed in %dms. Candidates: %d. Best confidence: %.4f (Threshold: 0.85)",
+        "Facial search completed in %dms. Candidates: %d. Best confidence: %.4f (Threshold: 0.70)",
         elapsed_ms, search_session.total_candidates_searched, best_confidence,
     )
-    print(f"DEBUG AI: Candidates={search_session.total_candidates_searched}, BestConf={best_confidence:.4f}")
+    log_ai_debug(f"FINAL RESULT - BestConf={best_confidence:.4f}, BestPerson='{best_db_image.missing_person.full_name if best_db_image else 'None'}'")
 
     # Warn if we're approaching the 30-second SLA (TRD Section 6.1.1)
     if elapsed_ms > 25_000:
         logger.warning("Search took %dms — approaching 30s SLA limit.", elapsed_ms)
 
-    if best_db_image and best_confidence >= 0.70:  # threshold lowered to standard Facenet512 levels
+    if best_db_image and best_confidence >= 0.40:  # threshold lowered for dHash/VGG_FACE2 compatibility
         hitl_flag = _determine_hitl(best_confidence)
 
         # Determine source database

@@ -18264,3 +18264,480 @@ WARNING 2026-03-22 20:04:08,812 views 11248 23356 DeepFace not found. Running in
 INFO 2026-03-22 20:04:08,813 views 11248 23356 Generating simulated embedding for Python 3.14 compatibility.
 INFO 2026-03-22 20:04:08,868 blockchain 11248 23356 [BLOCKCHAIN_EVENT] Hash: 24244f22ecafcaa86d496a72ed6063deb8cd9dfb4ddf63ebe37a6f91396f0b8a | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "d64a59fa-7250-4bf2-8285-f7b1f7a96fa8", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-22T17:04:08.868475+00:00"}
 INFO 2026-03-22 20:04:08,876 state_machine 11248 23356 Case d64a59fa-7250-4bf2-8285-f7b1f7a96fa8 transitioned from REPORTED to RAISED by alex
+INFO 2026-03-22 20:18:58,414 autoreload 11248 25128 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-22 20:19:00,142 autoreload 23720 12368 Watching for file changes with StatReloader
+WARNING 2026-03-22 20:19:01,058 views 23720 12368 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:19:20,301 views 20336 25532 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:19:20,332 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,333 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,443 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,444 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,460 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,460 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,478 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,478 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,513 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,514 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,534 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,534 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,556 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,557 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,578 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,579 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,597 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,597 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,615 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,616 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,634 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,634 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,647 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,647 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,659 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,659 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,677 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,677 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,688 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,688 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,708 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,708 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,717 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,718 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,735 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,736 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,749 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,749 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,768 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,768 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,781 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,781 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,798 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,799 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,815 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,815 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,833 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,833 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,851 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,851 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,869 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,870 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,893 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,893 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,912 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,912 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,930 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,931 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:20,951 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:20,951 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,026 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,026 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,046 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,047 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,075 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,075 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,102 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,102 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,124 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,125 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,143 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,144 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,161 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,161 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,178 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,178 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,197 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,197 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,215 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,216 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,237 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,237 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,260 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,260 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,279 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,280 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,299 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,299 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,323 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,323 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,346 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,346 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,381 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,382 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,424 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,425 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,466 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,466 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,499 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,499 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:19:21,550 views 20336 25532 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:19:21,550 views 20336 25532 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-22 20:27:05,459 autoreload 23720 12368 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-22 20:27:07,187 autoreload 23836 12772 Watching for file changes with StatReloader
+WARNING 2026-03-22 20:27:07,521 views 23836 12772 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:27:23,448 views 21532 17812 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:27:23,470 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,470 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,532 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,532 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,545 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,546 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,553 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,553 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,580 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,581 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,596 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,596 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,608 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,609 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,621 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,621 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,631 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,632 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,642 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,642 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,653 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,653 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,664 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,664 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,671 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,672 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,683 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,683 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,692 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,692 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,701 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,702 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,712 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,712 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,719 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,719 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,731 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,731 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,738 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,738 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,749 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,749 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,757 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,757 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,767 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,768 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,779 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,779 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,788 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,788 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,800 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,800 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,809 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,810 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,820 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,820 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,831 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,832 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,841 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,841 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,902 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,902 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,913 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,913 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,925 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,926 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,946 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,946 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,954 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,955 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,965 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,965 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,975 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,975 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,986 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,987 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:23,998 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:23,999 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,009 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,009 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,021 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,021 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,033 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,033 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,041 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,042 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,052 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,053 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,065 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,065 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,074 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,075 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,088 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,088 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,109 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,110 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,134 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,134 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,158 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,158 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:27:24,180 views 21532 17812 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:27:24,181 views 21532 17812 Generating perceptual dHash embedding for Python 3.14 compatibility.
+ERROR 2026-03-22 20:35:26,919 log 23836 25024 Internal Server Error: /api/facial-recognition/missing-persons/95a7bb74-e493-440b-9348-9d27bbd5a2a8/upload_image/
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: UNIQUE constraint failed: facial_recognition_facialrecognitionimage.image_hash
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py", line 270, in upload_image
+    facial_image = FacialRecognitionImage.objects.create(
+        missing_person=missing_person,
+    ...<3 lines>...
+        status='processing',
+    )
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\query.py", line 658, in create
+    obj.save(force_insert=True, using=self.db)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+    ~~~~~~~~~~~~~~^
+        using=using,
+        ^^^^^^^^^^^^
+    ...<2 lines>...
+        update_fields=update_fields,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+        raw,
+    ...<4 lines>...
+        update_fields,
+    )
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+        cls._base_manager, using, fields, returning_fields, raw
+    )
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ~~~~~~~~~~~~~~~^
+        [self],
+        ^^^^^^^
+    ...<3 lines>...
+        raw=raw,
+        ^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\SuraSmart_Project\backend\venv_new\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: UNIQUE constraint failed: facial_recognition_facialrecognitionimage.image_hash
+INFO 2026-03-22 20:37:22,454 autoreload 23836 12772 D:\SuraSmart_Project\backend\ai_models\facial_recognition\models.py changed, reloading.
+INFO 2026-03-22 20:37:24,193 autoreload 20092 18476 Watching for file changes with StatReloader
+WARNING 2026-03-22 20:37:24,502 views 20092 18476 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:37:35,036 views 15736 23192 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:37:37,156 views 19836 6320 Numpy not found. Using minimal stub.
+INFO 2026-03-22 20:39:07,529 autoreload 20092 18476 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-22 20:39:09,096 autoreload 9056 20912 Watching for file changes with StatReloader
+WARNING 2026-03-22 20:39:09,394 views 9056 20912 Numpy not found. Using minimal stub.
+INFO 2026-03-22 20:39:21,769 autoreload 9056 20912 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-22 20:39:23,135 autoreload 21768 23884 Watching for file changes with StatReloader
+WARNING 2026-03-22 20:39:23,453 views 21768 23884 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:39:37,632 views 24988 22224 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 20:39:37,652 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,652 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,700 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,701 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,712 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,712 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,719 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,719 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,741 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,742 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,754 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,754 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,764 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,765 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,774 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,775 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,783 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,784 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,794 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,795 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,803 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,804 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,812 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,812 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,819 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,819 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,828 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,829 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,836 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,836 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,845 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,845 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,852 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,852 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,861 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,862 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,870 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,871 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,879 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,880 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,887 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,888 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,895 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,895 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,903 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,903 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,912 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,912 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,919 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,920 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,928 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,928 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,940 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,940 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,951 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,951 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,961 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,962 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:37,970 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:37,971 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,022 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,023 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,060 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,061 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,073 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,073 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,089 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,089 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,098 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,098 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,106 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,106 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,114 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,115 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,122 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,122 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,131 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,131 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,139 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,140 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,151 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,152 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,160 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,160 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,168 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,168 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,176 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,176 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,185 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,185 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,193 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,194 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,206 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,206 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,224 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,224 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,244 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,244 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,266 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,266 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:39:38,285 views 24988 22224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:39:38,285 views 24988 22224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+WARNING 2026-03-22 20:40:55,677 views 21768 25568 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 20:40:55,678 views 21768 25568 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-22 20:40:55,747 blockchain 21768 25568 [BLOCKCHAIN_EVENT] Hash: 13335096debac5dc2da7d5ecd11b36bab48b62e2d1431f35f78fe2c15c220b73 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "95a7bb74-e493-440b-9348-9d27bbd5a2a8", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-22T17:40:55.747445+00:00"}
+INFO 2026-03-22 20:40:55,758 state_machine 21768 25568 Case 95a7bb74-e493-440b-9348-9d27bbd5a2a8 transitioned from REPORTED to RAISED by alex
+INFO 2026-03-22 21:12:05,519 blockchain 21768 22504 [BLOCKCHAIN_EVENT] Hash: 295c151feafdac89992179d660bd7289c44d0d47bf7b015f8f6c91ddbb527b96 | Data: {"action": "TRANSITION_MATCH_FOUND_TO_PENDING_CLOSURE", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "95a7bb74-e493-440b-9348-9d27bbd5a2a8", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-22T18:12:05.519167+00:00"}
+INFO 2026-03-22 21:12:05,527 state_machine 21768 22504 Case 95a7bb74-e493-440b-9348-9d27bbd5a2a8 transitioned from MATCH_FOUND to PENDING_CLOSURE by bernard
+INFO 2026-03-22 21:12:05,536 blockchain 21768 22504 [BLOCKCHAIN_EVENT] Hash: f293562946b1cffcf016808fd68a5520c6d03b32f025199ecd0b9b600149dbbd | Data: {"action": "SIGNATURE_ADDED_BY_police_officer", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "95a7bb74-e493-440b-9348-9d27bbd5a2a8", "jurisdiction": "KE", "metadata": {"role": "police_officer"}, "timestamp": "2026-03-22T18:12:05.536201+00:00"}
+WARNING 2026-03-22 21:21:46,648 views 21768 16044 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 21:21:46,648 views 21768 16044 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-22 21:21:46,691 blockchain 21768 16044 [BLOCKCHAIN_EVENT] Hash: 13013c0074fec29ab5567f0ac6058c5d1e1423a8469bdb22834f5d96843c8d04 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "b792123d-c1cc-4e4e-aa8b-21b94c2fa565", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-22T18:21:46.691072+00:00"}
+INFO 2026-03-22 21:21:46,701 state_machine 21768 16044 Case b792123d-c1cc-4e4e-aa8b-21b94c2fa565 transitioned from REPORTED to RAISED by amanda
+WARNING 2026-03-22 21:32:11,642 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:32:14,391 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:32:49,561 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:32:51,473 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:36:26,881 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:36:29,164 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:37:12,701 log 21768 22656 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 21:37:14,632 log 21768 22656 Unauthorized: /api/auth/token/
+INFO 2026-03-22 21:50:02,043 autoreload 21768 23884 D:\SuraSmart_Project\backend\ai_models\facial_recognition\views.py changed, reloading.
+INFO 2026-03-22 21:50:04,254 autoreload 6932 25240 Watching for file changes with StatReloader
+WARNING 2026-03-22 21:50:04,805 views 6932 25240 Numpy not found. Using minimal stub.
+INFO 2026-03-22 21:50:26,476 autoreload 12188 22176 Watching for file changes with StatReloader
+WARNING 2026-03-22 21:50:26,827 views 12188 22176 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 21:52:23,486 log 6932 23988 Unauthorized: /api/facial-recognition/missing-persons/d64a59fa-7250-4bf2-8285-f7b1f7a96fa8/
+INFO 2026-03-22 21:59:26,446 autoreload 12188 22176 D:\SuraSmart_Project\backend\ai_models\facial_recognition\serializers.py changed, reloading.
+INFO 2026-03-22 21:59:26,891 autoreload 6932 25240 D:\SuraSmart_Project\backend\ai_models\facial_recognition\serializers.py changed, reloading.
+INFO 2026-03-22 21:59:28,714 autoreload 23632 14008 Watching for file changes with StatReloader
+WARNING 2026-03-22 21:59:29,089 views 23632 14008 Numpy not found. Using minimal stub.
+INFO 2026-03-22 21:59:29,101 autoreload 15680 2192 Watching for file changes with StatReloader
+WARNING 2026-03-22 21:59:29,613 views 15680 2192 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 22:07:00,168 log 23632 24500 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-03-22 22:08:27,146 views 23632 24500 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-22 22:08:27,146 views 23632 24500 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-22 22:08:27,255 blockchain 23632 24500 [BLOCKCHAIN_EVENT] Hash: 875155442eeb58ddd4fe3b7d3d08bb914fcfed7917e7b2e36d2ded3df2b6c4a1 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "d9b1b0f8-5f46-457d-845a-229553ad277b", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-22T19:08:27.255216+00:00"}
+INFO 2026-03-22 22:08:27,270 state_machine 23632 24500 Case d9b1b0f8-5f46-457d-845a-229553ad277b transitioned from REPORTED to RAISED by amanda
+INFO 2026-03-22 22:26:06,814 autoreload 3128 18976 Watching for file changes with StatReloader
+WARNING 2026-03-22 22:26:07,027 views 3128 18976 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 22:32:11,708 log 3128 13044 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 22:32:12,810 log 3128 13044 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 22:33:52,809 log 3128 22432 Not Found: /media/facial_images/Swiri.jpg
+WARNING 2026-03-22 22:33:53,099 log 3128 22432 Not Found: /favicon.ico
+WARNING 2026-03-22 22:33:59,579 log 3128 22432 Not Found: /media/
+INFO 2026-03-22 22:42:07,333 autoreload 8236 22748 Watching for file changes with StatReloader
+WARNING 2026-03-22 22:42:07,615 views 8236 22748 Numpy not found. Using minimal stub.
