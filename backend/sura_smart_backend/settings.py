@@ -6,6 +6,7 @@ Phase 1: MVP Backend Infrastructure
 import os
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -20,6 +21,7 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # Application definition
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,20 +34,20 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_celery_beat',
     'django_celery_results',
+    'storages',
     # SuraSmart apps
     'users',
     'ai_models.facial_recognition',
     'notifications',
-
     'database_integration',
     'shared',
     'chat',
-
 ]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,22 +77,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sura_smart_backend.wsgi.application'
 
-# Database - PostgreSQL with TimescaleDB for time-series data (Production)
-# For local development, using SQLite
-DATABASES = {
-    'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('DB_NAME', os.path.join(BASE_DIR, 'data', 'db.sqlite3')) if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
-        'USER': os.getenv('DB_USER', 'postgres') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
-        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
-        'HOST': os.getenv('DB_HOST', 'localhost') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
-        'PORT': os.getenv('DB_PORT', '5432') if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else '',
-        'CONN_MAX_AGE': 600 if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else 0,
-        'OPTIONS': {
-            'connect_timeout': 10,
-        } if os.getenv('DB_ENGINE') == 'django.db.backends.postgresql' else {}
+# Database — supports DATABASE_URL (Railway) or individual DB_* vars, falls back to SQLite
+_database_url = os.getenv('DATABASE_URL')
+if _database_url:
+    DATABASES = {'default': dj_database_url.parse(_database_url, conn_max_age=600)}
+elif os.getenv('DB_ENGINE') == 'django.db.backends.postgresql':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER', 'postgres'),
+            'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+            'HOST': os.getenv('DB_HOST', 'localhost'),
+            'PORT': os.getenv('DB_PORT', '5432'),
+            'CONN_MAX_AGE': 600,
+            'OPTIONS': {'connect_timeout': 10},
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'data', 'db.sqlite3'),
+        }
+    }
 
 # Cache Configuration - Redis (Production) or Local Memory (Development)
 CACHES = {
@@ -125,11 +135,28 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files — WhiteNoise serves compressed static files in production
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Media files — AWS S3 in production (USE_S3=true), local disk in development
+USE_S3 = os.getenv('USE_S3', 'false').lower() == 'true'
+if USE_S3:
+    # AWS credentials
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME', 'eu-west-1')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+    # Storage backends
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -160,7 +187,8 @@ SIMPLE_JWT = {
 }
 
 # CORS Configuration
-CORS_ALLOW_ALL_ORIGINS = True # For development
+# In production set CORS_ALLOWED_ORIGINS to your Vercel URL
+CORS_ALLOW_ALL_ORIGINS = DEBUG  # Only allow all origins in debug/dev mode
 CORS_ALLOWED_ORIGINS = os.getenv(
     'CORS_ALLOWED_ORIGINS',
     'http://localhost:3000,http://127.0.0.1:3000'

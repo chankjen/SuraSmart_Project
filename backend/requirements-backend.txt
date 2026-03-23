@@ -35,6 +35,11 @@ Pillow>=10.1.0
 # Server & Deployment
 gunicorn==21.2.0
 whitenoise==6.6.0
+dj-database-url==2.1.0
+
+# Cloud Storage (S3 for media files in production)
+django-storages==1.14.2
+boto3==1.34.0
 
 # Utilities
 python-dotenv==1.0.0

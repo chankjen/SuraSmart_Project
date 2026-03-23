@@ -1,0 +1,12 @@
+# nixpacks build config for Railway
+[phases.setup]
+nixPkgs = ["python311", "gcc", "libpq"]
+
+[phases.install]
+cmds = ["pip install -r requirements-backend.txt"]
+
+[phases.build]
+cmds = ["python manage.py collectstatic --no-input"]
+
+[start]
+cmd = "gunicorn sura_smart_backend.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"

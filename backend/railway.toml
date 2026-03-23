@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "gunicorn sura_smart_backend.wsgi:application --bind 0.0.0.0:$PORT --workers 2 --timeout 120"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 3
+
+[[services]]
+name = "web"
+
+[[services]]
+name = "worker"
+startCommand = "celery -A sura_smart_backend worker -l info -P solo --concurrency 2"

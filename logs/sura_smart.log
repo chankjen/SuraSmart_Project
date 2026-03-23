@@ -18757,3 +18757,13 @@ ERROR 2026-03-23 17:16:53,450 log 19888 13732 Service Unavailable: /api/health/c
 WARNING 2026-03-23 17:16:53,991 log 19888 13732 Not Found: /favicon.ico
 WARNING 2026-03-23 17:17:24,066 log 19888 15756 Not Found: /favicon.ico
 WARNING 2026-03-23 17:17:31,563 log 19888 2484 Unauthorized: /api/auth/token/
+WARNING 2026-03-23 18:17:54,416 views 19888 16360 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-23 18:17:54,419 views 19888 16360 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-23 18:17:55,025 blockchain 19888 16360 [BLOCKCHAIN_EVENT] Hash: 3ce46e54282a3c374f1f58b81d409449b65922929e1983da65cae5d5b5f80736 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "749571fc-90a4-4fd8-8efc-3401a3c415a1", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-23T15:17:55.025112+00:00"}
+INFO 2026-03-23 18:17:55,043 state_machine 19888 16360 Case 749571fc-90a4-4fd8-8efc-3401a3c415a1 transitioned from REPORTED to RAISED by alex
+WARNING 2026-03-23 21:50:47,062 views 19888 2028 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-23 21:50:47,065 views 19888 2028 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-23 21:50:47,258 blockchain 19888 2028 [BLOCKCHAIN_EVENT] Hash: 7207d4eeaab73a9ecd52b9b99f9da98065bfb456085f2b536cfec5ec8b8422d3 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "5457bab3-bbaf-4a63-9090-48f709a4cd08", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-23T18:50:47.258597+00:00"}
+INFO 2026-03-23 21:50:47,302 state_machine 19888 2028 Case 5457bab3-bbaf-4a63-9090-48f709a4cd08 transitioned from REPORTED to RAISED by alex
+WARNING 2026-03-23 21:55:20,154 log 19888 27384 Unauthorized: /api/auth/token/
+INFO 2026-03-23 22:33:08,849 autoreload 19888 24500 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
