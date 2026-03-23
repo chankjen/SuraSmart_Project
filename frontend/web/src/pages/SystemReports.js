@@ -136,7 +136,7 @@ const SystemReports = () => {
 
                     <div className="audit-footer">
                         <p>This report is confidential and intended for official government use only. 
-                        Unauthorized reproduction or distribution is prohibited by federal law 
+                        Unauthorized reproduction or distribution is prohibited by the Kenyan law 
                         under the National Public Safety Identity Act.</p>
                         <div className="audit-stamp">OFFICIAL CERTIFIED CASE REGISTRY</div>
                     </div>

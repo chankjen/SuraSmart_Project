@@ -10,6 +10,7 @@ const FacialRecognitionResults = () => {
   const { user, logout } = useAuth();
   const [showDetails, setShowDetails] = useState(null);
   const [showContact, setShowContact] = useState(false);
+  const [showSocialSearch, setShowSocialSearch] = useState(false);
 
   const [reportText, setReportText] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -19,6 +20,27 @@ const FacialRecognitionResults = () => {
 
   const isSuccessPath = location.pathname === '/facial-results/success';
   const isFailurePath = location.pathname === '/facial-results/failure';
+
+  // Derive the missing person's name from the first result, or fallback
+  const missingPersonName = results[0]?.missing_person?.full_name || '';
+
+  const SOCIAL_PLATFORMS = [
+    { name: 'Facebook',  icon: '\uD83D\uDD35', color: '#1877f2', buildUrl: () => `https://www.facebook.com` },
+    { name: 'Instagram', icon: '\uD83D\uDCF8', color: '#e1306c', buildUrl: (q) => `https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(q)}` },
+    { name: 'TikTok',   icon: '\uD83C\uDFB5', color: '#010101', buildUrl: (q) => `https://www.tiktok.com/search?q=${encodeURIComponent(q)}` },
+    { name: 'Threads',  icon: '\uF0E8',       color: '#101010', buildUrl: (q) => `https://www.threads.net/search?q=${encodeURIComponent(q)}` },
+    { name: 'Telegram', icon: '\u2708\uFE0F',  color: '#0088cc', buildUrl: (q) => `https://t.me/${encodeURIComponent(q)}` },
+    { name: 'X',        icon: '\uD83D\uDC26',  color: '#14171a', buildUrl: (q) => `https://x.com/search?q=${encodeURIComponent(q)}` },
+    { name: 'LinkedIn', icon: '\uD83D\uDCBC', color: '#0a66c2', buildUrl: (q) => `https://www.linkedin.com/search/results/all/?keywords=${encodeURIComponent(q)}` },
+    { name: 'Snapchat', icon: '\uD83D\uDC7B', color: '#fffc00', buildUrl: (q) => `https://www.snapchat.com/add/${encodeURIComponent(q)}` },
+    { name: 'WhatsApp', icon: '\uD83D\uDCAC', color: '#25d366', buildUrl: (q) => `https://wa.me/?text=${encodeURIComponent('Can anyone help locate: ' + q)}` },
+    { name: 'Pinterest',icon: '\uD83D\uDCCC', color: '#e60023', buildUrl: (q) => `https://www.pinterest.com/search/pins/?q=${encodeURIComponent(q)}` },
+  ];
+
+  const handleSocialSearch = (buildUrl) => {
+    const query = missingPersonName || 'missing person';
+    window.open(buildUrl(query), '_blank', 'noopener,noreferrer');
+  };
 
   const handleRetry = () => {
     navigate(missingPersonId ? `/facial-search/${missingPersonId}` : '/facial-search');
@@ -354,14 +376,73 @@ const FacialRecognitionResults = () => {
                     Create Report
                   </button>
                 </div>
-                <div className="suggestion-card">
-                  <div className="suggestion-icon">📸</div>
-                  <h4>Try Different Image</h4>
-                  <p>Upload another photo that may have better facial visibility</p>
-                  <button className="btn-primary btn-sm" onClick={handleRetry}>
-                    Upload New Image
-                  </button>
-                </div>
+                {user?.role === 'police_officer' ? (
+                  <div className="suggestion-card" style={{ gridColumn: 'span 1' }}>
+                    <div className="suggestion-icon">🌐</div>
+                    <h4>Social Media Search</h4>
+                    <p>Search for this person across social media platforms</p>
+                    {!showSocialSearch ? (
+                      <button className="btn-primary btn-sm" onClick={() => setShowSocialSearch(true)}>
+                        Start Search
+                      </button>
+                    ) : (
+                      <div style={{ marginTop: '12px' }}>
+                        {missingPersonName && (
+                          <p style={{ fontSize: '0.8rem', color: '#475569', marginBottom: '10px', fontStyle: 'italic' }}>
+                            Searching for: <strong>{missingPersonName}</strong>
+                          </p>
+                        )}
+                        <div style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(2, 1fr)',
+                          gap: '8px',
+                        }}>
+                          {SOCIAL_PLATFORMS.map((platform) => (
+                            <button
+                              key={platform.name}
+                              onClick={() => handleSocialSearch(platform.buildUrl)}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                padding: '7px 10px',
+                                border: `1.5px solid ${platform.color}`,
+                                borderRadius: '8px',
+                                background: '#fff',
+                                color: platform.name === 'Snapchat' ? '#333' : platform.color,
+                                fontWeight: '600',
+                                fontSize: '0.78rem',
+                                cursor: 'pointer',
+                                transition: 'background 0.15s',
+                              }}
+                              onMouseEnter={e => e.currentTarget.style.background = platform.color + '18'}
+                              onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+                            >
+                              <span style={{ fontSize: '1rem' }}>{platform.icon}</span>
+                              {platform.name}
+                            </button>
+                          ))}
+                        </div>
+                        <button
+                          className="btn-secondary btn-sm"
+                          onClick={() => setShowSocialSearch(false)}
+                          style={{ marginTop: '10px', width: '100%' }}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="suggestion-card">
+                    <div className="suggestion-icon">📸</div>
+                    <h4>Try Different Image</h4>
+                    <p>Upload another photo that may have better facial visibility</p>
+                    <button className="btn-primary btn-sm" onClick={handleRetry}>
+                      Upload New Image
+                    </button>
+                  </div>
+                )}
                 <div className="suggestion-card">
                   <div className="suggestion-icon">📞</div>
                   <h4>Contact Support</h4>

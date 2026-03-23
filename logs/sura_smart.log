@@ -18749,3 +18749,11 @@ WARNING 2026-03-22 22:59:47,177 log 8236 25528 Unauthorized: /api/auth/token/
 WARNING 2026-03-23 17:13:57,348 views 24848 23792 Numpy not found. Using minimal stub.
 INFO 2026-03-23 17:15:23,173 autoreload 19888 24500 Watching for file changes with StatReloader
 WARNING 2026-03-23 17:15:23,863 views 19888 24500 Numpy not found. Using minimal stub.
+WARNING 2026-03-23 17:15:48,839 log 19888 15312 Method Not Allowed: /api/health/check/
+WARNING 2026-03-23 17:15:48,995 connection 19888 15312 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-03-23 17:15:55,043 log 19888 15312 Service Unavailable: /api/health/check/
+WARNING 2026-03-23 17:16:38,213 log 19888 3808 Not Found: /favicon.ico
+ERROR 2026-03-23 17:16:53,450 log 19888 13732 Service Unavailable: /api/health/check/
+WARNING 2026-03-23 17:16:53,991 log 19888 13732 Not Found: /favicon.ico
+WARNING 2026-03-23 17:17:24,066 log 19888 15756 Not Found: /favicon.ico
+WARNING 2026-03-23 17:17:31,563 log 19888 2484 Unauthorized: /api/auth/token/

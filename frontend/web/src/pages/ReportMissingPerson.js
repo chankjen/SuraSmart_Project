@@ -47,6 +47,42 @@ const ReportMissingPerson = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === 'height_unit' && formData.height) {
+      const currentHeight = parseFloat(formData.height);
+      const currentUnit = formData.height_unit;
+      const newUnit = value;
+
+      if (!isNaN(currentHeight) && currentUnit !== newUnit) {
+        let heightInInches = currentHeight;
+        
+        // Convert current height to inches first
+        if (currentUnit === 'ft') {
+          heightInInches = currentHeight * 12;
+        } else if (currentUnit === 'meters') {
+          heightInInches = currentHeight * 39.3701;
+        }
+
+        // Convert inches to new unit
+        let newHeight = heightInInches;
+        if (newUnit === 'ft') {
+          newHeight = heightInInches / 12;
+        } else if (newUnit === 'meters') {
+          newHeight = heightInInches / 39.3701;
+        }
+
+        // Round to 2 decimal places
+        newHeight = parseFloat(newHeight.toFixed(2));
+
+        setFormData((prev) => ({
+          ...prev,
+          height: newHeight.toString(),
+          height_unit: newUnit,
+        }));
+        return;
+      }
+    }
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -276,17 +312,39 @@ const ReportMissingPerson = () => {
 
           <div className="form-row">
             <div className="form-group" style={{ flex: 2 }}>
-              <label htmlFor="height">Height (Max 110 inches or equiv)</label>
-              <input
-                type="number"
-                step="0.01"
-                id="height"
-                name="height"
-                value={formData.height}
-                onChange={handleChange}
-                disabled={loading}
-                placeholder="Enter height"
-              />
+              <label htmlFor="height">Height</label>
+              <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                <input
+                  type="number"
+                  step="0.01"
+                  id="height"
+                  name="height"
+                  value={formData.height}
+                  onChange={handleChange}
+                  disabled={loading}
+                  placeholder="Enter height"
+                  style={{ paddingRight: '80px', width: '100%' }}
+                />
+                <span style={{
+                  position: 'absolute',
+                  right: '8px',
+                  background: '#e0f2fe',
+                  color: '#0369a1',
+                  fontSize: '0.72rem',
+                  fontWeight: '600',
+                  padding: '2px 7px',
+                  borderRadius: '999px',
+                  whiteSpace: 'nowrap',
+                  pointerEvents: 'none',
+                  border: '1px solid #7dd3fc',
+                  lineHeight: '1.6',
+                }}>
+                  max&nbsp;
+                  {formData.height_unit === 'inches' && '110 in'}
+                  {formData.height_unit === 'ft' && '9.17 ft'}
+                  {formData.height_unit === 'meters' && '2.79 m'}
+                </span>
+              </div>
             </div>
             <div className="form-group" style={{ flex: 1 }}>
               <label htmlFor="height_unit">Unit</label>
