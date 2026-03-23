@@ -18741,3 +18741,11 @@ WARNING 2026-03-22 22:33:53,099 log 3128 22432 Not Found: /favicon.ico
 WARNING 2026-03-22 22:33:59,579 log 3128 22432 Not Found: /media/
 INFO 2026-03-22 22:42:07,333 autoreload 8236 22748 Watching for file changes with StatReloader
 WARNING 2026-03-22 22:42:07,615 views 8236 22748 Numpy not found. Using minimal stub.
+WARNING 2026-03-22 22:55:11,431 log 8236 24068 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 22:55:13,180 log 8236 24068 Unauthorized: /api/auth/token/
+WARNING 2026-03-22 22:56:17,461 log 8236 7928 Not Found: /favicon.ico
+WARNING 2026-03-22 22:58:57,782 log 8236 25528 Bad Request: /api/auth/users/
+WARNING 2026-03-22 22:59:47,177 log 8236 25528 Unauthorized: /api/auth/token/
+WARNING 2026-03-23 17:13:57,348 views 24848 23792 Numpy not found. Using minimal stub.
+INFO 2026-03-23 17:15:23,173 autoreload 19888 24500 Watching for file changes with StatReloader
+WARNING 2026-03-23 17:15:23,863 views 19888 24500 Numpy not found. Using minimal stub.
