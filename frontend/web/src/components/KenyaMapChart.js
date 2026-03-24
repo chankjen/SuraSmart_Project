@@ -4,54 +4,63 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 //  KENYA COUNTY COORDINATE CENTRES (approx. on a 800x800 grid)
 //  Derived from the standard Kenya county map layout.
 // =============================================================
+// Positions precisely calibrated against the actual kenya-map.png (800×800 SVG grid)
 const COUNTY_CENTRES = {
-  "Mombasa":       { x: 648, y: 630 },
-  "Kwale":         { x: 600, y: 680 },
-  "Kilifi":        { x: 635, y: 590 },
-  "Tana River":    { x: 590, y: 520 },
-  "Lamu":          { x: 700, y: 540 },
-  "Taita Taveta":  { x: 530, y: 645 },
-  "Garissa":       { x: 660, y: 390 },
-  "Wajir":         { x: 700, y: 260 },
-  "Mandera":       { x: 740, y: 170 },
-  "Marsabit":      { x: 530, y: 200 },
-  "Isiolo":        { x: 570, y: 320 },
-  "Meru":          { x: 530, y: 360 },
-  "Tharaka Nithi": { x: 505, y: 410 },
-  "Embu":          { x: 475, y: 430 },
-  "Kitui":         { x: 550, y: 470 },
-  "Machakos":      { x: 460, y: 490 },
-  "Makueni":       { x: 430, y: 540 },
-  "Nyandarua":     { x: 380, y: 400 },
-  "Nyeri":         { x: 410, y: 420 },
-  "Kirinyaga":     { x: 440, y: 410 },
-  "Murang'a":      { x: 420, y: 460 },
-  "Kiambu":        { x: 390, y: 480 },
-  "Turkana":       { x: 220, y: 200 },
-  "West Pokot":    { x: 270, y: 285 },
-  "Samburu":       { x: 400, y: 270 },
-  "Trans Nzoia":   { x: 268, y: 340 },
-  "Uasin Gishu":   { x: 280, y: 365 },
-  "Elgeyo Marakwet":{ x: 300, y: 325 },
-  "Nandi":         { x: 298, y: 393 },
-  "Baringo":       { x: 330, y: 330 },
-  "Laikipia":      { x: 380, y: 335 },
-  "Nakuru":        { x: 332, y: 410 },
-  "Narok":         { x: 300, y: 490 },
-  "Kajiado":       { x: 380, y: 555 },
-  "Kericho":       { x: 310, y: 440 },
-  "Bomet":         { x: 295, y: 465 },
-  "Kakamega":      { x: 258, y: 390 },
-  "Vihiga":        { x: 255, y: 415 },
-  "Bungoma":       { x: 240, y: 360 },
-  "Busia":         { x: 228, y: 405 },
-  "Siaya":         { x: 230, y: 430 },
-  "Kisumu":        { x: 255, y: 445 },
-  "Homa Bay":      { x: 255, y: 475 },
-  "Migori":        { x: 255, y: 500 },
-  "Kisii":         { x: 278, y: 480 },
-  "Nyamira":       { x: 280, y: 458 },
-  "Nairobi":       { x: 398, y: 508 },
+  // ── North / Northeast ──────────────────────────────────────────
+  "Turkana":          { x: 148, y: 195 },
+  "Marsabit":         { x: 370, y: 210 },
+  "Mandera":          { x: 620, y: 175 },
+  "Wajir":            { x: 590, y: 340 },
+  // ── Rift Valley North ──────────────────────────────────────────
+  "West Pokot":       { x: 170, y: 310 },
+  "Samburu":          { x: 320, y: 310 },
+  "Baringo":          { x: 222, y: 385 },
+  "Laikipia":         { x: 315, y: 395 },
+  "Isiolo":           { x: 452, y: 355 },
+  // ── Western Kenya ─────────────────────────────────────────────
+  "Trans Nzoia":      { x: 155, y: 370 },
+  "Elgeyo Marakwet":  { x: 188, y: 395 },
+  "Uasin Gishu":      { x: 168, y: 418 },
+  "Nandi":            { x: 168, y: 444 },
+  "Bungoma":          { x: 130, y: 405 },
+  "Busia":            { x: 112, y: 445 },
+  "Kakamega":         { x: 140, y: 450 },
+  "Vihiga":           { x: 138, y: 468 },
+  "Siaya":            { x: 115, y: 472 },
+  "Kisumu":           { x: 138, y: 488 },
+  "Homa Bay":         { x: 122, y: 516 },
+  "Migori":           { x: 112, y: 540 },
+  "Kisii":            { x: 155, y: 522 },
+  "Nyamira":          { x: 160, y: 500 },
+  "Kericho":          { x: 185, y: 490 },
+  "Bomet":            { x: 174, y: 515 },
+  // ── Rift Valley South ─────────────────────────────────────────
+  "Nakuru":           { x: 230, y: 450 },
+  "Narok":            { x: 220, y: 558 },
+  "Kajiado":          { x: 290, y: 600 },
+  // ── Central Kenya ─────────────────────────────────────────────
+  "Nyandarua":        { x: 295, y: 440 },
+  "Nyeri":            { x: 318, y: 453 },
+  "Kirinyaga":        { x: 348, y: 458 },
+  "Murang'a":         { x: 330, y: 480 },
+  "Kiambu":           { x: 308, y: 503 },
+  "Nairobi":          { x: 308, y: 528 },
+  // ── Eastern Kenya ─────────────────────────────────────────────
+  "Meru":             { x: 404, y: 408 },
+  "Tharaka Nithi":    { x: 410, y: 448 },
+  "Embu":             { x: 378, y: 478 },
+  "Machakos":         { x: 355, y: 524 },
+  "Kitui":            { x: 440, y: 524 },
+  "Makueni":          { x: 340, y: 570 },
+  // ── NFD East ──────────────────────────────────────────────────
+  "Garissa":          { x: 552, y: 460 },
+  "Tana River":       { x: 502, y: 558 },
+  // ── Coast ─────────────────────────────────────────────────────
+  "Taita Taveta":     { x: 390, y: 635 },
+  "Kilifi":           { x: 524, y: 622 },
+  "Lamu":             { x: 610, y: 566 },
+  "Kwale":            { x: 470, y: 695 },
+  "Mombasa":          { x: 534, y: 706 },
 };
 
 // ------- Status colour palette -------
@@ -173,19 +182,13 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
       >
         <style>{RIPPLE_STYLE}</style>
 
-        {/* Background */}
-        <rect width="800" height="800" fill="#e0f2fe" rx="16" />
-
-        {/* Kenya rough border silhouette (simplified path) */}
-        <path
-          d="M190,80 L290,60 L390,55 L480,70 L570,80 L640,110 L720,150 L760,220 L770,310
-             L750,400 L720,460 L700,530 L680,590 L660,640 L630,680 L590,720 L550,745
-             L510,755 L470,750 L440,720 L400,740 L360,750 L310,730 L280,700 L250,650
-             L220,600 L200,540 L185,470 L175,390 L170,310 L175,230 L185,160 Z"
-          fill="#f0fdf4"
-          stroke="#94a3b8"
-          strokeWidth="2"
-          opacity="0.5"
+        {/* White background then the Kenya county map image */}
+        <rect width="800" height="800" fill="white" />
+        <image
+          href="/kenya-map.png"
+          x="0" y="0"
+          width="800" height="800"
+          preserveAspectRatio="xMidYMid meet"
         />
 
         {/* County dots + ripple rings */}
@@ -199,10 +202,8 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
           const isSelec  = selectedCounty === name;
           const isHover  = highlightedCounty === name;
           const phase    = ((animFrame + (x + y)) % 120) / 120; // staggered
-          const r1       = hasData ? 8 + phase * 14 : 0;
-          const r2       = hasData ? 8 + ((phase + 0.3) % 1) * 20 : 0;
-          const opacity1 = hasData ? 0.6 * (1 - phase) : 0;
-          const opacity2 = hasData ? 0.3 * (1 - ((phase + 0.3) % 1)) : 0;
+          const r1 = hasData ? 8 + phase * 14 : 0;
+          const r2 = hasData ? 8 + ((phase + 0.3) % 1) * 20 : 0;
 
           return (
             <g
@@ -249,14 +250,27 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
                 </g>
               )}
 
+              {/* County name shadow for readability over image */}
+              <text
+                x={x} y={y + 20}
+                textAnchor="middle"
+                fontSize={isSelec || isHover ? 10 : 8}
+                fontWeight="bold"
+                fill="white"
+                stroke="white"
+                strokeWidth="3"
+                style={{ pointerEvents: 'none' }}
+              >
+                {name}
+              </text>
               {/* County name label */}
               <text
                 x={x} y={y + 20}
                 textAnchor="middle"
                 fontSize={isSelec || isHover ? 10 : 8}
-                fontWeight={isSelec ? 'bold' : '600'}
-                fill={isSelec ? '#1e293b' : '#334155'}
-                style={{ pointerEvents: 'none', transition: 'font-size 0.2s' }}
+                fontWeight="bold"
+                fill="#1e293b"
+                style={{ pointerEvents: 'none' }}
               >
                 {name}
               </text>
