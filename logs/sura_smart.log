@@ -18767,3 +18767,49 @@ INFO 2026-03-23 21:50:47,258 blockchain 19888 2028 [BLOCKCHAIN_EVENT] Hash: 7207
 INFO 2026-03-23 21:50:47,302 state_machine 19888 2028 Case 5457bab3-bbaf-4a63-9090-48f709a4cd08 transitioned from REPORTED to RAISED by alex
 WARNING 2026-03-23 21:55:20,154 log 19888 27384 Unauthorized: /api/auth/token/
 INFO 2026-03-23 22:33:08,849 autoreload 19888 24500 D:\SuraSmart_Project\backend\sura_smart_backend\settings.py changed, reloading.
+INFO 2026-03-24 12:30:41,464 autoreload 4840 16920 Watching for file changes with StatReloader
+WARNING 2026-03-24 12:36:35,281 views 15516 11892 Numpy not found. Using minimal stub.
+INFO 2026-03-24 12:36:38,247 autoreload 17244 10916 Watching for file changes with StatReloader
+WARNING 2026-03-24 12:36:38,547 views 17244 10916 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 12:37:16,205 log 17244 7664 Method Not Allowed: /api/health/check/
+WARNING 2026-03-24 12:37:16,250 connection 17244 7664 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-03-24 12:37:22,331 log 17244 7664 Service Unavailable: /api/health/check/
+WARNING 2026-03-24 12:39:09,176 log 17244 17428 Not Found: /favicon.ico
+WARNING 2026-03-24 12:41:28,793 log 17244 2204 Unauthorized: /api/auth/token/
+WARNING 2026-03-24 13:09:11,513 views 17244 18224 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-24 13:09:11,515 views 17244 18224 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-24 13:09:12,430 blockchain 17244 18224 [BLOCKCHAIN_EVENT] Hash: 7b32284c9eb5b9e0ddba1ef0a2dd6f9ba39975366935992bf88af217298fcc99 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "a97c00cf-bc13-4b4f-87a8-f42c5d980ee8", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-24T10:09:12.430182+00:00"}
+INFO 2026-03-24 13:09:12,453 state_machine 17244 18224 Case a97c00cf-bc13-4b4f-87a8-f42c5d980ee8 transitioned from REPORTED to RAISED by amanda
+WARNING 2026-03-24 14:37:23,432 log 17244 22724 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-24 14:37:23,451 log 17244 22724 Unauthorized: /api/facial-recognition/missing-persons/
+INFO 2026-03-24 16:18:21,590 autoreload 17244 10916 D:\SuraSmart_Project\backend\ai_models\facial_recognition\models.py changed, reloading.
+INFO 2026-03-24 16:18:25,352 autoreload 18632 20688 Watching for file changes with StatReloader
+WARNING 2026-03-24 16:18:26,206 views 18632 20688 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 16:18:48,925 views 23324 23204 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 16:18:54,524 views 17872 8920 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 16:19:27,194 views 21988 20176 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 16:30:23,233 views 18632 7452 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-24 16:30:23,234 views 18632 7452 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-24 16:30:23,441 blockchain 18632 7452 [BLOCKCHAIN_EVENT] Hash: e2ee999508325f19d13a0fd3c16dc53d3531055a69e3cf1daca1e17059954451 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "853c1e1b-171f-4d37-bc47-68589e906202", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-24T13:30:23.441376+00:00"}
+INFO 2026-03-24 16:30:23,459 state_machine 18632 7452 Case 853c1e1b-171f-4d37-bc47-68589e906202 transitioned from REPORTED to RAISED by amanda
+INFO 2026-03-24 16:32:20,125 blockchain 18632 7452 [BLOCKCHAIN_EVENT] Hash: 0bf8dc1508b4be3637ddae2395c084f00cc4c9a50d1e4d1fa2462a00ce24d518 | Data: {"action": "TRANSITION_MATCH_FOUND_TO_PENDING_CLOSURE", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "853c1e1b-171f-4d37-bc47-68589e906202", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-24T13:32:20.125715+00:00"}
+INFO 2026-03-24 16:32:20,140 state_machine 18632 7452 Case 853c1e1b-171f-4d37-bc47-68589e906202 transitioned from MATCH_FOUND to PENDING_CLOSURE by betty
+INFO 2026-03-24 16:32:20,157 blockchain 18632 7452 [BLOCKCHAIN_EVENT] Hash: 35160e077c2b06a5f434e541abec625e436483803fdd4a5117beea024c8b2a21 | Data: {"action": "SIGNATURE_ADDED_BY_police_officer", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "853c1e1b-171f-4d37-bc47-68589e906202", "jurisdiction": "KE", "metadata": {"role": "police_officer"}, "timestamp": "2026-03-24T13:32:20.156987+00:00"}
+INFO 2026-03-24 16:33:10,733 blockchain 18632 20920 [BLOCKCHAIN_EVENT] Hash: 2e0e61da29f7b393019faf2b0aea0b150bcd1a24eb1f5573a0644bc3afe14d93 | Data: {"action": "TRANSITION_PENDING_CLOSURE_TO_CLOSED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "853c1e1b-171f-4d37-bc47-68589e906202", "jurisdiction": "KE", "metadata": {"notes": "Dual signature confirmed"}, "timestamp": "2026-03-24T13:33:10.732906+00:00"}
+INFO 2026-03-24 16:33:10,785 state_machine 18632 20920 Case 853c1e1b-171f-4d37-bc47-68589e906202 transitioned from PENDING_CLOSURE to CLOSED by amanda
+WARNING 2026-03-24 16:38:16,894 views 18632 20920 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-24 16:38:16,895 views 18632 20920 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-24 16:38:17,089 blockchain 18632 20920 [BLOCKCHAIN_EVENT] Hash: aafcd6b3512fb871eff1f15f3e854851a53724b26288b09291c599bd60d2f168 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "b35143b2-620d-45c7-8f02-8eaad844edc6", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-24T13:38:17.089622+00:00"}
+INFO 2026-03-24 16:38:17,123 state_machine 18632 20920 Case b35143b2-620d-45c7-8f02-8eaad844edc6 transitioned from REPORTED to RAISED by amanda
+WARNING 2026-03-24 16:40:08,147 log 18632 20920 Bad Request: /api/facial-recognition/missing-persons/b35143b2-620d-45c7-8f02-8eaad844edc6/escalate_case/
+WARNING 2026-03-24 16:40:20,108 log 18632 20920 Bad Request: /api/facial-recognition/missing-persons/b35143b2-620d-45c7-8f02-8eaad844edc6/escalate_case/
+WARNING 2026-03-24 16:40:39,464 log 18632 20920 Bad Request: /api/facial-recognition/missing-persons/b35143b2-620d-45c7-8f02-8eaad844edc6/escalate_case/
+INFO 2026-03-24 18:04:28,528 autoreload 18632 20688 D:\SuraSmart_Project\backend\ai_models\facial_recognition\models.py changed, reloading.
+INFO 2026-03-24 18:04:30,108 autoreload 25152 20224 Watching for file changes with StatReloader
+WARNING 2026-03-24 18:04:30,408 views 25152 20224 Numpy not found. Using minimal stub.
+INFO 2026-03-24 18:04:36,213 autoreload 25152 20224 D:\SuraSmart_Project\backend\ai_models\facial_recognition\serializers.py changed, reloading.
+INFO 2026-03-24 18:04:38,010 autoreload 25104 19064 Watching for file changes with StatReloader
+WARNING 2026-03-24 18:04:38,362 views 25104 19064 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 18:05:12,770 views 24568 18720 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 18:05:14,662 views 22888 22568 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 18:05:47,039 views 21644 1336 Numpy not found. Using minimal stub.

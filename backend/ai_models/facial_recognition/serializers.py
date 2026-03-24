@@ -29,7 +29,7 @@ class MissingPersonSerializer(serializers.ModelSerializer):
         model = MissingPerson
         fields = [
             'id', 'reported_by', 'reporter_name', 'reporter_blockchain_hash', 'jurisdiction',
-            'full_name', 'description', 'status',
+            'full_name', 'ob_number', 'police_station', 'description', 'status',
             'date_reported', 'last_seen_date', 'last_seen_location',
             'age', 'gender', 'eye_color', 'height', 'height_unit', 'complexion', 'languages',
             'identifying_marks', 'facial_recognition_images',

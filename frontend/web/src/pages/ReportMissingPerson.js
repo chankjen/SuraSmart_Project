@@ -4,6 +4,7 @@ import api from '../services/api';
 import '../styles/Forms.css';
 
 import { KENYA_LOCATIONS } from '../constants/kenyaLocations';
+import { POLICE_STATIONS_BY_SUBCOUNTY } from '../constants/kenyaPoliceStations';
 
 const EYE_COLORS = ['Brown', 'Blue', 'Hazel', 'Amber', 'Green', 'Gray', 'Black'];
 const COMPLEXIONS = ['Fair', 'Light', 'Medium', 'Olive', 'Tan', 'Brown', 'Dark'];
@@ -32,6 +33,8 @@ const ReportMissingPerson = () => {
 
   const [formData, setFormData] = useState({
     full_name: '',
+    ob_number: '',
+    police_station: '',
     description: '',
     age: '',
     gender: '',
@@ -104,6 +107,7 @@ const ReportMissingPerson = () => {
     setSelectedSubcounty(subcounty);
     setFormData(prev => ({
       ...prev,
+      police_station: '',
       last_seen_location: subcounty ? `${subcounty}, ${selectedCounty}` : `Unspecified, ${selectedCounty}`
     }));
   };
@@ -228,18 +232,32 @@ const ReportMissingPerson = () => {
         )}
 
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="full_name">Full Name *</label>
-            <input
-              type="text"
-              id="full_name"
-              name="full_name"
-              value={formData.full_name}
-              onChange={handleChange}
-              required
-              disabled={loading}
-              placeholder="Enter full name"
-            />
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="full_name">Full Name *</label>
+              <input
+                type="text"
+                id="full_name"
+                name="full_name"
+                value={formData.full_name}
+                onChange={handleChange}
+                required
+                disabled={loading}
+                placeholder="Enter full name"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="ob_number">OB-Number</label>
+              <input
+                type="text"
+                id="ob_number"
+                name="ob_number"
+                value={formData.ob_number}
+                onChange={handleChange}
+                disabled={loading}
+                placeholder="e.g., OB-123456/3-26"
+              />
+            </div>
           </div>
 
           <div className="form-row">
@@ -504,6 +522,26 @@ const ReportMissingPerson = () => {
             </div>
           </div>
 
+          <div className="form-group">
+            <label htmlFor="police_station">Police Station</label>
+            <select
+              id="police_station"
+              name="police_station"
+              value={formData.police_station}
+              onChange={handleChange}
+              disabled={loading || !selectedSubcounty || !POLICE_STATIONS_BY_SUBCOUNTY[selectedSubcounty]}
+            >
+              <option value="">Select Police Station</option>
+              {selectedSubcounty && POLICE_STATIONS_BY_SUBCOUNTY[selectedSubcounty] && POLICE_STATIONS_BY_SUBCOUNTY[selectedSubcounty].map(station => (
+                <option key={station} value={station}>{station}</option>
+              ))}
+            </select>
+            {selectedSubcounty && !POLICE_STATIONS_BY_SUBCOUNTY[selectedSubcounty] && (
+               <span style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '4px', display: 'block' }}>
+                 No police stations found for the selected subcounty.
+               </span>
+            )}
+          </div>
 
           <button type="submit" disabled={loading} className="btn-primary btn-large">
             {loading ? 'Reporting...' : 'Report Missing Person'}

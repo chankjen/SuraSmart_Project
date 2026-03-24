@@ -30,6 +30,18 @@ class MissingPerson(models.Model):
         related_name='reported_missing_persons'
     )
     full_name = models.CharField(max_length=255)
+    ob_number = models.CharField(
+        max_length=50, 
+        blank=True, 
+        null=True, 
+        help_text=_('Police OB-Number (e.g., OB-123456/3-26)')
+    )
+    police_station = models.CharField(
+        max_length=150, 
+        blank=True, 
+        null=True, 
+        help_text=_('Police Station where reported')
+    )
     description = models.TextField(blank=True)
     assigned_officer = models.ForeignKey(
         User,
