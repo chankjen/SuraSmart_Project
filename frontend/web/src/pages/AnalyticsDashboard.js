@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../services/api';
 import { KENYA_LOCATIONS } from '../constants/kenyaLocations';
+import KenyaMapChart from '../components/KenyaMapChart';
 import '../styles/Analytics.css';
 
 const AnalyticsDashboard = () => {
@@ -301,6 +302,11 @@ const AnalyticsDashboard = () => {
                             )}
                         </div>
                     </div>
+                </div>
+
+                {/* Kenya Interactive Map */}
+                <div style={{ margin: '40px 0' }}>
+                    <KenyaMapChart cases={cases} countyDynamics={stats.countyDynamics} />
                 </div>
 
                 <div className="insights-card">

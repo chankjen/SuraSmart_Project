@@ -18813,3 +18813,11 @@ WARNING 2026-03-24 18:04:38,362 views 25104 19064 Numpy not found. Using minimal
 WARNING 2026-03-24 18:05:12,770 views 24568 18720 Numpy not found. Using minimal stub.
 WARNING 2026-03-24 18:05:14,662 views 22888 22568 Numpy not found. Using minimal stub.
 WARNING 2026-03-24 18:05:47,039 views 21644 1336 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 18:17:33,218 log 25104 16500 Bad Request: /api/facial-recognition/missing-persons/b35143b2-620d-45c7-8f02-8eaad844edc6/escalate_case/
+WARNING 2026-03-24 18:18:24,321 log 25104 18404 Bad Request: /api/facial-recognition/missing-persons/b35143b2-620d-45c7-8f02-8eaad844edc6/escalate_case/
+INFO 2026-03-24 18:21:58,663 autoreload 25104 19064 D:\SuraSmart_Project\backend\ai_models\facial_recognition\state_machine.py changed, reloading.
+INFO 2026-03-24 18:22:00,161 autoreload 13020 23504 Watching for file changes with StatReloader
+WARNING 2026-03-24 18:22:00,479 views 13020 23504 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 18:23:04,118 views 21892 21124 Numpy not found. Using minimal stub.
+INFO 2026-03-24 18:24:48,610 blockchain 13020 23908 [BLOCKCHAIN_EVENT] Hash: e46c94b5d3dfce5760878cca273f2ece25a2b2d0e361f33bc5119e630257d6b9 | Data: {"action": "TRANSITION_MATCH_FOUND_TO_ESCALATED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "b35143b2-620d-45c7-8f02-8eaad844edc6", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-24T15:24:48.610712+00:00"}
+INFO 2026-03-24 18:24:48,624 state_machine 13020 23908 Case b35143b2-620d-45c7-8f02-8eaad844edc6 transitioned from MATCH_FOUND to ESCALATED by betty

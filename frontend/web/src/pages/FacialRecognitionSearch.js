@@ -206,10 +206,7 @@ const FacialRecognitionSearch = () => {
     if (!missingPerson) return;
 
     try {
-      await api.updateMissingPerson(missingPerson.id, {
-        status: 'escalated',
-        notes: 'Case escalated - facial recognition successful but requires further investigation'
-      });
+      await api.escalateCase(missingPerson.id);
       alert('Case escalated successfully!');
       navigate(user?.role === 'police_officer' ? '/police-dashboard' : user?.role === 'government_official' ? '/government-dashboard' : '/family-dashboard');
     } catch (err) {
