@@ -476,11 +476,33 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
     <div
       style={{
         position: 'fixed', inset: 0, zIndex: 9999,
-        background: 'linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%)',
+        background: '#0f172a',
         display: 'flex', flexDirection: 'column',
         padding: '20px',
+        overflow: 'hidden'
       }}
     >
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: 0,
+          opacity: 0.4
+        }}
+      >
+        <source src="/waving_kenyan_flag.mp4" type="video/mp4" />
+      </video>
+
+      {/* Content overlay to ensure readability */}
+      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
         <h2 style={{ color: '#fbbf24', margin: 0, fontSize: '1.3rem' }}>🗺️ Kenya Missing Persons Map — Full View</h2>
         <button
@@ -536,6 +558,7 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
           </div>
           <img src="/kenya_flag_bottom.png" alt="Kenya Flag Bottom" style={{ width: '100%', height: '80px', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
         </div>
+      </div>
       </div>
     </div>
   ) : null;
