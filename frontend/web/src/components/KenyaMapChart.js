@@ -499,12 +499,43 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
       {legend}
       {controls}
       <div style={{ flex: 1, overflow: 'hidden', borderRadius: '12px', border: '1px solid #334155', display: 'flex', gap: '16px' }}>
-        <div style={{ flex: 1 }}>{mapContent}</div>
-        {selectedCounty && (
-          <div style={{ width: '280px', overflowY: 'auto', paddingRight: '4px' }}>
-            {detailPanel}
+        <div style={{ flex: 2, position: 'relative', borderRadius: '12px', overflow: 'hidden' }}>
+          {mapContent}
+          {selectedCounty && (
+            <div style={{ position: 'absolute', top: '10px', right: '10px', width: '280px', maxHeight: 'calc(100% - 20px)', zIndex: 10, overflowY: 'auto', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}>
+              {detailPanel}
+            </div>
+          )}
+        </div>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'white', borderRadius: '12px', overflow: 'hidden', minWidth: '350px' }}>
+          <img src="/kenya_flag_top.png" alt="Kenya Flag Top" style={{ width: '100%', height: '80px', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
+          <div style={{ flex: 1, overflowY: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', color: 'black', fontSize: '0.85rem' }}>
+              <thead style={{ position: 'sticky', top: 0, background: '#fbbf24', zIndex: 5 }}>
+                <tr>
+                  <th style={{ padding: '12px 10px', textAlign: 'left', borderBottom: '2px solid #e2e8f0', color: '#000' }}>County</th>
+                  <th style={{ padding: '12px 10px', textAlign: 'center', borderBottom: '2px solid #e2e8f0', color: '#000' }}>Total Cases</th>
+                  <th style={{ padding: '12px 10px', textAlign: 'left', borderBottom: '2px solid #e2e8f0', color: '#000' }}>Primary Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {countyList.map(countyName => {
+                  const d = enrichedCounties[countyName] || { total: 0 };
+                  const dom = getDominantStatus(d);
+                  const col = getColor(dom);
+                  return (
+                    <tr key={countyName} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                      <td style={{ padding: '10px', fontWeight: '600' }}>{countyName}</td>
+                      <td style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold' }}>{d.total}</td>
+                      <td style={{ padding: '10px', color: dom ? col.fill : '#94a3b8', fontWeight: '600' }}>{dom ? col.label : 'None'}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
-        )}
+          <img src="/kenya_flag_bottom.png" alt="Kenya Flag Bottom" style={{ width: '100%', height: '80px', objectFit: 'cover' }} onError={(e) => e.target.style.display='none'} />
+        </div>
       </div>
     </div>
   ) : null;

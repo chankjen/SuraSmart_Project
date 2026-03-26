@@ -247,7 +247,7 @@ const ReportMissingPerson = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="ob_number">OB-Number</label>
+              <label htmlFor="ob_number">OB-Number *</label>
               <input
                 type="text"
                 id="ob_number"

@@ -36,18 +36,24 @@ docker exec -it sura-smart-backend python manage.py createsuperuser
 ### Option 2: Local Development
 
 **Backend:**
+If you don't have PostgreSQL or Docker, you can run the backend locally using SQLite and a lightweight set of dependencies:
 ```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements-backend.txt
+# Install SQLite-friendly requirements
+pip install -r requirements-sqlite.txt
+# Install core required Django extensions missing from sqlite requirements
+pip install dj-database-url whitenoise django-storages boto3 python-dotenv django-extensions
+python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 ```
+*(Note: To use the facial recognition ML models locally, you will need to install `requirements-backend.txt` instead)*
 
 **Frontend (new terminal):**
 ```bash
-cd frontend
+cd frontend/web
 npm install
 npm start
 ```

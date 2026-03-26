@@ -7,7 +7,7 @@
 
 ### Installation
 ```bash
-cd frontend
+cd frontend/web
 npm install
 ```
 

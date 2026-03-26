@@ -741,3 +741,16 @@
     transform: translateY(0);
   }
 }
+
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: white;
+  margin-left: 4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

@@ -77,6 +77,25 @@ const Home = () => {
     setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
+  const [typedHeader, setTypedHeader] = useState('');
+  const [isHeaderFinished, setIsHeaderFinished] = useState(false);
+  const fullHeaderText = "Welcome to SuraSmart";
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullHeaderText.length) {
+        setTypedHeader(fullHeaderText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setTimeout(() => setIsHeaderFinished(true), 500);
+      }
+    }, 100); // Speed of typing
+
+    return () => clearInterval(typingInterval);
+  }, []);
+
   return (
     <div className="home-container">
       {/* Navigation */}
@@ -142,8 +161,18 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-content fade-in">
-          <h2>
-            Welcome to <span className="logo-glitter-text">SuraSmart</span>
+          <h2 style={{ 
+            color: 'white', 
+            WebkitTextStroke: isHeaderFinished ? '1.5px orange' : '0px transparent', 
+            backgroundColor: isHeaderFinished ? 'white' : 'transparent', 
+            padding: isHeaderFinished ? '10px 20px' : '10px 0', 
+            borderRadius: '8px', 
+            display: 'inline-block',
+            transition: 'all 0.8s ease-in-out',
+            minHeight: '1.2em'
+          }}>
+            {typedHeader}
+            {!isHeaderFinished && <span className="typing-cursor">|</span>}
           </h2>
           <p>
             An AI-powered platform for finding and reconnecting missing persons. 

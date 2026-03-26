@@ -10,6 +10,8 @@ const SystemReports = () => {
     const [cases, setCases] = useState([]);
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState('ALL');
+    const [selectedCounty, setSelectedCounty] = useState('ALL');
+    const [selectedSubcounty, setSelectedSubcounty] = useState('ALL');
     const [reportDate] = useState(new Date().toLocaleDateString());
 
     const fetchReports = useCallback(async () => {
@@ -33,9 +35,38 @@ const SystemReports = () => {
         window.print();
     };
 
-    const filteredCases = filter === 'ALL' 
-        ? cases 
-        : cases.filter(c => c.status === filter);
+    // Derived lists for filters
+    const counties = [...new Set(cases.map(c => {
+        const parts = (c.last_seen_location || '').split(',').map(p => p.trim());
+        return parts.length > 1 ? parts[parts.length - 1] : (parts[0] || 'Unknown');
+    }))].sort();
+
+    const subcounties = [...new Set(cases.filter(c => {
+        if (selectedCounty === 'ALL') return true;
+        const parts = (c.last_seen_location || '').split(',').map(p => p.trim());
+        const county = parts.length > 1 ? parts[parts.length - 1] : (parts[0] || 'Unknown');
+        return county === selectedCounty;
+    }).map(c => {
+        const parts = (c.last_seen_location || '').split(',').map(p => p.trim());
+        return parts.length > 1 ? parts[0] : 'Unknown';
+    }))].sort();
+
+    const filteredCases = cases.filter(c => {
+        // Status Filter
+        if (filter !== 'ALL' && c.status !== filter) return false;
+        
+        // Location Parsing
+        const loc = c.last_seen_location || '';
+        const parts = loc.split(',').map(p => p.trim());
+        const county = parts.length > 1 ? parts[parts.length - 1] : (parts[0] || 'Unknown');
+        const subcounty = parts.length > 1 ? parts[0] : 'Unknown';
+        
+        // Jurisdiction Filters
+        if (selectedCounty !== 'ALL' && county !== selectedCounty) return false;
+        if (selectedSubcounty !== 'ALL' && subcounty !== selectedSubcounty) return false;
+        
+        return true;
+    });
 
     if (loading) {
         return <div className="chase-body"><div className="chase-container">Generating Official Report...</div></div>;
@@ -52,16 +83,16 @@ const SystemReports = () => {
             </header>
 
             <div className="chase-container">
-                <div className="report-controls no-print">
+                <div className="report-controls no-print" style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'nowrap', gap: '30px' }}>
                     <div>
                         <h1 style={{ color: 'var(--chase-blue-dark)', margin: 0 }}>System Reports Registry</h1>
-                        <p style={{ color: 'var(--chase-gray-500)' }}>Configure and generate printable audit summaries.</p>
+                        <p style={{ color: 'var(--chase-gray-500)', margin: 0 }}>Official audit summaries by jurisdiction.</p>
                     </div>
                     
-                    <div style={{ display: 'flex', gap: '15px' }}>
+                    <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'nowrap' }}>
                         <select 
                             className="chase-input" 
-                            style={{ padding: '8px 12px' }}
+                            style={{ padding: '8px 12px', minWidth: '150px' }}
                             value={filter}
                             onChange={(e) => setFilter(e.target.value)}
                         >
@@ -70,6 +101,30 @@ const SystemReports = () => {
                             <option value="ESCALATED">Escalations Only</option>
                             <option value="RAISED">Unassigned</option>
                         </select>
+
+                        <select 
+                            className="chase-input" 
+                            style={{ padding: '8px 12px', minWidth: '150px' }}
+                            value={selectedCounty}
+                            onChange={(e) => {
+                                setSelectedCounty(e.target.value);
+                                setSelectedSubcounty('ALL');
+                            }}
+                        >
+                            <option value="ALL">All Counties</option>
+                            {counties.map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+
+                        <select 
+                            className="chase-input" 
+                            style={{ padding: '8px 12px', minWidth: '150px' }}
+                            value={selectedSubcounty}
+                            onChange={(e) => setSelectedSubcounty(e.target.value)}
+                        >
+                            <option value="ALL">All Subcounties</option>
+                            {subcounties.map(s => <option key={s} value={s}>{s}</option>)}
+                        </select>
+
                         <button onClick={handlePrint} className="chase-button">
                             🖨️ Print Full Audit
                         </button>

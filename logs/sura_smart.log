@@ -18823,3 +18823,28 @@ INFO 2026-03-24 18:24:48,610 blockchain 13020 23908 [BLOCKCHAIN_EVENT] Hash: e46
 INFO 2026-03-24 18:24:48,624 state_machine 13020 23908 Case b35143b2-620d-45c7-8f02-8eaad844edc6 transitioned from MATCH_FOUND to ESCALATED by betty
 INFO 2026-03-24 19:38:41,389 autoreload 8092 19484 Watching for file changes with StatReloader
 WARNING 2026-03-24 19:38:42,101 views 8092 19484 Numpy not found. Using minimal stub.
+WARNING 2026-03-24 21:13:41,458 log 8092 16564 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-24 21:46:07,731 log 8092 19132 Unauthorized: /api/auth/token/
+WARNING 2026-03-24 22:59:53,118 log 8092 17116 Unauthorized: /api/auth/users/
+WARNING 2026-03-24 22:59:53,124 log 8092 6832 Unauthorized: /api/auth/audit-logs/
+WARNING 2026-03-24 22:59:53,129 log 8092 22404 Unauthorized: /api/auth/users/system_stats/
+WARNING 2026-03-24 23:06:19,061 views 8092 2044 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-24 23:06:19,062 views 8092 2044 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-24 23:06:19,917 blockchain 8092 2044 [BLOCKCHAIN_EVENT] Hash: 0a858fac7664752a6862733224522e043ebbd71133a22a09c73521440f020bde | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "2a32a700-f80d-49a4-85e0-6e05445c27c2", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-24T20:06:19.916992+00:00"}
+INFO 2026-03-24 23:06:19,937 state_machine 8092 2044 Case 2a32a700-f80d-49a4-85e0-6e05445c27c2 transitioned from REPORTED to RAISED by amanda
+WARNING 2026-03-25 08:17:10,112 views 8544 3176 Numpy not found. Using minimal stub.
+WARNING 2026-03-25 08:17:15,206 views 4240 23024 Numpy not found. Using minimal stub.
+INFO 2026-03-25 08:17:56,303 autoreload 24076 15480 Watching for file changes with StatReloader
+WARNING 2026-03-25 08:17:56,834 views 24076 15480 Numpy not found. Using minimal stub.
+WARNING 2026-03-25 08:22:15,661 log 24076 25460 Not Found: /favicon.ico
+WARNING 2026-03-25 08:22:32,188 log 24076 9952 Unauthorized: /api/auth/token/
+WARNING 2026-03-25 09:47:09,725 log 24076 20352 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-25 09:47:09,747 log 24076 20352 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-26 20:32:50,988 views 15444 19812 Numpy not found. Using minimal stub.
+WARNING 2026-03-26 20:32:53,604 views 17632 23324 Numpy not found. Using minimal stub.
+WARNING 2026-03-26 20:38:16,893 views 8440 15344 Numpy not found. Using minimal stub.
+WARNING 2026-03-26 20:38:19,216 views 19508 20940 Numpy not found. Using minimal stub.
+WARNING 2026-03-26 20:38:34,207 views 27292 19312 Numpy not found. Using minimal stub.
+WARNING 2026-03-26 20:38:36,862 views 25948 25280 Numpy not found. Using minimal stub.
+INFO 2026-03-26 20:40:45,460 autoreload 23172 7988 Watching for file changes with StatReloader
+WARNING 2026-03-26 20:40:45,735 views 23172 7988 Numpy not found. Using minimal stub.
