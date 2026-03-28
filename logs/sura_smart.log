@@ -18906,3 +18906,26 @@ WARNING 2026-03-27 00:04:16,302 log 23172 24388 Forbidden: /api/auth/users/
 INFO 2026-03-27 00:06:04,044 blockchain 23172 24388 [BLOCKCHAIN_EVENT] Hash: a3858cf5c64ddee995f69495e30026d529a019bc3bae8724c7f7e1b4a455a3e4 | Data: {"action": "TRANSITION_ESCALATED_TO_GOVERNMENT_REVIEW", "actor_hash": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451", "case_id": "93cbc60c-9c0e-43c4-94b2-d3e2d9ce9fb7", "jurisdiction": "KE", "metadata": {"notes": "Escalation approved by government official"}, "timestamp": "2026-03-26T21:06:04.044242+00:00"}
 INFO 2026-03-27 00:06:04,080 state_machine 23172 24388 Case 93cbc60c-9c0e-43c4-94b2-d3e2d9ce9fb7 transitioned from ESCALATED to GOVERNMENT_REVIEW by dan
 WARNING 2026-03-27 00:16:57,155 log 23172 6868 Not Found: /favicon.ico
+WARNING 2026-03-27 23:32:28,306 views 1448 10432 Numpy not found. Using minimal stub.
+WARNING 2026-03-27 23:32:45,640 views 21364 22512 Numpy not found. Using minimal stub.
+INFO 2026-03-27 23:33:05,469 autoreload 16736 13076 Watching for file changes with StatReloader
+WARNING 2026-03-27 23:33:06,223 views 16736 13076 Numpy not found. Using minimal stub.
+WARNING 2026-03-27 23:33:59,014 log 16736 9024 Not Found: /favicon.ico
+WARNING 2026-03-27 23:38:28,414 connection 16736 14064 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-03-27 23:38:34,484 log 16736 14064 Service Unavailable: /api/health/check/
+WARNING 2026-03-27 23:40:11,593 log 16736 3968 Not Found: /favicon.ico
+WARNING 2026-03-27 23:41:20,936 log 16736 13772 Not Found: /favicon.ico
+WARNING 2026-03-27 23:42:55,733 log 16736 24772 Not Found: /favicon.ico
+WARNING 2026-03-27 23:53:39,925 log 16736 6952 Bad Request: /api/facial-recognition/missing-persons/
+WARNING 2026-03-28 00:38:06,776 views 16736 23848 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-28 00:38:06,777 views 16736 23848 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-28 00:38:07,194 blockchain 16736 23848 [BLOCKCHAIN_EVENT] Hash: c0846355f61ea4bbc728ebc8b0846362022b27c1b157682ecd3382440aefbd6d | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "9d906c18-5e21-4268-b089-692e42d3ea67", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-27T21:38:07.194047+00:00"}
+INFO 2026-03-28 00:38:07,218 state_machine 16736 23848 Case 9d906c18-5e21-4268-b089-692e42d3ea67 transitioned from REPORTED to RAISED by alex
+INFO 2026-03-28 00:40:41,211 blockchain 16736 5964 [BLOCKCHAIN_EVENT] Hash: 717989f15468fa996ce9c2bf1edb5f843e2a58652e58b0e855a84f3b28f70b1f | Data: {"action": "TRANSITION_MATCH_FOUND_TO_PENDING_CLOSURE", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "9d906c18-5e21-4268-b089-692e42d3ea67", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-27T21:40:41.211133+00:00"}
+INFO 2026-03-28 00:40:41,252 state_machine 16736 5964 Case 9d906c18-5e21-4268-b089-692e42d3ea67 transitioned from MATCH_FOUND to PENDING_CLOSURE by bernard
+INFO 2026-03-28 00:40:41,285 blockchain 16736 5964 [BLOCKCHAIN_EVENT] Hash: 179e0e781d56ef459f89590a654ba996db117637648ea88f6d3f5ea9ac5df8f2 | Data: {"action": "SIGNATURE_ADDED_BY_police_officer", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "9d906c18-5e21-4268-b089-692e42d3ea67", "jurisdiction": "KE", "metadata": {"role": "police_officer"}, "timestamp": "2026-03-27T21:40:41.285409+00:00"}
+INFO 2026-03-28 00:42:54,016 blockchain 16736 9612 [BLOCKCHAIN_EVENT] Hash: 1fe1038c4e23c7fd0e44779c7131184e6a81017c5a0bc92a40d2b0c6b7e2da32 | Data: {"action": "TRANSITION_ESCALATED_TO_GOVERNMENT_REVIEW", "actor_hash": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683", "case_id": "b35143b2-620d-45c7-8f02-8eaad844edc6", "jurisdiction": "KE", "metadata": {"notes": "Escalation approved by government official"}, "timestamp": "2026-03-27T21:42:54.016068+00:00"}
+INFO 2026-03-28 00:42:54,035 state_machine 16736 9612 Case b35143b2-620d-45c7-8f02-8eaad844edc6 transitioned from ESCALATED to GOVERNMENT_REVIEW by cate
+WARNING 2026-03-28 23:42:08,478 views 6136 4472 Numpy not found. Using minimal stub.
+INFO 2026-03-28 23:42:22,473 autoreload 24368 18300 Watching for file changes with StatReloader
+WARNING 2026-03-28 23:42:22,918 views 24368 18300 Numpy not found. Using minimal stub.

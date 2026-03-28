@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
@@ -279,4 +278,5 @@ class ApiClient {
   }
 }
 
-export default new ApiClient();
+const apiClient = new ApiClient();
+export default apiClient;
