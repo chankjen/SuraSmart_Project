@@ -18929,3 +18929,52 @@ INFO 2026-03-28 00:42:54,035 state_machine 16736 9612 Case b35143b2-620d-45c7-8f
 WARNING 2026-03-28 23:42:08,478 views 6136 4472 Numpy not found. Using minimal stub.
 INFO 2026-03-28 23:42:22,473 autoreload 24368 18300 Watching for file changes with StatReloader
 WARNING 2026-03-28 23:42:22,918 views 24368 18300 Numpy not found. Using minimal stub.
+WARNING 2026-03-28 23:42:39,556 log 24368 6608 Not Found: /favicon.ico
+WARNING 2026-03-28 23:42:53,061 connection 24368 3552 No hostname was supplied. Reverting to default 'localhost'
+ERROR 2026-03-28 23:42:59,129 log 24368 3552 Service Unavailable: /api/health/check/
+WARNING 2026-03-28 23:43:06,947 log 24368 20132 Not Found: /favicon.ico
+ERROR 2026-03-28 23:43:27,413 log 24368 13340 Service Unavailable: /api/health/check/
+WARNING 2026-03-28 23:43:28,546 log 24368 1164 Not Found: /favicon.ico
+WARNING 2026-03-29 00:36:51,331 log 24368 20576 Not Found: /favicon.ico
+WARNING 2026-03-29 00:36:51,419 log 24368 26836 Not Found: /favicon.ico
+WARNING 2026-03-29 00:36:51,422 log 24368 17236 Not Found: /main.516dfe3c13ac0d442224.hot-update.json
+WARNING 2026-03-29 00:58:45,402 views 24368 16744 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-29 00:58:45,403 views 24368 16744 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-29 00:58:46,147 blockchain 24368 16744 [BLOCKCHAIN_EVENT] Hash: c0bd5e80df08f23896916bf6eb622def197e3ed8d2d003fada16b12bf913f041 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "90380d79-2310-4045-b441-92f795ec7ac3", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-28T21:58:46.146498+00:00"}
+INFO 2026-03-29 00:58:46,274 state_machine 24368 16744 Case 90380d79-2310-4045-b441-92f795ec7ac3 transitioned from REPORTED to RAISED by alex
+INFO 2026-03-29 01:00:27,545 blockchain 24368 15140 [BLOCKCHAIN_EVENT] Hash: d04b8846ac5a580d3020db2900ae5d103ad5bb6ec2ca209e258c63c2e13556ae | Data: {"action": "TRANSITION_MATCH_FOUND_TO_PENDING_CLOSURE", "actor_hash": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a", "case_id": "90380d79-2310-4045-b441-92f795ec7ac3", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-28T22:00:27.544834+00:00"}
+INFO 2026-03-29 01:00:27,571 state_machine 24368 15140 Case 90380d79-2310-4045-b441-92f795ec7ac3 transitioned from MATCH_FOUND to PENDING_CLOSURE by bernard
+INFO 2026-03-29 01:00:27,597 blockchain 24368 15140 [BLOCKCHAIN_EVENT] Hash: b5cff74591f6f299d05cb6d44401d7a3a32dea9e8aa43c43042f3159914da422 | Data: {"action": "SIGNATURE_ADDED_BY_police_officer", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "90380d79-2310-4045-b441-92f795ec7ac3", "jurisdiction": "KE", "metadata": {"role": "police_officer"}, "timestamp": "2026-03-28T22:00:27.597187+00:00"}
+WARNING 2026-03-29 01:03:26,509 views 24368 24800 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-29 01:03:26,510 views 24368 24800 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-29 01:03:26,641 blockchain 24368 24800 [BLOCKCHAIN_EVENT] Hash: 14089c8a71504f460eabe7660d3b501797e02bdefe26cd9423dfd2ae3d786e46 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "b8ef7a64-66b2-4098-b3db-f51d742288d1", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-28T22:03:26.641146+00:00"}
+INFO 2026-03-29 01:03:26,673 state_machine 24368 24800 Case b8ef7a64-66b2-4098-b3db-f51d742288d1 transitioned from REPORTED to RAISED by alex
+INFO 2026-03-29 01:05:50,040 blockchain 24368 24800 [BLOCKCHAIN_EVENT] Hash: 1aa66138729e9fe1531fc3b0fc800812ec455442ee5ed1f885dd7498c3f6144c | Data: {"action": "TRANSITION_MATCH_FOUND_TO_ESCALATED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "70f2dfcf-84d0-47a3-831e-c9ea9fb9edeb", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-28T22:05:50.040677+00:00"}
+INFO 2026-03-29 01:05:50,080 state_machine 24368 24800 Case 70f2dfcf-84d0-47a3-831e-c9ea9fb9edeb transitioned from MATCH_FOUND to ESCALATED by betty
+INFO 2026-03-29 01:06:43,302 blockchain 24368 440 [BLOCKCHAIN_EVENT] Hash: 1e26120c74ced5aba8351ed9976dbcbc64228ee785cae13cb4e83039e99d5858 | Data: {"action": "TRANSITION_ESCALATED_TO_GOVERNMENT_REVIEW", "actor_hash": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683", "case_id": "70f2dfcf-84d0-47a3-831e-c9ea9fb9edeb", "jurisdiction": "KE", "metadata": {"notes": "Escalation approved by government official"}, "timestamp": "2026-03-28T22:06:43.301993+00:00"}
+INFO 2026-03-29 01:06:43,332 state_machine 24368 440 Case 70f2dfcf-84d0-47a3-831e-c9ea9fb9edeb transitioned from ESCALATED to GOVERNMENT_REVIEW by cate
+WARNING 2026-03-29 01:27:33,381 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:27:38,882 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:28:19,529 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:28:45,716 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:28:45,762 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:28:53,783 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:28:53,815 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:31:33,530 log 24368 20848 Unauthorized: /api/facial-recognition/missing-persons/
+WARNING 2026-03-29 01:35:02,687 views 24368 20848 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-29 01:35:02,690 views 24368 20848 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-29 01:35:03,559 blockchain 24368 20848 [BLOCKCHAIN_EVENT] Hash: 01617572a1bc4aefc53fbf0e0392264dbafa5d1582ba7f3c9f3cd5a7ecb79d58 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce", "case_id": "6619844a-7ef3-4ddd-9c28-4f48c8f685b7", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-28T22:35:03.559535+00:00"}
+INFO 2026-03-29 01:35:03,584 state_machine 24368 20848 Case 6619844a-7ef3-4ddd-9c28-4f48c8f685b7 transitioned from REPORTED to RAISED by amanda
+INFO 2026-03-29 01:36:52,077 blockchain 24368 20848 [BLOCKCHAIN_EVENT] Hash: 94e16c2fb39d572e042d86be9df4f472c4f5ab7e6049156958dd51c81fe2cc4c | Data: {"action": "TRANSITION_MATCH_FOUND_TO_ESCALATED", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "6619844a-7ef3-4ddd-9c28-4f48c8f685b7", "jurisdiction": "KE", "metadata": {"notes": "Case escalated to government by police"}, "timestamp": "2026-03-28T22:36:52.077573+00:00"}
+INFO 2026-03-29 01:36:52,100 state_machine 24368 20848 Case 6619844a-7ef3-4ddd-9c28-4f48c8f685b7 transitioned from MATCH_FOUND to ESCALATED by betty
+WARNING 2026-03-29 01:49:50,084 views 24368 13088 DeepFace not found. Running in simulated AI mode.
+INFO 2026-03-29 01:49:50,086 views 24368 13088 Generating perceptual dHash embedding for Python 3.14 compatibility.
+INFO 2026-03-29 01:49:50,784 blockchain 24368 13088 [BLOCKCHAIN_EVENT] Hash: 791b6a19d85f858bc1086147e331e5a4a17b430ba0cf9e13c229a68a8b3124b8 | Data: {"action": "TRANSITION_REPORTED_TO_RAISED", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "04b6d6b3-8355-4342-9155-23ff5629df58", "jurisdiction": "KE", "metadata": {"notes": "Case raised to police by family member"}, "timestamp": "2026-03-28T22:49:50.783806+00:00"}
+INFO 2026-03-29 01:49:50,818 state_machine 24368 13088 Case 04b6d6b3-8355-4342-9155-23ff5629df58 transitioned from REPORTED to RAISED by alex
+INFO 2026-03-29 01:51:08,465 blockchain 24368 13088 [BLOCKCHAIN_EVENT] Hash: 1d6d36fcba4a80edb9456fcad0b61b6588c741c7c9f8a7a13471658c50888d69 | Data: {"action": "TRANSITION_MATCH_FOUND_TO_PENDING_CLOSURE", "actor_hash": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d", "case_id": "04b6d6b3-8355-4342-9155-23ff5629df58", "jurisdiction": "KE", "metadata": {"notes": "Case forwarded to family for closure"}, "timestamp": "2026-03-28T22:51:08.465422+00:00"}
+INFO 2026-03-29 01:51:08,502 state_machine 24368 13088 Case 04b6d6b3-8355-4342-9155-23ff5629df58 transitioned from MATCH_FOUND to PENDING_CLOSURE by betty
+INFO 2026-03-29 01:51:08,538 blockchain 24368 13088 [BLOCKCHAIN_EVENT] Hash: ec0770a69e38a3ee289aa9d4de6e979f1400b24c5f48c8efbaa5243f4e89d352 | Data: {"action": "SIGNATURE_ADDED_BY_police_officer", "actor_hash": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35", "case_id": "04b6d6b3-8355-4342-9155-23ff5629df58", "jurisdiction": "KE", "metadata": {"role": "police_officer"}, "timestamp": "2026-03-28T22:51:08.538469+00:00"}
+INFO 2026-03-29 01:53:01,244 blockchain 24368 14276 [BLOCKCHAIN_EVENT] Hash: 2f8f28e24aac174a34c25ddb0d0572cf3f86a452d96f4584d8c5129e3b2459fe | Data: {"action": "TRANSITION_ESCALATED_TO_GOVERNMENT_REVIEW", "actor_hash": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451", "case_id": "6619844a-7ef3-4ddd-9c28-4f48c8f685b7", "jurisdiction": "KE", "metadata": {"notes": "Escalation approved by government official"}, "timestamp": "2026-03-28T22:53:01.244105+00:00"}
+INFO 2026-03-29 01:53:01,280 state_machine 24368 14276 Case 6619844a-7ef3-4ddd-9c28-4f48c8f685b7 transitioned from ESCALATED to GOVERNMENT_REVIEW by dan
+INFO 2026-03-29 15:46:30,710 autoreload 1008 2288 Watching for file changes with StatReloader
+WARNING 2026-03-29 15:46:31,346 views 1008 2288 Numpy not found. Using minimal stub.

@@ -104,6 +104,14 @@ const RIPPLE_STYLE = `
   0%   { r: 8;  opacity: 0.5; }
   100% { r: 28; opacity: 0;   }
 }
+@keyframes subcounty-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.subcounty-blink {
+  animation: subcounty-pulse 1.5s infinite ease-in-out;
+}
 .county-dot:hover { filter: brightness(1.2); cursor: pointer; }
 `;
 
@@ -535,24 +543,58 @@ const KenyaMapChart = ({ cases = [], countyDynamics = {} }) => {
             <table style={{ width: '100%', borderCollapse: 'collapse', color: 'black', fontSize: '0.85rem' }}>
               <thead style={{ position: 'sticky', top: 0, background: '#fbbf24', zIndex: 5 }}>
                 <tr>
-                  <th style={{ padding: '12px 10px', textAlign: 'left', borderBottom: '2px solid #e2e8f0', color: '#000' }}>County</th>
+                  <th style={{ padding: '12px 10px', textAlign: 'left', borderBottom: '2px solid #e2e8f0', color: '#000' }}>{selectedCounty ? 'Subcounty' : 'County'}</th>
                   <th style={{ padding: '12px 10px', textAlign: 'center', borderBottom: '2px solid #e2e8f0', color: '#000' }}>Total Cases</th>
-                  <th style={{ padding: '12px 10px', textAlign: 'left', borderBottom: '2px solid #e2e8f0', color: '#000' }}>Primary Status</th>
+                  <th style={{ padding: '12px 10px', textAlign: 'left', borderBottom: '2px solid #e2e8f0', color: '#000' }}>{selectedCounty ? 'Status Indicator' : 'Primary Status'}</th>
                 </tr>
               </thead>
               <tbody>
-                {countyList.map(countyName => {
-                  const d = enrichedCounties[countyName] || { total: 0 };
-                  const dom = getDominantStatus(d);
-                  const col = getColor(dom);
-                  return (
-                    <tr key={countyName} style={{ borderBottom: '1px solid #f1f5f9' }}>
-                      <td style={{ padding: '10px', fontWeight: '600' }}>{countyName}</td>
-                      <td style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold' }}>{d.total}</td>
-                      <td style={{ padding: '10px', color: dom ? col.fill : '#94a3b8', fontWeight: '600' }}>{dom ? col.label : 'None'}</td>
-                    </tr>
-                  );
-                })}
+                {selectedCounty ? (
+                  // Show Subcounties of the selected county
+                  Object.entries(countyDynamics[selectedCounty]?.subcounties || {}).map(([subName, subData]) => {
+                    const count = typeof subData === 'number' ? subData : subData.count;
+                    const statusBreakdown = subData.statusBreakdown || {};
+                    const dom = getDominantStatus({ statusBreakdown });
+                    const col = getColor(dom);
+                    return (
+                      <tr key={subName} style={{ borderBottom: '1px solid #f1f5f9', background: 'rgba(240, 20, 177, 0.02)' }}>
+                        <td style={{ padding: '10px', fontWeight: '600' }}>{subName}</td>
+                        <td style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold' }}>{count}</td>
+                        <td style={{ padding: '10px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div 
+                              className="subcounty-blink"
+                              style={{ 
+                                width: '12px', 
+                                height: '12px', 
+                                borderRadius: '50%', 
+                                background: col.fill,
+                                boxShadow: `0 0 8px ${col.fill}`
+                              }} 
+                            />
+                            <span style={{ color: dom ? col.fill : '#94a3b8', fontWeight: '600', fontSize: '0.8rem' }}>
+                              {dom ? col.label : 'None'}
+                            </span>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  // Show all Counties
+                  countyList.map(countyName => {
+                    const d = enrichedCounties[countyName] || { total: 0 };
+                    const dom = getDominantStatus(d);
+                    const col = getColor(dom);
+                    return (
+                      <tr key={countyName} style={{ borderBottom: '1px solid #f1f5f9' }}>
+                        <td style={{ padding: '10px', fontWeight: '600' }}>{countyName}</td>
+                        <td style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold' }}>{d.total}</td>
+                        <td style={{ padding: '10px', color: dom ? col.fill : '#94a3b8', fontWeight: '600' }}>{dom ? col.label : 'None'}</td>
+                      </tr>
+                    );
+                  })
+                )}
               </tbody>
             </table>
           </div>

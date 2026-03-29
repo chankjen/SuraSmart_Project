@@ -64,6 +64,7 @@ const AnalyticsDashboard = () => {
         // County Logic
         const countyMap = {};
         data.forEach(c => {
+            const status = (c.status || 'REPORTED').toUpperCase();
             const location = c.last_seen_location || '';
             const parts = location.split(',').map(p => p.trim());
             let county = parts.length > 1 ? parts[parts.length - 1] : (parts[0] || 'Unknown');
@@ -105,10 +106,16 @@ const AnalyticsDashboard = () => {
             }
 
             if (!countyMap[county]) {
-                countyMap[county] = { total: 0, subcounties: {} };
+                countyMap[county] = { total: 0, statusBreakdown: {}, subcounties: {} };
             }
             countyMap[county].total += 1;
-            countyMap[county].subcounties[subcounty] = (countyMap[county].subcounties[subcounty] || 0) + 1;
+            countyMap[county].statusBreakdown[status] = (countyMap[county].statusBreakdown[status] || 0) + 1;
+            
+            if (!countyMap[county].subcounties[subcounty]) {
+                countyMap[county].subcounties[subcounty] = { count: 0, statusBreakdown: {} };
+            }
+            countyMap[county].subcounties[subcounty].count += 1;
+            countyMap[county].subcounties[subcounty].statusBreakdown[status] = (countyMap[county].subcounties[subcounty].statusBreakdown[status] || 0) + 1;
         });
 
         const topCounties = Object.entries(countyMap)
@@ -301,7 +308,8 @@ const AnalyticsDashboard = () => {
                             {Object.entries(regionalData.subcounties).length > 0 ? (() => {
                                 const pieColors = ['#F014B1', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ef4444', '#06b6d4', '#84cc16', '#a855f7', '#fb923c'];
                                 let currentAngle = 0;
-                                const pieChartSlices = Object.entries(regionalData.subcounties).map(([sub, count], i) => {
+                                const pieChartSlices = Object.entries(regionalData.subcounties).map(([sub, data], i) => {
+                                    const count = typeof data === 'number' ? data : data.count;
                                     const percentage = (count / regionalData.total) * 100;
                                     const startAngle = currentAngle;
                                     const endAngle = currentAngle + percentage;
@@ -320,17 +328,20 @@ const AnalyticsDashboard = () => {
                                             boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                                         }}></div>
                                         <div className="subcounty-list" style={{ flexGrow: 1, minWidth: '200px' }}>
-                                            {Object.entries(regionalData.subcounties).map(([sub, count], i) => (
-                                                <div key={sub} className="subcounty-item" style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px', padding: '5px 0', borderBottom: '1px solid #f1f5f9'}}>
-                                                    <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-                                                        <div style={{width: '14px', height: '14px', backgroundColor: pieColors[i % pieColors.length], borderRadius: '4px'}}></div>
-                                                        <span className="sub-name" style={{fontWeight: '500', color: '#334155'}}>{sub}</span>
+                                            {Object.entries(regionalData.subcounties).map(([sub, data], i) => {
+                                                const count = typeof data === 'number' ? data : data.count;
+                                                return (
+                                                    <div key={sub} className="subcounty-item" style={{display: 'flex', justifyContent: 'space-between', marginBottom: '10px', padding: '5px 0', borderBottom: '1px solid #f1f5f9'}}>
+                                                        <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+                                                            <div style={{width: '14px', height: '14px', backgroundColor: pieColors[i % pieColors.length], borderRadius: '4px'}}></div>
+                                                            <span className="sub-name" style={{fontWeight: '500', color: '#334155'}}>{sub}</span>
+                                                        </div>
+                                                        <span className="sub-count" style={{fontWeight: 'bold', color: '#0f172a'}}>
+                                                            {count} <span style={{fontSize: '0.85em', color: '#64748b', fontWeight: 'normal'}}>({Math.round((count/regionalData.total)*100)}%)</span>
+                                                        </span>
                                                     </div>
-                                                    <span className="sub-count" style={{fontWeight: 'bold', color: '#0f172a'}}>
-                                                        {count} <span style={{fontSize: '0.85em', color: '#64748b', fontWeight: 'normal'}}>({Math.round((count/regionalData.total)*100)}%)</span>
-                                                    </span>
-                                                </div>
-                                            ))}
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 );
